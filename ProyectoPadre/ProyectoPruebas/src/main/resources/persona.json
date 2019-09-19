@@ -1,0 +1,28 @@
+{
+	"PERSONA": [
+		{
+			"cedula": "123",
+			"apellido": "DE CAICEDO",
+			"EMAIL": "caicedom",
+			"nombre": "MARIA"
+		},
+		{
+			"cedula": "1234",
+			"apellido": "DE CAICEDO",
+			"EMAIL": "caicedom",
+			"nombre": "MARIA"
+		},
+		{
+			"cedula": "12356",
+			"apellido": "DE CAICEDO",
+			"EMAIL": "caicedom",
+			"nombre": "MARIA"
+		},
+		{
+			"cedula": "123567",
+			"apellido": "DE CAICEDO",
+			"EMAIL": "caicedom",
+			"nombre": "MARIA"
+		}
+	]
+}

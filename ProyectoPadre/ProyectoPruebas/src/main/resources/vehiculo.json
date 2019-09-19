@@ -1,0 +1,22 @@
+{
+	"VEHICULO": [
+		{
+			"CODIGO": "7813",
+			"COLOR": "azul blue",
+			"MODELO": 2019,
+			"MARCA_CODIGO": "8"
+		},
+		{
+			"CODIGO": "7862",
+			"COLOR": "cafe brown",
+			"MODELO": 2017,
+			"MARCA_CODIGO": "8"
+		},
+		{
+			"CODIGO": "81362",
+			"COLOR": "rojo red",
+			"MODELO": 2018,
+			"MARCA_CODIGO": "8"
+		}
+	]
+}
