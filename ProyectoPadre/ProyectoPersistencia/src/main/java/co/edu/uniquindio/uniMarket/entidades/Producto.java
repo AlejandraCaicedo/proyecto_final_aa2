@@ -21,6 +21,7 @@ public class Producto implements Serializable {
 	@Column(name = "description", length = 100, nullable = true)
 	private String description;
 
+	@Column(name = "price")
 	private double price;
 
 	@ElementCollection
@@ -31,6 +32,7 @@ public class Producto implements Serializable {
 	@Column(name = "code", length = 10, nullable = false)
 	private String code;
 
+	@Column(name = "availability")
 	private int availability;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -40,6 +42,15 @@ public class Producto implements Serializable {
 
 	public Producto() {
 		super();
+	}
+
+	public Producto(String name, String description, double price, String code, Date limit_Date) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.code = code;
+		this.limit_Date = limit_Date;
 	}
 
 	public String getName() {
