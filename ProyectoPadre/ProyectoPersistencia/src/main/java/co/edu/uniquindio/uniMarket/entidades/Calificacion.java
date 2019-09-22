@@ -59,4 +59,40 @@ public class Calificacion implements Serializable {
 		this.rate = rate;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((productCode == null) ? 0 : productCode.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(rate);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((userID == null) ? 0 : userID.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Calificacion other = (Calificacion) obj;
+		if (productCode == null) {
+			if (other.productCode != null)
+				return false;
+		} else if (!productCode.equals(other.productCode))
+			return false;
+		if (Double.doubleToLongBits(rate) != Double.doubleToLongBits(other.rate))
+			return false;
+		if (userID == null) {
+			if (other.userID != null)
+				return false;
+		} else if (!userID.equals(other.userID))
+			return false;
+		return true;
+	}
+
 }
