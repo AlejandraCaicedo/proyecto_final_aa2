@@ -26,7 +26,7 @@ public class Compra implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date purchaseDate;
 
-	@Column(name = "paymentMethod")
+	@Column(name = "paymentMethod", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private PaymentMethod paymentMethod;
 

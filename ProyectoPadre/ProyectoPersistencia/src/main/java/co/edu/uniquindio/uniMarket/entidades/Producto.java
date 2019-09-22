@@ -32,7 +32,7 @@ public class Producto implements Serializable {
 	@Column(name = "code", length = 10, nullable = false)
 	private String code;
 
-	@Column(name = "availability")
+	@Column(name = "availability", nullable = false)
 	private int availability;
 
 	@Temporal(TemporalType.TIMESTAMP)

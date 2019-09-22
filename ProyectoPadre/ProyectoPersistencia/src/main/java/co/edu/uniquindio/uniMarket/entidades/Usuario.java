@@ -13,23 +13,24 @@ import javax.persistence.*;
 public class Usuario implements Serializable {
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID", nullable = false)
 	private String ID;
 
-	@Column(name = "fullName")
+	@Column(name = "fullName", nullable = false)
 	private String fullName;
 
-	@Column(name = "email")
+	@Column(name = "email", nullable = false)
 	private String email;
 
-	@Column(name = "cellphoneNumber", length = 10)
+	@Column(name = "cellphoneNumber", length = 10, nullable = false)
 	private String cellphoneNumber;
 
-	@Column(name = "adress")
+	@Column(name = "adress", nullable = false)
 	private String adress;
 
-	@Column(name = "password")
+	@Column(name = "password", nullable = false)
 	private String password;
+
 	private static final long serialVersionUID = 1L;
 
 	public Usuario() {

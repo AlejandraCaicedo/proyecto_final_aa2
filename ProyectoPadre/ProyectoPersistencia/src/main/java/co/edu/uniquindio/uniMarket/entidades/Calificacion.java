@@ -20,8 +20,9 @@ public class Calificacion implements Serializable {
 	@Column(name = "userID")
 	private String userID;
 
-	@Column(name = "rate")
+	@Column(name = "rate", nullable = false)
 	private double rate;
+
 	private static final long serialVersionUID = 1L;
 
 	public Calificacion() {
