@@ -14,38 +14,49 @@ import javax.persistence.*;
 public class Calificacion implements Serializable {
 
 	@Id
-	private String codigoProducto;
+	@Column(name = "productCode")
+	private String productCode;
 	@Id
-	private String cedulaUsuario;
-	private double calificacion;
+	@Column(name = "userID")
+	private String userID;
+
+	@Column(name = "rate")
+	private double rate;
 	private static final long serialVersionUID = 1L;
 
 	public Calificacion() {
 		super();
 	}
 
-	public String getCodigoProducto() {
-		return this.codigoProducto;
+	public Calificacion(String productCode, String userID, double rate) {
+		super();
+		this.productCode = productCode;
+		this.userID = userID;
+		this.rate = rate;
 	}
 
-	public void setCodigoProducto(String codigoProducto) {
-		this.codigoProducto = codigoProducto;
+	public String getProductCode() {
+		return productCode;
 	}
 
-	public String getCedulaUsuario() {
-		return this.cedulaUsuario;
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
 	}
 
-	public void setCedulaUsuario(String cedulaUsuario) {
-		this.cedulaUsuario = cedulaUsuario;
+	public String getUserID() {
+		return userID;
 	}
 
-	public double getCalificacion() {
-		return this.calificacion;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 
-	public void setCalificacion(double calificacion) {
-		this.calificacion = calificacion;
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
 	}
 
 }

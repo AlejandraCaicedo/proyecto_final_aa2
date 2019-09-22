@@ -10,29 +10,29 @@ import java.lang.String;
 public class CalificacionPK  implements Serializable {   
    
 	         
-	private String codigoProducto;         
-	private String cedulaUsuario;
+	private String productCode;         
+	private String userID;
 	private static final long serialVersionUID = 1L;
 
 	public CalificacionPK() {}
 
 	
 
-	public String getCodigoProducto() {
-		return this.codigoProducto;
+	public String getProductCode() {
+		return this.productCode;
 	}
 
-	public void setCodigoProducto(String codigoProducto) {
-		this.codigoProducto = codigoProducto;
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
 	}
 	
 
-	public String getCedulaUsuario() {
-		return this.cedulaUsuario;
+	public String getUserID() {
+		return this.userID;
 	}
 
-	public void setCedulaUsuario(String cedulaUsuario) {
-		this.cedulaUsuario = cedulaUsuario;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 	
    
@@ -48,8 +48,8 @@ public class CalificacionPK  implements Serializable {
 		}
 		CalificacionPK other = (CalificacionPK) o;
 		return true
-			&& (getCodigoProducto() == null ? other.getCodigoProducto() == null : getCodigoProducto().equals(other.getCodigoProducto()))
-			&& (getCedulaUsuario() == null ? other.getCedulaUsuario() == null : getCedulaUsuario().equals(other.getCedulaUsuario()));
+			&& (getProductCode() == null ? other.getProductCode() == null : getProductCode().equals(other.getProductCode()))
+			&& (getUserID() == null ? other.getUserID() == null : getUserID().equals(other.getUserID()));
 	}
 	
 	/*	 
@@ -58,8 +58,8 @@ public class CalificacionPK  implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (getCodigoProducto() == null ? 0 : getCodigoProducto().hashCode());
-		result = prime * result + (getCedulaUsuario() == null ? 0 : getCedulaUsuario().hashCode());
+		result = prime * result + (getProductCode() == null ? 0 : getProductCode().hashCode());
+		result = prime * result + (getUserID() == null ? 0 : getUserID().hashCode());
 		return result;
 	}
    
