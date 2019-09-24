@@ -2,14 +2,25 @@ package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.HashMap;
+
 import javax.persistence.*;
 
 /**
  * Entity implementation class for Entity: Usuario
  *
  */
-@Entity
 
+@Entity
+@NamedQueries({
+		// @NamedQuery(name = "TODOS_PRODUCTOS_COMPRA_OTRO_EJEMPLO", query = "select
+		// d.productoCompra from Compra c, IN( c.detalleCompra) d where c.codigo = :
+		// codigo"),
+		// @NamedQuery(name = "TODOS_PRODUCTOS_COMPRA", query = "select d.productoCompra
+		// from Compra c inner join c.detalleCompra d where c.codigo = :codigo"),
+		// @NamedQuery(name = "TODAS_COMPRAS_PERSONA", query = "select c from Compra c
+		// where c.usuarioCompra.nombre = 'pepito'")
+})
 public class Usuario extends Persona implements Serializable {
 
 	@Column(name = "fullName", nullable = false)
@@ -26,6 +37,10 @@ public class Usuario extends Persona implements Serializable {
 
 	@Column(name = "password", nullable = false)
 	private String password;
+
+	@ElementCollection
+	@OneToMany(mappedBy = "user")
+	private HashMap<String, Compra> hmCompra;
 
 	private static final long serialVersionUID = 1L;
 
