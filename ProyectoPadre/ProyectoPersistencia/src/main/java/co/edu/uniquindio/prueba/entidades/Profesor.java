@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Profesor extends Persona implements Serializable {
+public class Profesor extends Persona_Prueba implements Serializable {
 
 	private String cargo;
 	private static final long serialVersionUID = 1L;

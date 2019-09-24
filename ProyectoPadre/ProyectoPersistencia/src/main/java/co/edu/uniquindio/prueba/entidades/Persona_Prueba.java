@@ -13,7 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Persona implements Serializable {
+public class Persona_Prueba implements Serializable {
 
 	@Id
 	@Column(name = "cedula", length = 10)
@@ -33,7 +33,7 @@ public class Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Persona() {
+	public Persona_Prueba() {
 		super();
 	}
 
@@ -101,7 +101,7 @@ public class Persona implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Persona other = (Persona) obj;
+		Persona_Prueba other = (Persona_Prueba) obj;
 		if (cedula == null) {
 			if (other.cedula != null)
 				return false;
