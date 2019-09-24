@@ -24,6 +24,7 @@ public class Compra implements Serializable {
 	private String productCode;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "purchaseDate", nullable = false)
 	private Date purchaseDate;
 
 	@Column(name = "paymentMethod", nullable = false)
