@@ -1,10 +1,24 @@
 {
-	"MARCA": [
+	"marca": [
 		{
-			"CODIGO": "8",
-			"NOMBRE": "mazda",
-			"PAIS_ORIGEN": "no se",
-			"EMAIL": "MACAICEDO"
+			"CODIGO": "2118298",
+			"NOMBRE": "Mazda",
+			"PAIS_ORIGEN": "Japon"
+		},
+		{
+			"CODIGO": "7738377",
+			"NOMBRE": "Mitsubishi",
+			"PAIS_ORIGEN": "Japon"
+		},
+		{
+			"CODIGO": "1882788",
+			"NOMBRE": "Renault",
+			"PAIS_ORIGEN": "Francia"
+		},
+		{
+			"CODIGO": "6637728",
+			"NOMBRE": "Ferrari",
+			"PAIS_ORIGEN": "Italia"
 		}
 	]
 }
