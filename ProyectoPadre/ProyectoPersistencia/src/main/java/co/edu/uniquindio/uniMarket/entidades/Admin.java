@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Admin extends Persona implements Serializable {
+public class Admin extends Person implements Serializable {
 
 	private String name;
 	private String password;

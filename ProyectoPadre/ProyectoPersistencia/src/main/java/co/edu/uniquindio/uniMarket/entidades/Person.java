@@ -10,17 +10,17 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Persona implements Serializable {
+public class Person implements Serializable {
 
 	@Id
 	private String ID;
 	private static final long serialVersionUID = 1L;
 
-	public Persona() {
+	public Person() {
 		super();
 	}
 
-	public Persona(String ID) {
+	public Person(String ID) {
 		super();
 		this.ID = ID;
 	}

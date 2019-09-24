@@ -3,6 +3,7 @@ package co.edu.uniquindio.uniMarket.entidades;
 import java.io.Serializable;
 import java.lang.String;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -21,7 +22,7 @@ import javax.persistence.*;
 		// @NamedQuery(name = "TODAS_COMPRAS_PERSONA", query = "select c from Compra c
 		// where c.usuarioCompra.nombre = 'pepito'")
 })
-public class Usuario extends Persona implements Serializable {
+public class User extends Person implements Serializable {
 
 	@Column(name = "fullName", nullable = false)
 	private String fullName;
@@ -40,15 +41,18 @@ public class Usuario extends Persona implements Serializable {
 
 	@ElementCollection
 	@OneToMany(mappedBy = "user")
-	private HashMap<String, Compra> hmCompra;
+	private HashMap<String, Purchase> hmCompra;
 
+	@OneToMany(mappedBy="userID")
+	private List<Rate> rates;
+	
 	private static final long serialVersionUID = 1L;
 
-	public Usuario() {
+	public User() {
 		super();
 	}
 
-	public Usuario(String ID, String fullName, String email, String cellphoneNumber, String adress, String password) {
+	public User(String ID, String fullName, String email, String cellphoneNumber, String adress, String password) {
 		super(ID);
 		this.fullName = fullName;
 		this.email = email;
@@ -117,7 +121,7 @@ public class Usuario extends Persona implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		User other = (User) obj;
 		if (adress == null) {
 			if (other.adress != null)
 				return false;

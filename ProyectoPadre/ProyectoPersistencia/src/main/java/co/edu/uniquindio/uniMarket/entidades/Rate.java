@@ -3,61 +3,52 @@ package co.edu.uniquindio.uniMarket.entidades;
 import java.io.Serializable;
 import java.lang.String;
 import javax.persistence.*;
+import javax.validation.metadata.CascadableDescriptor;
 
 /**
  * Entity implementation class for Entity: Calificacion
  *
  */
+@NamedQueries({
+
+		// @NamedQuery(name = "CALIFICACIONES_PRODUCTO", query = "select c from
+		// Calificacion c where c.productoCalificacion.codigo = :codigo")
+})
+
 @Entity
+public class Rate implements Serializable {
 
-@IdClass(CalificacionPK.class)
-public class Calificacion implements Serializable {
+	@EmbeddedId
+	private RatePK rateID;
 
-	@Id
-	@Column(name = "productCode")
-	private String productCode;
-	@Id
-	@Column(name = "userID")
-	private String userID;
+	@ManyToOne
+	@MapsId("productCode")
+	private Product productCode;
+
+	@ManyToOne
+	@MapsId("userID")
+	private User userID;
 
 	@Column(name = "rate", nullable = false)
 	private double rate;
 
 	private static final long serialVersionUID = 1L;
 
-	public Calificacion() {
+	public Rate() {
 		super();
-	}
-
-	public Calificacion(String productCode, String userID, double rate) {
-		super();
-		this.productCode = productCode;
-		this.userID = userID;
-		this.rate = rate;
-	}
-
-	public String getProductCode() {
-		return productCode;
-	}
-
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
-	}
-
-	public String getUserID() {
-		return userID;
-	}
-
-	public void setUserID(String userID) {
-		this.userID = userID;
 	}
 
 	public double getRate() {
-		return rate;
+		return this.rate;
 	}
 
 	public void setRate(double rate) {
 		this.rate = rate;
+	}
+
+	@Override
+	public String toString() {
+		return "Calificacion [productCode=" + productCode + ", userID=" + userID + ", rate=" + rate + "]";
 	}
 
 	@Override
@@ -80,7 +71,7 @@ public class Calificacion implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Calificacion other = (Calificacion) obj;
+		Rate other = (Rate) obj;
 		if (productCode == null) {
 			if (other.productCode != null)
 				return false;

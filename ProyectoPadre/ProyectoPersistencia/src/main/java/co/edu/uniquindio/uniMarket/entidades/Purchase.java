@@ -14,7 +14,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Compra implements Serializable {
+public class Purchase implements Serializable {
 
 	@Id
 	@Column(name = "purchaseCode")
@@ -22,7 +22,7 @@ public class Compra implements Serializable {
 
 	@Column(name = "user", nullable = false)
 	@ManyToOne
-	private Usuario user;
+	private User user;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date purchaseDate;
@@ -31,11 +31,11 @@ public class Compra implements Serializable {
 	private PaymentMethod paymentMethod;
 
 	@OneToMany(mappedBy = "purchase")
-	private ArrayList<DetalleCompra> listPurchaseDetails;
+	private ArrayList<PurchaseDetail> listPurchaseDetails;
 
 	private static final long serialVersionUID = 1L;
 
-	public Compra() {
+	public Purchase() {
 		super();
 	}
 

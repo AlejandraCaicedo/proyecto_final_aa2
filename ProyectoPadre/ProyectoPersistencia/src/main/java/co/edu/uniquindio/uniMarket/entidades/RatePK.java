@@ -3,20 +3,24 @@ package co.edu.uniquindio.uniMarket.entidades;
 import java.io.Serializable;
 import java.lang.String;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.Id;
+
 /**
  * ID class for entity: Calificacion
  *
- */ 
-public class CalificacionPK  implements Serializable {   
-   
-	         
-	private String productCode;         
+ */
+@Embeddable
+public class RatePK implements Serializable {
+
+	private String productCode;
 	private String userID;
+
 	private static final long serialVersionUID = 1L;
 
-	public CalificacionPK() {}
-
-	
+	public RatePK() {
+	}
 
 	public String getProductCode() {
 		return this.productCode;
@@ -25,7 +29,6 @@ public class CalificacionPK  implements Serializable {
 	public void setProductCode(String productCode) {
 		this.productCode = productCode;
 	}
-	
 
 	public String getUserID() {
 		return this.userID;
@@ -34,27 +37,27 @@ public class CalificacionPK  implements Serializable {
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
-	
-   
+
 	/*
 	 * @see java.lang.Object#equals(Object)
-	 */	
+	 */
 	public boolean equals(Object o) {
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof CalificacionPK)) {
+		if (!(o instanceof RatePK)) {
 			return false;
 		}
-		CalificacionPK other = (CalificacionPK) o;
+		RatePK other = (RatePK) o;
 		return true
-			&& (getProductCode() == null ? other.getProductCode() == null : getProductCode().equals(other.getProductCode()))
-			&& (getUserID() == null ? other.getUserID() == null : getUserID().equals(other.getUserID()));
+				&& (getProductCode() == null ? other.getProductCode() == null
+						: getProductCode().equals(other.getProductCode()))
+				&& (getUserID() == null ? other.getUserID() == null : getUserID().equals(other.getUserID()));
 	}
-	
-	/*	 
+
+	/*
 	 * @see java.lang.Object#hashCode()
-	 */	
+	 */
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -62,6 +65,5 @@ public class CalificacionPK  implements Serializable {
 		result = prime * result + (getUserID() == null ? 0 : getUserID().hashCode());
 		return result;
 	}
-   
-   
+
 }

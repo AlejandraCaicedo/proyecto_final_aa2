@@ -11,19 +11,19 @@ import javax.persistence.*;
  */
 @Entity
 
-public class DetalleCompra implements Serializable {
+public class PurchaseDetail implements Serializable {
 
 	@Id
 	private int ID;
 
 	@ElementCollection
-	private HashMap<String, Producto> hmProducts;
+	private HashMap<String, Product> hmProducts;
 
-	private Compra purchase;
+	private Purchase purchase;
 
 	private static final long serialVersionUID = 1L;
 
-	public DetalleCompra() {
+	public PurchaseDetail() {
 		super();
 	}
 

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -13,7 +14,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Producto implements Serializable {
+public class Product implements Serializable {
 
 	@Column(name = "name", length = 20, nullable = false)
 	private String name;
@@ -38,13 +39,16 @@ public class Producto implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date limit_Date;
 
+	@OneToMany(mappedBy="productCode")
+	private List<Rate> rates;
+	
 	private static final long serialVersionUID = 1L;
 
-	public Producto() {
+	public Product() {
 		super();
 	}
 
-	public Producto(String name, String description, double price, String code, Date limit_Date) {
+	public Product(String name, String description, double price, String code, Date limit_Date) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -133,7 +137,7 @@ public class Producto implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Producto other = (Producto) obj;
+		Product other = (Product) obj;
 		if (availability != other.availability)
 			return false;
 		if (code == null) {
