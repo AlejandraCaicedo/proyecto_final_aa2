@@ -1,13 +1,19 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Entity implementation class for Entity: Compra
@@ -30,7 +36,7 @@ public class Purchase implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private PaymentMethod paymentMethod;
 
-	@OneToMany(mappedBy ="purchase")
+	@OneToMany(mappedBy = "purchase")
 	private List<PurchaseDetail> listPurchaseDetails;
 
 	private static final long serialVersionUID = 1L;

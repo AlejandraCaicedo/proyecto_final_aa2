@@ -1,11 +1,8 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
-import java.lang.String;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.persistence.Id;
 
 /**
  * ID class for entity: Calificacion

@@ -1,9 +1,11 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Entity implementation class for Entity: detalleCompra
