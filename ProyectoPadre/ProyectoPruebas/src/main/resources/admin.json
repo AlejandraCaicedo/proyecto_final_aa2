@@ -1,0 +1,17 @@
+{
+	"ADMIN": [
+		
+		{
+			"name": "Alejandro Gutierrez",
+			"password": "111313"
+		},
+		{
+			"name": "Maria Alejandra",
+			"password": "223322"
+		},
+		{
+			"name": "Juan David",
+			"password": "112334"
+		}
+	]
+}

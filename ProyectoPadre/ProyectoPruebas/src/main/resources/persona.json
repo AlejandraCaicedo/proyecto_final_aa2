@@ -1,28 +1,28 @@
 {
-	"PERSONA": [
+	"PERSONA_PRUEBA": [
 		{
-			"cedula": "123",
-			"apellido": "DE CAICEDO",
-			"EMAIL": "caicedom",
-			"nombre": "MARIA"
+			"cedula": "1222233453",
+			"apellido": "Gutierrez",
+/* 			"email": "dagutierrezv@uqvirtual.edu.co", */
+			"nombre": "Alejandro"
 		},
 		{
-			"cedula": "1234",
+			"cedula": "1442574",
 			"apellido": "DE CAICEDO",
-			"EMAIL": "caicedom",
-			"nombre": "MARIA"
+/* 			"email": "caicedom@uqvirtual.edu.co", */
+			"nombre": "Maria"
 		},
 		{
-			"cedula": "12356",
-			"apellido": "DE CAICEDO",
-			"EMAIL": "caicedom",
-			"nombre": "MARIA"
+			"cedula": "66327255",
+			"apellido": "Ariza",
+/* 			"email": "darizazzQuqvirtual.edu.co", */
+			"nombre": "Juan David"
 		},
 		{
-			"cedula": "123567",
-			"apellido": "DE CAICEDO",
-			"EMAIL": "caicedom",
-			"nombre": "MARIA"
+			"cedula": "123567883",
+			"apellido": "Velez",
+/* 			"email": "kkajdvelez@uqvirtual.edu.co", */
+			"nombre": "Diego"
 		}
 	]
 }

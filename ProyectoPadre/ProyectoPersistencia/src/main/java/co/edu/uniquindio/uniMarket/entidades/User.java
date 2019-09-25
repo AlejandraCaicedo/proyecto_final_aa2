@@ -43,9 +43,12 @@ public class User extends Person implements Serializable {
 	@OneToMany(mappedBy = "user")
 	private HashMap<String, Purchase> hmCompra;
 
-	@OneToMany(mappedBy="userID")
+	@OneToMany(mappedBy = "user")
 	private List<Rate> rates;
-	
+
+	@OneToMany(mappedBy = "user")
+	private List<Commentary> comments;
+
 	private static final long serialVersionUID = 1L;
 
 	public User() {
@@ -101,15 +104,42 @@ public class User extends Person implements Serializable {
 		this.password = password;
 	}
 
+	public HashMap<String, Purchase> getHmCompra() {
+		return hmCompra;
+	}
+
+	public void setHmCompra(HashMap<String, Purchase> hmCompra) {
+		this.hmCompra = hmCompra;
+	}
+
+	public List<Rate> getRates() {
+		return rates;
+	}
+
+	public void setRates(List<Rate> rates) {
+		this.rates = rates;
+	}
+
+	public List<Commentary> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Commentary> comments) {
+		this.comments = comments;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((adress == null) ? 0 : adress.hashCode());
 		result = prime * result + ((cellphoneNumber == null) ? 0 : cellphoneNumber.hashCode());
+		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
+		result = prime * result + ((hmCompra == null) ? 0 : hmCompra.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((rates == null) ? 0 : rates.hashCode());
 		return result;
 	}
 
@@ -117,7 +147,7 @@ public class User extends Person implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -132,6 +162,11 @@ public class User extends Person implements Serializable {
 				return false;
 		} else if (!cellphoneNumber.equals(other.cellphoneNumber))
 			return false;
+		if (comments == null) {
+			if (other.comments != null)
+				return false;
+		} else if (!comments.equals(other.comments))
+			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -142,12 +177,28 @@ public class User extends Person implements Serializable {
 				return false;
 		} else if (!fullName.equals(other.fullName))
 			return false;
+		if (hmCompra == null) {
+			if (other.hmCompra != null)
+				return false;
+		} else if (!hmCompra.equals(other.hmCompra))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
+		if (rates == null) {
+			if (other.rates != null)
+				return false;
+		} else if (!rates.equals(other.rates))
+			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [fullName=" + fullName + ", email=" + email + ", cellphoneNumber=" + cellphoneNumber + ", adress="
+				+ adress + ", password=" + password + "]";
 	}
 
 }

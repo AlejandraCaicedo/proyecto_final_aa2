@@ -14,28 +14,28 @@ import javax.persistence.Id;
 @Embeddable
 public class RatePK implements Serializable {
 
-	private String productCode;
-	private String userID;
+	private String product;
+	private String user;
 
 	private static final long serialVersionUID = 1L;
 
 	public RatePK() {
 	}
 
-	public String getProductCode() {
-		return this.productCode;
+	public String getProduct() {
+		return this.product;
 	}
 
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
+	public void setProduct(String productCode) {
+		this.product = productCode;
 	}
 
-	public String getUserID() {
-		return this.userID;
+	public String getUser() {
+		return this.user;
 	}
 
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setUser(String userID) {
+		this.user = userID;
 	}
 
 	/*
@@ -49,10 +49,8 @@ public class RatePK implements Serializable {
 			return false;
 		}
 		RatePK other = (RatePK) o;
-		return true
-				&& (getProductCode() == null ? other.getProductCode() == null
-						: getProductCode().equals(other.getProductCode()))
-				&& (getUserID() == null ? other.getUserID() == null : getUserID().equals(other.getUserID()));
+		return true && (getProduct() == null ? other.getProduct() == null : getProduct().equals(other.getProduct()))
+				&& (getUser() == null ? other.getUser() == null : getUser().equals(other.getUser()));
 	}
 
 	/*
@@ -61,8 +59,8 @@ public class RatePK implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (getProductCode() == null ? 0 : getProductCode().hashCode());
-		result = prime * result + (getUserID() == null ? 0 : getUserID().hashCode());
+		result = prime * result + (getProduct() == null ? 0 : getProduct().hashCode());
+		result = prime * result + (getUser() == null ? 0 : getUser().hashCode());
 		return result;
 	}
 

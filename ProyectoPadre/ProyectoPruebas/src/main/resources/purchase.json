@@ -1,0 +1,21 @@
+{
+	"PURCHASE": [
+	
+		{
+			"purchaseCode": "2238839",
+			"purchaseDate": "2019-09-29"
+		},
+		{
+			"purchaseCode": "99512",
+			"purchaseDate": "2019-05-06"
+		},
+		{
+			"purchaseCode": "553226", 
+			"purchaseDate": "2018-06-23"
+		},
+		{
+			"purchaseCode": "5562278",
+			"purchaseDate": "2018-03-01"
+		}
+	]
+}
