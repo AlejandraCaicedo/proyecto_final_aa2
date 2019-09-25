@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class Commentary implements Serializable {
 
 	@Id
+	@Column(name = "ID")
 	private String ID;
 
 	@ManyToOne
@@ -20,6 +21,7 @@ public class Commentary implements Serializable {
 
 	private Product product;
 
+	@Column(name = "comment", nullable = false)
 	private String comment;
 	private static final long serialVersionUID = 1L;
 
