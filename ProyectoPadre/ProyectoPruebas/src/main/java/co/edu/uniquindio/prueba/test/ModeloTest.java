@@ -58,7 +58,7 @@ public class ModeloTest {
 	@UsingDataSet({ "product.json", "person.json" })
 	public void persistenciaCommentary() {
 		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
-		User user = entityManager.find(User.class, "1113313495");
+		User user = entityManager.find(User.class, "0000");
 
 		Commentary comment = new Commentary("0000", user, product, "I love the product, very useful");
 		entityManager.persist(comment);
