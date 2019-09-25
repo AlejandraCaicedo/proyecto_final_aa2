@@ -1,24 +1,24 @@
 {
-	"marca": [
+	"MARCA": [
 		{
-			"CODIGO": "2118298",
-			"NOMBRE": "Mazda",
-			"PAIS_ORIGEN": "Japon"
+			"codigo": "2118298",
+			"nombre": "Mazda",
+			"pais_origen": "Japon"
 		},
 		{
-			"CODIGO": "7738377",
-			"NOMBRE": "Mitsubishi",
-			"PAIS_ORIGEN": "Japon"
+			"codigo": "7738377",
+			"nombre": "Mitsubishi",
+			"pais_origen": "Japon"
 		},
 		{
-			"CODIGO": "1882788",
-			"NOMBRE": "Renault",
-			"PAIS_ORIGEN": "Francia"
+			"codigo": "1882788",
+			"nombre": "Renault",
+			"pais_origen": "Francia"
 		},
 		{
-			"CODIGO": "6637728",
-			"NOMBRE": "Ferrari",
-			"PAIS_ORIGEN": "Italia"
+			"codigo": "6637728",
+			"nombre": "Ferrari",
+			"pais_origen": "Italia"
 		}
 	]
 }

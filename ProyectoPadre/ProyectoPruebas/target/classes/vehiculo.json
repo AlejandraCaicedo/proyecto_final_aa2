@@ -1,22 +1,22 @@
 {
-	"vehiculo": [
+	"VEHICULO": [
 		{
-			"CODIGO": "7813",
-			"COLOR": "azul blue",
-			"MODELO": 2019,
-			"MARCA_CODIGO": "8"
+			"codigo": "7813",
+			"color": "azul blue",
+			"modelo": 2019,
+			"marca_codigo": "8"
 		},
 		{
-			"CODIGO": "7862",
-			"COLOR": "cafe brown",
-			"MODELO": 2017,
-			"MARCA_CODIGO": "8"
+			"codigo": "7862",
+			"color": "cafe brown",
+			"modelo": 2017,
+			"marca_codigo": "8"
 		},
 		{
-			"CODIGO": "81362",
-			"COLOR": "rojo red",
-			"MODELO": 2018,
-			"MARCA_CODIGO": "8"
+			"codigo": "81362",
+			"color": "rojo red",
+			"modelo": 2018,
+			"marca_codigo": "8"
 		}
 	]
 }
