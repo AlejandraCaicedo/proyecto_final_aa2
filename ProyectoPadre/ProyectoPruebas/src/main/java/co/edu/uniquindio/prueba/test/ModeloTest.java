@@ -56,20 +56,20 @@ public class ModeloTest {
 
 	}
 
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	public void probarPersistenciaPersoDatena() {
-//
-//		Person personaPrueba = new Person();
-//		personaPrueba.setID;("12345");
-//		personaPrueba.setF;("Alejandra");
-//		personaPrueba.setApellido("Caicedo");
-//		personaPrueba.setFechaNacimiento(new Date());
-//		personaPrueba.setGenero(Genero.FEMENINO);
-//
-//		entityManager.persist(personaPrueba);
-//
-//	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void probarPersistenciaPersoDatena() {
+
+		Persona_Prueba personaPrueba = new Persona_Prueba();
+		personaPrueba.setCedula("12345");
+		personaPrueba.setNombre("Alejandra");
+		personaPrueba.setApellido("Caicedo");
+		personaPrueba.setFechaNacimiento(new Date());
+		personaPrueba.setGenero(Genero.FEMENINO);
+
+		entityManager.persist(personaPrueba);
+
+	}
 
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -79,63 +79,63 @@ public class ModeloTest {
 		entityManager.persist(prueba);
 	}
 
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product.json", "user.json" })
-	public void persistenciaCommentary() {
-		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
-		User user = entityManager.find(User.class, "1113313495");
-
-		Commentary comment = new Commentary("0000", user, product, "I love the product, very useful");
-		entityManager.persist(comment);
-	}
-
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	public void persistenciaProduct() {
-		Product product = new Product("Nevera", "Esto Congela", 1345677, "0000", new Date());
-
-		entityManager.persist(product);
-	}
-
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "user.json" })
-	public void persistenciaPurchase() {
-		PaymentMethod paymentMethod = PaymentMethod.CASH;
-		User user = entityManager.find(User.class, "1113313495");
-		Purchase purchase = new Purchase("0000", user, new Date(), paymentMethod);
-
-		entityManager.persist(purchase);
-	}
-
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	public void persistenciaPurchaseDetail() {
-		PurchaseDetail purchaseDetail = new PurchaseDetail(1, 4, 3200);
-
-		entityManager.persist(purchaseDetail);
-	}
-
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product.json", "user.json" })
-	public void persistenciaRate() {
-		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
-		User user = entityManager.find(User.class, "1113313495");
-		RatePK ratePK = new RatePK();
-		Rate rate = new Rate(ratePK, product, user, 3.5);
-
-		entityManager.persist(rate);
-	}
-
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	public void persistenciaUser() {
-		User user = new User("0000", "Carlos Mario", "algo@hotmail.com", "3127309219", "Algun lugar", "contrasena");
-
-		entityManager.persist(user);
-	}
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	@UsingDataSet({ "product.json", "user.json" })
+//	public void persistenciaCommentary() {
+//		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
+//		User user = entityManager.find(User.class, "1113313495");
+//
+//		Commentary comment = new Commentary("0000", user, product, "I love the product, very useful");
+//		entityManager.persist(comment);
+//	}
+//
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	public void persistenciaProduct() {
+//		Product product = new Product("Nevera", "Esto Congela", 1345677, "0000", new Date());
+//
+//		entityManager.persist(product);
+//	}
+//
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	@UsingDataSet({ "user.json" })
+//	public void persistenciaPurchase() {
+//		PaymentMethod paymentMethod = PaymentMethod.CASH;
+//		User user = entityManager.find(User.class, "1113313495");
+//		Purchase purchase = new Purchase("0000", user, new Date(), paymentMethod);
+//
+//		entityManager.persist(purchase);
+//	}
+//
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	public void persistenciaPurchaseDetail() {
+//		PurchaseDetail purchaseDetail = new PurchaseDetail(1, 4, 3200);
+//
+//		entityManager.persist(purchaseDetail);
+//	}
+//
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	@UsingDataSet({ "product.json", "user.json" })
+//	public void persistenciaRate() {
+//		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
+//		User user = entityManager.find(User.class, "1113313495");
+//		RatePK ratePK = new RatePK();
+//		Rate rate = new Rate(ratePK, product, user, 3.5);
+//
+//		entityManager.persist(rate);
+//	}
+//
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	public void persistenciaUser() {
+//		User user = new User("0000", "Carlos Mario", "algo@hotmail.com", "3127309219", "Algun lugar", "contrasena");
+//
+//		entityManager.persist(user);
+//	}
 
 	/*
 	 * @Test
