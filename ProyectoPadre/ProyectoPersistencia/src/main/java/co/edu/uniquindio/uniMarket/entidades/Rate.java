@@ -22,12 +22,12 @@ public class Rate implements Serializable {
 	private RatePK rateID;
 
 	@ManyToOne
-	@MapsId("productCode")
-	private Product productCode;
+	@MapsId("product")
+	private Product product;
 
 	@ManyToOne
-	@MapsId("userID")
-	private User userID;
+	@MapsId("user")
+	private User user;
 
 	@Column(name = "rate", nullable = false)
 	private double rate;
@@ -38,8 +38,40 @@ public class Rate implements Serializable {
 		super();
 	}
 
+	public Rate(RatePK rateID, Product product, User user, double rate) {
+		super();
+		this.rateID = rateID;
+		this.product = product;
+		this.user = user;
+		this.rate = rate;
+	}
+
+	public RatePK getRateID() {
+		return rateID;
+	}
+
+	public void setRateID(RatePK rateID) {
+		this.rateID = rateID;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public double getRate() {
-		return this.rate;
+		return rate;
 	}
 
 	public void setRate(double rate) {
@@ -47,19 +79,15 @@ public class Rate implements Serializable {
 	}
 
 	@Override
-	public String toString() {
-		return "Calificacion [productCode=" + productCode + ", userID=" + userID + ", rate=" + rate + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((productCode == null) ? 0 : productCode.hashCode());
+		result = prime * result + ((product == null) ? 0 : product.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(rate);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((userID == null) ? 0 : userID.hashCode());
+		result = prime * result + ((rateID == null) ? 0 : rateID.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -72,19 +100,30 @@ public class Rate implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Rate other = (Rate) obj;
-		if (productCode == null) {
-			if (other.productCode != null)
+		if (product == null) {
+			if (other.product != null)
 				return false;
-		} else if (!productCode.equals(other.productCode))
+		} else if (!product.equals(other.product))
 			return false;
 		if (Double.doubleToLongBits(rate) != Double.doubleToLongBits(other.rate))
 			return false;
-		if (userID == null) {
-			if (other.userID != null)
+		if (rateID == null) {
+			if (other.rateID != null)
 				return false;
-		} else if (!userID.equals(other.userID))
+		} else if (!rateID.equals(other.rateID))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Rate [rateID=" + rateID + ", product=" + product.getName() + ", user=" + user.getFullName() + ", rate="
+				+ rate + "]";
 	}
 
 }

@@ -39,9 +39,9 @@ public class Product implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date limit_Date;
 
-	@OneToMany(mappedBy="productCode")
+	@OneToMany(mappedBy = "product")
 	private List<Rate> rates;
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public Product() {
@@ -126,6 +126,7 @@ public class Product implements Serializable {
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((rates == null) ? 0 : rates.hashCode());
 		return result;
 	}
 
@@ -167,13 +168,18 @@ public class Product implements Serializable {
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
+		if (rates == null) {
+			if (other.rates != null)
+				return false;
+		} else if (!rates.equals(other.rates))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Producto [name=" + name + ", description=" + description + ", price=" + price + ", images=" + images
-				+ ", code=" + code + ", availability=" + availability + ", limit_Date=" + limit_Date + "]";
+		return "Producto [name=" + name + ", description=" + description + ", price=" + price + ", code=" + code
+				+ ", availability=" + availability + ", limit_Date=" + limit_Date + "]";
 	}
 
 }
