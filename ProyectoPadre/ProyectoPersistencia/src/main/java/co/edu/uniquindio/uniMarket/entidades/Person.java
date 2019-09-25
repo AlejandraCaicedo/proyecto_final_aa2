@@ -9,7 +9,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@Inheritance
 public class Person implements Serializable {
 
 	@Id

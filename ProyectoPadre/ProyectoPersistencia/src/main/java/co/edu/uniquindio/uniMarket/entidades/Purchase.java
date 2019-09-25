@@ -5,6 +5,7 @@ import java.lang.String;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -20,7 +21,6 @@ public class Purchase implements Serializable {
 	@Column(name = "purchaseCode")
 	private String purchaseCode;
 
-	@Column(name = "user", nullable = false)
 	@ManyToOne
 	private User user;
 
@@ -30,8 +30,8 @@ public class Purchase implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private PaymentMethod paymentMethod;
 
-	@OneToMany(mappedBy = "purchase")
-	private ArrayList<PurchaseDetail> listPurchaseDetails;
+	@OneToMany(mappedBy ="purchase")
+	private List<PurchaseDetail> listPurchaseDetails;
 
 	private static final long serialVersionUID = 1L;
 
@@ -79,7 +79,7 @@ public class Purchase implements Serializable {
 		this.paymentMethod = paymentMethod;
 	}
 
-	public ArrayList<PurchaseDetail> getListPurchaseDetails() {
+	public List<PurchaseDetail> getListPurchaseDetails() {
 		return listPurchaseDetails;
 	}
 

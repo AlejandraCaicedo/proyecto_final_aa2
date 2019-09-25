@@ -17,15 +17,15 @@ public class PurchaseDetail implements Serializable {
 	@Column(name = "ID", nullable = false)
 	private int ID;
 
-	@ElementCollection
-	private HashMap<String, Product> hmProducts;
+	@ManyToOne
+	private Product product;
 
 	@ManyToOne
 	private Purchase purchase;
 
-	@Column(name="quantity", nullable = false)
+	@Column(name = "quantity", nullable = false)
 	private int quantity;
-	
+
 	@Column(name = "price", nullable = false)
 	private int price;
 
@@ -33,14 +33,6 @@ public class PurchaseDetail implements Serializable {
 
 	public PurchaseDetail() {
 		super();
-	}
-
-	public PurchaseDetail(int iD, HashMap<String, Product> hmProducts, Purchase purchase, int quantity) {
-		super();
-		ID = iD;
-		this.hmProducts = hmProducts;
-		this.purchase = purchase;
-		this.quantity = quantity;
 	}
 
 	public PurchaseDetail(int iD, int quantity, int price) {
@@ -58,12 +50,12 @@ public class PurchaseDetail implements Serializable {
 		this.ID = ID;
 	}
 
-	public HashMap<String, Product> getHmProducts() {
-		return hmProducts;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setHmProducts(HashMap<String, Product> hmProducts) {
-		this.hmProducts = hmProducts;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public Purchase getPurchase() {
@@ -95,8 +87,8 @@ public class PurchaseDetail implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ID;
-		result = prime * result + ((hmProducts == null) ? 0 : hmProducts.hashCode());
 		result = prime * result + price;
+		result = prime * result + ((product == null) ? 0 : product.hashCode());
 		result = prime * result + ((purchase == null) ? 0 : purchase.hashCode());
 		result = prime * result + quantity;
 		return result;
@@ -113,12 +105,12 @@ public class PurchaseDetail implements Serializable {
 		PurchaseDetail other = (PurchaseDetail) obj;
 		if (ID != other.ID)
 			return false;
-		if (hmProducts == null) {
-			if (other.hmProducts != null)
-				return false;
-		} else if (!hmProducts.equals(other.hmProducts))
-			return false;
 		if (price != other.price)
+			return false;
+		if (product == null) {
+			if (other.product != null)
+				return false;
+		} else if (!product.equals(other.product))
 			return false;
 		if (purchase == null) {
 			if (other.purchase != null)

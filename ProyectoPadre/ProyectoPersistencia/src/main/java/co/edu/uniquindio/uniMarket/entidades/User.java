@@ -39,9 +39,8 @@ public class User extends Person implements Serializable {
 	@Column(name = "password", nullable = false)
 	private String password;
 
-	@ElementCollection
 	@OneToMany(mappedBy = "user")
-	private HashMap<String, Purchase> hmCompra;
+	private List<Purchase> listCompra;
 
 	@OneToMany(mappedBy = "user")
 	private List<Rate> rates;
@@ -104,14 +103,6 @@ public class User extends Person implements Serializable {
 		this.password = password;
 	}
 
-	public HashMap<String, Purchase> getHmCompra() {
-		return hmCompra;
-	}
-
-	public void setHmCompra(HashMap<String, Purchase> hmCompra) {
-		this.hmCompra = hmCompra;
-	}
-
 	public List<Rate> getRates() {
 		return rates;
 	}
@@ -128,6 +119,14 @@ public class User extends Person implements Serializable {
 		this.comments = comments;
 	}
 
+	public List<Purchase> getListCompra() {
+		return listCompra;
+	}
+
+	public void setListCompra(List<Purchase> listCompra) {
+		this.listCompra = listCompra;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -137,7 +136,7 @@ public class User extends Person implements Serializable {
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
-		result = prime * result + ((hmCompra == null) ? 0 : hmCompra.hashCode());
+		result = prime * result + ((listCompra == null) ? 0 : listCompra.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((rates == null) ? 0 : rates.hashCode());
 		return result;
@@ -177,10 +176,10 @@ public class User extends Person implements Serializable {
 				return false;
 		} else if (!fullName.equals(other.fullName))
 			return false;
-		if (hmCompra == null) {
-			if (other.hmCompra != null)
+		if (listCompra == null) {
+			if (other.listCompra != null)
 				return false;
-		} else if (!hmCompra.equals(other.hmCompra))
+		} else if (!listCompra.equals(other.listCompra))
 			return false;
 		if (password == null) {
 			if (other.password != null)

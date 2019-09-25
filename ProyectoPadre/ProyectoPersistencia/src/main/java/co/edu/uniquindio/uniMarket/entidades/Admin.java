@@ -9,7 +9,6 @@ import javax.persistence.*;
  *
  */
 @Entity
-
 public class Admin extends Person implements Serializable {
 
 	@Column(name = "name", nullable = false)
