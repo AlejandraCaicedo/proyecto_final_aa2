@@ -1,25 +1,26 @@
 {
 	"USER": [
+		
 		{
-			"FULLNAME": "Maria Alejandra",
-			"EMAIL": "macaicedoc@uqvirtual.edu.co",
-			"CELLPHONENUMBER": "3118619017",
-			"ADRESS": "Muy Lejos",
-			"PASSWORD": "JuanDavidBFF"
+			"fullName": "Maria Alejandra",
+			"email": "macaicedoc@uqvirtual.edu.co",
+			"cellphoneNumber": "3118619017",
+			"adress": "Muy Lejos",
+			"password": "JuanDavidBFF"
 		},
 		{
-			"FULLNAME": "Juan David",
-			"EMAIL": "jdarizas@uqvirtual.edu.co",
-			"CELLPHONENUMBER": "3222025613",
-			"ADRESS": "Aun mas Lejos",
-			"PASSWORD": "ia lo c ggg"
+			"fullName": "Juan David",
+			"email": "jdarizas@uqvirtual.edu.co",
+			"cellphoneNumber": "3222025613",
+			"adress": "Aun mas Lejos",
+			"password": "ia lo c ggg"
 		},
 		{
-			"FULLNAME": "Alejandro ",
-			"EMAIL": "alejandro@uqvirtual.edu.co",
-			"CELLPHONENUMBER": "3185076762",
-			"ADRESS": "Ni idea",
-			"PASSWORD": "firstandlast"
+			"fullName": "Alejandro ",
+			"email": "alejandro@uqvirtual.edu.co",
+			"cellphoneNumber": "3185076762",
+			"adress": "Ni idea",
+			"password": "firstandlast"
 		}
 	]
 }
