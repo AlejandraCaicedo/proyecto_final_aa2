@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 public class Admin extends Person implements Serializable {
-
+	// Yesid estuvo aqui xdxdxddddd
 	private static final long serialVersionUID = 1L;
 
 	public Admin() {
