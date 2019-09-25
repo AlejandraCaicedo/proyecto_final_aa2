@@ -24,14 +24,20 @@ public class PurchaseDetail implements Serializable {
 	private Purchase purchase;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@Column(name = "quantity")
 	private int quantity;
 
 =======
+=======
+>>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
 	private int quantity;
 
 	private int price;
 
+<<<<<<< HEAD
+>>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
+=======
 >>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
 	private static final long serialVersionUID = 1L;
 
@@ -40,6 +46,7 @@ public class PurchaseDetail implements Serializable {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public PurchaseDetail(int iD, HashMap<String, Product> hmProducts, Purchase purchase, int quantity) {
 		super();
 		ID = iD;
@@ -47,11 +54,16 @@ public class PurchaseDetail implements Serializable {
 		this.purchase = purchase;
 		this.quantity = quantity;
 =======
+=======
+>>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
 	public PurchaseDetail(int iD, int quantity, int price) {
 		super();
 		ID = iD;
 		this.quantity = quantity;
 		this.price = price;
+<<<<<<< HEAD
+>>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
+=======
 >>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
 	}
 
@@ -88,7 +100,10 @@ public class PurchaseDetail implements Serializable {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
 	public int getPrice() {
 		return price;
 	}
@@ -143,5 +158,8 @@ public class PurchaseDetail implements Serializable {
 				+ ", price=" + price + "]";
 	}
 
+<<<<<<< HEAD
+>>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
+=======
 >>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
 }
