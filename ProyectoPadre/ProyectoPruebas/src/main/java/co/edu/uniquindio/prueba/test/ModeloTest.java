@@ -72,11 +72,8 @@ public class ModeloTest {
 	}
 
 	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	public void persistenciaAdmin() {
-		Admin prueba = new Admin("0000", "Admin 1.0", "contrasena");
+	public void test() {
 
-		entityManager.persist(prueba);
 	}
 
 //	@Test
