@@ -23,48 +23,31 @@ public class PurchaseDetail implements Serializable {
 	@ManyToOne
 	private Purchase purchase;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	@Column(name = "quantity")
+	@Column(name="quantity", nullable = false)
 	private int quantity;
-
-=======
-=======
->>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
-	private int quantity;
-
+	
+	@Column(name = "price", nullable = false)
 	private int price;
 
-<<<<<<< HEAD
->>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
-=======
->>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
 	private static final long serialVersionUID = 1L;
 
 	public PurchaseDetail() {
 		super();
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	public PurchaseDetail(int iD, HashMap<String, Product> hmProducts, Purchase purchase, int quantity) {
 		super();
 		ID = iD;
 		this.hmProducts = hmProducts;
 		this.purchase = purchase;
 		this.quantity = quantity;
-=======
-=======
->>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
+	}
+
 	public PurchaseDetail(int iD, int quantity, int price) {
 		super();
 		ID = iD;
 		this.quantity = quantity;
 		this.price = price;
-<<<<<<< HEAD
->>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
-=======
->>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
 	}
 
 	public int getID() {
@@ -99,11 +82,6 @@ public class PurchaseDetail implements Serializable {
 		this.quantity = quantity;
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
 	public int getPrice() {
 		return price;
 	}
@@ -157,9 +135,4 @@ public class PurchaseDetail implements Serializable {
 		return "PurchaseDetail [ID=" + ID + ", purchase=" + purchase.getPurchaseCode() + ", quantity=" + quantity
 				+ ", price=" + price + "]";
 	}
-
-<<<<<<< HEAD
->>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
-=======
->>>>>>> 838df0bc39b7cbbd1d046ffff0d5fe09101eb7b7
 }
