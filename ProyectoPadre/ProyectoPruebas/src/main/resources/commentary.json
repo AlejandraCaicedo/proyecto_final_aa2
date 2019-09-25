@@ -3,16 +3,26 @@
 		{
 			"ID": "00000112",
 			"comment": "The product is in good conditions but I don't need that.",
-			"USER_ID": "12",
-			"PRODUCT_code": "12345"
+			"USER_ID": "0000",
+			"PRODUCT_code": "CCDJDJD-988992"
 		},
 		{
-			"ID": "000000113",
-			"comment": "It's just what I needed."
+			"ID": "00000113",
+			"comment": "The product is awful",
+			"USER_ID": "0001",
+			"PRODUCT_code": "HHDJCN-882922"
 		},
 		{
 			"ID": "000000114",
-			"comment": "You could improve the presentaton of the book to ask for that money, It's on regular state."
+			"comment": "It's just what I needed.",
+			"USER_ID": "0000",
+			"PRODUCT_code": "HHDJCN-882922"
+		},
+		{
+			"ID": "00000115",
+			"comment": "The product is in bad conditions but I don't need that.",
+			"USER_ID": "0002",
+			"PRODUCT_code": "CCDJDJD-988992"
 		}
 	]
 }

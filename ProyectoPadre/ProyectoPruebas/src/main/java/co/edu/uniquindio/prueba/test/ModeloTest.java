@@ -5,6 +5,7 @@ import javax.persistence.PersistenceContext;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.persistence.UsingDataSet;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.jboss.shrinkwrap.api.Archive;
@@ -15,6 +16,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.uniMarket.entidades.Admin;
+import co.edu.uniquindio.uniMarket.entidades.Commentary;
+import co.edu.uniquindio.uniMarket.entidades.Product;
+import co.edu.uniquindio.uniMarket.entidades.User;
 
 @RunWith(Arquillian.class)
 public class ModeloTest {
@@ -32,23 +36,33 @@ public class ModeloTest {
 	}
 
 	@Test
+	public void crearTablas() {
+
+	}
+
+	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	public void persistenciaAdmin() {
 		Admin prueba = new Admin();
-
+		prueba.setID("0000");
+		prueba.setFullName("Carlos");
+		prueba.setAdress("adress");
+		prueba.setCellphoneNumber("3154748461");
+		prueba.setEmail("algo@hotmail");
+		prueba.setPassword("12345");
 		entityManager.persist(prueba);
 	}
 
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	@UsingDataSet({ "product.json", "user.json" })
-//	public void persistenciaCommentary() {
-//		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
-//		User user = entityManager.find(User.class, "1113313495");
-//
-//		Commentary comment = new Commentary("0000", user, product, "I love the product, very useful");
-//		entityManager.persist(comment);
-//	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json", "person.json" })
+	public void persistenciaCommentary() {
+		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
+		User user = entityManager.find(User.class, "1113313495");
+
+		Commentary comment = new Commentary("0000", user, product, "I love the product, very useful");
+		entityManager.persist(comment);
+	}
 //
 //	@Test
 //	@Transactional(value = TransactionMode.ROLLBACK)
@@ -60,7 +74,7 @@ public class ModeloTest {
 //
 //	@Test
 //	@Transactional(value = TransactionMode.ROLLBACK)
-//	@UsingDataSet({ "user.json" })
+//	@UsingDataSet({ "person.json" })
 //	public void persistenciaPurchase() {
 //		PaymentMethod paymentMethod = PaymentMethod.CASH;
 //		User user = entityManager.find(User.class, "1113313495");
@@ -79,7 +93,7 @@ public class ModeloTest {
 //
 //	@Test
 //	@Transactional(value = TransactionMode.ROLLBACK)
-//	@UsingDataSet({ "product.json", "user.json" })
+//	@UsingDataSet({ "product.json", "person.json" })
 //	public void persistenciaRate() {
 //		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
 //		User user = entityManager.find(User.class, "1113313495");

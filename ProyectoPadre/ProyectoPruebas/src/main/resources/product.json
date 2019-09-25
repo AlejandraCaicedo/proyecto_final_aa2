@@ -4,7 +4,6 @@
 			"code": "CCDJDJD-988992",
 			"availability": 25,
 			"description": "A machine with great performance, contain 8 cores and RAM 16 GB",
-			"IMAGE": "",
 			"LIMIT_DATE": "2020-12-29",
 			"name": "Computer LENOVO 3332",
 			"price": 4563778.32
@@ -35,6 +34,16 @@
 			"code": "IIRPOR-833",
 			"availability": 2,
 			"limit_Date": "2020-1-31"
+		}
+	],
+	"Product_IMAGES": [
+		{
+			"Product_code": "CCDJDJD-988992",
+			"IMAGES": "recursos/imagen.png"
+		},
+		{
+			"Product_code": "CCDJDJD-988992",
+			"IMAGES": "recursos/imagen2.png"
 		}
 	]
 }
