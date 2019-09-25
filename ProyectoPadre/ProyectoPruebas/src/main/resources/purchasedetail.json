@@ -1,11 +1,11 @@
 {
-
 	"PURCHASEDETAIL": [
-	
 		{
 			"ID": 2238839,
+			"price": 912755664,
 			"quantity": 2,
-			"price": 912755664
+			"PRODUCT_code": "43443",
+			"purchaseCode": "24234"
 		},
 		{
 			"ID": 99512,

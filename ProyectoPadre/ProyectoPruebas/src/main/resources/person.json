@@ -1,18 +1,67 @@
 {
-
-	"PERSON": [
-	
+	"PERSONA_PRUEBA": [
 		{
-			"ID": "1113313495"
+			"ID": "0000",
+			"DTYPE": "User",
+			"adress": "Mas lejos",
+			"cellphoneNumber": "324343",
+			"email": "dagutierrezv@uqvirtual.edu.co",
+			"fullName": "Alejandro",
+			"password": "vofh"
 		},
 		{
-			"ID": "223333354"
+			"ID": "0001",
+			"DTYPE": "User",
+			"adress": "Mas lejos",
+			"cellphoneNumber": "324343",
+			"email": "dagutierrezv@uqvirtual.edu.co",
+			"fullName": "Alejandro",
+			"password": "vofh"
 		},
 		{
-			"ID": "8843927367"
+			"ID": "0002",
+			"DTYPE": "User",
+			"adress": "Mas lejos",
+			"cellphoneNumber": "324343",
+			"email": "dagutierrezv@uqvirtual.edu.co",
+			"fullName": "Alejandro",
+			"password": "vofh"
 		},
 		{
-			"ID": "3343433366"
+			"ID": "0000",
+			"DTYPE": "User",
+			"adress": "Mas lejos",
+			"cellphoneNumber": "324343",
+			"email": "dagutierrezv@uqvirtual.edu.co",
+			"fullName": "Alejandro",
+			"password": "vofh"
+		},
+		{
+			"ID": "0000",
+			"DTYPE": "User",
+			"adress": "Mas lejos",
+			"cellphoneNumber": "324343",
+			"email": "dagutierrezv@uqvirtual.edu.co",
+			"fullName": "Alejandro",
+			"password": "vofh"
+		},
+		{
+			"ID": "0000",
+			"DTYPE": "User",
+			"adress": "Mas lejos",
+			"cellphoneNumber": "324343",
+			"email": "dagutierrezv@uqvirtual.edu.co",
+			"fullName": "Alejandro",
+			"password": "vofh"
+		},
+		{
+			"ID": "0000",
+			"DTYPE": "User",
+			"adress": "Mas lejos",
+			"cellphoneNumber": "324343",
+			"email": "dagutierrezv@uqvirtual.edu.co",
+			"fullName": "Alejandro",
+			"password": "vofh"
 		}
 	]
 }

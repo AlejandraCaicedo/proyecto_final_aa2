@@ -1,16 +1,17 @@
 {
 	"PURCHASE": [
-	
 		{
 			"purchaseCode": "2238839",
-			"purchaseDate": "2019-09-29"
+			"PAYMENTMETHOD": "SDFDSF",
+			"PURCHASEDATE": "2019-09-29",
+			"USER_ID": "24"
 		},
 		{
 			"purchaseCode": "99512",
 			"purchaseDate": "2019-05-06"
 		},
 		{
-			"purchaseCode": "553226", 
+			"purchaseCode": "553226",
 			"purchaseDate": "2018-06-23"
 		},
 		{

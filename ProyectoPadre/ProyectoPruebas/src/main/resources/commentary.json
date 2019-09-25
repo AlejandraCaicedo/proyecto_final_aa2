@@ -2,7 +2,9 @@
 	"COMMENTARY": [
 		{
 			"ID": "00000112",
-			"comment": "The product is in good conditions but I don't need that."
+			"comment": "The product is in good conditions but I don't need that.",
+			"USER_ID": "12",
+			"PRODUCT_code": "12345"
 		},
 		{
 			"ID": "000000113",

@@ -1,18 +1,16 @@
 {
-
 	"PRODUCT": [
-	
 		{
-			"name": "Computer LENOVO 3332", 
-			"description": "A machine with great performance, contain 8 cores and RAM 16 GB",
-			"price": 4563778.32,
-			"producto_IMAGES": "",
 			"code": "CCDJDJD-988992",
 			"availability": 25,
-			"limit_Date": "2020-12-29"
+			"description": "A machine with great performance, contain 8 cores and RAM 16 GB",
+			"IMAGE": "",
+			"LIMIT_DATE": "2020-12-29",
+			"name": "Computer LENOVO 3332",
+			"price": 4563778.32
 		},
 		{
-			"name": "Volleyball ball mikasa", 
+			"name": "Volleyball ball mikasa",
 			"description": "Made in Canada, fine leather, a ball original design specially for professionals and amateurs",
 			"price": 280448.76,
 			"producto_IMAGES": "",
@@ -21,7 +19,7 @@
 			"limit_Date": "2022-08-16"
 		},
 		{
-			"name": "The divine comedy", 
+			"name": "The divine comedy",
 			"description": "A great book, written by Dante Alighieri, a master piece on the world of literature",
 			"price": 56000.87,
 			"producto_IMAGES": "",
@@ -30,7 +28,7 @@
 			"limit_Date": "2019-11-10"
 		},
 		{
-			"name": "Watch Rolex 24 carats", 
+			"name": "Watch Rolex 24 carats",
 			"description": "A design luxury and very comfortable, limited quantity",
 			"price": 429000.67,
 			"producto_IMAGES": "",
