@@ -1,22 +1,28 @@
 {
 	"PURCHASE": [
 		{
-			"purchaseCode": "2238839",
-			"PAYMENTMETHOD": "SDFDSF",
+			"purchaseCode": "1234-ABC",
+			"PAYMENTMETHOD": "CASH",
 			"PURCHASEDATE": "2019-09-29",
-			"USER_ID": "24"
+			"USER_ID": "0000"
 		},
 		{
-			"purchaseCode": "99512",
-			"purchaseDate": "2019-05-06"
+			"purchaseCode": "1235-ABD",
+			"PAYMENTMETHOD": "CREDIT_CARD",
+			"PURCHASEDATE": "2019-05-29",
+			"USER_ID": "0001"
 		},
 		{
-			"purchaseCode": "553226",
-			"purchaseDate": "2018-06-23"
+			"purchaseCode": "1236-ABE",
+			"PAYMENTMETHOD": "DEBIT_CARD",
+			"PURCHASEDATE": "2019-09-30",
+			"USER_ID": "0001"
 		},
 		{
-			"purchaseCode": "5562278",
-			"purchaseDate": "2018-03-01"
+			"purchaseCode": "1237-ABF",
+			"PAYMENTMETHOD": "PAYPAL",
+			"PURCHASEDATE": "2019-09-29",
+			"USER_ID": "0002"
 		}
 	]
 }
