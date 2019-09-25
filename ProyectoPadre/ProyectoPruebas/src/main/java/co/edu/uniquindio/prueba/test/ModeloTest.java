@@ -27,7 +27,10 @@ import co.edu.uniquindio.prueba.entidades.Persona_Prueba;
 import co.edu.uniquindio.prueba.entidades.Punto;
 import co.edu.uniquindio.prueba.entidades.PuntoPK;
 import co.edu.uniquindio.prueba.entidades.Vehiculo;
+import co.edu.uniquindio.uniMarket.entidades.Admin;
+import co.edu.uniquindio.uniMarket.entidades.Commentary;
 import co.edu.uniquindio.uniMarket.entidades.Person;
+import co.edu.uniquindio.uniMarket.entidades.Product;
 
 @RunWith(Arquillian.class)
 public class ModeloTest {
@@ -61,6 +64,63 @@ public class ModeloTest {
 //		entityManager.persist(personaPrueba);
 //
 //	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void persistenciaAdmin() {
+		Admin prueba = new Admin("0000", "Admin 1.0", "contrasena");
+
+		entityManager.persist(prueba);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json", "user.json" })
+	public void persistenciaCommentary() {
+		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
+
+		// entityManager.persist(prueba);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void persistenciaProduct() {
+		Admin prueba = new Admin("0000", "Admin 1.0", "contrasena");
+
+		entityManager.persist(prueba);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void persistenciaPurchase() {
+		Admin prueba = new Admin("0000", "Admin 1.0", "contrasena");
+
+		entityManager.persist(prueba);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void persistenciaPurchaseDetail() {
+		Admin prueba = new Admin("0000", "Admin 1.0", "contrasena");
+
+		entityManager.persist(prueba);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void persistenciaRate() {
+		Admin prueba = new Admin("0000", "Admin 1.0", "contrasena");
+
+		entityManager.persist(prueba);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void persistenciaUser() {
+		Admin prueba = new Admin("0000", "Admin 1.0", "contrasena");
+
+		entityManager.persist(prueba);
+	}
 
 	@Test
 	@UsingDataSet({ "marca.json", "vehiculo.json" })
