@@ -63,7 +63,7 @@ public class ModeloTest {
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json", "person.json" })
 	public void persistenciaCommentary() {
-		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
+		Product product = entityManager.find(Product.class, "CCDJDJD");
 		User user = entityManager.find(User.class, "0001");
 
 		Commentary comment = new Commentary();
