@@ -16,13 +16,12 @@
 			"purchaseCode": "1236-ABE",
 			"PAYMENTMETHOD": "DEBIT_CARD",
 			"PURCHASEDATE": "2019-09-30",
-			"USER_ID": "0001"
+			"USER_ID": "0002"
 		},
 		{
 			"purchaseCode": "1237-ABF",
 			"PAYMENTMETHOD": "PAYPAL",
-			"PURCHASEDATE": "2019-09-29",
-			"USER_ID": "0002"
+			"PURCHASEDATE": "2019-09-29"
 		},
 		{
 			"purchaseCode": "1238-ABG",
