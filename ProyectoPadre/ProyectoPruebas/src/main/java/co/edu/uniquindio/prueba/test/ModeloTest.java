@@ -19,6 +19,9 @@ import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
 import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
+import co.edu.uniquindio.uniMarket.entidades.Purchase;
+import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
+import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import junit.framework.Assert;
 
@@ -137,9 +140,176 @@ public class ModeloTest {
 	public void encontrarAdmin() {
 
 		Admin admin = entityManager.find(Admin.class, "0003");
-
 		Assert.assertEquals("Maria Alejandra", admin.getFullName());
 	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "person.json" })
+	public void encontrarUser() {
+
+		User user = entityManager.find(User.class, "0001");
+		Assert.assertEquals("Juan Daivd", user.getFullName());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "commentary.json" })
+	public void encontrarCommentary() {
+
+		Commentary comment = entityManager.find(Commentary.class, "00000112");
+		Assert.assertEquals("CCDJDJD", comment.getProduct().getCode());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json" })
+	public void encontrarProduct() {
+
+		Product product = entityManager.find(Product.class, "YYFUIWNN");
+		Assert.assertEquals("The divine comedy", product.getName());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "purchase.json" })
+	public void encontrarPurchase() {
+
+		Purchase purchase = entityManager.find(Purchase.class, "1235-ABD");
+		Assert.assertEquals("0001", purchase.getUser().getID());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "purchasedetail.json" })
+	public void encontrarPurchaseDetail() {
+
+		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, 2238839);
+		Assert.assertEquals("IIRPOR", purchaseDetail.getProduct());
+	}
+
+	@SuppressWarnings("deprecation")
+
+	public void encontrarRate() {
+
+		Rate rate = entityManager.find(Rate.class, "a");
+
+		Assert.assertEquals(3.7, rate.getRate());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "person.json" })
+	public void actualizarAdmin() {
+
+		Admin admin = entityManager.find(Admin.class, "0005");
+		admin.setPassword("Alajasadamavadasa");
+
+		entityManager.merge(admin);
+
+		Admin actualAdmin = entityManager.find(Admin.class, "0005");
+		Assert.assertEquals("Alajasadamavadasa", actualAdmin.getPassword());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "person.json" })
+	public void actualizarUser() {
+
+		User user = entityManager.find(User.class, "0002");
+		user.setFullName("Caicedo");
+
+		entityManager.merge(user);
+
+		User actualUser = entityManager.find(User.class, "0002");
+		Assert.assertEquals("Caicedo", actualUser.getFullName());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "commentary.json" })
+	public void actualizarCommentary() {
+
+		Commentary commentary = entityManager.find(Commentary.class, "000000114");
+		commentary.setComment("He sido editado");
+
+		entityManager.merge(commentary);
+
+		Commentary actualCommentary = entityManager.find(Commentary.class, "000000114");
+		Assert.assertEquals("He sido editado", actualCommentary.getComment());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product" })
+	public void actualizarProduct() {
+
+		Product product = entityManager.find(Product.class, "HHDJCN");
+		product.setAvailability(1);
+
+		entityManager.merge(product);
+
+		Product actualProduct = entityManager.find(Product.class, "HHDJCN");
+		Assert.assertEquals(1, actualProduct.getAvailability());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product" })
+	public void actualizarPurchase() {
+
+		Purchase purchase = entityManager.find(Purchase.class, "1237-ABF");
+		purchase.setPurchaseDate("2019-02-13");
+
+		entityManager.merge(purchase);
+
+		Purchase actualPurchase = entityManager.find(Purchase.class, "HHDJCN");
+		Assert.assertEquals("2019-02-13", actualPurchase.getPurchaseDate());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product" })
+	public void actualizarPurchaseDetail() {
+
+		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, "1237-ABF");
+		purchaseDetail.setPrice(1300);
+
+		entityManager.merge(purchaseDetail);
+
+		PurchaseDetail actualPurchaseDetail = entityManager.find(PurchaseDetail.class, "1237-ABF");
+		Assert.assertEquals(1300, actualPurchaseDetail.getPrice());
+	}
+
+//	@Test
+//
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//
+//	@UsingDataSet({ "marca.json", "vehiculo.json" })
+//	public void probarActualizarVehiculo() {
+//
+//		Vehiculo v = entityManager.find(Vehiculo.class, "7813");
+//		v.setColor("VERDE");
+//
+//		entityManager.merge(v);
+//
+//		Vehiculo registrado = entityManager.find(Vehiculo.class, "7813");
+//
+//		Assert.assertEquals("VERDE", registrado.getColor());
+//
+//	}
+
 //	@Test
 //
 //	@Transactional(value = TransactionMode.ROLLBACK)
@@ -169,24 +339,6 @@ public class ModeloTest {
 //		Vehiculo borrado = entityManager.find(Vehiculo.class, "7813");
 //
 //		Assert.assertNull(borrado);
-//
-//	}
-
-//	@Test
-//
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//
-//	@UsingDataSet({ "marca.json", "vehiculo.json" })
-//	public void probarActualizarVehiculo() {
-//
-//		Vehiculo v = entityManager.find(Vehiculo.class, "7813");
-//		v.setColor("VERDE");
-//
-//		entityManager.merge(v);
-//
-//		Vehiculo registrado = entityManager.find(Vehiculo.class, "7813");
-//
-//		Assert.assertEquals("VERDE", registrado.getColor());
 //
 //	}
 
