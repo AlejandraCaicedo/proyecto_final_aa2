@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 /**
  * 
  * @author Juan David Ariza
- * @author Alejandro Caicedo Chaves
+ * @author Alejandra Caicedo Chaves
  * @author Alejandro Gutierrez Velez
  * 
  */
