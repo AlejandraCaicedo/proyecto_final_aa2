@@ -20,8 +20,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class RatePK implements Serializable {
 
-	private String product; //Identificacion de un producto que va a ser calificado
-	private String user; //Identificacion del usuario que califca un producto
+	private String product; // Identificacion de un producto que va a ser calificado
+	private String user; // Identificacion del usuario que califca un producto
 
 	private static final long serialVersionUID = 1L;
 
@@ -33,6 +33,7 @@ public class RatePK implements Serializable {
 
 	/**
 	 * Metodo que permite obtener el codigo de un producto
+	 * 
 	 * @return product
 	 */
 	public String getProduct() {
@@ -41,6 +42,7 @@ public class RatePK implements Serializable {
 
 	/**
 	 * Metodo que permite asinar un codigo a un producto dentro de la clase ratePK
+	 * 
 	 * @param productCode, codigo del producto que va a ser asignado
 	 */
 	public void setProduct(String productCode) {
@@ -49,6 +51,7 @@ public class RatePK implements Serializable {
 
 	/**
 	 * Metodo que permite obtener el codigo de un usuario que califica
+	 * 
 	 * @return user
 	 */
 	public String getUser() {
@@ -57,6 +60,7 @@ public class RatePK implements Serializable {
 
 	/**
 	 * Metodo que permite asignar un codigo a un usuario
+	 * 
 	 * @param userID, identificacion del usuario a ser asignada
 	 */
 	public void setUser(String userID) {

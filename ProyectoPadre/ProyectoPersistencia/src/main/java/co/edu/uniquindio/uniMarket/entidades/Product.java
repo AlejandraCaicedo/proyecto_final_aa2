@@ -8,8 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,15 +26,12 @@ import javax.persistence.TemporalType;
  * 
  */
 
-@NamedQueries({
-
-		@NamedQuery(name = Product.TODAS_CALIFICACIONES_PRODUCT, query = "select p, r.rate from Product p left join p.rates r "),
-		@NamedQuery(name = Product.TODOS_USUARIOS_VENDEDORES, query = "select p.user from Product p")
-
-})
-
 @Entity
 public class Product implements Serializable {
+
+	@Id
+	@Column(name = "code", length = 10, nullable = false)
+	private String code; // Codigo que tendra un producto especifico, no puede ser uin campo nulo
 
 	@Column(name = "name", length = 20, nullable = false)
 	private String name; // Nombre que recibe un producto
@@ -46,29 +42,25 @@ public class Product implements Serializable {
 	@Column(name = "price")
 	private double price; // Precio que tiene el producto
 
-	@ElementCollection
-	private List<String> images; // litsa de imagenes que puede existir sobre un producto
-
-	@Id
-	@Column(name = "code", length = 10, nullable = false)
-	private String code; // Codigo que tendra un producto especifico, no puede ser uin campo nulo
-
 	@Column(name = "availability", nullable = false)
 	private int availability; // Cantidad existente de un producto
 
 	private String limit_Date; // Fecha limite para la que puede estar un producto en UniMarket
 
+	@ElementCollection
+	private List<String> images; // litsa de imagenes que puede existir sobre un producto
+
 	@OneToMany(mappedBy = "product")
-	private List<Rate> rates; // Es la lista de calificaciones que le pueden dar ciertos usuarios a un
-								// producto
+	private List<Rate> listRates; // Es la lista de calificaciones que le pueden dar ciertos usuarios a un
+									// producto
 
 	@OneToMany
 	private List<PurchaseDetail> listPurchaseDetails; // Lista de detalles de compra sobre un producto
 
-	private static final long serialVersionUID = 1L;
+	@ManyToOne
+	private User user;
 
-	public static final String TODAS_CALIFICACIONES_PRODUCT = "TODAS_CALIFICACIONES_PRODUCT";
-	public static final String TODOS_USUARIOS_VENDEDORES = "TODOS_USUARIOS_VENDEDORES";
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Constructor vacio de la clase producto
@@ -81,19 +73,14 @@ public class Product implements Serializable {
 	 * Constructor del producto con los campos que se van a rellenar para crear
 	 * alguno
 	 * 
-	 * @param name,
-	 *            nombre del producto a ser agregado
-	 * @param description,
-	 *            descripcion proveida sobre el producto
-	 * @param price,
-	 *            precio que tendra el producto en la tienda
-	 * @param code,
-	 *            codigo que identificara cada producto, no se puede repetir
-	 * @param availability,
-	 *            disponibilidad de un producto
-	 * @param limit_Date,
-	 *            fecha limite hasta la que un producto se va a encontrar publicado
-	 *            en la tienda
+	 * @param name,         nombre del producto a ser agregado
+	 * @param description,  descripcion proveida sobre el producto
+	 * @param price,        precio que tendra el producto en la tienda
+	 * @param code,         codigo que identificara cada producto, no se puede
+	 *                      repetir
+	 * @param availability, disponibilidad de un producto
+	 * @param limit_Date,   fecha limite hasta la que un producto se va a encontrar
+	 *                      publicado en la tienda
 	 */
 	public Product(String name, String description, double price, String code, int availability, String limit_Date) {
 		super();
@@ -117,8 +104,7 @@ public class Product implements Serializable {
 	/**
 	 * Metodo que permite asignar un nombre a un producto
 	 * 
-	 * @param name,
-	 *            nombre que se le va a asignar al producto
+	 * @param name, nombre que se le va a asignar al producto
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -136,8 +122,7 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para asignar una descripcion a un producto especifico
 	 * 
-	 * @param description,
-	 *            es la descripcion que va a ser asignada a un producto
+	 * @param description, es la descripcion que va a ser asignada a un producto
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -155,8 +140,7 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para asignar un precio a in producto
 	 * 
-	 * @param price,
-	 *            precio que va a tener el producto creado
+	 * @param price, precio que va a tener el producto creado
 	 */
 	public void setPrice(double price) {
 		this.price = price;
@@ -175,8 +159,7 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para poner un listado de imagenes a un producto
 	 * 
-	 * @param images,
-	 *            imagenes a ser publicada sobre un producto
+	 * @param images, imagenes a ser publicada sobre un producto
 	 */
 	public void setImages(List<String> images) {
 		this.images = images;
@@ -194,8 +177,7 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para poner un codigo a un producto
 	 * 
-	 * @param code,
-	 *            codigo que va a ser asignado al producto creado
+	 * @param code, codigo que va a ser asignado al producto creado
 	 */
 	public void setCode(String code) {
 		this.code = code;
@@ -213,8 +195,7 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para asignar la cantidad existente de un producto
 	 * 
-	 * @param availability,
-	 *            cantidad de productos disponibles
+	 * @param availability, cantidad de productos disponibles
 	 */
 	public void setAvailability(int availability) {
 		this.availability = availability;
@@ -233,8 +214,7 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para poner una fecha limite a un producto
 	 * 
-	 * @param limit_Date,
-	 *            fecha limite de publicacion de un producto
+	 * @param limit_Date, fecha limite de publicacion de un producto
 	 */
 	public void setLimit_Date(String limit_Date) {
 		this.limit_Date = limit_Date;
@@ -246,17 +226,16 @@ public class Product implements Serializable {
 	 * @return rates
 	 */
 	public List<Rate> getRates() {
-		return rates;
+		return listRates;
 	}
 
 	/**
 	 * Metodo para poner un listado de calificaciones de un producto
 	 * 
-	 * @param rates,
-	 *            es el listado de calificaciones del producto
+	 * @param rates, es el listado de calificaciones del producto
 	 */
 	public void setRates(List<Rate> rates) {
-		this.rates = rates;
+		this.listRates = rates;
 	}
 
 	/**
@@ -271,8 +250,7 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para poner un listado de detalles de compra de un producto
 	 * 
-	 * @param listPurchaseDetails,
-	 *            listado de detalles de compra de un producto
+	 * @param listPurchaseDetails, listado de detalles de compra de un producto
 	 */
 	public void setListPurchaseDetails(List<PurchaseDetail> listPurchaseDetails) {
 		this.listPurchaseDetails = listPurchaseDetails;
@@ -295,7 +273,7 @@ public class Product implements Serializable {
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((rates == null) ? 0 : rates.hashCode());
+		result = prime * result + ((listRates == null) ? 0 : listRates.hashCode());
 		return result;
 	}
 
@@ -345,10 +323,10 @@ public class Product implements Serializable {
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
-		if (rates == null) {
-			if (other.rates != null)
+		if (listRates == null) {
+			if (other.listRates != null)
 				return false;
-		} else if (!rates.equals(other.rates))
+		} else if (!listRates.equals(other.listRates))
 			return false;
 		return true;
 	}
@@ -361,7 +339,7 @@ public class Product implements Serializable {
 	public String toString() {
 		return "Product [name=" + name + ", description=" + description + ", price=" + price + ", images=" + images
 				+ ", code=" + code + ", availability=" + availability + ", limit_Date=" + limit_Date + ", rates="
-				+ rates + ", listPurchaseDetails=" + listPurchaseDetails + "]";
+				+ listRates + ", listPurchaseDetails=" + listPurchaseDetails + "]";
 	}
 
 }
