@@ -21,7 +21,7 @@ public class Admin extends Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Constructor vacio de la clase administrador
+	 * Constructor vacio de la clase administrador, hereda de la clase persona
 	 */
 	public Admin() {
 		super();

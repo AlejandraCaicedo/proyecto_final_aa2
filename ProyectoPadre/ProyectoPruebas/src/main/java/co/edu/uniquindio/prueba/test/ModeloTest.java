@@ -25,6 +25,14 @@ import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.User;
 
+/**
+ * 
+ * @author Juan David Ariza
+ * @author Alejandra Caicedo Chaves
+ * @author Alejandro Gutierrez Velez
+ * 
+ */
+
 @SuppressWarnings("deprecation")
 @RunWith(Arquillian.class)
 public class ModeloTest {
@@ -32,6 +40,10 @@ public class ModeloTest {
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	/**
+	 * Metodo que crea el archivo de pruebas
+	 * @return archivo de cualquier tipo
+	 */
 	@Deployment
 	public static Archive<?> createTestArchive() {
 		return ShrinkWrap.create(WebArchive.class, "prueba.war").addPackage(Admin.class.getPackage())
@@ -41,11 +53,17 @@ public class ModeloTest {
 
 	}
 
+	/**
+	 * Crea las tablas necesarias para la base de datos de la tienda
+	 */
 	@Test
 	public void crearTablas() {
 
 	}
 
+	/**
+	 * Metodo que realiza la persistencia al administrador
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	public void persistenciaAdmin() {
@@ -59,6 +77,9 @@ public class ModeloTest {
 		entityManager.persist(prueba);
 	}
 
+	/**
+	 * Metodo que realiza la persistencia de los comentarios
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json", "person.json" })
@@ -75,6 +96,9 @@ public class ModeloTest {
 		entityManager.persist(comment);
 	}
 
+	/**
+	 * Metodo que realiza la persistencia de los usuarios registrados en la base de datos
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	public void persistenciaUser() {
@@ -90,6 +114,9 @@ public class ModeloTest {
 		entityManager.persist(user);
 	}
 
+	/**
+	 * Metodo que realiza la persistencia a los productos registrados
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	public void persistenciaProduct() {
@@ -105,6 +132,9 @@ public class ModeloTest {
 		entityManager.persist(product);
 	}
 
+	/**
+	 * Metodo que realiza la persistencia de las compras
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
@@ -120,6 +150,9 @@ public class ModeloTest {
 		entityManager.persist(purchase);
 	}
 
+	/**
+	 * Metodo que realiza la persistencia de los detalles de cada compra
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json", "purchase.json" })
@@ -179,6 +212,9 @@ public class ModeloTest {
 //		Assert.assertEquals("cafe bro", v.getColor());
 //	}
 
+	/**
+	 * Metodo que sirve para hacer la busqueda de un administrador
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
@@ -188,6 +224,9 @@ public class ModeloTest {
 		Assert.assertEquals("Maria Alejandra", admin.getFullName());
 	}
 
+	/**
+	 * Metodo que permite hallar un usuario
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
@@ -197,6 +236,9 @@ public class ModeloTest {
 		Assert.assertEquals("Juan Daivd", user.getFullName());
 	}
 
+	/**
+	 * Metodo para encontrar un comentario
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "commentary.json" })
@@ -206,6 +248,9 @@ public class ModeloTest {
 		Assert.assertEquals("CCDJDJD", comment.getProduct().getCode());
 	}
 
+	/**
+	 * Metodo que permite buscar un producto
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json" })
@@ -215,6 +260,9 @@ public class ModeloTest {
 		Assert.assertEquals("The divine comedy", product.getName());
 	}
 
+	/**
+	 * Metodo que permite encontrar una compra
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "purchase.json" })
@@ -224,6 +272,9 @@ public class ModeloTest {
 		Assert.assertEquals("0001", purchase.getUser().getID());
 	}
 
+	/**
+	 * Metodo que permite hallar un detalle de compra especifico
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "purchasedetail.json" })
@@ -233,6 +284,9 @@ public class ModeloTest {
 		Assert.assertEquals("IIRPOR", purchaseDetail.getProduct());
 	}
 
+	/**
+	 * Metodo que permite encontrar una calificacion
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	public void encontrarRate() {
@@ -240,6 +294,9 @@ public class ModeloTest {
 		Assert.assertEquals(3.7, rate.getRate());
 	}
 
+	/**
+	 * Metodo para realizar la actualizacion de un administrador
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
@@ -254,6 +311,9 @@ public class ModeloTest {
 		Assert.assertEquals("Alajasadamavadasa", actualAdmin.getPassword());
 	}
 
+	/**
+	 * Metodo que permite actualizar un usuario
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
@@ -268,6 +328,9 @@ public class ModeloTest {
 		Assert.assertEquals("Caicedo", actualUser.getFullName());
 	}
 
+	/**
+	 * Metodo que permite actualizar un comentario
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "commentary.json" })
@@ -282,6 +345,9 @@ public class ModeloTest {
 		Assert.assertEquals("He sido editado", actualCommentary.getComment());
 	}
 
+	/**
+	 * Metodo que permite actualizar un producto
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json" })
@@ -296,6 +362,9 @@ public class ModeloTest {
 		Assert.assertEquals(1, actualProduct.getAvailability());
 	}
 
+	/**
+	 * Metodo que permite actualizar una compra
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json" })
@@ -309,7 +378,10 @@ public class ModeloTest {
 		Purchase actualPurchase = entityManager.find(Purchase.class, "HHDJCN");
 		Assert.assertEquals("2019-02-13", actualPurchase.getPurchaseDate());
 	}
-
+	
+	/**
+	 * Metodo que permite actualizar un detalle de compra
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json" })
