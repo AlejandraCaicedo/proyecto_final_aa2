@@ -22,22 +22,22 @@ import javax.persistence.*;
 public class Person implements Serializable {
 
 	@Id
-	private String ID; // Identificador unico de cada persona
+	private String ID; //Identificador unico de cada persona
 
 	@Column(name = "fullName", nullable = false)
-	private String fullName; // Nombre completo de la persona que existe en la base de datos
-
-	@Column(name = "cellphoneNumber", length = 10, nullable = false)
-	private String cellphoneNumber; // Numero de telefono actual de la persona en cuestion
-
-	@Column(name = "adress", nullable = false)
-	private String adress; // Direccion de residencia de la persona existente en UniMarket
-
-	@Column(name = "password", nullable = false)
-	private String password; // Contrasenia con la que se identificara cada persona
+	private String fullName; //Nombre completo de la persona que existe en la base de datos
 
 	@Column(name = "email", nullable = false)
 	private String email; // Correo electronico de una persona en especifico
+
+	@Column(name = "cellphoneNumber", length = 10, nullable = false)
+	private String cellphoneNumber; //Numero de telefono actual de la persona en cuestion
+
+	@Column(name = "adress", nullable = false)
+	private String adress; //Direccion de residencia de la persona existente en UniMarket
+
+	@Column(name = "password", nullable = false)
+	private String password; //Contrasenia con la que se identificara cada persona
 
 	private static final long serialVersionUID = 1L;
 
@@ -50,14 +50,12 @@ public class Person implements Serializable {
 
 	/**
 	 * Constructor que recibe cada parametro a la hora de crear una persona
-	 * 
-	 * @param iD,              identificador unico de cada persona
-	 * @param fullName,        nombre completo de alguna persona
-	 * @param email,           correo electronico de la persona en cuestion
+	 * @param iD, identificador unico de cada persona
+	 * @param fullName, nombre completo de alguna persona
+	 * @param email, correo electronico de la persona en cuestion
 	 * @param cellphoneNumber, numero de telefono de una persona en la base de datos
-	 * @param adress,          direccion de residencia de una persona en especifico
-	 * @param password,        contrasenia con la que se identifica cada persona al
-	 *                         ingresar a UniMarket
+	 * @param adress, direccion de residencia de una persona en especifico
+	 * @param password, contrasenia con la que se identifica cada persona al ingresar a UniMarket
 	 */
 	public Person(String iD, String fullName, String email, String cellphoneNumber, String adress, String password) {
 		super();
@@ -71,7 +69,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo que obtiene la identificacion de una persona
-	 * 
 	 * @return ID
 	 */
 	public String getID() {
@@ -80,7 +77,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo que poner un valor a la identificacion de una persona
-	 * 
 	 * @param iD, identificador para una persona, debe ser unico
 	 */
 	public void setID(String iD) {
@@ -89,7 +85,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo para obtener el nombre completo de una persona
-	 * 
 	 * @return fullName
 	 */
 	public String getFullName() {
@@ -98,7 +93,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo para poner un nombre a una persona
-	 * 
 	 * @param fullName, nombre completo de la persona
 	 */
 	public void setFullName(String fullName) {
@@ -107,7 +101,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo para obtener un correo electronico de una persona
-	 * 
 	 * @return email
 	 */
 	public String getEmail() {
@@ -116,7 +109,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo que pone un correo electronico a una persona
-	 * 
 	 * @param email, correo electronico a ser asignado a una persona
 	 */
 	public void setEmail(String email) {
@@ -125,7 +117,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo para obtener el numero de telefono de una persona
-	 * 
 	 * @return cellphoneNumber
 	 */
 	public String getCellphoneNumber() {
@@ -134,7 +125,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo que asigna un numero de telefono a una persona
-	 * 
 	 * @param cellphoneNumber, numero de telefono a ser asignado
 	 */
 	public void setCellphoneNumber(String cellphoneNumber) {
@@ -143,7 +133,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo que obtiene la direccion de residencia de una oersona en particular
-	 * 
 	 * @return adress
 	 */
 	public String getAdress() {
@@ -152,7 +141,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo para dar un valor a una direccion de una persona
-	 * 
 	 * @param adress, direccion de residencia de la persona en cuestion
 	 */
 	public void setAdress(String adress) {
@@ -160,8 +148,7 @@ public class Person implements Serializable {
 	}
 
 	/**
-	 * Metodo para obtener la contrasenia de una persona
-	 * 
+	 * Metodo para obtener la contrasenia  de una persona
 	 * @return password
 	 */
 	public String getPassword() {
@@ -170,7 +157,6 @@ public class Person implements Serializable {
 
 	/**
 	 * Metodo para poner una contrasenia a una persona registrada
-	 * 
 	 * @param password
 	 */
 	public void setPassword(String password) {
@@ -192,10 +178,9 @@ public class Person implements Serializable {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
-
+	
 	/**
-	 * Metodo para comparar que dos personas no sean iguales a partir de su llave
-	 * primaria (ID)
+	 * Metodo para comparar que dos personas no sean iguales a partir de su llave primaria (ID)
 	 */
 	@Override
 	public boolean equals(Object obj) {

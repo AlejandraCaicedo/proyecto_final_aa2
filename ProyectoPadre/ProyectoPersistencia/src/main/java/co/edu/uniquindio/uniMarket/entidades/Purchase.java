@@ -33,18 +33,18 @@ public class Purchase implements Serializable {
 
 	@Id
 	@Column(name = "purchaseCode")
-	private String purchaseCode; // Codigo asignado a una compra
-
-	private String purchaseDate; // Fecha en la que se realiza dicha compra
-
-	@Enumerated(EnumType.STRING)
-	private PaymentMethod paymentMethod; // Enumeracion que corresponde al metodo de pago
+	private String purchaseCode; //Codigo asignado a una compra
 
 	@ManyToOne
-	private User user; // Usuario que realiza una compra
+	private User user; //Usuario que realiza una compra
+
+	private String purchaseDate; //Fecha en la que se realiza dicha compra
+
+	@Enumerated(EnumType.STRING)
+	private PaymentMethod paymentMethod; //Enumeracion que corresponde al metodo de pago
 
 	@OneToMany(mappedBy = "purchase")
-	private List<PurchaseDetail> listPurchaseDetails; // Lista de los detalles de venta por cada venta de un producto
+	private List<PurchaseDetail> listPurchaseDetails; //Lista de los detalles de venta por cada venta de un producto
 
 	private static final long serialVersionUID = 1L;
 
@@ -56,11 +56,10 @@ public class Purchase implements Serializable {
 	}
 
 	/**
-	 * Constructor con los atributos para crear una compra
-	 * 
-	 * @param purchaseCode,  registro unico que tiene cada compra
-	 * @param user,          usuario que realiza una compra en especifico
-	 * @param purchaseDate,  fecha en la que el usuario tramita la compra
+	 * Constructor con los atributos para crear una compra 
+	 * @param purchaseCode, registro unico que tiene cada compra
+	 * @param user, usuario que realiza una compra en especifico
+	 * @param purchaseDate, fecha en la que el usuario tramita la compra
 	 * @param paymentMethod, metodo de pago por el cual cancelara el usuario
 	 */
 	public Purchase(String purchaseCode, User user, String purchaseDate, PaymentMethod paymentMethod) {
@@ -73,7 +72,6 @@ public class Purchase implements Serializable {
 
 	/**
 	 * Metodo para obtener el codigo de una compra
-	 * 
 	 * @return purchaseCode
 	 */
 	public String getPurchaseCode() {
@@ -81,8 +79,7 @@ public class Purchase implements Serializable {
 	}
 
 	/**
-	 * Metodo que permite asignar un codigo a una compra
-	 * 
+	 * Metodo que permite asignar un codigo a una compra 
 	 * @param purchaseCode, codigo de la compra que se realiza
 	 */
 	public void setPurchaseCode(String purchaseCode) {
@@ -91,7 +88,6 @@ public class Purchase implements Serializable {
 
 	/**
 	 * Metodo que permite obtener el usuario que realiza una compra
-	 * 
 	 * @return user
 	 */
 	public User getUser() {
@@ -100,7 +96,6 @@ public class Purchase implements Serializable {
 
 	/**
 	 * Metodo que permite asignar un usuario a una compra
-	 * 
 	 * @param user, es el usuario que realiza una compra
 	 */
 	public void setUser(User user) {
@@ -109,7 +104,6 @@ public class Purchase implements Serializable {
 
 	/**
 	 * Metodo que permite obtener una fecha de una compra
-	 * 
 	 * @return purchaseDate
 	 */
 	public String getPurchaseDate() {
@@ -118,7 +112,6 @@ public class Purchase implements Serializable {
 
 	/**
 	 * Metodo que permite poner un valor sobre la fecha de una compra
-	 * 
 	 * @param purchaseDate, fecha en que se tramita una compra
 	 */
 	public void setPurchaseDate(String purchaseDate) {
@@ -127,7 +120,6 @@ public class Purchase implements Serializable {
 
 	/**
 	 * Metodo que permite listar todos los detalles de una compra
-	 * 
 	 * @param listPurchaseDetails, es el listado de detalles de compra
 	 */
 	public void setListPurchaseDetails(List<PurchaseDetail> listPurchaseDetails) {
@@ -136,7 +128,6 @@ public class Purchase implements Serializable {
 
 	/**
 	 * Metodo que obtiene el metodo de pago con el que se tramito una compra
-	 * 
 	 * @return paymentMethod
 	 */
 	public PaymentMethod getPaymentMethod() {
@@ -145,7 +136,6 @@ public class Purchase implements Serializable {
 
 	/**
 	 * Metodo que permite poner un valor a un metodo de pago
-	 * 
 	 * @param paymentMethod, es el metodo con el que se efectua dicha compra
 	 */
 	public void setPaymentMethod(PaymentMethod paymentMethod) {
@@ -154,7 +144,6 @@ public class Purchase implements Serializable {
 
 	/**
 	 * Metodo que permite obtener el listado de los detalles de una compra
-	 * 
 	 * @return listPurchaseDetails
 	 */
 	public List<PurchaseDetail> getListPurchaseDetails() {
@@ -163,7 +152,6 @@ public class Purchase implements Serializable {
 
 	/**
 	 * Metodo que permite asignar un listado de detalles de compra
-	 * 
 	 * @param listPurchaseDetails
 	 */
 	public void setListPurchaseDetails(ArrayList<PurchaseDetail> listPurchaseDetails) {
@@ -186,8 +174,7 @@ public class Purchase implements Serializable {
 	}
 
 	/**
-	 * Metodo que permite comparar a traves de una llave primaria si 2 compras son
-	 * iguales
+	 * Metodo que permite comparar a traves de una llave primaria si 2 compras son iguales
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -224,8 +211,7 @@ public class Purchase implements Serializable {
 	}
 
 	/**
-	 * Metodo que asigna una forma standar a la hora de buscar la informacion sobre
-	 * una compra
+	 * Metodo que asigna una forma standar a la hora de buscar la informacion sobre una compra
 	 */
 	@Override
 	public String toString() {
