@@ -23,7 +23,6 @@ import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
-import co.edu.uniquindio.uniMarket.entidades.RatePK;
 import co.edu.uniquindio.uniMarket.entidades.User;
 
 /**
@@ -43,6 +42,7 @@ public class ModeloTest {
 
 	/**
 	 * Metodo que crea el archivo de pruebas
+	 * 
 	 * @return archivo de cualquier tipo
 	 */
 	@Deployment
@@ -98,7 +98,8 @@ public class ModeloTest {
 	}
 
 	/**
-	 * Metodo que realiza la persistencia de los usuarios registrados en la base de datos
+	 * Metodo que realiza la persistencia de los usuarios registrados en la base de
+	 * datos
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -173,33 +174,6 @@ public class ModeloTest {
 		entityManager.persist(purchaseDetail);
 	}
 
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	@UsingDataSet({ "product.json", "person.json" })
-//	public void persistenciaRate() {
-//		Product product = entityManager.find(Product.class, "CCDJDJD");
-//		User user = entityManager.find(User.class, "1113313495");
-//		RatePK ratePK = new RatePK();
-//		Rate rate = new Rate(ratePK, product, user, 3.5);
-//
-//		entityManager.persist(rate);
-//	}
-
-//	@Test
-//
-//	@UsingDataSet({ "marca.json", "vehiculo.json" })
-//
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	public void probarAlgo() {
-//
-//		Vehiculo v = entityManager.find(Vehiculo.class, "7862");
-//
-//		Assert.assertEquals("cafe bro", v.getColor());
-//	}
-
-	/**
-	 * Metodo que sirve para hacer la busqueda de un administrador
-	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
@@ -363,7 +337,7 @@ public class ModeloTest {
 		Purchase actualPurchase = entityManager.find(Purchase.class, "HHDJCN");
 		Assert.assertEquals("2019-02-13", actualPurchase.getPurchaseDate());
 	}
-	
+
 	/**
 	 * Metodo que permite actualizar un detalle de compra
 	 */
