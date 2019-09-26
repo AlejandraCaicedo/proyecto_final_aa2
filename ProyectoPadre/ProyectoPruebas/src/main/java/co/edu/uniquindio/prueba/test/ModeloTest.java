@@ -123,7 +123,7 @@ public class ModeloTest {
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json", "purchase.json" })
-	private void persistenciaPurchaseDetail() {
+	public void persistenciaPurchaseDetail() {
 
 		Product product = entityManager.find(Product.class, "CCDJDJD");
 		Purchase purchase = entityManager.find(Purchase.class, "1234-ABC");
