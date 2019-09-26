@@ -21,7 +21,8 @@
 		{
 			"purchaseCode": "1237-ABF",
 			"PAYMENTMETHOD": "PAYPAL",
-			"PURCHASEDATE": "2019-09-29"
+			"PURCHASEDATE": "2019-09-29",
+			"USER_ID": "0000"
 		},
 		{
 			"purchaseCode": "1238-ABG",
