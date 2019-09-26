@@ -248,6 +248,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "rate.json" })
 	public void encontrarRate() {
 		Rate rate = entityManager.find(Rate.class, "a");
 		Assert.assertEquals(3.7, rate.getRate());
@@ -309,7 +310,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product" })
+	@UsingDataSet({ "product.json" })
 	public void actualizarProduct() {
 
 		Product product = entityManager.find(Product.class, "HHDJCN");
