@@ -27,19 +27,6 @@ import javax.persistence.TemporalType;
  * @author Alejandro Gutierrez Velez
  * 
  */
-
-@NamedQueries({
-
-<<<<<<< HEAD
-		@NamedQuery(name = Product.TODAS_CALIFICACIONES_PRODUCT, query = "select p, r.rate from Product p left join p.rates r "),
-//		@NamedQuery(name = Product.TODOS_USUARIOS_VENDEDORES, query = "select p.user from Product p")
-=======
-		@NamedQuery(name = Product.TODAS_CALIFICACIONES_PRODUCT, query = "select p, r.rate from Product p left join p.listRates r "),
-		@NamedQuery(name = Product.TODOS_USUARIOS_VENDEDORES, query = "select distinct p.user from Product p")
->>>>>>> f715aa832588fecf92070280077c937d4a89a511
-
-})
-
 @Entity
 public class Product implements Serializable {
 
