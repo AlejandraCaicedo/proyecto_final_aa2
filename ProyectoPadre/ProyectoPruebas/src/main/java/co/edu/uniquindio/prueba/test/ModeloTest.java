@@ -63,7 +63,7 @@ public class ModeloTest {
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json", "person.json" })
 	public void persistenciaCommentary() {
-		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
+		Product product = entityManager.find(Product.class, "CCDJDJD");
 		User user = entityManager.find(User.class, "0001");
 
 		Commentary comment = new Commentary();
@@ -165,18 +165,6 @@ public class ModeloTest {
 //		User user = new User("0000", "Carlos Mario", "algo@hotmail.com", "3127309219", "Algun lugar", "contrasena");
 //
 //		entityManager.persist(user);
-//	}
-
-//	@Test
-//
-//	@UsingDataSet({ "marca.json", "vehiculo.json" })
-//
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	public void probarAlgo() {
-//
-//		Vehiculo v = entityManager.find(Vehiculo.class, "7862");
-//
-//		Assert.assertEquals("cafe bro", v.getColor());
 //	}
 
 	@Test
@@ -284,7 +272,7 @@ public class ModeloTest {
 
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product" })
+	@UsingDataSet({ "product.json" })
 	public void actualizarProduct() {
 
 		Product product = entityManager.find(Product.class, "HHDJCN");
@@ -298,7 +286,7 @@ public class ModeloTest {
 
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product" })
+	@UsingDataSet({ "product.json" })
 	public void actualizarPurchase() {
 
 		Purchase purchase = entityManager.find(Purchase.class, "1237-ABF");
@@ -312,7 +300,7 @@ public class ModeloTest {
 
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product" })
+	@UsingDataSet({ "product.json" })
 	public void actualizarPurchaseDetail() {
 
 		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, "1237-ABF");
