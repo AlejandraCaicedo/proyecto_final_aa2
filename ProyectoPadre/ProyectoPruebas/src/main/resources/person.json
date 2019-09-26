@@ -1,5 +1,5 @@
 {
-	"PERSONA_PRUEBA": [
+	"PERSON": [
 		{
 			"ID": "0000",
 			"DTYPE": "User",
@@ -28,7 +28,7 @@
 			"password": "vofh"
 		},
 		{
-			"ID": "0000",
+			"ID": "0003",
 			"DTYPE": "Admin",
 			"adress": "Adress Admin 1",
 			"cellphoneNumber": "7894132",
@@ -37,7 +37,7 @@
 			"password": "vofh"
 		},
 		{
-			"ID": "0001",
+			"ID": "0004",
 			"DTYPE": "Admin",
 			"adress": "Adress Admin 2",
 			"cellphoneNumber": "3118619017",
@@ -46,7 +46,7 @@
 			"password": "password2"
 		},
 		{
-			"ID": "0002",
+			"ID": "0005",
 			"DTYPE": "Admin",
 			"adress": "Adress Admin 3",
 			"cellphoneNumber": "3222025613",
