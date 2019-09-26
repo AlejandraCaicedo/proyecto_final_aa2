@@ -174,37 +174,6 @@ public class ModeloTest {
 		entityManager.persist(purchaseDetail);
 	}
 
-<<<<<<< HEAD
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	@UsingDataSet({ "product.json", "person.json" })
-//	public void persistenciaRate() {
-//		Product product = entityManager.find(Product.class, "CCDJDJD");
-//		User user = entityManager.find(User.class, "1113313495");
-//		RatePK ratePK = new RatePK();
-//		Rate rate = new Rate(ratePK, product, user, 3.5);
-//
-//		entityManager.persist(rate);
-//	}
-
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	@UsingDataSet({ "person.json", "product.json" })
-//	public void persistenciaRate() {
-//		RatePK ratePK = new RatePK();
-//
-//		ratePK.setProduct("HHDJCN");
-//		ratePK.setUser("0001");
-//
-//		Product product = entityManager.find(Product.class, "HHDJCN");
-//		User user = entityManager.find(User.class, "0001");
-//		Rate rate = new Rate(ratePK, product, user, 3.5);
-//
-//		entityManager.persist(rate);
-//	}
-
-=======
->>>>>>> 3766e37bb548a03990bd388cd6a6aed5ef09fe79
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
