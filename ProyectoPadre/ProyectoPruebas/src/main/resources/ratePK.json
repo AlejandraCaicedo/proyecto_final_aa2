@@ -1,20 +1,20 @@
 {
 	"RATEPK": [
 		{
-			"product": "Volleyball ball mikasa",
-			"user": "0000"
+			"PRODUCT_code": "Volleyball ball mikasa",
+			"USER_ID": "0000"
 		},
 		{
-			"product": "Computer LENOVO 3332",
-			"user": "0001"
+			"PRODUCT_code": "Computer LENOVO 3332",
+			"USER_ID": "0001"
 		},
 		{
-			"product": "Watch Rolex 24 carats",
-			"user": "0002"
+			"PRODUCT_code": "Watch Rolex 24 carats",
+			"USER_ID": "0002"
 		},
 		{
-			"product": "The divine comedy",
-			"user": "0001"
+			"PRODUCT_code": "The divine comedy",
+			"USER_ID": "0001"
 		}
 	]
 }
