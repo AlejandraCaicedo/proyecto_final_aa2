@@ -60,14 +60,19 @@ public class ModeloTest {
 		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
 		User user = entityManager.find(User.class, "0000");
 
-		Commentary comment = new Commentary("0000", user, product, "I love the product, very useful");
+		Commentary comment = new Commentary();
+		comment.setComment("Very useful");
+		comment.setID("0000");
+		comment.setProduct(product);
+		comment.setUser(user);
+
 		entityManager.persist(comment);
 	}
 //
 //	@Test
 //	@Transactional(value = TransactionMode.ROLLBACK)
 //	public void persistenciaProduct() {
-//		Product product = new Product("Nevera", "Esto Congela", 1345677, "0000", new Date());
+//		Product product = new Product("Nevera", "Esto Congela", 1345677, , a master piece on the world of literature"0000", new Date());
 //
 //		entityManager.persist(product);
 //	}

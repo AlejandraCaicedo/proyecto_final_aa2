@@ -1,53 +1,53 @@
 {
 	"PRODUCT": [
 		{
-			"code": "CCDJDJD-988992",
+			"code": "CCDJDJD",
 			"availability": 25,
 			"description": "A machine with great performance, contain 8 cores and RAM 16 GB",
 			"LIMIT_DATE": "2020-12-29",
-			"name": "Computer LENOVO 3332",
+			"name": "Computer LENOVO",
 			"price": 4563778.32
 		},
 		{
-			"code": "HHDJCN-882922",
+			"code": "HHDJCN",
 			"availability": 7,
-			"description": "Made in Canada, fine leather, a ball original design specially for professionals and amateurs",
+			"description": "Made in Canada, fine leather",
 			"LIMIT_DATE": "2022-08-16",
-			"name": "Volleyball ball mikasa",
+			"name": "Volleyball ball",
 			"price": 280448.76
 		},
 		{
-			"code": "YYFUIWNN-OPM092",
+			"code": "YYFUIWNN",
 			"availability": 12,
-			"description": "A great book, written by Dante Alighieri, a master piece on the world of literature",
+			"description": "A great book, written by Dante Alighieri",
 			"LIMIT_DATE": "2019-11-10",
 			"name": "The divine comedy",
 			"price": 56000.87
 		},
 		{
-			"code": "IIRPOR-833",
+			"code": "IIRPOR",
 			"availability": 2,
 			"description": "A design luxury and very comfortable, limited quantity",
 			"LIMIT_DATE": "2020-1-31",
-			"name": "Watch Rolex 24 carats",
+			"name": "Watch Rolex 24",
 			"price": 429000.67
 		}
 	],
 	"Product_IMAGES": [
 		{
-			"Product_code": "CCDJDJD-988992",
+			"Product_code": "CCDJDJD",
 			"IMAGES": "recursos/imagen.png"
 		},
 		{
-			"Product_code": "HHDJCN-882922",
+			"Product_code": "HHDJCN",
 			"IMAGES": "recursos/imagen2.png"
 		},
 		{
-			"Product_code": "YYFUIWNN-OPM092",
+			"Product_code": "YYFUIWNN",
 			"IMAGES": "recursos/imagen3.wav"
 		},
 		{
-			"Product_code": "IIRPOR-833",
+			"Product_code": "IIRPOR",
 			"IMAGES": "recursos/imagen4.mapbit"
 		}
 	]

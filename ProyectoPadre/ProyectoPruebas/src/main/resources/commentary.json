@@ -4,31 +4,31 @@
 			"ID": "00000112",
 			"comment": "The product is in good conditions but I don't need that.",
 			"USER_ID": "0000",
-			"PRODUCT_code": "CCDJDJD-988992"
+			"PRODUCT_code": "CCDJDJD"
 		},
 		{
 			"ID": "00000113",
 			"comment": "The product is awful",
 			"USER_ID": "0001",
-			"PRODUCT_code": "HHDJCN-882922"
+			"PRODUCT_code": "HHDJCN"
 		},
 		{
 			"ID": "000000114",
 			"comment": "It's just what I needed.",
 			"USER_ID": "0000",
-			"PRODUCT_code": "HHDJCN-882922"
+			"PRODUCT_code": "HHDJCN"
 		},
 		{
 			"ID": "00000115",
 			"comment": "The product is in bad conditions but I don't need that.",
 			"USER_ID": "0002",
-			"PRODUCT_code": "IIRPOR-833"
+			"PRODUCT_code": "IIRPOR"
 		},
 		{
 			"ID": "000000116",
 			"comment": "His color was not the indicated",
 			"USER_ID": "0002",
-			"PRODUCT_code": "YYFUIWNN-OPM092"
+			"PRODUCT_code": "YYFUIWNN"
 		}
 	]
 }
