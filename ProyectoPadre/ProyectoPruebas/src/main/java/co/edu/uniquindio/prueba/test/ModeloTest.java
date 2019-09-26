@@ -12,20 +12,20 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
 import co.edu.uniquindio.uniMarket.entidades.PaymentMethod;
-import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.User;
-import junit.framework.Assert;
 
+@SuppressWarnings("deprecation")
 @RunWith(Arquillian.class)
 public class ModeloTest {
 
@@ -63,7 +63,7 @@ public class ModeloTest {
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json", "person.json" })
 	public void persistenciaCommentary() {
-		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
+		Product product = entityManager.find(Product.class, "CCDJDJD");
 		User user = entityManager.find(User.class, "0001");
 
 		Commentary comment = new Commentary();
@@ -123,7 +123,7 @@ public class ModeloTest {
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json", "purchase.json" })
-	private void persistenciaPurchaseDetail() {
+	public void persistenciaPurchaseDetail() {
 
 		Product product = entityManager.find(Product.class, "CCDJDJD");
 		Purchase purchase = entityManager.find(Purchase.class, "1234-ABC");
@@ -179,7 +179,6 @@ public class ModeloTest {
 //		Assert.assertEquals("cafe bro", v.getColor());
 //	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
@@ -189,7 +188,6 @@ public class ModeloTest {
 		Assert.assertEquals("Maria Alejandra", admin.getFullName());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
@@ -199,7 +197,6 @@ public class ModeloTest {
 		Assert.assertEquals("Juan Daivd", user.getFullName());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "commentary.json" })
@@ -209,7 +206,6 @@ public class ModeloTest {
 		Assert.assertEquals("CCDJDJD", comment.getProduct().getCode());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json" })
@@ -219,7 +215,6 @@ public class ModeloTest {
 		Assert.assertEquals("The divine comedy", product.getName());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "purchase.json" })
@@ -229,7 +224,6 @@ public class ModeloTest {
 		Assert.assertEquals("0001", purchase.getUser().getID());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "purchasedetail.json" })
@@ -239,16 +233,13 @@ public class ModeloTest {
 		Assert.assertEquals("IIRPOR", purchaseDetail.getProduct());
 	}
 
-	@SuppressWarnings("deprecation")
-
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
 	public void encontrarRate() {
-
 		Rate rate = entityManager.find(Rate.class, "a");
-
 		Assert.assertEquals(3.7, rate.getRate());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
@@ -263,7 +254,6 @@ public class ModeloTest {
 		Assert.assertEquals("Alajasadamavadasa", actualAdmin.getPassword());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
@@ -278,7 +268,6 @@ public class ModeloTest {
 		Assert.assertEquals("Caicedo", actualUser.getFullName());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "commentary.json" })
@@ -293,10 +282,9 @@ public class ModeloTest {
 		Assert.assertEquals("He sido editado", actualCommentary.getComment());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product" })
+	@UsingDataSet({ "product.json" })
 	public void actualizarProduct() {
 
 		Product product = entityManager.find(Product.class, "HHDJCN");
@@ -308,10 +296,9 @@ public class ModeloTest {
 		Assert.assertEquals(1, actualProduct.getAvailability());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product" })
+	@UsingDataSet({ "product.json" })
 	public void actualizarPurchase() {
 
 		Purchase purchase = entityManager.find(Purchase.class, "1237-ABF");
@@ -323,10 +310,9 @@ public class ModeloTest {
 		Assert.assertEquals("2019-02-13", actualPurchase.getPurchaseDate());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product" })
+	@UsingDataSet({ "product.json" })
 	public void actualizarPurchaseDetail() {
 
 		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, "1237-ABF");
@@ -414,10 +400,5 @@ public class ModeloTest {
 //		// no // se pueden acceder a los datos de vehiculos, para esto podemos hacer
 //		// TypedQuery.
 //	}
-
-	@Test
-	public void probar500() {
-
-	}
 
 }
