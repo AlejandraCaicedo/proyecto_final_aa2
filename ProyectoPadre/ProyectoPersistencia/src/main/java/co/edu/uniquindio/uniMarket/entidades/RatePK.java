@@ -8,35 +8,63 @@ import javax.persistence.Embeddable;
  * ID class for entity: Calificacion
  *
  */
+
+/**
+ * 
+ * @author Juan David Ariza
+ * @author Alejandra Caicedo Chaves
+ * @author Alejandro Gutierrez Velez
+ * 
+ */
+
 @Embeddable
 public class RatePK implements Serializable {
 
-	private String product;
-	private String user;
+	private String product; //Identificacion de un producto que va a ser calificado
+	private String user; //Identificacion del usuario que califca un producto
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor vacio de la clase ratePK
+	 */
 	public RatePK() {
 	}
 
+	/**
+	 * Metodo que permite obtener el codigo de un producto
+	 * @return product
+	 */
 	public String getProduct() {
 		return this.product;
 	}
 
+	/**
+	 * Metodo que permite asinar un codigo a un producto dentro de la clase ratePK
+	 * @param productCode, codigo del producto que va a ser asignado
+	 */
 	public void setProduct(String productCode) {
 		this.product = productCode;
 	}
 
+	/**
+	 * Metodo que permite obtener el codigo de un usuario que califica
+	 * @return user
+	 */
 	public String getUser() {
 		return this.user;
 	}
 
+	/**
+	 * Metodo que permite asignar un codigo a un usuario
+	 * @param userID, identificacion del usuario a ser asignada
+	 */
 	public void setUser(String userID) {
 		this.user = userID;
 	}
 
-	/*
-	 * @see java.lang.Object#equals(Object)
+	/**
+	 * Metodo que permite comparar si dos registros son o no iguales
 	 */
 	public boolean equals(Object o) {
 		if (o == this) {
@@ -50,8 +78,8 @@ public class RatePK implements Serializable {
 				&& (getUser() == null ? other.getUser() == null : getUser().equals(other.getUser()));
 	}
 
-	/*
-	 * @see java.lang.Object#hashCode()
+	/**
+	 * Metodo hashCode de la clase ratePK
 	 */
 	public int hashCode() {
 		final int prime = 31;

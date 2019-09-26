@@ -19,29 +19,47 @@ import javax.persistence.NamedQueries;
 		// Calificacion c where c.productoCalificacion.codigo = :codigo")
 })
 
+/**
+ * 
+ * @author Juan David Ariza
+ * @author Alejandra Caicedo Chaves
+ * @author Alejandro Gutierrez Velez
+ * 
+ */
+
 @Entity
 public class Rate implements Serializable {
 
 	@EmbeddedId
-	private RatePK rateID;
+	private RatePK rateID; //Identificador unico sobre la valoracion de un producto
 
 	@ManyToOne
 	@MapsId("product")
-	private Product product;
+	private Product product; //Producto que ha sido valorado
 
 	@ManyToOne
 	@MapsId("user")
-	private User user;
+	private User user; //Usuario que califica un producto
 
 	@Column(name = "rate", nullable = false)
-	private double rate;
+	private double rate; //Calificacion obtenida de un producto
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor vacio de la clase calificacion
+	 */
 	public Rate() {
 		super();
 	}
 
+	/**
+	 * Constructor con parametros para la creacion de una calificacion
+	 * @param rateID, identificacion unica sobre una calificacion
+	 * @param product, producto que ha sido calificado
+	 * @param user, usuario que califica un producto
+	 * @param rate, calificacion que obtiene un producto de un usuario
+	 */
 	public Rate(RatePK rateID, Product product, User user, double rate) {
 		super();
 		this.rateID = rateID;
@@ -50,38 +68,73 @@ public class Rate implements Serializable {
 		this.rate = rate;
 	}
 
+	/**
+	 * Metodo que permite obtener la identificacion de una calificacion
+	 * @return rateID
+	 */
 	public RatePK getRateID() {
 		return rateID;
 	}
 
+	/**
+	 * Metodo que permite asignar una identificacion a un producto
+	 * @param rateID, registro unico de una calificacion 
+	 */
 	public void setRateID(RatePK rateID) {
 		this.rateID = rateID;
 	}
 
+	/**
+	 * Metodo que permite obtener un producto valorado
+	 * @return product
+	 */
 	public Product getProduct() {
 		return product;
 	}
 
+	/**
+	 * Metodo que permite asignar un producto a la calificacion
+	 * @param product, es el producto a ser valorado
+	 */
 	public void setProduct(Product product) {
 		this.product = product;
 	}
 
+	/**
+	 * Metodo que permite obtener el ususario que realiza una calificacion
+	 * @return user
+	 */
 	public User getUser() {
 		return user;
 	}
 
+	/**
+	 * Metodo que permite asignar un usuario que va a calificar un producto
+	 * @param user, usuario que valora un producto
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 
+	/**
+	 * Metodo que permite obtener la valoracion dada a un producto
+	 * @return rate
+	 */
 	public double getRate() {
 		return rate;
 	}
 
+	/**
+	 * Metodo que permite asignar una calificacion
+	 * @param rate, calificacion que se le da a un producto
+	 */
 	public void setRate(double rate) {
 		this.rate = rate;
 	}
 
+	/**
+	 * Metodo hashCOde para la clase calificacion
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -95,6 +148,9 @@ public class Rate implements Serializable {
 		return result;
 	}
 
+	/**
+	 * Metodo que permite comparar que 2 calificaciones no tengan el mismo identificador
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -124,6 +180,9 @@ public class Rate implements Serializable {
 		return true;
 	}
 
+	/**
+	 * Metodo que permite dar una forma standarizada a la hora de mostrar la informacion sobre una calificacion
+	 */
 	@Override
 	public String toString() {
 		return "Rate [rateID=" + rateID + ", product=" + product.getName() + ", user=" + user.getFullName() + ", rate="
