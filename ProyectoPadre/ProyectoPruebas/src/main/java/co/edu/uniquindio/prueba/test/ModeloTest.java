@@ -326,7 +326,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product" })
+	@UsingDataSet({ "product.json" })
 	public void actualizarPurchase() {
 
 		Purchase purchase = entityManager.find(Purchase.class, "1237-ABF");
@@ -343,7 +343,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product" })
+	@UsingDataSet({ "product.json" })
 	public void actualizarPurchaseDetail() {
 
 		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, "1237-ABF");
