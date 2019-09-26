@@ -16,43 +16,63 @@ import javax.persistence.TemporalType;
  * Entity implementation class for Entity: Producto
  *
  */
-@Entity
 
+/**
+ * 
+ * @author Juan David Ariza
+ * @author Alejandra Caicedo Chaves
+ * @author Alejandro Gutierrez Velez
+ * 
+ */
+
+@Entity
 public class Product implements Serializable {
 
 	@Column(name = "name", length = 20, nullable = false)
-	private String name;
+	private String name; //Nombre que recibe un producto
 
 	@Column(name = "description", length = 100, nullable = true)
-	private String description;
+	private String description; //Descripcion proveida sobre un producto en particular
 
 	@Column(name = "price")
-	private double price;
+	private double price; //Precio que tiene el producto
 
 	@ElementCollection
-	private List<String> images;
+	private List<String> images; //litsa de imagenes que puede existir sobre un producto
 
 	@Id
 	@Column(name = "code", length = 10, nullable = false)
-	private String code;
+	private String code; //Codigo que tendra un producto especifico, no puede ser uin campo nulo
 
 	@Column(name = "availability", nullable = false)
-	private int availability;
+	private int availability; //Cantidad existente de un producto
 
-	private String limit_Date;
+	private String limit_Date; //Fecha limite para la que puede estar un producto en UniMarket
 
 	@OneToMany(mappedBy = "product")
-	private List<Rate> rates;
+	private List<Rate> rates; //Es la lista de calificaciones que le pueden dar ciertos usuarios a un producto
 
 	@OneToMany
-	private List<PurchaseDetail> listPurchaseDetails;
+	private List<PurchaseDetail> listPurchaseDetails; //Lista de detalles de compra sobre un producto
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor vacio de la clase producto
+	 */
 	public Product() {
 		super();
 	}
 
+	/**
+	 * Constructor del producto con los campos que se van a rellenar para crear alguno
+	 * @param name, nombre del producto a ser agregado
+	 * @param description, descripcion proveida sobre el producto
+	 * @param price, precio que tendra el producto en la tienda
+	 * @param code, codigo que identificara cada producto, no se puede repetir
+	 * @param availability, disponibilidad de un producto
+	 * @param limit_Date, fecha limite hasta la que un producto se va a encontrar publicado en la tienda
+	 */
 	public Product(String name, String description, double price, String code, int availability, String limit_Date) {
 		super();
 		this.name = name;
@@ -63,78 +83,153 @@ public class Product implements Serializable {
 		this.limit_Date = limit_Date;
 	}
 
+	/**
+	 * Metodo para obtener un nomnbre de un producto
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Metodo que permite asignar un nombre a un producto
+	 * @param name, nombre que se le va a asignar al producto
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Metodo para obtener la descripcion de un producto
+	 * @return description
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * Metodo para asignar una descripcion a un producto especifico
+	 * @param description, es la descripcion que va a ser asignada a un producto
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * Metodo para obtener el precio de un producto creado
+	 * @return price
+	 */
 	public double getPrice() {
 		return price;
 	}
 
+	/**
+	 * Metodo para asignar un precio a in producto
+	 * @param price, precio que va a tener el producto creado
+	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
+	/**
+	 * Metodo para obtener la lista de imagenes que va a tener un producto en especfico
+	 * @return images
+	 */
 	public List<String> getImages() {
 		return images;
 	}
 
+	/**
+	 * Metodo para poner un listado de imagenes a un producto
+	 * @param images, imagenes a ser publicada sobre un producto
+	 */
 	public void setImages(List<String> images) {
 		this.images = images;
 	}
 
+	/**
+	 * Metodo para obtener el codigo de un producto creado
+	 * @return code
+	 */
 	public String getCode() {
 		return code;
 	}
 
+	/**
+	 * Metodo para poner un codigo a un producto
+	 * @param code, codigo que va a ser asignado al producto creado
+	 */
 	public void setCode(String code) {
 		this.code = code;
 	}
 
+	/**
+	 * Metodo para obtener el codigo de un producto
+	 * @return availability
+	 */
 	public int getAvailability() {
 		return availability;
 	}
 
+	/**
+	 * Metodo para asignar la cantidad existente de un producto
+	 * @param availability, cantidad de productos disponibles
+	 */
 	public void setAvailability(int availability) {
 		this.availability = availability;
 	}
 
+	/**
+	 * Metodo para obtener la fecha limite de publicacion de un producto en la tienda
+	 * @return limit_Date
+	 */
 	public String getLimit_Date() {
 		return limit_Date;
 	}
 
+	/**
+	 * Metodo para poner una fecha limite a un producto
+	 * @param limit_Date, fecha limite de publicacion de un producto
+	 */
 	public void setLimit_Date(String limit_Date) {
 		this.limit_Date = limit_Date;
 	}
 
+	/**
+	 * Metodo para obtener el listado de calificaciones de un producto
+	 * @return rates
+	 */
 	public List<Rate> getRates() {
 		return rates;
 	}
 
+	/**
+	 * Metodo para poner un listado de calificaciones de un producto
+	 * @param rates, es el listado de calificaciones del producto
+	 */
 	public void setRates(List<Rate> rates) {
 		this.rates = rates;
 	}
 
+	/**
+	 * Metodo para obtener el listado de detalles de compra de un producto
+	 * @return listPurchaseDetails
+	 */
 	public List<PurchaseDetail> getListPurchaseDetails() {
 		return listPurchaseDetails;
 	}
 
+	/**
+	 * Metodo para poner un listado de detalles de compra de un producto
+	 * @param listPurchaseDetails, listado de detalles de compra de un producto
+	 */
 	public void setListPurchaseDetails(List<PurchaseDetail> listPurchaseDetails) {
 		this.listPurchaseDetails = listPurchaseDetails;
 	}
 
+	/**
+	 * Metodo hashCode para los productos
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -153,6 +248,9 @@ public class Product implements Serializable {
 		return result;
 	}
 
+	/**
+	 * Metodo que permite comprar dos producto a traves de su llave primaria
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -204,6 +302,9 @@ public class Product implements Serializable {
 		return true;
 	}
 
+	/**
+	 * Metodo que asigna una forma standar a la hora de mostrar la informacion sobre un producto
+	 */
 	@Override
 	public String toString() {
 		return "Product [name=" + name + ", description=" + description + ", price=" + price + ", images=" + images

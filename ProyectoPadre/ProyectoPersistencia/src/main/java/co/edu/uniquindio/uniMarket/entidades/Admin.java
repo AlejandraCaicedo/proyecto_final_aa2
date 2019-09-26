@@ -34,7 +34,7 @@ public class Admin extends Person implements Serializable {
 	 * @param email, correo electronico que posee el administrador
 	 * @param cellphoneNumber, numero de telefono del administrador
 	 * @param adress, direccion de residencia actual del administrador
-	 * @param password, contraseña con la que ingresara el administrador
+	 * @param password, contrasenia con la que ingresara el administrador
 	 */
 	public Admin(String iD, String fullName, String email, String cellphoneNumber, String adress, String password) {
 		super(iD, fullName, email, cellphoneNumber, adress, password);
