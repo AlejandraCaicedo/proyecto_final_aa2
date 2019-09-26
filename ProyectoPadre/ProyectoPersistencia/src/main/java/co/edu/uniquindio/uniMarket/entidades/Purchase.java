@@ -30,8 +30,7 @@ public class Purchase implements Serializable {
 	@ManyToOne
 	private User user;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date purchaseDate;
+	private String purchaseDate;
 
 	@Enumerated(EnumType.STRING)
 	private PaymentMethod paymentMethod;
@@ -45,7 +44,7 @@ public class Purchase implements Serializable {
 		super();
 	}
 
-	public Purchase(String purchaseCode, User user, Date purchaseDate, PaymentMethod paymentMethod) {
+	public Purchase(String purchaseCode, User user, String purchaseDate, PaymentMethod paymentMethod) {
 		super();
 		this.purchaseCode = purchaseCode;
 		this.user = user;
@@ -69,12 +68,16 @@ public class Purchase implements Serializable {
 		this.user = user;
 	}
 
-	public Date getPurchaseDate() {
+	public String getPurchaseDate() {
 		return purchaseDate;
 	}
 
-	public void setPurchaseDate(Date purchaseDate) {
+	public void setPurchaseDate(String purchaseDate) {
 		this.purchaseDate = purchaseDate;
+	}
+
+	public void setListPurchaseDetails(List<PurchaseDetail> listPurchaseDetails) {
+		this.listPurchaseDetails = listPurchaseDetails;
 	}
 
 	public PaymentMethod getPaymentMethod() {

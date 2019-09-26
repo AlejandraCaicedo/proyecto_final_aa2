@@ -39,8 +39,7 @@ public class Product implements Serializable {
 	@Column(name = "availability", nullable = false)
 	private int availability;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date limit_Date;
+	private String limit_Date;
 
 	@OneToMany(mappedBy = "product")
 	private List<Rate> rates;
@@ -54,17 +53,18 @@ public class Product implements Serializable {
 		super();
 	}
 
-	public Product(String name, String description, double price, String code, Date limit_Date) {
+	public Product(String name, String description, double price, String code, int availability, String limit_Date) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.code = code;
+		this.availability = availability;
 		this.limit_Date = limit_Date;
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
@@ -72,7 +72,7 @@ public class Product implements Serializable {
 	}
 
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	public void setDescription(String description) {
@@ -80,42 +80,11 @@ public class Product implements Serializable {
 	}
 
 	public double getPrice() {
-		return this.price;
+		return price;
 	}
 
 	public void setPrice(double price) {
 		this.price = price;
-	}
-
-	public String getCode() {
-		return this.code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public Date getLimit_Date() {
-		return limit_Date;
-	}
-
-	public void setLimit_Date(Date limit_Date) {
-		this.limit_Date = limit_Date;
-	}
-
-	public int getAvailability() {
-		return this.availability;
-	}
-
-	public void setAvailability(int availability) {
-		this.availability = availability;
-	}
-
-	@Override
-	public String toString() {
-		return "Product [name=" + name + ", description=" + description + ", price=" + price + ", images=" + images
-				+ ", code=" + code + ", availability=" + availability + ", limit_Date=" + limit_Date + ", rates="
-				+ rates + ", listPurchaseDetails=" + listPurchaseDetails + "]";
 	}
 
 	public List<String> getImages() {
@@ -124,6 +93,30 @@ public class Product implements Serializable {
 
 	public void setImages(List<String> images) {
 		this.images = images;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public int getAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(int availability) {
+		this.availability = availability;
+	}
+
+	public String getLimit_Date() {
+		return limit_Date;
+	}
+
+	public void setLimit_Date(String limit_Date) {
+		this.limit_Date = limit_Date;
 	}
 
 	public List<Rate> getRates() {
@@ -209,6 +202,13 @@ public class Product implements Serializable {
 		} else if (!rates.equals(other.rates))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [name=" + name + ", description=" + description + ", price=" + price + ", images=" + images
+				+ ", code=" + code + ", availability=" + availability + ", limit_Date=" + limit_Date + ", rates="
+				+ rates + ", listPurchaseDetails=" + listPurchaseDetails + "]";
 	}
 
 }

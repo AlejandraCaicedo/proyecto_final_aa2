@@ -39,26 +39,26 @@ public class ModeloTest {
 	public void crearTablas() {
 
 	}
-
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	public void persistenciaAdmin() {
-		Admin prueba = new Admin();
-		prueba.setID("0000");
-		prueba.setFullName("Carlos");
-		prueba.setAdress("adress");
-		prueba.setCellphoneNumber("3154748461");
-		prueba.setEmail("algo@hotmail");
-		prueba.setPassword("12345");
-		entityManager.persist(prueba);
-	}
+//
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	public void persistenciaAdmin() {
+//		Admin prueba = new Admin();
+//		prueba.setID("0000");
+//		prueba.setFullName("Carlos");
+//		prueba.setAdress("adress");
+//		prueba.setCellphoneNumber("3154748461");
+//		prueba.setEmail("algo@hotmail");
+//		prueba.setPassword("12345");
+//		entityManager.persist(prueba);
+//	}
 
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "product.json", "person.json" })
 	public void persistenciaCommentary() {
 		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
-		User user = entityManager.find(User.class, "0000");
+		User user = entityManager.find(User.class, "0001");
 
 		Commentary comment = new Commentary();
 		comment.setComment("Very useful");
