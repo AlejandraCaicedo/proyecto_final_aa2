@@ -17,6 +17,7 @@ import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
+import co.edu.uniquindio.uniMarket.entidades.PaymentMethod;
 import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.Purchase;
@@ -44,19 +45,19 @@ public class ModeloTest {
 	public void crearTablas() {
 
 	}
-//
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	public void persistenciaAdmin() {
-//		Admin prueba = new Admin();
-//		prueba.setID("0000");
-//		prueba.setFullName("Carlos");
-//		prueba.setAdress("adress");
-//		prueba.setCellphoneNumber("3154748461");
-//		prueba.setEmail("algo@hotmail");
-//		prueba.setPassword("12345");
-//		entityManager.persist(prueba);
-//	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void persistenciaAdmin() {
+		Admin prueba = new Admin();
+		prueba.setID("0000");
+		prueba.setFullName("Carlos");
+		prueba.setAdress("adress");
+		prueba.setCellphoneNumber("3154748461");
+		prueba.setEmail("algo@hotmail");
+		prueba.setPassword("12345");
+		entityManager.persist(prueba);
+	}
 
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -73,27 +74,72 @@ public class ModeloTest {
 
 		entityManager.persist(comment);
 	}
-//
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	public void persistenciaProduct() {
-//		Product product = new Product("Nevera", "Esto Congela", 1345677, , a master piece on the world of literature"0000", new Date());
-//
-//		entityManager.persist(product);
-//	}
-//
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	@UsingDataSet({ "person.json" })
-//	public void persistenciaPurchase() {
-//		PaymentMethod paymentMethod = PaymentMethod.CASH;
-//		User user = entityManager.find(User.class, "1113313495");
-//		Purchase purchase = new Purchase("0000", user, new Date(), paymentMethod);
-//
-//		entityManager.persist(purchase);
-//	}
-//
-//	@Test
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void persistenciaUser() {
+
+		User user = new User();
+		user.setAdress("Adress Test");
+		user.setCellphoneNumber("312456789");
+		user.setEmail("prueba@correo");
+		user.setFullName("User Prueba");
+		user.setID("1111");
+		user.setPassword("iamrobot");
+
+		entityManager.persist(user);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void persistenciaProduct() {
+
+		Product product = new Product();
+		product.setAvailability(5);
+		product.setCode("1111");
+		product.setDescription("Description Test");
+		product.setLimit_Date("yyyy-mm-dd");
+		product.setName("Product Test");
+		product.setPrice(12345);
+
+		entityManager.persist(product);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "person.json" })
+	public void persistenciaPurchase() {
+
+		User user = entityManager.find(User.class, "0002");
+		Purchase purchase = new Purchase();
+		purchase.setPaymentMethod(PaymentMethod.CASH);
+		purchase.setPurchaseCode("1111");
+		purchase.setPurchaseDate("yyyy-mm-dd");
+		purchase.setUser(user);
+
+		entityManager.persist(purchase);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json", "purchase.json" })
+	private void persistenciaPurchaseDetail() {
+
+		Product product = entityManager.find(Product.class, "CCDJDJD");
+		Purchase purchase = entityManager.find(Purchase.class, "1234-ABC");
+
+		PurchaseDetail purchaseDetail = new PurchaseDetail();
+
+		purchaseDetail.setID(0);
+		purchaseDetail.setPrice(0);
+		purchaseDetail.setProduct(product);
+		purchaseDetail.setPurchase(purchase);
+		purchaseDetail.setQuantity(0);
+
+		entityManager.persist(purchaseDetail);
+	}
+
+// @Test
 //	@Transactional(value = TransactionMode.ROLLBACK)
 //	public void persistenciaPurchaseDetail() {
 //		PurchaseDetail purchaseDetail = new PurchaseDetail(1, 4, 3200);
