@@ -25,19 +25,19 @@ public class PurchaseDetail implements Serializable {
 
 	@Id
 	@Column(name = "ID", nullable = false)
-	private int ID; //Identificado unico del detalle de compre
-
-	@ManyToOne
-	private Product product; //Producto del cual se da un detalle de compra
-
-	@ManyToOne
-	private Purchase purchase; //Compra realizada con anterioridad
+	private int ID; // Identificado unico del detalle de compre
 
 	@Column(name = "quantity", nullable = false)
-	private int quantity; //Cantidad de productos adquiridos
+	private int quantity; // Cantidad de productos adquiridos
 
 	@Column(name = "price", nullable = false)
-	private double price; //Precio por el que se hizo la compra total
+	private double price; // Precio por el que se hizo la compra total
+
+	@ManyToOne
+	private Product product; // Producto del cual se da un detalle de compra
+
+	@ManyToOne
+	private Purchase purchase; // Compra realizada con anterioridad
 
 	private static final long serialVersionUID = 1L;
 
@@ -50,9 +50,11 @@ public class PurchaseDetail implements Serializable {
 
 	/**
 	 * Constructor con los campos asignados para el detalle de una compra
-	 * @param iD, identificador unico del detalle de compra
+	 * 
+	 * @param iD,       identificador unico del detalle de compra
 	 * @param quantity, cantidad de productos comprados con anterioridad
-	 * @param price, precio por el que se adquiere los productos a la hora de comprarlos
+	 * @param price,    precio por el que se adquiere los productos a la hora de
+	 *                  comprarlos
 	 */
 	public PurchaseDetail(int iD, int quantity, int price) {
 		super();
@@ -63,6 +65,7 @@ public class PurchaseDetail implements Serializable {
 
 	/**
 	 * Metodo que permite obtener la identificacion de un detalle de compra
+	 * 
 	 * @return ID
 	 */
 	public int getID() {
@@ -71,6 +74,7 @@ public class PurchaseDetail implements Serializable {
 
 	/**
 	 * Metodo que permite asignar un valor de idetnficacion de un detalle de compra
+	 * 
 	 * @param ID, identificador unico de un detalle de compra
 	 */
 	public void setID(int ID) {
@@ -79,6 +83,7 @@ public class PurchaseDetail implements Serializable {
 
 	/**
 	 * Metodo con el que se obtiene el producto comprado
+	 * 
 	 * @return product
 	 */
 	public Product getProduct() {
@@ -87,7 +92,9 @@ public class PurchaseDetail implements Serializable {
 
 	/**
 	 * Metodo que permite asignar un producto que ha sido comprado
-	 * @param product, producto que ha sido comprado con anterioridad y sobre el cual se va a mostrar mas a detalle su compra
+	 * 
+	 * @param product, producto que ha sido comprado con anterioridad y sobre el
+	 *                 cual se va a mostrar mas a detalle su compra
 	 */
 	public void setProduct(Product product) {
 		this.product = product;
@@ -95,6 +102,7 @@ public class PurchaseDetail implements Serializable {
 
 	/**
 	 * Metodo que permite obtener una compra realizada
+	 * 
 	 * @return purchase
 	 */
 	public Purchase getPurchase() {
@@ -103,6 +111,7 @@ public class PurchaseDetail implements Serializable {
 
 	/**
 	 * Metodo que permite asignar una compra realizada con anterioridad
+	 * 
 	 * @param purchase, compra que ha sido realizada con anterioridad
 	 */
 	public void setPurchase(Purchase purchase) {
@@ -111,6 +120,7 @@ public class PurchaseDetail implements Serializable {
 
 	/**
 	 * Metodo que permite obtener la cantidad de productos comprados anteriormente
+	 * 
 	 * @return quantity
 	 */
 	public int getQuantity() {
@@ -118,15 +128,18 @@ public class PurchaseDetail implements Serializable {
 	}
 
 	/**
-	 * Metodo que permite asignar una cantidad de productos comprados a la hora de ser vendidos
+	 * Metodo que permite asignar una cantidad de productos comprados a la hora de
+	 * ser vendidos
+	 * 
 	 * @param quantity, cantidad de productos comprados
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
+
 	/**
 	 * Metodo que permite obtener un precio de compra
+	 * 
 	 * @return price
 	 */
 	public double getPrice() {
@@ -135,6 +148,7 @@ public class PurchaseDetail implements Serializable {
 
 	/**
 	 * Metodo que permite poner un valor de precio a una ocmpra realizada
+	 * 
 	 * @param price, precio con el que se adquirio el producto
 	 */
 	public void setPrice(double price) {
@@ -159,7 +173,8 @@ public class PurchaseDetail implements Serializable {
 	}
 
 	/**
-	 * Metodo que permite comparar dos detalles de compra y saber si son o no iguales
+	 * Metodo que permite comparar dos detalles de compra y saber si son o no
+	 * iguales
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -190,7 +205,8 @@ public class PurchaseDetail implements Serializable {
 	}
 
 	/**
-	 * Metodo que da una forma standar a la hora de mostrar la informacion de un detalle de compra
+	 * Metodo que da una forma standar a la hora de mostrar la informacion de un
+	 * detalle de compra
 	 */
 	@Override
 	public String toString() {
