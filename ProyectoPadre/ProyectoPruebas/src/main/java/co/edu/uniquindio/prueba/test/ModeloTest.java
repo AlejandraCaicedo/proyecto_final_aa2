@@ -167,18 +167,6 @@ public class ModeloTest {
 //		entityManager.persist(user);
 //	}
 
-//	@Test
-//
-//	@UsingDataSet({ "marca.json", "vehiculo.json" })
-//
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	public void probarAlgo() {
-//
-//		Vehiculo v = entityManager.find(Vehiculo.class, "7862");
-//
-//		Assert.assertEquals("cafe bro", v.getColor());
-//	}
-
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
