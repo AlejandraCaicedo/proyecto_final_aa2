@@ -9,6 +9,8 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,6 +27,13 @@ import javax.persistence.TemporalType;
  * @author Alejandro Gutierrez Velez
  * 
  */
+
+@NamedQueries({
+
+		@NamedQuery(name = Product.TODAS_CALIFICACIONES_PRODUCT, query = "select p, r.rate from Product p left join p.listRates r "),
+		@NamedQuery(name = Product.TODOS_USUARIOS_VENDEDORES, query = "select distinct p.user from Product p")
+
+})
 
 @Entity
 public class Product implements Serializable {
@@ -60,6 +69,9 @@ public class Product implements Serializable {
 	@ManyToOne
 	private User user;
 
+	public static final String TODAS_CALIFICACIONES_PRODUCT = "TODAS_CALIFICACIONES_PRODUCT";
+	public static final String TODOS_USUARIOS_VENDEDORES = "TODOS_USUARIOS_VENDEDORES";
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -73,14 +85,19 @@ public class Product implements Serializable {
 	 * Constructor del producto con los campos que se van a rellenar para crear
 	 * alguno
 	 * 
-	 * @param name,         nombre del producto a ser agregado
-	 * @param description,  descripcion proveida sobre el producto
-	 * @param price,        precio que tendra el producto en la tienda
-	 * @param code,         codigo que identificara cada producto, no se puede
-	 *                      repetir
-	 * @param availability, disponibilidad de un producto
-	 * @param limit_Date,   fecha limite hasta la que un producto se va a encontrar
-	 *                      publicado en la tienda
+	 * @param name,
+	 *            nombre del producto a ser agregado
+	 * @param description,
+	 *            descripcion proveida sobre el producto
+	 * @param price,
+	 *            precio que tendra el producto en la tienda
+	 * @param code,
+	 *            codigo que identificara cada producto, no se puede repetir
+	 * @param availability,
+	 *            disponibilidad de un producto
+	 * @param limit_Date,
+	 *            fecha limite hasta la que un producto se va a encontrar publicado
+	 *            en la tienda
 	 */
 	public Product(String name, String description, double price, String code, int availability, String limit_Date) {
 		super();
@@ -104,7 +121,8 @@ public class Product implements Serializable {
 	/**
 	 * Metodo que permite asignar un nombre a un producto
 	 * 
-	 * @param name, nombre que se le va a asignar al producto
+	 * @param name,
+	 *            nombre que se le va a asignar al producto
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -122,7 +140,8 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para asignar una descripcion a un producto especifico
 	 * 
-	 * @param description, es la descripcion que va a ser asignada a un producto
+	 * @param description,
+	 *            es la descripcion que va a ser asignada a un producto
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -140,7 +159,8 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para asignar un precio a in producto
 	 * 
-	 * @param price, precio que va a tener el producto creado
+	 * @param price,
+	 *            precio que va a tener el producto creado
 	 */
 	public void setPrice(double price) {
 		this.price = price;
@@ -159,7 +179,8 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para poner un listado de imagenes a un producto
 	 * 
-	 * @param images, imagenes a ser publicada sobre un producto
+	 * @param images,
+	 *            imagenes a ser publicada sobre un producto
 	 */
 	public void setImages(List<String> images) {
 		this.images = images;
@@ -177,7 +198,8 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para poner un codigo a un producto
 	 * 
-	 * @param code, codigo que va a ser asignado al producto creado
+	 * @param code,
+	 *            codigo que va a ser asignado al producto creado
 	 */
 	public void setCode(String code) {
 		this.code = code;
@@ -195,7 +217,8 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para asignar la cantidad existente de un producto
 	 * 
-	 * @param availability, cantidad de productos disponibles
+	 * @param availability,
+	 *            cantidad de productos disponibles
 	 */
 	public void setAvailability(int availability) {
 		this.availability = availability;
@@ -214,7 +237,8 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para poner una fecha limite a un producto
 	 * 
-	 * @param limit_Date, fecha limite de publicacion de un producto
+	 * @param limit_Date,
+	 *            fecha limite de publicacion de un producto
 	 */
 	public void setLimit_Date(String limit_Date) {
 		this.limit_Date = limit_Date;
@@ -232,7 +256,8 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para poner un listado de calificaciones de un producto
 	 * 
-	 * @param rates, es el listado de calificaciones del producto
+	 * @param rates,
+	 *            es el listado de calificaciones del producto
 	 */
 	public void setRates(List<Rate> rates) {
 		this.listRates = rates;
@@ -250,7 +275,8 @@ public class Product implements Serializable {
 	/**
 	 * Metodo para poner un listado de detalles de compra de un producto
 	 * 
-	 * @param listPurchaseDetails, listado de detalles de compra de un producto
+	 * @param listPurchaseDetails,
+	 *            listado de detalles de compra de un producto
 	 */
 	public void setListPurchaseDetails(List<PurchaseDetail> listPurchaseDetails) {
 		this.listPurchaseDetails = listPurchaseDetails;
