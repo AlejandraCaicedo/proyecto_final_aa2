@@ -1,32 +1,32 @@
 {
 	"PURCHASEDETAIL": [
 		{
-			"ID": 1,
-			"price": 97500.0,
+			"ID": 2238839,
+			"price": 91274,
 			"quantity": 2,
 			"PRODUCT_code": "CCDJDJD",
-			"PURCHASE_purchaseCode": "1234-ABC"
+			"purchaseCode": "1234-ABC"
 		},
 		{
-			"ID": 1,
+			"ID": 99512,
 			"quantity": 5,
-			"price": 14380.0,
+			"price": 14380,
 			"PRODUCT_code": "HHDJCN",
-			"PURCHASE_purchaseCode": "1235-ABD"
+			"purchaseCode": "1235-ABD"
 		},
 		{
-			"ID": 3,
+			"ID": 553226,
 			"quantity": 2,
-			"price": 1200.0,
+			"price": 1124,
 			"PRODUCT_code": "YYFUIWNN",
-			"PURCHASE_purchaseCode": "1236-ABE"
+			"purchaseCode": "1236-ABE"
 		},
 		{
-			"ID": 3,
+			"ID": 5562278,
 			"quantity": 1,
 			"price": 4200.67,
 			"PRODUCT_code": "IIRPOR",
-			"PURCHASE_purchaseCode": "1237-ABF"
+			"purchaseCode": "1237-ABF"
 		}
 	]
 }

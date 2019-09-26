@@ -22,7 +22,7 @@ public class Commentary implements Serializable {
 
 	@Id
 	@Column(name = "ID")
-	private String ID; // Registro unico de un comentario en particular
+	private String ID; //Registro unico de un comentario en particular
 
 	@ManyToOne
 	private User user; // Es el usuario que comenta acerca de un producto
@@ -31,7 +31,6 @@ public class Commentary implements Serializable {
 
 	@Column(name = "comment", nullable = false)
 	private String comment; // Es el comentario que hace un usuario a un producto en especifico
-
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -43,9 +42,8 @@ public class Commentary implements Serializable {
 
 	/**
 	 * Constructor que recibe atributos de un nuevo comentario
-	 * 
-	 * @param iD,      identificacion unica de un comentario
-	 * @param user,    usuario que comenta un producto
+	 * @param iD, identificacion unica de un comentario
+	 * @param user, usuario que comenta un producto
 	 * @param product, producto sobre el que comenta un usuario
 	 * @param comment, comentario que recibe un producto de un usuario
 	 */
@@ -59,7 +57,6 @@ public class Commentary implements Serializable {
 
 	/**
 	 * Metodo para obtener una identificacion
-	 * 
 	 * @return ID
 	 */
 	public String getID() {
@@ -68,7 +65,6 @@ public class Commentary implements Serializable {
 
 	/**
 	 * Metodo para colocar un valor a un comentario realizado
-	 * 
 	 * @param ID, Identificacion del comentario a colocarle el nuevo valor
 	 */
 	public void setID(String ID) {
@@ -77,7 +73,6 @@ public class Commentary implements Serializable {
 
 	/**
 	 * Metodo para obtener un comentario en especifico
-	 * 
 	 * @return comment
 	 */
 	public String getComment() {
@@ -86,7 +81,6 @@ public class Commentary implements Serializable {
 
 	/**
 	 * Metodo que pone un comentario solicitado
-	 * 
 	 * @param comment, es el comentario que se le pondra a un producto en especifico
 	 */
 	public void setComment(String comment) {
@@ -95,7 +89,6 @@ public class Commentary implements Serializable {
 
 	/**
 	 * Metodo que obtiene el usuario que comento sobre un producto
-	 * 
 	 * @return User
 	 */
 	public User getUser() {
@@ -104,7 +97,6 @@ public class Commentary implements Serializable {
 
 	/**
 	 * Metodo que permite enlazar un usuario con un comentario
-	 * 
 	 * @param user, usuario que comenta
 	 */
 	public void setUser(User user) {
@@ -113,7 +105,6 @@ public class Commentary implements Serializable {
 
 	/**
 	 * Metodo que obtiene un producto en especifico
-	 * 
 	 * @return producto al que se le hace un comentario
 	 */
 	public Product getProduct() {
@@ -122,7 +113,6 @@ public class Commentary implements Serializable {
 
 	/**
 	 * Metodo para poner un producto al que se va a comentar
-	 * 
 	 * @param product, producto que va a ser comentado
 	 */
 	public void setProduct(Product product) {

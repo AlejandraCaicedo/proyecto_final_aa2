@@ -18,7 +18,6 @@ import javax.persistence.*;
  */
 @Entity
 public class Admin extends Person implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -30,13 +29,12 @@ public class Admin extends Person implements Serializable {
 
 	/**
 	 * Constructor de la clase administrador
-	 * 
-	 * @param iD,              Identificacion unica del administrador
-	 * @param fullName,        nombre completo del administrador
-	 * @param email,           correo electronico que posee el administrador
+	 * @param iD, Identificacion unica del administrador
+	 * @param fullName, nombre completo del administrador
+	 * @param email, correo electronico que posee el administrador
 	 * @param cellphoneNumber, numero de telefono del administrador
-	 * @param adress,          direccion de residencia actual del administrador
-	 * @param password,        contrasenia con la que ingresara el administrador
+	 * @param adress, direccion de residencia actual del administrador
+	 * @param password, contrasenia con la que ingresara el administrador
 	 */
 	public Admin(String iD, String fullName, String email, String cellphoneNumber, String adress, String password) {
 		super(iD, fullName, email, cellphoneNumber, adress, password);
@@ -49,7 +47,7 @@ public class Admin extends Person implements Serializable {
 	public int hashCode() {
 		return super.hashCode();
 	}
-
+	
 	/**
 	 * Metodo equals del administador que determina si dos objetos son iguales
 	 */
