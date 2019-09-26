@@ -29,7 +29,7 @@ public class PurchaseDetail implements Serializable {
 	private int quantity;
 
 	@Column(name = "price", nullable = false)
-	private int price;
+	private double price;
 
 	private static final long serialVersionUID = 1L;
 
@@ -76,11 +76,11 @@ public class PurchaseDetail implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -89,7 +89,9 @@ public class PurchaseDetail implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ID;
-		result = prime * result + price;
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((product == null) ? 0 : product.hashCode());
 		result = prime * result + ((purchase == null) ? 0 : purchase.hashCode());
 		result = prime * result + quantity;
@@ -107,7 +109,7 @@ public class PurchaseDetail implements Serializable {
 		PurchaseDetail other = (PurchaseDetail) obj;
 		if (ID != other.ID)
 			return false;
-		if (price != other.price)
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		if (product == null) {
 			if (other.product != null)
