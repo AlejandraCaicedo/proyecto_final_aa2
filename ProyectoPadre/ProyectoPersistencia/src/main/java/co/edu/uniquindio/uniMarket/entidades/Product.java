@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,13 +30,22 @@ import javax.persistence.TemporalType;
 
 @NamedQueries({
 
+<<<<<<< HEAD
 		@NamedQuery(name = Product.TODAS_CALIFICACIONES_PRODUCT, query = "select p, r.rate from Product p left join p.rates r "),
 //		@NamedQuery(name = Product.TODOS_USUARIOS_VENDEDORES, query = "select p.user from Product p")
+=======
+		@NamedQuery(name = Product.TODAS_CALIFICACIONES_PRODUCT, query = "select p, r.rate from Product p left join p.listRates r "),
+		@NamedQuery(name = Product.TODOS_USUARIOS_VENDEDORES, query = "select distinct p.user from Product p")
+>>>>>>> f715aa832588fecf92070280077c937d4a89a511
 
 })
 
 @Entity
 public class Product implements Serializable {
+
+	@Id
+	@Column(name = "code", length = 10, nullable = false)
+	private String code; // Codigo que tendra un producto especifico, no puede ser uin campo nulo
 
 	@Column(name = "name", length = 20, nullable = false)
 	private String name; // Nombre que recibe un producto
@@ -46,29 +56,28 @@ public class Product implements Serializable {
 	@Column(name = "price")
 	private double price; // Precio que tiene el producto
 
-	@ElementCollection
-	private List<String> images; // litsa de imagenes que puede existir sobre un producto
-
-	@Id
-	@Column(name = "code", length = 10, nullable = false)
-	private String code; // Codigo que tendra un producto especifico, no puede ser uin campo nulo
-
 	@Column(name = "availability", nullable = false)
 	private int availability; // Cantidad existente de un producto
 
 	private String limit_Date; // Fecha limite para la que puede estar un producto en UniMarket
 
+	@ElementCollection
+	private List<String> images; // litsa de imagenes que puede existir sobre un producto
+
 	@OneToMany(mappedBy = "product")
-	private List<Rate> rates; // Es la lista de calificaciones que le pueden dar ciertos usuarios a un
-								// producto
+	private List<Rate> listRates; // Es la lista de calificaciones que le pueden dar ciertos usuarios a un
+									// producto
 
 	@OneToMany
 	private List<PurchaseDetail> listPurchaseDetails; // Lista de detalles de compra sobre un producto
 
-	private static final long serialVersionUID = 1L;
+	@ManyToOne
+	private User user;
 
 	public static final String TODAS_CALIFICACIONES_PRODUCT = "TODAS_CALIFICACIONES_PRODUCT";
 	public static final String TODOS_USUARIOS_VENDEDORES = "TODOS_USUARIOS_VENDEDORES";
+
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Constructor vacio de la clase producto
@@ -234,7 +243,7 @@ public class Product implements Serializable {
 	 * @return rates
 	 */
 	public List<Rate> getRates() {
-		return rates;
+		return listRates;
 	}
 
 	/**
@@ -243,7 +252,7 @@ public class Product implements Serializable {
 	 * @param rates, es el listado de calificaciones del producto
 	 */
 	public void setRates(List<Rate> rates) {
-		this.rates = rates;
+		this.listRates = rates;
 	}
 
 	/**
@@ -281,7 +290,7 @@ public class Product implements Serializable {
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((rates == null) ? 0 : rates.hashCode());
+		result = prime * result + ((listRates == null) ? 0 : listRates.hashCode());
 		return result;
 	}
 
@@ -331,10 +340,10 @@ public class Product implements Serializable {
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
-		if (rates == null) {
-			if (other.rates != null)
+		if (listRates == null) {
+			if (other.listRates != null)
 				return false;
-		} else if (!rates.equals(other.rates))
+		} else if (!listRates.equals(other.listRates))
 			return false;
 		return true;
 	}
@@ -347,7 +356,7 @@ public class Product implements Serializable {
 	public String toString() {
 		return "Product [name=" + name + ", description=" + description + ", price=" + price + ", images=" + images
 				+ ", code=" + code + ", availability=" + availability + ", limit_Date=" + limit_Date + ", rates="
-				+ rates + ", listPurchaseDetails=" + listPurchaseDetails + "]";
+				+ listRates + ", listPurchaseDetails=" + listPurchaseDetails + "]";
 	}
 
 }

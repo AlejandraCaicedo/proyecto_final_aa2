@@ -31,18 +31,18 @@ import javax.persistence.NamedQueries;
 public class Rate implements Serializable {
 
 	@EmbeddedId
-	private RatePK rateID; //Identificador unico sobre la valoracion de un producto
+	private RatePK rateID; // Identificador unico sobre la valoracion de un producto
 
 	@ManyToOne
 	@MapsId("product")
-	private Product product; //Producto que ha sido valorado
+	private Product product; // Producto que ha sido valorado
 
 	@ManyToOne
 	@MapsId("user")
-	private User user; //Usuario que califica un producto
+	private User user; // Usuario que califica un producto
 
 	@Column(name = "rate", nullable = false)
-	private double rate; //Calificacion obtenida de un producto
+	private double rate; // Calificacion obtenida de un producto
 
 	private static final long serialVersionUID = 1L;
 
@@ -55,10 +55,11 @@ public class Rate implements Serializable {
 
 	/**
 	 * Constructor con parametros para la creacion de una calificacion
-	 * @param rateID, identificacion unica sobre una calificacion
+	 * 
+	 * @param rateID,  identificacion unica sobre una calificacion
 	 * @param product, producto que ha sido calificado
-	 * @param user, usuario que califica un producto
-	 * @param rate, calificacion que obtiene un producto de un usuario
+	 * @param user,    usuario que califica un producto
+	 * @param rate,    calificacion que obtiene un producto de un usuario
 	 */
 	public Rate(RatePK rateID, Product product, User user, double rate) {
 		super();
@@ -70,6 +71,7 @@ public class Rate implements Serializable {
 
 	/**
 	 * Metodo que permite obtener la identificacion de una calificacion
+	 * 
 	 * @return rateID
 	 */
 	public RatePK getRateID() {
@@ -78,7 +80,8 @@ public class Rate implements Serializable {
 
 	/**
 	 * Metodo que permite asignar una identificacion a un producto
-	 * @param rateID, registro unico de una calificacion 
+	 * 
+	 * @param rateID, registro unico de una calificacion
 	 */
 	public void setRateID(RatePK rateID) {
 		this.rateID = rateID;
@@ -86,6 +89,7 @@ public class Rate implements Serializable {
 
 	/**
 	 * Metodo que permite obtener un producto valorado
+	 * 
 	 * @return product
 	 */
 	public Product getProduct() {
@@ -94,6 +98,7 @@ public class Rate implements Serializable {
 
 	/**
 	 * Metodo que permite asignar un producto a la calificacion
+	 * 
 	 * @param product, es el producto a ser valorado
 	 */
 	public void setProduct(Product product) {
@@ -102,6 +107,7 @@ public class Rate implements Serializable {
 
 	/**
 	 * Metodo que permite obtener el ususario que realiza una calificacion
+	 * 
 	 * @return user
 	 */
 	public User getUser() {
@@ -110,6 +116,7 @@ public class Rate implements Serializable {
 
 	/**
 	 * Metodo que permite asignar un usuario que va a calificar un producto
+	 * 
 	 * @param user, usuario que valora un producto
 	 */
 	public void setUser(User user) {
@@ -118,6 +125,7 @@ public class Rate implements Serializable {
 
 	/**
 	 * Metodo que permite obtener la valoracion dada a un producto
+	 * 
 	 * @return rate
 	 */
 	public double getRate() {
@@ -126,6 +134,7 @@ public class Rate implements Serializable {
 
 	/**
 	 * Metodo que permite asignar una calificacion
+	 * 
 	 * @param rate, calificacion que se le da a un producto
 	 */
 	public void setRate(double rate) {
@@ -149,7 +158,8 @@ public class Rate implements Serializable {
 	}
 
 	/**
-	 * Metodo que permite comparar que 2 calificaciones no tengan el mismo identificador
+	 * Metodo que permite comparar que 2 calificaciones no tengan el mismo
+	 * identificador
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -181,7 +191,8 @@ public class Rate implements Serializable {
 	}
 
 	/**
-	 * Metodo que permite dar una forma standarizada a la hora de mostrar la informacion sobre una calificacion
+	 * Metodo que permite dar una forma standarizada a la hora de mostrar la
+	 * informacion sobre una calificacion
 	 */
 	@Override
 	public String toString() {
