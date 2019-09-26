@@ -37,10 +37,10 @@ public class User extends Person implements Serializable {
 	private List<Rate> listRates; // Lista de calificaciones que ha hecho un usuario
 
 	@OneToMany(mappedBy = "user")
-	private List<Commentary> listComments; // Lista de comentario que ha hecho un usuario
+	private List<Commentary> listComments; // Lista de comentarios que ha hecho un usuario
 
 	@OneToMany(mappedBy = "user")
-	private List<Product> listProducts;
+	private List<Product> listProducts; // Lista de productos que ha creado un usuario
 
 	private static final long serialVersionUID = 1L;
 
