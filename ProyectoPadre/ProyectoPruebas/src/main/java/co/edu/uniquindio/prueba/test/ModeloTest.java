@@ -23,6 +23,7 @@ import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
+import co.edu.uniquindio.uniMarket.entidades.RatePK;
 import co.edu.uniquindio.uniMarket.entidades.User;
 
 /**
@@ -172,32 +173,16 @@ public class ModeloTest {
 		entityManager.persist(purchaseDetail);
 	}
 
-// @Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	public void persistenciaPurchaseDetail() {
-//		PurchaseDetail purchaseDetail = new PurchaseDetail(1, 4, 3200);
-//
-//		entityManager.persist(purchaseDetail);
-//	}
-//
 //	@Test
 //	@Transactional(value = TransactionMode.ROLLBACK)
 //	@UsingDataSet({ "product.json", "person.json" })
 //	public void persistenciaRate() {
-//		Product product = entityManager.find(Product.class, "CCDJDJD-988992");
+//		Product product = entityManager.find(Product.class, "CCDJDJD");
 //		User user = entityManager.find(User.class, "1113313495");
 //		RatePK ratePK = new RatePK();
 //		Rate rate = new Rate(ratePK, product, user, 3.5);
 //
 //		entityManager.persist(rate);
-//	}
-//
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	public void persistenciaUser() {
-//		User user = new User("0000", "Carlos Mario", "algo@hotmail.com", "3127309219", "Algun lugar", "contrasena");
-//
-//		entityManager.persist(user);
 //	}
 
 //	@Test
@@ -350,7 +335,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product.json" })
+	@UsingDataSet({ "product" })
 	public void actualizarProduct() {
 
 		Product product = entityManager.find(Product.class, "HHDJCN");
@@ -367,7 +352,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product.json" })
+	@UsingDataSet({ "product" })
 	public void actualizarPurchase() {
 
 		Purchase purchase = entityManager.find(Purchase.class, "1237-ABF");
@@ -384,7 +369,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product.json" })
+	@UsingDataSet({ "product" })
 	public void actualizarPurchaseDetail() {
 
 		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, "1237-ABF");
@@ -395,82 +380,5 @@ public class ModeloTest {
 		PurchaseDetail actualPurchaseDetail = entityManager.find(PurchaseDetail.class, "1237-ABF");
 		Assert.assertEquals(1300, actualPurchaseDetail.getPrice());
 	}
-
-//	@Test
-//
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//
-//	@UsingDataSet({ "marca.json", "vehiculo.json" })
-//	public void probarActualizarVehiculo() {
-//
-//		Vehiculo v = entityManager.find(Vehiculo.class, "7813");
-//		v.setColor("VERDE");
-//
-//		entityManager.merge(v);
-//
-//		Vehiculo registrado = entityManager.find(Vehiculo.class, "7813");
-//
-//		Assert.assertEquals("VERDE", registrado.getColor());
-//
-//	}
-
-//	@Test
-//
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//
-//	@UsingDataSet({ "marca.json", "vehiculo.json" })
-//	public void probarLlaveCompuesta() {
-//
-//		PuntoPK ppk = new PuntoPK();
-//		ppk.setLatitud(1.4563);
-//		ppk.setLongitud(5.36);
-//
-//		Punto p = entityManager.find(Punto.class, ppk);
-//
-//	}
-
-//	@Test
-//
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//
-//	@UsingDataSet({ "marca.json", "vehiculo.json" })
-//	public void probarEliminacionVehiculo() {
-//
-//		Vehiculo v = entityManager.find(Vehiculo.class, "7813");
-//
-//		entityManager.remove(v);
-//
-//		Vehiculo borrado = entityManager.find(Vehiculo.class, "7813");
-//
-//		Assert.assertNull(borrado);
-//
-//	}
-
-//	@Test
-//
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//
-//	@UsingDataSet({ "marca.json", "vehiculo.json" })
-//	public void probarListaVehiculos() {
-//
-//		Query q = entityManager.createNamedQuery(Vehiculo.TODOS_VEHICULOS); // Nombre
-//		// de la variable estatica // Ya se realizó la consulta
-//
-//		List l = q.getResultList();
-//
-//		System.out.println(l); // Este print, nos va a mostrar los vehiculos que se
-//		// encuentra en la tabla, // directamente en la consola
-//
-//		TypedQuery<Vehiculo> tq = entityManager.createNamedQuery(Vehiculo.TODOS_VEHICULOS_COLOR, Vehiculo.class);
-//		tq.setParameter("color", "AZULBLUE");
-//
-//		l = tq.getResultList();
-//
-//		System.out.println(l);
-//
-//		// Este tipo de consulta al ser NamedQuery devuelve un object y por lo tanto
-//		// no // se pueden acceder a los datos de vehiculos, para esto podemos hacer
-//		// TypedQuery.
-//	}
 
 }
