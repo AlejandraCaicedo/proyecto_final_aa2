@@ -12,9 +12,8 @@ import javax.persistence.*;
 
 /**
  * 
- * @author Juan David Ariza
- * @author Alejandra Caicedo Chaves
- * @author Alejandro Gutierrez Velez
+ * @author Juan David Ariza Saavedra
+ * @author Maria Alejandra Caicedo Chaves
  * 
  */
 
@@ -27,7 +26,8 @@ import javax.persistence.*;
 		// from Compra c inner join c.detalleCompra d where c.codigo = :codigo"),
 		// @NamedQuery(name = "TODAS_COMPRAS_PERSONA", query = "select c from Compra c
 		// where c.usuarioCompra.nombre = 'pepito'")
-		@NamedQuery(name = User.PRODUCTOS_USUARIO, query = "select u, p from User u inner join u.listProducts p") })
+//		@NamedQuery(name = User.PRODUCTOS_USUARIO, query = "select u, p from User u inner join u.listProducts p"),
+		@NamedQuery(name = User.ALL_USERS, query = "select u from User u") })
 public class User extends Person implements Serializable {
 
 	@OneToMany(mappedBy = "user")
@@ -45,6 +45,8 @@ public class User extends Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public static final String PRODUCTOS_USUARIO = "PRODUCTOS_USUARIO";
+
+	public static final String ALL_USERS = "ALL_USERS";
 
 	/**
 	 * Constructor vacio de la clase usuario, hereda de la clase persona

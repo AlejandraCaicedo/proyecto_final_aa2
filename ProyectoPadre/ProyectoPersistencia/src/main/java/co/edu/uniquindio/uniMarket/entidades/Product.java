@@ -1,7 +1,6 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,11 +8,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * Entity implementation class for Entity: Producto
@@ -22,9 +17,8 @@ import javax.persistence.TemporalType;
 
 /**
  * 
- * @author Juan David Ariza
- * @author Alejandra Caicedo Chaves
- * @author Alejandro Gutierrez Velez
+ * @author Juan David Ariza Saavedra
+ * @author Maria Alejandra Caicedo Chaves
  * 
  */
 @Entity
@@ -61,8 +55,8 @@ public class Product implements Serializable {
 	@ManyToOne
 	private User user;
 
-	public static final String TODAS_CALIFICACIONES_PRODUCT = "TODAS_CALIFICACIONES_PRODUCT";
-	public static final String TODOS_USUARIOS_VENDEDORES = "TODOS_USUARIOS_VENDEDORES";
+	public static final String ALL_PRODUCT_RATINGS = "TODAS_CALIFICACIONES_PRODUCTO";
+	public static final String ALL_SELLING_USERS = "TODOS_USUARIOS_VENDEDORES";
 
 	private static final long serialVersionUID = 1L;
 

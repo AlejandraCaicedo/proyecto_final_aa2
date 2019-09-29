@@ -10,14 +10,13 @@ import javax.persistence.*;
  */
 /**
  * 
- * @author Juan David Ariza
- * @author Alejandra Caicedo Chaves
- * @author Alejandro Gutierrez Velez
+ * @author Juan David Ariza Saavedra
+ * @author Maria Alejandra Caicedo Chaves
  * 
  */
 
 @Entity
-
+@NamedQueries({ @NamedQuery(name = Commentary.ALL_COMMENTS, query = "select c from Commentary c") })
 public class Commentary implements Serializable {
 
 	@Id
@@ -33,6 +32,8 @@ public class Commentary implements Serializable {
 	private String comment; // Es el comentario que hace un usuario a un producto en especifico
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String ALL_COMMENTS = "ALL_COMMENTS";
 
 	/**
 	 * Contructor vacio de la clase comentario

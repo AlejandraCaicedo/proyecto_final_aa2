@@ -13,10 +13,11 @@ import javax.persistence.*;
  * 
  * @author Juan David Ariza
  * @author Alejandra Caicedo Chaves
- * @author Alejandro Gutierrez Velez
  * 
  */
 
+@NamedQueries({ @NamedQuery(name = Person.ALL_PERSONS, query = "select p from Person p"),
+		@NamedQuery(name = Person.FIND_BY_ID, query = "select p from Person p where p.ID = :ID") })
 @Entity
 @Inheritance
 public class Person implements Serializable {
@@ -38,6 +39,9 @@ public class Person implements Serializable {
 
 	@Column(name = "email", nullable = false)
 	private String email; // Correo electronico de una persona en especifico
+
+	public static final String ALL_PERSONS = "ALL_PERSONS";
+	public static final String FIND_BY_ID = "FIND_BY_ID";
 
 	private static final long serialVersionUID = 1L;
 

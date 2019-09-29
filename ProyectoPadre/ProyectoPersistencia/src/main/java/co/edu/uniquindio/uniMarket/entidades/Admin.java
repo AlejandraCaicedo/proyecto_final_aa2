@@ -11,15 +11,17 @@ import javax.persistence.*;
 
 /**
  * 
- * @author Juan David Ariza
- * @author Alejandra Caicedo Chaves
- * @author Alejandro Gutierrez Velez
+ * @author Juan David Ariza Saavedra
+ * @author Maria Alejandra Caicedo Chaves
  * 
  */
 @Entity
+@NamedQueries({ @NamedQuery(name = Admin.ALL_ADMIN, query = "select a from Admin a") })
 public class Admin extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String ALL_ADMIN = "ALL_ADMIN";
 
 	/**
 	 * Constructor vacio de la clase administrador, hereda de la clase persona
