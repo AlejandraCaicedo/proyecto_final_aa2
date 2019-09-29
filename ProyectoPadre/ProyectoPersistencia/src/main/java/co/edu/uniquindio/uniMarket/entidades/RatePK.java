@@ -5,18 +5,11 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 
 /**
- * ID class for entity: Calificacion
- *
- */
-
-/**
  * 
- * @author Juan David Ariza
- * @author Alejandra Caicedo Chaves
- * @author Alejandro Gutierrez Velez
+ * @author Juan David Ariza Saavedra
+ * @author Maria Alejandra Caicedo Chaves
  * 
  */
-
 @Embeddable
 public class RatePK implements Serializable {
 

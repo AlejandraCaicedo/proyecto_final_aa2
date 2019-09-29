@@ -8,6 +8,8 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -22,6 +24,7 @@ import javax.persistence.OneToMany;
  * 
  */
 @Entity
+@NamedQueries({ @NamedQuery(name = Product.ALL_PRODUCTS, query = "select p from Product p") })
 public class Product implements Serializable {
 
 	@Id
@@ -57,6 +60,7 @@ public class Product implements Serializable {
 
 	public static final String ALL_PRODUCT_RATINGS = "TODAS_CALIFICACIONES_PRODUCTO";
 	public static final String ALL_SELLING_USERS = "TODOS_USUARIOS_VENDEDORES";
+	public static final String ALL_PRODUCTS = "ALL_PRODUCTS";
 
 	private static final long serialVersionUID = 1L;
 

@@ -16,17 +16,15 @@ import javax.persistence.*;
  * @author Maria Alejandra Caicedo Chaves
  * 
  */
-
 @Entity
 @NamedQueries({
 		// @NamedQuery(name = "TODOS_PRODUCTOS_COMPRA_OTRO_EJEMPLO", query = "select
 		// d.productoCompra from Compra c, IN( c.detalleCompra) d where c.codigo = :
 		// codigo"),
-		// @NamedQuery(name = "TODOS_PRODUCTOS_COMPRA", query = "select d.productoCompra
-		// from Compra c inner join c.detalleCompra d where c.codigo = :codigo"),
+//		@NamedQuery(name = User.ALL_PRODUCTS_PURCHASE, query = "select d.product from Purchase p inner join p.PurchaseDetail d where p.purchaseCode = :codigo"),
 		// @NamedQuery(name = "TODAS_COMPRAS_PERSONA", query = "select c from Compra c
 		// where c.usuarioCompra.nombre = 'pepito'")
-//		@NamedQuery(name = User.PRODUCTOS_USUARIO, query = "select u, p from User u inner join u.listProducts p"),
+		@NamedQuery(name = User.USER_PRODUCTS, query = "select u, p from User u inner join u.listProducts p"),
 		@NamedQuery(name = User.ALL_USERS, query = "select u from User u") })
 public class User extends Person implements Serializable {
 
@@ -44,9 +42,9 @@ public class User extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final String PRODUCTOS_USUARIO = "PRODUCTOS_USUARIO";
-
+	public static final String USER_PRODUCTS = "USER_PRODUCTS";
 	public static final String ALL_USERS = "ALL_USERS";
+//	public static final String ALL_PRODUCTS_PURCHASE = "TODOS_PRDUCTOS_COMPRA";
 
 	/**
 	 * Constructor vacio de la clase usuario, hereda de la clase persona

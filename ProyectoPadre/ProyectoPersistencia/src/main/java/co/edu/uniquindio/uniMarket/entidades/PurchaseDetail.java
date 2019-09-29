@@ -14,12 +14,10 @@ import javax.persistence.ManyToOne;
 
 /**
  * 
- * @author Juan David Ariza
- * @author Alejandra Caicedo Chaves
- * @author Alejandro Gutierrez Velez
+ * @author Juan David Ariza Saavedra
+ * @author Maria Alejandra Caicedo Chaves
  * 
  */
-
 @Entity
 public class PurchaseDetail implements Serializable {
 

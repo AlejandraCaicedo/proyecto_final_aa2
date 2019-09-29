@@ -11,15 +11,14 @@ import javax.persistence.*;
 
 /**
  * 
- * @author Juan David Ariza
- * @author Alejandra Caicedo Chaves
+ * @author Juan David Ariza Saavedra
+ * @author Maria Alejandra Caicedo Chaves
  * 
  */
-
-@NamedQueries({ @NamedQuery(name = Person.ALL_PERSONS, query = "select p from Person p"),
-		@NamedQuery(name = Person.FIND_BY_ID, query = "select p from Person p where p.ID = :ID") })
 @Entity
 @Inheritance
+@NamedQueries({ @NamedQuery(name = Person.ALL_PERSONS, query = "select p from Person p"),
+		@NamedQuery(name = Person.FIND_BY_ID, query = "select p from Person p where p.ID = :ID") })
 public class Person implements Serializable {
 
 	@Id

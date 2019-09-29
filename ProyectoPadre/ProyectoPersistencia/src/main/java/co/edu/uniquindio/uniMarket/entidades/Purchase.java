@@ -2,7 +2,6 @@ package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,9 +10,9 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * Entity implementation class for Entity: Compra
@@ -22,13 +21,12 @@ import javax.persistence.TemporalType;
 
 /**
  * 
- * @author Juan David Ariza
- * @author Alejandra Caicedo Chaves
- * @author Alejandro Gutierrez Velez
+ * @author Juan David Ariza Saavedra
+ * @author Maria Alejandra Caicedo Chaves
  * 
  */
-
 @Entity
+@NamedQueries({ @NamedQuery(name = Purchase.ALL_PURCHASES, query = "select p from Purchase p") })
 public class Purchase implements Serializable {
 
 	@Id
@@ -47,6 +45,8 @@ public class Purchase implements Serializable {
 	private List<PurchaseDetail> listPurchaseDetails; // Lista de los detalles de venta por cada venta de un producto
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String ALL_PURCHASES = "ALL_PURCHASES";
 
 	/**
 	 * Constructor vacio para la clase compra

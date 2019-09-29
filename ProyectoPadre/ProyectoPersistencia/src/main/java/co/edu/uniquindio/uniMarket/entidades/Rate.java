@@ -8,26 +8,17 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.NamedQueries;
-
-/**
- * Entity implementation class for Entity: Calificacion
- *
- */
-@NamedQueries({
-
-		// @NamedQuery(name = "CALIFICACIONES_PRODUCTO", query = "select c from
-		// Calificacion c where c.productoCalificacion.codigo = :codigo")
-})
+import javax.persistence.NamedQuery;
 
 /**
  * 
- * @author Juan David Ariza
- * @author Alejandra Caicedo Chaves
- * @author Alejandro Gutierrez Velez
+ * @author Juan David Ariza Saavedra
+ * @author Maria Alejandra Caicedo Chaves
  * 
  */
-
 @Entity
+@NamedQueries({ @NamedQuery(name = Rate.ALL_RATINGS, query = "select r from Rate r"),
+		@NamedQuery(name = Rate.RATIGNS_PRODUCT, query = "select r from Rate r where r.product.code = :codigo") })
 public class Rate implements Serializable {
 
 	@EmbeddedId
@@ -45,6 +36,9 @@ public class Rate implements Serializable {
 	private double rate; // Calificacion obtenida de un producto
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String ALL_RATINGS = "ALL_RATINGS";
+	public static final String RATIGNS_PRODUCT = "RATIGNS_PRODUCT";
 
 	/**
 	 * Constructor vacio de la clase calificacion
