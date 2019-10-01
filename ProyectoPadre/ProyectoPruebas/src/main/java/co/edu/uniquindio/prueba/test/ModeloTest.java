@@ -435,10 +435,10 @@ public class ModeloTest {
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "purchasedetail.json" })
 	public void removePurchaseDetail() {
-		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, "00000112");
+		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, 1);
 		entityManager.remove(purchaseDetail);
 
-		PurchaseDetail actualPurchaseDetail = entityManager.find(PurchaseDetail.class, "00000112");
+		PurchaseDetail actualPurchaseDetail = entityManager.find(PurchaseDetail.class, 1);
 		Assert.assertNull(actualPurchaseDetail);
 	}
 

@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -30,7 +32,7 @@ import javax.persistence.OneToMany;
 		@NamedQuery(name = Product.AVG_RATING_PRODUCT, query = "select AVG(r.rate) from Product p INNER JOIN p.listRates r where p.code =:code"),
 		@NamedQuery(name = Product.AVG_RATING_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.AVG_RATING( avg(r.rate) ) from Product p INNER JOIN p.listRates r"),
 		@NamedQuery(name = Product.NUMBER_TYPES_PRODUCTS, query = "select count (p) from Product p group by p.type"),
-		@NamedQuery(name = Product.EMPTY_COMMENTARY, query = "select p from Product p where p.listCommentaries is empty")})
+		@NamedQuery(name = Product.EMPTY_COMMENTARY, query = "select p from Product p where p.listCommentaries is empty") })
 
 public class Product implements Serializable {
 
@@ -50,6 +52,7 @@ public class Product implements Serializable {
 	@Column(name = "availability", nullable = false)
 	private int availability; // Cantidad existente de un producto
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "type")
 	private Type type; // Clasificacion del producto
 

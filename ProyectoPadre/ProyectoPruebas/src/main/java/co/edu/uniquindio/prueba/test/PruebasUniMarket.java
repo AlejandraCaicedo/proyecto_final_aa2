@@ -45,18 +45,18 @@ public class PruebasUniMarket {
 
 	}
 
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product.json", "rate.json" })
-	public void probarAVG_RATE() {
-
-	}
-
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "purchase.json", "rate.json" })
-	public void probarAVG() {
-
-	}
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	@UsingDataSet({ "product.json", "rate.json" })
+//	public void probarAVG_RATE() {
+//
+//	}
+//
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	@UsingDataSet({ "purchase.json", "rate.json" })
+//	public void probarAVG() {
+//
+//	}
 
 }

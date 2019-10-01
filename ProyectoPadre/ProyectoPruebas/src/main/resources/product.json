@@ -8,7 +8,7 @@
 			"name": "Computer LENOVO",
 			"price": 4563778.32,
 			"USER_ID": "0001",
-			"TYPE": "TECHNOLOGY"
+			"type": "TECHNOLOGY"
 		},
 		{
 			"code": "HHDJCN",
@@ -18,7 +18,7 @@
 			"name": "Volleyball ball",
 			"price": 280448.76,
 			"USER_ID": "0000",
-			"TYPE": "FASHION"
+			"type": "FASHION"
 		},
 		{
 			"code": "YYFUIWNN",
@@ -28,7 +28,7 @@
 			"name": "The divine comedy",
 			"price": 56000.87,
 			"USER_ID": "0001",
-			"TYPE": "BOOKS"
+			"type": "BOOKS"
 		},
 		{
 			"code": "IIRPOR",
@@ -38,7 +38,7 @@
 			"name": "Watch Rolex 24",
 			"price": 429000.67,
 			"USER_ID": "0002",
-			"TYPE": "JEWELRY"
+			"type": "JEWELRY"
 		}
 	],
 	"Product_IMAGES": [
