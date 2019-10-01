@@ -389,6 +389,7 @@ public class ModeloTest {
 
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "person.json" })
 	public void removeAdmin() {
 		Admin admin = entityManager.find(Admin.class, "0003");
 		entityManager.remove(admin);
@@ -396,4 +397,76 @@ public class ModeloTest {
 		Admin actualAdmin = entityManager.find(Admin.class, "0003");
 		Assert.assertNull(actualAdmin);
 	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "commentary.json" })
+	public void removeCommentary() {
+		Commentary commentary = entityManager.find(Commentary.class, "00000112");
+		entityManager.remove(commentary);
+
+		Commentary actualCommentary = entityManager.find(Commentary.class, "00000112");
+		Assert.assertNull(actualCommentary);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json" })
+	public void removeProduct() {
+		Product product = entityManager.find(Product.class, "HHDJCN");
+		entityManager.remove(product);
+
+		Product actualProduct = entityManager.find(Product.class, "HHDJCN");
+		Assert.assertNull(actualProduct);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "purchase.json" })
+	public void removePurchase() {
+		Purchase purchase = entityManager.find(Purchase.class, "1236-ABE");
+		entityManager.remove(purchase);
+
+		Purchase actualPurchase = entityManager.find(Purchase.class, "1236-ABE");
+		Assert.assertNull(actualPurchase);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "purchasedetail.json" })
+	public void removePurchaseDetail() {
+		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, "00000112");
+		entityManager.remove(purchaseDetail);
+
+		PurchaseDetail actualPurchaseDetail = entityManager.find(PurchaseDetail.class, "00000112");
+		Assert.assertNull(actualPurchaseDetail);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "rate.json" })
+	public void removeRate() {
+		RatePK ratePK = new RatePK();
+		ratePK.setProduct("CCDJDJD");
+		ratePK.setUser("0001");
+
+		Rate rate = entityManager.find(Rate.class, ratePK);
+		entityManager.remove(rate);
+
+		Rate actualRate = entityManager.find(Rate.class, ratePK);
+		Assert.assertNull(actualRate);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "person.json" })
+	public void removeUser() {
+
+		User user = entityManager.find(User.class, "0001");
+		entityManager.remove(user);
+
+		User actualUser = entityManager.find(User.class, "0001");
+		Assert.assertNull(actualUser);
+	}
+
 }
