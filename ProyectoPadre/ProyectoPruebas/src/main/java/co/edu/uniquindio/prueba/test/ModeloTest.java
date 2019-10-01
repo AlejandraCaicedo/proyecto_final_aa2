@@ -23,6 +23,7 @@ import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
+import co.edu.uniquindio.uniMarket.entidades.RatePK;
 import co.edu.uniquindio.uniMarket.entidades.User;
 
 /**
@@ -95,6 +96,7 @@ public class ModeloTest {
 		comment.setUser(user);
 
 		entityManager.persist(comment);
+
 	}
 
 	/**
@@ -165,7 +167,7 @@ public class ModeloTest {
 
 		PurchaseDetail purchaseDetail = new PurchaseDetail();
 
-		purchaseDetail.setID(0);
+		purchaseDetail.setID(1);
 		purchaseDetail.setPrice(0);
 		purchaseDetail.setProduct(product);
 		purchaseDetail.setPurchase(purchase);
@@ -200,7 +202,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "commentary.json" })
+	@UsingDataSet({ "commentary.json", "product.json" })
 	public void encontrarCommentary() {
 
 		Commentary comment = entityManager.find(Commentary.class, "00000112");
@@ -250,8 +252,12 @@ public class ModeloTest {
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "rate.json" })
 	public void encontrarRate() {
-		Rate rate = entityManager.find(Rate.class, "a");
-		Assert.assertEquals(3.7, rate.getRate());
+		RatePK llave = new RatePK();
+		llave.setUser("0001");
+		llave.setProduct("CCDJDJD");
+
+		Rate rate = entityManager.find(Rate.class, llave);
+		Assert.assertEquals(new Double(3.4), new Double(rate.getRate()));
 	}
 
 	/**
@@ -347,7 +353,7 @@ public class ModeloTest {
 	@UsingDataSet({ "product.json" })
 	public void actualizarPurchaseDetail() {
 
-		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, "1237-ABF");
+		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, 1);
 		purchaseDetail.setPrice(1300);
 
 		entityManager.merge(purchaseDetail);

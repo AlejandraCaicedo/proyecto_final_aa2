@@ -28,6 +28,7 @@ public class Commentary implements Serializable {
 
 	private Product product; // Es el producto que desea comentar el usuario
 
+	@Lob
 	@Column(name = "comment", nullable = false)
 	private String comment; // Es el comentario que hace un usuario a un producto en especifico
 

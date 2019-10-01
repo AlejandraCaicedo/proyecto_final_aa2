@@ -25,10 +25,10 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = Product.ALL_PRODUCTS, query = "select p from Product p"),
-		@NamedQuery(name = Product.AVG_RATING, query = "select AVG(p.listRates.rate), p.code  from Product p, INNER JOIN p.listRates"),
-		@NamedQuery(name = Product.AVG_RATING_INCLUSIVE, query = "select AVG(p.listRates.rate), p.code from Product p, LEFT JOIN p.listRates"),
-		@NamedQuery(name = Product.AVG_RATING_PRODUCT, query = "select AVG(p.listRates.rate) from Product p, INNER JOIN p.listRates where p.code =:code"),
-		@NamedQuery(name = Product.AVG_RATING_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.AVG_RATING(p.rate) from Product p") })
+		@NamedQuery(name = Product.AVG_RATING, query = "select AVG(r.rate), p.code  from Product p INNER JOIN p.listRates r"),
+		@NamedQuery(name = Product.AVG_RATING_INCLUSIVE, query = "select AVG(r.rate), p.code from Product p LEFT JOIN p.listRates r"),
+		@NamedQuery(name = Product.AVG_RATING_PRODUCT, query = "select AVG(r.rate) from Product p INNER JOIN p.listRates r where p.code =:code"),
+		@NamedQuery(name = Product.AVG_RATING_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.AVG_RATING( avg(r.rate) ) from Product p INNER JOIN p.listRates r") })
 
 public class Product implements Serializable {
 
@@ -53,7 +53,6 @@ public class Product implements Serializable {
 	@ElementCollection
 	private List<String> images; // litsa de imagenes que puede existir sobre un producto
 
-	@ElementCollection
 	@OneToMany(mappedBy = "product")
 	private List<Rate> listRates; // Es la lista de calificaciones que le pueden dar ciertos usuarios a un
 									// producto

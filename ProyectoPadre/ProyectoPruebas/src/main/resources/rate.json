@@ -1,16 +1,19 @@
 {
 	"RATE": [
 		{
+			"PRODUCT_code": "CCDJDJD",
+			"USER_ID": "0000",
 			"rate": 3.7
 		},
 		{
-			"rate": 2.8
+			"PRODUCT_code": "CCDJDJD",
+			"USER_ID": "0001",
+			"rate": 3.4
 		},
 		{
-			"rate": 4.2
-		},
-		{
-			"rate": 3.9
+			"PRODUCT_code": "CCDJDJD",
+			"USER_ID": "0002",
+			"rate": 3.5
 		}
 	]
 }
