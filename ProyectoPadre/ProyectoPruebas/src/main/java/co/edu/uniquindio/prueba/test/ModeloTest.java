@@ -358,7 +358,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product.json" })
+	@UsingDataSet({ "purchase.json" })
 	public void actualizarPurchase() {
 
 		Purchase purchase = entityManager.find(Purchase.class, "1237-ABF");
@@ -385,5 +385,15 @@ public class ModeloTest {
 
 		PurchaseDetail actualPurchaseDetail = entityManager.find(PurchaseDetail.class, 1);
 		Assert.assertEquals(new Double(1300), new Double(actualPurchaseDetail.getPrice()));
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	public void removeAdmin() {
+		Admin admin = entityManager.find(Admin.class, "0003");
+		entityManager.remove(admin);
+
+		Admin actualAdmin = entityManager.find(Admin.class, "0003");
+		Assert.assertNull(actualAdmin);
 	}
 }
