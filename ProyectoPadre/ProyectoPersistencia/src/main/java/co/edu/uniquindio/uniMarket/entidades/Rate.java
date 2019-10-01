@@ -18,7 +18,8 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = Rate.ALL_RATINGS, query = "select r from Rate r"),
-		@NamedQuery(name = Rate.RATIGNS_PRODUCT, query = "select r from Rate r where r.product.code = :codigo") })
+		@NamedQuery(name = Rate.RATINGS_PRODUCT, query = "select r from Rate r where r.product.code = :codigo") })
+
 public class Rate implements Serializable {
 
 	@EmbeddedId
@@ -37,8 +38,10 @@ public class Rate implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	// Query que retorna todos los ratings del UniMarket
 	public static final String ALL_RATINGS = "ALL_RATINGS";
-	public static final String RATIGNS_PRODUCT = "RATIGNS_PRODUCT";
+	// Query que retorna la calificacion de un producto dado su codigo
+	public static final String RATINGS_PRODUCT = "RATIGNS_PRODUCT";
 
 	/**
 	 * Constructor vacio de la clase calificacion

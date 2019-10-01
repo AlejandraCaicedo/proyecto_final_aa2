@@ -24,7 +24,11 @@ import javax.persistence.OneToMany;
  * 
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Product.ALL_PRODUCTS, query = "select p from Product p") })
+@NamedQueries({ @NamedQuery(name = Product.ALL_PRODUCTS, query = "select p from Product p"),
+		@NamedQuery(name = Product.AVG_RATING, query = "select AVG(p.listRates.rate), p.code  from Product p, INNER JOIN p.listRates"),
+		@NamedQuery(name = Product.AVG_RATING_INCLUSIVE, query = "select AVG(p.listRates.rate), p.code from Product p, LEFT JOIN p.listRates"),
+		@NamedQuery(name = Product.AVG_RATING_PRODUCT, query = "select AVG(p.listRates.rate) from Product p, INNER JOIN p.listRates where p.code =:code") })
+
 public class Product implements Serializable {
 
 	@Id
@@ -48,6 +52,7 @@ public class Product implements Serializable {
 	@ElementCollection
 	private List<String> images; // litsa de imagenes que puede existir sobre un producto
 
+	@ElementCollection
 	@OneToMany(mappedBy = "product")
 	private List<Rate> listRates; // Es la lista de calificaciones que le pueden dar ciertos usuarios a un
 									// producto
@@ -58,9 +63,24 @@ public class Product implements Serializable {
 	@ManyToOne
 	private User user;
 
+	// Query que retorna todas las calificaciones de un producto
 	public static final String ALL_PRODUCT_RATINGS = "TODAS_CALIFICACIONES_PRODUCTO";
+
+	// Query que retorna todos los Usuarios que son vendedores
 	public static final String ALL_SELLING_USERS = "TODOS_USUARIOS_VENDEDORES";
+
+	// Query que retorna todos los productos en UniMarket
 	public static final String ALL_PRODUCTS = "ALL_PRODUCTS";
+
+	// Query que retorna el rating promedio de cada producto
+	public static final String AVG_RATING = "AVG_RATING";
+
+	// Query que retorna el rating promedio de cada producto incluyendo aquellos que
+	// no tienen rating
+	public static final String AVG_RATING_INCLUSIVE = "AVG_RATING_INCLUSIVE";
+
+	// Query que retorna el rating promedio de un producto al especificar su codigo
+	public static final String AVG_RATING_PRODUCT = "AVG_RATING_PRODUCT";
 
 	private static final long serialVersionUID = 1L;
 
