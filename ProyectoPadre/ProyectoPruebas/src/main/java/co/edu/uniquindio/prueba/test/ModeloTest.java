@@ -28,13 +28,11 @@ import co.edu.uniquindio.uniMarket.entidades.User;
 
 /**
  * 
- * @author Juan David Ariza
- * @author Alejandra Caicedo Chaves
- * @author Alejandro Gutierrez Velez
+ * @author Juan David Ariza Saavedra
+ * @author Maria Alejandra Caicedo Chaves
  * 
  */
 
-@SuppressWarnings("deprecation")
 @RunWith(Arquillian.class)
 public class ModeloTest {
 
@@ -70,13 +68,16 @@ public class ModeloTest {
 	@Transactional(value = TransactionMode.ROLLBACK)
 	public void persistenciaAdmin() {
 		Admin prueba = new Admin();
+
 		prueba.setID("0000");
 		prueba.setFullName("Carlos");
 		prueba.setAdress("adress");
 		prueba.setCellphoneNumber("3154748461");
 		prueba.setEmail("algo@hotmail");
 		prueba.setPassword("12345");
+
 		entityManager.persist(prueba);
+		Assert.assertNotNull(prueba);
 	}
 
 	/**
@@ -96,7 +97,7 @@ public class ModeloTest {
 		comment.setUser(user);
 
 		entityManager.persist(comment);
-
+		Assert.assertNotNull(comment);
 	}
 
 	/**
@@ -116,6 +117,7 @@ public class ModeloTest {
 		user.setPassword("iamrobot");
 
 		entityManager.persist(user);
+		Assert.assertNotNull(user);
 	}
 
 	/**
@@ -134,6 +136,7 @@ public class ModeloTest {
 		product.setPrice(12345);
 
 		entityManager.persist(product);
+		Assert.assertNotNull(product);
 	}
 
 	/**
@@ -152,6 +155,7 @@ public class ModeloTest {
 		purchase.setUser(user);
 
 		entityManager.persist(purchase);
+		Assert.assertNotNull(purchase);
 	}
 
 	/**
@@ -174,6 +178,27 @@ public class ModeloTest {
 		purchaseDetail.setQuantity(0);
 
 		entityManager.persist(purchaseDetail);
+		Assert.assertNotNull(purchaseDetail);
+	}
+
+	/**
+	 * Metodo que realiza la persistencia de la calificacion de un producto
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json", "person.json" })
+	public void persistenciaRate() {
+
+		Product product = entityManager.find(Product.class, "HHDJCN");
+		User user = entityManager.find(User.class, "0001");
+
+		Rate rate = new Rate();
+		rate.setRate(3.8);
+		rate.setProduct(product);
+		rate.setUser(user);
+
+		entityManager.persist(rate);
+		Assert.assertNotNull(rate);
 	}
 
 	@Test
@@ -181,7 +206,7 @@ public class ModeloTest {
 	@UsingDataSet({ "person.json" })
 	public void encontrarAdmin() {
 
-		Admin admin = entityManager.find(Admin.class, "0003");
+		Admin admin = entityManager.find(Admin.class, "0004");
 		Assert.assertEquals("Maria Alejandra", admin.getFullName());
 	}
 
@@ -194,7 +219,7 @@ public class ModeloTest {
 	public void encontrarUser() {
 
 		User user = entityManager.find(User.class, "0001");
-		Assert.assertEquals("Juan Daivd", user.getFullName());
+		Assert.assertEquals("Juan David", user.getFullName());
 	}
 
 	/**
@@ -226,7 +251,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "purchase.json" })
+	@UsingDataSet({ "purchase.json", "person.json" })
 	public void encontrarPurchase() {
 
 		Purchase purchase = entityManager.find(Purchase.class, "1235-ABD");
@@ -238,11 +263,11 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "purchasedetail.json" })
+	@UsingDataSet({ "purchasedetail.json", "product.json" })
 	public void encontrarPurchaseDetail() {
 
-		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, 2238839);
-		Assert.assertEquals("IIRPOR", purchaseDetail.getProduct());
+		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, 3);
+		Assert.assertEquals("YYFUIWNN", purchaseDetail.getProduct().getCode());
 	}
 
 	/**
@@ -341,7 +366,7 @@ public class ModeloTest {
 
 		entityManager.merge(purchase);
 
-		Purchase actualPurchase = entityManager.find(Purchase.class, "HHDJCN");
+		Purchase actualPurchase = entityManager.find(Purchase.class, "1237-ABF");
 		Assert.assertEquals("2019-02-13", actualPurchase.getPurchaseDate());
 	}
 
@@ -350,7 +375,7 @@ public class ModeloTest {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "product.json" })
+	@UsingDataSet({ "product.json", "purchasedetail.json" })
 	public void actualizarPurchaseDetail() {
 
 		PurchaseDetail purchaseDetail = entityManager.find(PurchaseDetail.class, 1);
@@ -358,8 +383,7 @@ public class ModeloTest {
 
 		entityManager.merge(purchaseDetail);
 
-		PurchaseDetail actualPurchaseDetail = entityManager.find(PurchaseDetail.class, "1237-ABF");
-		Assert.assertEquals(1300, actualPurchaseDetail.getPrice());
+		PurchaseDetail actualPurchaseDetail = entityManager.find(PurchaseDetail.class, 1);
+		Assert.assertEquals(new Double(1300), new Double(actualPurchaseDetail.getPrice()));
 	}
-
 }
