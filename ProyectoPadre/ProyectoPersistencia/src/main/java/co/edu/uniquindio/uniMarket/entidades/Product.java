@@ -27,7 +27,8 @@ import javax.persistence.OneToMany;
 @NamedQueries({ @NamedQuery(name = Product.ALL_PRODUCTS, query = "select p from Product p"),
 		@NamedQuery(name = Product.AVG_RATING, query = "select AVG(p.listRates.rate), p.code  from Product p, INNER JOIN p.listRates"),
 		@NamedQuery(name = Product.AVG_RATING_INCLUSIVE, query = "select AVG(p.listRates.rate), p.code from Product p, LEFT JOIN p.listRates"),
-		@NamedQuery(name = Product.AVG_RATING_PRODUCT, query = "select AVG(p.listRates.rate) from Product p, INNER JOIN p.listRates where p.code =:code") })
+		@NamedQuery(name = Product.AVG_RATING_PRODUCT, query = "select AVG(p.listRates.rate) from Product p, INNER JOIN p.listRates where p.code =:code"),
+		@NamedQuery(name = Product.AVG_RATING_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.AVG_RATING(p.rate) from Product p") })
 
 public class Product implements Serializable {
 
@@ -81,6 +82,8 @@ public class Product implements Serializable {
 
 	// Query que retorna el rating promedio de un producto al especificar su codigo
 	public static final String AVG_RATING_PRODUCT = "AVG_RATING_PRODUCT";
+
+	public static final String AVG_RATING_DTO = "AVG_RATING_DTO";
 
 	private static final long serialVersionUID = 1L;
 

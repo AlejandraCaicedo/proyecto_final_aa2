@@ -27,9 +27,8 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = Purchase.ALL_PURCHASES, query = "select p from Purchase p"),
-		@NamedQuery(name = Purchase.PURCHASE_DATE, query = " select p.purchaseCode, p.paymentMethod, p.user.ID, p.user.email from Purchase p where p.purchaseDate = :purchaseDate ") }
-
-)
+		@NamedQuery(name = Purchase.PURCHASE_DATE, query = "select p.purchaseCode, p.paymentMethod, p.user.ID, p.user.email from Purchase p where p.purchaseDate = :purchaseDate "),
+		@NamedQuery(name = Purchase.PURCHASE_DATE_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.PURCHASE_DATE(p.purchaseCode,p.paymentMethod,p.user.ID,p.user.email) from Purchase p where p.purchaseDate =:purchaseDate") })
 public class Purchase implements Serializable {
 
 	@Id
@@ -54,6 +53,8 @@ public class Purchase implements Serializable {
 	// Query que retorna los codigos, los metodos de pago, las ID y los email de los
 	// usuarios que hicieron una oompra en una fecha especificada
 	public static final String PURCHASE_DATE = "PURCHASE_DATE";
+	// Query que retorna los mismo del query PURCHASE_DATE usando DTO
+	public static final String PURCHASE_DATE_DTO = "PURCHASE_DATE_DTO";
 
 	/**
 	 * Constructor vacio para la clase compra
