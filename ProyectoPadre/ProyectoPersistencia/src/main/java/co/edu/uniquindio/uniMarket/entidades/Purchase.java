@@ -51,9 +51,9 @@ public class Purchase implements Serializable {
 	public static final String ALL_PURCHASES = "ALL_PURCHASES";
 
 	// Query que retorna los codigos, los metodos de pago, las ID y los email de los
-	// usuarios que hicieron una oompra en una fecha especificada
+	// usuarios que hicieron una compra en una fecha especificada
 	public static final String PURCHASE_DATE = "PURCHASE_DATE";
-	// Query que retorna los mismo del query PURCHASE_DATE usando DTO
+	// Query que retorna lo mismo del query PURCHASE_DATE usando DTO
 	public static final String PURCHASE_DATE_DTO = "PURCHASE_DATE_DTO";
 
 	/**
