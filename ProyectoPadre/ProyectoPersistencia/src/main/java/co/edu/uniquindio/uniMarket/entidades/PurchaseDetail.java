@@ -23,7 +23,7 @@ public class PurchaseDetail implements Serializable {
 
 	@Id
 	@Column(name = "ID", nullable = false)
-	private int ID; // Identificado unico del detalle de compre
+	private int ID; // Identificado unico del detalle de compra
 
 	@Column(name = "quantity", nullable = false)
 	private int quantity; // Cantidad de productos adquiridos

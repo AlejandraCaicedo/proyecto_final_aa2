@@ -28,7 +28,9 @@ import javax.persistence.OneToMany;
 		@NamedQuery(name = Product.AVG_RATING, query = "select AVG(r.rate), p.code  from Product p INNER JOIN p.listRates r"),
 		@NamedQuery(name = Product.AVG_RATING_INCLUSIVE, query = "select AVG(r.rate), p.code from Product p LEFT JOIN p.listRates r"),
 		@NamedQuery(name = Product.AVG_RATING_PRODUCT, query = "select AVG(r.rate) from Product p INNER JOIN p.listRates r where p.code =:code"),
-		@NamedQuery(name = Product.AVG_RATING_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.AVG_RATING( avg(r.rate) ) from Product p INNER JOIN p.listRates r") })
+		@NamedQuery(name = Product.AVG_RATING_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.AVG_RATING( avg(r.rate) ) from Product p INNER JOIN p.listRates r"),
+		@NamedQuery(name = Product.NUMBER_TYPES_PRODUCTS, query = "select count (p) from Product p group by p.type"),
+		@NamedQuery(name = Product.EMPTY_COMMENTARY, query = "select p from Product p where p.listCommentaries is empty")})
 
 public class Product implements Serializable {
 
@@ -48,6 +50,9 @@ public class Product implements Serializable {
 	@Column(name = "availability", nullable = false)
 	private int availability; // Cantidad existente de un producto
 
+	@Column(name = "type")
+	private Type type; // Clasificacion del producto
+
 	private String limit_Date; // Fecha limite para la que puede estar un producto en UniMarket
 
 	@ElementCollection
@@ -56,6 +61,9 @@ public class Product implements Serializable {
 	@OneToMany(mappedBy = "product")
 	private List<Rate> listRates; // Es la lista de calificaciones que le pueden dar ciertos usuarios a un
 									// producto
+
+	@OneToMany(mappedBy = "product")
+	private List<Commentary> listCommentaries;
 
 	@OneToMany
 	private List<PurchaseDetail> listPurchaseDetails; // Lista de detalles de compra sobre un producto
@@ -84,6 +92,11 @@ public class Product implements Serializable {
 
 	public static final String AVG_RATING_DTO = "AVG_RATING_DTO";
 
+	// Query que retorna el numero de productos que hat por categoría (Type)
+	public static final String NUMBER_TYPES_PRODUCTS = "NUMBER_TYPES_PRODUCTS";
+
+	public static final String EMPTY_COMMENTARY = "EMPTY_COMMENTARY";
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -103,16 +116,19 @@ public class Product implements Serializable {
 	 * @param code,         codigo que identificara cada producto, no se puede
 	 *                      repetir
 	 * @param availability, disponibilidad de un producto
+	 * @param type,         Clasificacion del producto
 	 * @param limit_Date,   fecha limite hasta la que un producto se va a encontrar
 	 *                      publicado en la tienda
 	 */
-	public Product(String name, String description, double price, String code, int availability, String limit_Date) {
+	public Product(String code, String name, String description, double price, int availability, Type type,
+			String limit_Date) {
 		super();
+		this.code = code;
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.code = code;
 		this.availability = availability;
+		this.type = type;
 		this.limit_Date = limit_Date;
 	}
 
@@ -281,6 +297,17 @@ public class Product implements Serializable {
 	}
 
 	/**
+	 * Metodo que asigna una forma standar a la hora de mostrar la informacion sobre
+	 * un producto
+	 */
+	@Override
+	public String toString() {
+		return "Product [code=" + code + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", availability=" + availability + ", type=" + type + ", limit_Date=" + limit_Date + ", images="
+				+ images + ", user=" + user + "]";
+	}
+
+	/**
 	 * Metodo hashCode para los productos
 	 */
 	@Override
@@ -293,11 +320,13 @@ public class Product implements Serializable {
 		result = prime * result + ((images == null) ? 0 : images.hashCode());
 		result = prime * result + ((limit_Date == null) ? 0 : limit_Date.hashCode());
 		result = prime * result + ((listPurchaseDetails == null) ? 0 : listPurchaseDetails.hashCode());
+		result = prime * result + ((listRates == null) ? 0 : listRates.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((listRates == null) ? 0 : listRates.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -340,6 +369,11 @@ public class Product implements Serializable {
 				return false;
 		} else if (!listPurchaseDetails.equals(other.listPurchaseDetails))
 			return false;
+		if (listRates == null) {
+			if (other.listRates != null)
+				return false;
+		} else if (!listRates.equals(other.listRates))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -347,23 +381,14 @@ public class Product implements Serializable {
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
-		if (listRates == null) {
-			if (other.listRates != null)
+		if (type != other.type)
+			return false;
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!listRates.equals(other.listRates))
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
-	}
-
-	/**
-	 * Metodo que asigna una forma standar a la hora de mostrar la informacion sobre
-	 * un producto
-	 */
-	@Override
-	public String toString() {
-		return "Product [name=" + name + ", description=" + description + ", price=" + price + ", images=" + images
-				+ ", code=" + code + ", availability=" + availability + ", limit_Date=" + limit_Date + ", rates="
-				+ listRates + ", listPurchaseDetails=" + listPurchaseDetails + "]";
 	}
 
 }

@@ -28,7 +28,8 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({ @NamedQuery(name = Purchase.ALL_PURCHASES, query = "select p from Purchase p"),
 		@NamedQuery(name = Purchase.PURCHASE_DATE, query = "select p.purchaseCode, p.paymentMethod, p.user.ID, p.user.email from Purchase p where p.purchaseDate = :purchaseDate "),
-		@NamedQuery(name = Purchase.PURCHASE_DATE_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.PURCHASE_DATE(p.purchaseCode,p.paymentMethod,p.user.ID,p.user.email) from Purchase p where p.purchaseDate =:purchaseDate") })
+		@NamedQuery(name = Purchase.PURCHASE_DATE_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.PURCHASE_DATE(p.purchaseCode,p.paymentMethod,p.user.ID,p.user.email) from Purchase p where p.purchaseDate =:purchaseDate"),
+		@NamedQuery(name = Purchase.UNIQUE_PURCHASES, query = "select count(p) from Purchase p") })
 public class Purchase implements Serializable {
 
 	@Id
@@ -55,6 +56,8 @@ public class Purchase implements Serializable {
 	public static final String PURCHASE_DATE = "PURCHASE_DATE";
 	// Query que retorna lo mismo del query PURCHASE_DATE usando DTO
 	public static final String PURCHASE_DATE_DTO = "PURCHASE_DATE_DTO";
+	// Query que retorna el número de compras únicas
+	public static final String UNIQUE_PURCHASES = "UNIQUE_PURCHASES";
 
 	/**
 	 * Constructor vacio para la clase compra

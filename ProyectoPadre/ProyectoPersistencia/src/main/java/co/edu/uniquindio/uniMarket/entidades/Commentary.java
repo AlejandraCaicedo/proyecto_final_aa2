@@ -26,6 +26,7 @@ public class Commentary implements Serializable {
 	@ManyToOne
 	private User user; // Es el usuario que comenta acerca de un producto
 
+	@ManyToOne
 	private Product product; // Es el producto que desea comentar el usuario
 
 	@Lob

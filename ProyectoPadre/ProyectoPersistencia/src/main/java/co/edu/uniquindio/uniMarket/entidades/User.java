@@ -25,7 +25,10 @@ import javax.persistence.*;
 		// @NamedQuery(name = "TODAS_COMPRAS_PERSONA", query = "select c from Compra c
 		// where c.usuarioCompra.nombre = 'pepito'")
 		@NamedQuery(name = User.USER_PRODUCTS, query = "select u, p from User u inner join u.listProducts p"),
-		@NamedQuery(name = User.ALL_USERS, query = "select u from User u") })
+		@NamedQuery(name = User.ALL_USERS, query = "select u from User u"),
+		@NamedQuery(name = User.GMAIL_USERS, query = "select u from User u where u.email like '%gmail%' "),
+		@NamedQuery(name = User.PUBLISHED_PRODUCTS, query = "select new co.edu.uniquindio.uniMarket.dto.PUBLISHED_PRODUCTS(u.ID,u.email, count(p)) from User u INNER JOIN u.listProducts p") })
+
 public class User extends Person implements Serializable {
 
 	@OneToMany(mappedBy = "user")
@@ -45,6 +48,10 @@ public class User extends Person implements Serializable {
 	public static final String USER_PRODUCTS = "USER_PRODUCTS";
 	public static final String ALL_USERS = "ALL_USERS";
 //	public static final String ALL_PRODUCTS_PURCHASE = "TODOS_PRDUCTOS_COMPRA";
+
+	public static final String GMAIL_USERS = "GMAIL_USERS";
+
+	public static final String PUBLISHED_PRODUCTS = "PUBLISHED_PRODUCTS";
 
 	/**
 	 * Constructor vacio de la clase usuario, hereda de la clase persona
