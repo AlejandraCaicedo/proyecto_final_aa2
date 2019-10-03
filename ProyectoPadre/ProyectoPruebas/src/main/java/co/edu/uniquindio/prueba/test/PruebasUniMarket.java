@@ -1,7 +1,11 @@
 package co.edu.uniquindio.prueba.test;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -12,10 +16,12 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.uniMarket.entidades.Person;
+import co.edu.uniquindio.uniMarket.entidades.Product;
 
 @RunWith(Arquillian.class)
 public class PruebasUniMarket {
@@ -45,10 +51,44 @@ public class PruebasUniMarket {
 
 	}
 
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json" })
+	public void pobrarQueryProductos() {
+
+		TypedQuery<Product> list = entityManager.createNamedQuery(Product.ALL_PRODUCTS, Product.class);
+		Assert.assertEquals(4, list.getResultList().size());
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json", "rate.json" })
+	public void pobrarAVG_RATING() {
+
+		TypedQuery<Double> avg = entityManager.createNamedQuery(Product.AVG_RATING, Double.class);
+		Assert.assertEquals(1, avg.getResultList().size());
+		NumberFormat formatter = new DecimalFormat("#0.0");
+		Assert.assertEquals("3,5", formatter.format(avg.getResultList().get(0)));
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json", "rate.json" })
+	public void probarAVG_INCLUSIVE() {
+
+	}
+
+//
 //	@Test
 //	@Transactional(value = TransactionMode.ROLLBACK)
 //	@UsingDataSet({ "product.json", "rate.json" })
 //	public void probarAVG_RATE() {
+//
+//		Query avg = entityManager.createNamedQuery(Product.AVG_RATING);
+//
+//		Double media = (Double) avg.getSingleResult();
+//
+//		Assert.assertEquals(new Double(media), new Double(3));
 //
 //	}
 //
