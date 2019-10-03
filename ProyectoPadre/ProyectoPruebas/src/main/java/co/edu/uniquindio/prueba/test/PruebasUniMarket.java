@@ -2,7 +2,9 @@ package co.edu.uniquindio.prueba.test;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.List;
 
+import javax.enterprise.inject.Typed;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -20,6 +22,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import co.edu.uniquindio.uniMarket.dto.AVG_RATING;
 import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
 
@@ -90,6 +93,19 @@ public class PruebasUniMarket {
 		avg.setParameter("code", "HHDJCN");
 
 		Assert.assertEquals(0, avg.getResultList().size());
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json", "rate.json" })
+	public void probarDTO_CODIGO() {
+
+		TypedQuery<AVG_RATING> dto = entityManager.createNamedQuery(Product.AVG_RATING_DTO, AVG_RATING.class);
+
+		List<AVG_RATING> listDTO = dto.getResultList();
+
+		Assert.assertEquals(1, listDTO.size());
+
 	}
 
 //

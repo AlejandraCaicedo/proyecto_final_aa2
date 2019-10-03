@@ -30,10 +30,10 @@ import javax.persistence.OneToMany;
 		@NamedQuery(name = Product.AVG_RATING, query = "select AVG(r.rate) from Product p INNER JOIN p.listRates r group by p"),
 		@NamedQuery(name = Product.AVG_RATING_INCLUSIVE, query = "select AVG(r.rate) from Product p LEFT JOIN p.listRates r group by p"),
 		@NamedQuery(name = Product.AVG_RATING_PRODUCT, query = "select AVG(r.rate) from Product p INNER JOIN p.listRates r where p.code =:code group by p"),
-		@NamedQuery(name = Product.AVG_RATING_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.AVG_RATING( avg(r.rate) ) from Product p INNER JOIN p.listRates r group by p"),
+		@NamedQuery(name = Product.AVG_RATING_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.AVG_RATING( avg(r.rate), p.code ) from Product p INNER JOIN p.listRates r group by p"),
 		@NamedQuery(name = Product.NUMBER_TYPES_PRODUCTS, query = "select count (p) from Product p group by p.type"),
 		@NamedQuery(name = Product.EMPTY_COMMENTARY, query = "select p from Product p where p.listCommentaries is empty"),
-		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT, query = "select MAX(p.price) from Product p"),
+		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT, query = "select p from Product p where p =select MAX(p.price) from Product p"),
 		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT_BY_TYPE, query = "select MAX(p.price) from Product p group by p.type") })
 public class Product implements Serializable {
 
