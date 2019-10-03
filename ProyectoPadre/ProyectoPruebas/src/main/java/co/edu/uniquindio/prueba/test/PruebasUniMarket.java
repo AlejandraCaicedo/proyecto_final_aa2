@@ -76,6 +76,20 @@ public class PruebasUniMarket {
 	@UsingDataSet({ "product.json", "rate.json" })
 	public void probarAVG_INCLUSIVE() {
 
+		TypedQuery<Double> avg = entityManager.createNamedQuery(Product.AVG_RATING_INCLUSIVE, Double.class);
+		Assert.assertEquals(4, avg.getResultList().size());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "product.json", "rate.json" })
+	public void probarAVG_Codigo() {
+
+		TypedQuery<Double> avg = entityManager.createNamedQuery(Product.AVG_RATING_PRODUCT, Double.class);
+		avg.setParameter("code", "HHDJCN");
+
+		Assert.assertEquals(0, avg.getResultList().size());
 	}
 
 //
