@@ -29,7 +29,9 @@ import javax.persistence.OneToMany;
 @NamedQueries({ @NamedQuery(name = Purchase.ALL_PURCHASES, query = "select p from Purchase p"),
 		@NamedQuery(name = Purchase.PURCHASE_DATE, query = "select p.purchaseCode, p.paymentMethod, p.user.ID, p.user.email from Purchase p where p.purchaseDate = :purchaseDate "),
 		@NamedQuery(name = Purchase.PURCHASE_DATE_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.PURCHASE_DATE(p.purchaseCode,p.paymentMethod,p.user.ID,p.user.email) from Purchase p where p.purchaseDate =:purchaseDate"),
-		@NamedQuery(name = Purchase.UNIQUE_PURCHASES, query = "select count(p) from Purchase p") })
+		@NamedQuery(name = Purchase.UNIQUE_PURCHASES, query = "select count(p) from Purchase p"),
+		@NamedQuery(name = Purchase.PURCHASE_DATE_PAYMENT, query = "select p.listPurchaseDetails from Purchase p where p.purchaseDate between :fechaInicio and :fechaFinal and p.paymentMethod=:paymentMethod"),
+		@NamedQuery(name = Purchase.USER_PURCHASES, query = "select p, d from Purchase p INNER JOIN p.listPurchaseDetails d where p.user.ID =:ID") })
 public class Purchase implements Serializable {
 
 	@Id
@@ -56,8 +58,14 @@ public class Purchase implements Serializable {
 	public static final String PURCHASE_DATE = "PURCHASE_DATE";
 	// Query que retorna lo mismo del query PURCHASE_DATE usando DTO
 	public static final String PURCHASE_DATE_DTO = "PURCHASE_DATE_DTO";
-	// Query que retorna el número de compras únicas
+	// Query que retorna el numero de compras unicas
 	public static final String UNIQUE_PURCHASES = "UNIQUE_PURCHASES";
+	// Query que retorna una lista de Detalle Compra dadas 2 fechas y un metodo de
+	// pago
+	public static final String PURCHASE_DATE_PAYMENT = "PURCHASE_DATE_PAYMENT";
+
+	// Query que retorna las compras de un usuario y sus detalles de compra
+	public static final String USER_PURCHASES = "USER_PURCHASES";
 
 	/**
 	 * Constructor vacio para la clase compra

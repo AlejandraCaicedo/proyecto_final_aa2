@@ -32,7 +32,9 @@ import javax.persistence.OneToMany;
 		@NamedQuery(name = Product.AVG_RATING_PRODUCT, query = "select AVG(r.rate) from Product p INNER JOIN p.listRates r where p.code =:code"),
 		@NamedQuery(name = Product.AVG_RATING_DTO, query = "select new co.edu.uniquindio.uniMarket.dto.AVG_RATING( avg(r.rate) ) from Product p INNER JOIN p.listRates r"),
 		@NamedQuery(name = Product.NUMBER_TYPES_PRODUCTS, query = "select count (p) from Product p group by p.type"),
-		@NamedQuery(name = Product.EMPTY_COMMENTARY, query = "select p from Product p where p.listCommentaries is empty") })
+		@NamedQuery(name = Product.EMPTY_COMMENTARY, query = "select p from Product p where p.listCommentaries is empty"),
+		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT, query = "select MAX(p.price) from Product p"),
+		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT_BY_TYPE, query = "select MAX(p.price) from Product p group by p.type") })
 
 public class Product implements Serializable {
 
@@ -72,7 +74,7 @@ public class Product implements Serializable {
 	private List<PurchaseDetail> listPurchaseDetails; // Lista de detalles de compra sobre un producto
 
 	@ManyToOne
-	private User user;
+	private User user; // Usuario que ha publicado el producto
 
 	// Query que retorna todas las calificaciones de un producto
 	public static final String ALL_PRODUCT_RATINGS = "TODAS_CALIFICACIONES_PRODUCTO";
@@ -98,7 +100,14 @@ public class Product implements Serializable {
 	// Query que retorna el numero de productos que hat por categor√≠a (Type)
 	public static final String NUMBER_TYPES_PRODUCTS = "NUMBER_TYPES_PRODUCTS";
 
+	// Query que retorna los productos que no tienen comentarios
 	public static final String EMPTY_COMMENTARY = "EMPTY_COMMENTARY";
+
+	// Query que retorna el producto m·s costoso del uniMarket
+	public static final String MOST_EXPENSIVE_PRODUCT = "MOST_EXPENSIVE_PRODUCT";
+
+	// Query que retorna el producto m·s costoso por tipo
+	public static final String MOST_EXPENSIVE_PRODUCT_BY_TYPE = "MOST_EXPENSIVE_PRODUCT_BY_TYPE";
 
 	private static final long serialVersionUID = 1L;
 

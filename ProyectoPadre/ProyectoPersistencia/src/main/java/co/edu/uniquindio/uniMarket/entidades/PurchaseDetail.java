@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Entity implementation class for Entity: detalleCompra
@@ -19,6 +21,10 @@ import javax.persistence.ManyToOne;
  * 
  */
 @Entity
+@NamedQueries({
+		@NamedQuery(name = PurchaseDetail.TOTAL_SPEND_USER, query = "select sum(p.price)*(p.quantity) from PurchaseDetail p where p.purchase.user.ID =:ID group by p.purchase.purchaseCode"),
+		@NamedQuery(name = PurchaseDetail.TOTAL_EARN_USER, query = "select sum(p.price)*(p.quantity) from PurchaseDetail p where p.product.user.ID =:ID group by p.purchase.purchaseCode"),
+		@NamedQuery(name = PurchaseDetail.MAX_RECORD_PRODUCT, query = "select MAX(count(p.product.code)) from PurchaseDetail p group by p.product.code") })
 public class PurchaseDetail implements Serializable {
 
 	@Id
@@ -36,6 +42,13 @@ public class PurchaseDetail implements Serializable {
 
 	@ManyToOne
 	private Purchase purchase; // Compra realizada con anterioridad
+
+	// Query que retorna la cantidad de dinero gastado por un usuario especifico
+	public static final String TOTAL_SPEND_USER = "TOTAL_SPEND_USER";
+	// Query que retorna la cantidad de dinero ganado por un usuario especifico
+	public static final String TOTAL_EARN_USER = "TOTAL_EARN_USER";
+
+	public static final String MAX_RECORD_PRODUCT = "MAX_RECORD_PRODUCT";
 
 	private static final long serialVersionUID = 1L;
 
