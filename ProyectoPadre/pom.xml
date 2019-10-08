@@ -71,5 +71,6 @@
 	<modules>
 		<module>ProyectoPersistencia</module>
 		<module>ProyectoPruebas</module>
+		<module>ProyectoEAR</module>
 	</modules>
 </project>
