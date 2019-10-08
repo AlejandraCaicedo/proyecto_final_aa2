@@ -11,4 +11,14 @@
 	<packaging>ear</packaging>
 	<name>Proyecto de despliegue EAR</name>
 	<description>Proyecto para desplegar el aplicativo en el servidor de aplicaciones</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>co.edu.uniquindio.grid</groupId>
+			<artifactId>ProyectoNegocio</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+	</dependencies>
+
 </project>

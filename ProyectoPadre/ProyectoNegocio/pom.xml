@@ -13,7 +13,6 @@
 	<description>Proyecto que contiene la logica de negocio del aplicativo</description>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
@@ -26,7 +25,6 @@
 			<artifactId>ProyectoPersistencia</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
 	</dependencies>
 
 </project>
