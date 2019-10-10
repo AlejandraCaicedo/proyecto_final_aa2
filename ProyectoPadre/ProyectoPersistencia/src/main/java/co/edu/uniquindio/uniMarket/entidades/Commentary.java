@@ -16,7 +16,8 @@ import javax.persistence.*;
  */
 
 @Entity
-@NamedQueries({ @NamedQuery(name = Commentary.ALL_COMMENTS, query = "select c from Commentary c") })
+@NamedQueries({
+		@NamedQuery(name = Commentary.COMMENTS_PRODUCT, query = "select c from Commentary c where c.product.code = :codeProduct") })
 public class Commentary implements Serializable {
 
 	@Id
@@ -35,7 +36,7 @@ public class Commentary implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final String ALL_COMMENTS = "ALL_COMMENTS";
+	public static final String COMMENTS_PRODUCT = "COMMENTS_PRODUCT";
 
 	/**
 	 * Contructor vacio de la clase comentario

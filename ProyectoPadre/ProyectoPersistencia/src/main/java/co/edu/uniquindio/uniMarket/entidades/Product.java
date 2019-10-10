@@ -34,7 +34,8 @@ import javax.persistence.OneToMany;
 		@NamedQuery(name = Product.NUMBER_TYPES_PRODUCTS, query = "select count (p) from Product p group by p.type"),
 		@NamedQuery(name = Product.EMPTY_COMMENTARY, query = "select p from Product p where p.listCommentaries is empty"),
 		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT, query = "select p from Product p where p =select MAX(p.price) from Product p"),
-		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT_BY_TYPE, query = "select MAX(p.price) from Product p group by p.type") })
+		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT_BY_TYPE, query = "select MAX(p.price) from Product p group by p.type"),
+		@NamedQuery(name = Product.ALL_PRODUCT_AVAILABLE, query = "select p from Product p where p.availability>0 and p.limit_Date <= :fechaActual") })
 public class Product implements Serializable {
 
 	@Id
@@ -83,6 +84,8 @@ public class Product implements Serializable {
 
 	// Query que retorna todos los productos en UniMarket
 	public static final String ALL_PRODUCTS = "ALL_PRODUCTS";
+
+	public static final String ALL_PRODUCT_AVAILABLE = "ALL_PRODUCT_AVAILABLE";
 
 	// Query que retorna el rating promedio de cada producto
 	public static final String AVG_RATING = "AVG_RATING";
