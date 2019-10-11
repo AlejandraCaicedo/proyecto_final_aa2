@@ -39,7 +39,10 @@ public class Person implements Serializable {
 	@Column(name = "email", nullable = false)
 	private String email; // Correo electronico de una persona en especifico
 
+	// Query que retorna todas las personas registradas en la vase de datos
 	public static final String ALL_PERSONS = "ALL_PERSONS";
+
+	// Query que retorna una Persona dado su ID
 	public static final String FIND_BY_ID = "FIND_BY_ID";
 
 	private static final long serialVersionUID = 1L;

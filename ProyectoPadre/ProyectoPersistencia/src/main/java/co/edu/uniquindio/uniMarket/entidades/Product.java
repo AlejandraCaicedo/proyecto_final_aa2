@@ -35,7 +35,9 @@ import javax.persistence.OneToMany;
 		@NamedQuery(name = Product.EMPTY_COMMENTARY, query = "select p from Product p where p.listCommentaries is empty"),
 		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT, query = "select p from Product p where p =select MAX(p.price) from Product p"),
 		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT_BY_TYPE, query = "select MAX(p.price) from Product p group by p.type"),
-		@NamedQuery(name = Product.ALL_PRODUCT_AVAILABLE, query = "select p from Product p where p.availability>0 and p.limit_Date <= :fechaActual") })
+		@NamedQuery(name = Product.ALL_PRODUCT_AVAILABLE, query = "select p from Product p where p.availability>0 and p.limit_Date <= :fechaActual"),
+		@NamedQuery(name = Product.PRODUCTS_BY_TYPE, query = "select p from Product p group by p.type"),
+		@NamedQuery(name = Product.DESCRIPTION, query = "select p.description from Product p where p.code=:code") })
 public class Product implements Serializable {
 
 	@Id
@@ -79,9 +81,6 @@ public class Product implements Serializable {
 	// Query que retorna todas las calificaciones de un producto
 	public static final String ALL_PRODUCT_RATINGS = "TODAS_CALIFICACIONES_PRODUCTO";
 
-	// Query que retorna todos los Usuarios que son vendedores
-	public static final String ALL_SELLING_USERS = "TODOS_USUARIOS_VENDEDORES";
-
 	// Query que retorna todos los productos en UniMarket
 	public static final String ALL_PRODUCTS = "ALL_PRODUCTS";
 
@@ -111,6 +110,11 @@ public class Product implements Serializable {
 
 	// Query que retorna el producto mas costoso por tipo
 	public static final String MOST_EXPENSIVE_PRODUCT_BY_TYPE = "MOST_EXPENSIVE_PRODUCT_BY_TYPE";
+
+	// Query que retorna los productos según su tipo
+	public static final String PRODUCTS_BY_TYPE = "PRODUCTS_BY_TYPE";
+
+	public static final String DESCRIPTION = "DESCRIPTION";
 
 	private static final long serialVersionUID = 1L;
 

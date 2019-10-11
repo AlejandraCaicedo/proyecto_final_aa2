@@ -8,6 +8,7 @@ import co.edu.uniquindio.uniMarket.entidades.Commentary;
 import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.User;
+import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
@@ -17,14 +18,16 @@ public interface NegocioEJBRemote {
 
 	Person autenticarPerson(String email, String password);
 
-	List<Product> listarProductosDisponibles();
+	List<Product> toListAvailableProducts();
 
-	List<Commentary> listarComentariosProducto(String codeProducto);
+	List<Commentary> toListProductsComments(String codeProducto);
 
-	void crearProducto(Product p) throws RepeatedProductException;
+	void toCreateProduct(Product p) throws RepeatedProductException;
 
-	void registrarUsuario(User u) throws RepeatedIDException, RepeatedEmailException;
+	void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException;
 
-	Product editarProduct(Product p);
+	void toLogginAdmin(String ID, String password) throws NotFoundAdminException;
+
+	Product toEditProduct(Product p);
 
 }

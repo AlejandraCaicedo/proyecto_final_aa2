@@ -27,7 +27,10 @@ import javax.persistence.*;
 		@NamedQuery(name = User.USER_PRODUCTS, query = "select u, p from User u inner join u.listProducts p"),
 		@NamedQuery(name = User.ALL_USERS, query = "select u from User u"),
 		@NamedQuery(name = User.GMAIL_USERS, query = "select u from User u where u.email like '%gmail%' "),
-		@NamedQuery(name = User.PUBLISHED_PRODUCTS, query = "select new co.edu.uniquindio.uniMarket.dto.PUBLISHED_PRODUCTS(u.ID,u.email, count(p)) from User u INNER JOIN u.listProducts p") })
+		@NamedQuery(name = User.PUBLISHED_PRODUCTS, query = "select new co.edu.uniquindio.uniMarket.dto.PUBLISHED_PRODUCTS(u.ID,u.email, count(p)) from User u INNER JOIN u.listProducts p"),
+		@NamedQuery(name = User.FIND_BY_EMAIL, query = "select u from User u where u.email =:EMAIL"),
+		@NamedQuery(name = User.ALL_SELLING_USERS, query = "select u from User u INNER JOIN u.listProducts p group by u having count(p)>0"),
+		@NamedQuery(name = User.All_SHOPPERS_USERS, query = "select u from User u INNER JOIN u.listPurchases p group by u having count(p)>0") })
 
 public class User extends Person implements Serializable {
 
@@ -45,13 +48,27 @@ public class User extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	// Query que retorna los usuarios y su lista de productos publicados
 	public static final String USER_PRODUCTS = "USER_PRODUCTS";
+
+	// Query que retorna todos los usuarios
 	public static final String ALL_USERS = "ALL_USERS";
 //	public static final String ALL_PRODUCTS_PURCHASE = "TODOS_PRDUCTOS_COMPRA";
 
+	// Query que retorna todos los usuarios que estan registrados con un gmail
 	public static final String GMAIL_USERS = "GMAIL_USERS";
 
+	// Query que retorna un DTO con el ID, el email y la cantidad de productos
+	// publicados de todos los usuarios
 	public static final String PUBLISHED_PRODUCTS = "PUBLISHED_PRODUCTS";
+
+	// Query que retorna un usuario dado un Correo Electronico
+	public static final String FIND_BY_EMAIL = "FIND_BY_EMAIL";
+
+	// Query que retorna todos los Usuarios que son vendedores
+	public static final String ALL_SELLING_USERS = "TODOS_USUARIOS_VENDEDORES";
+
+	public static final String All_SHOPPERS_USERS = "All_SHOPPERS_USERS";
 
 	/**
 	 * Constructor vacio de la clase usuario, hereda de la clase persona
