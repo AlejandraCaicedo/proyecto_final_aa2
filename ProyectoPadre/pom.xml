@@ -73,5 +73,6 @@
 		<module>ProyectoPruebas</module>
 		<module>ProyectoEAR</module>
 		<module>ProyectoNegocio</module>
+		<module>ProyectoEscritorio</module>
 	</modules>
 </project>

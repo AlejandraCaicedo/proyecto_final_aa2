@@ -16,7 +16,9 @@ import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
 @Remote
 public interface NegocioEJBRemote {
 
-	Person autenticarPerson(String email, String password);
+	String JDNI = "java:global/ProyectoEAR/ProyectoNegocio/NegocioEJB!co.edu.uniquindio.unimarket.ejb.NegocioEJBRemote";
+
+	Person autentifyPerson(String email, String password);
 
 	List<Product> toListAvailableProducts();
 

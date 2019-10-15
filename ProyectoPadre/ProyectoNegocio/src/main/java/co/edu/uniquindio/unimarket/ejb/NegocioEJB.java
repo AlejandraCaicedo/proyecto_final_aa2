@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Typed;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -47,9 +48,19 @@ public class NegocioEJB implements NegocioEJBRemote {
 	}
 
 	@Override
-	public Person autenticarPerson(String email, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public Person autentifyPerson(String email, String password) {
+
+		TypedQuery<Person> p = entityManager.createNamedQuery(Person.AUTENTIFY_PERSON, Person.class);
+		p.setParameter("password", password);
+		p.setParameter("email", email);
+
+		List<Person> list = p.getResultList();
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -94,7 +105,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 	public void toLogginAdmin(String ID, String password) throws NotFoundAdminException {
 
 		if (findAdmin(ID, password) == null) {
-			throw new NotFoundAdminException("El ID o la Contraseña son incorrectos");
+			throw new NotFoundAdminException("El ID o la Contrasenia son incorrectos");
 		}
 	}
 
@@ -126,7 +137,6 @@ public class NegocioEJB implements NegocioEJBRemote {
 	}
 
 	private User findUser(String email) {
-
 		TypedQuery<User> q = entityManager.createNamedQuery(User.FIND_BY_EMAIL, User.class);
 		List<User> listUsers = q.getResultList();
 
