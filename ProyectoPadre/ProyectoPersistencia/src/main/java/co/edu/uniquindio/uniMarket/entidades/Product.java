@@ -37,7 +37,8 @@ import javax.persistence.OneToMany;
 		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT_BY_TYPE, query = "select MAX(p.price) from Product p group by p.type"),
 		@NamedQuery(name = Product.ALL_PRODUCT_AVAILABLE, query = "select p from Product p where p.availability>0 and p.limit_Date <= :fechaActual"),
 		@NamedQuery(name = Product.PRODUCTS_BY_TYPE, query = "select p from Product p group by p.type"),
-		@NamedQuery(name = Product.DESCRIPTION, query = "select p.description from Product p where p.code=:code") })
+		@NamedQuery(name = Product.DESCRIPTION, query = "select p.description from Product p where p.code=:code"),
+		@NamedQuery(name = Product.PRODUCTS_BY_GIVEN_TYPE, query = "select p from Product p where p.type =:type") })
 public class Product implements Serializable {
 
 	@Id
@@ -114,6 +115,10 @@ public class Product implements Serializable {
 	// Query que retorna los productos según su tipo
 	public static final String PRODUCTS_BY_TYPE = "PRODUCTS_BY_TYPE";
 
+	// Query que retorna una lista de productos dato el tipo de estos.
+	public static final String PRODUCTS_BY_GIVEN_TYPE = "PRODUCTS_BY_GIVEN_TYPE";
+
+	// Query que retorna la descripcion de un producto dado su codigo
 	public static final String DESCRIPTION = "DESCRIPTION";
 
 	private static final long serialVersionUID = 1L;

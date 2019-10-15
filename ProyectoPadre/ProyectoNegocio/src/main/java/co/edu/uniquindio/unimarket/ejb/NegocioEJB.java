@@ -16,6 +16,7 @@ import co.edu.uniquindio.uniMarket.entidades.Commentary;
 import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
+import co.edu.uniquindio.uniMarket.entidades.Type;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
@@ -126,6 +127,12 @@ public class NegocioEJB implements NegocioEJBRemote {
 
 	public List<Product> toListProductsByType() {
 		TypedQuery<Product> p = entityManager.createNamedQuery(Product.PRODUCTS_BY_TYPE, Product.class);
+		return p.getResultList();
+	}
+
+	public List<Product> toListProductsByType(Type type) {
+		TypedQuery<Product> p = entityManager.createNamedQuery(Product.PRODUCTS_BY_GIVEN_TYPE, Product.class);
+		p.setParameter("type", type);
 		return p.getResultList();
 	}
 
