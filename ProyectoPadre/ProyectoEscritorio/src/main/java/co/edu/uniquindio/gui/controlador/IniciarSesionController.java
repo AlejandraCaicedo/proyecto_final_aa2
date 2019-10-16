@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 
 public class IniciarSesionController implements Initializable {
 
-	private PruebaDelegado PruebaDelegado;
+	private PruebaDelegado pruebaDelegado;
 
 	@FXML
 	private TextField txtEmail;
@@ -21,7 +21,7 @@ public class IniciarSesionController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		PruebaDelegado = PruebaDelegado.pruebaDelegado;
+		pruebaDelegado = PruebaDelegado.pruebaDelegado;
 	}
 
 	@FXML
@@ -31,7 +31,7 @@ public class IniciarSesionController implements Initializable {
 
 		if (!email.isEmpty() && !password.isEmpty()) {
 
-			Person p = PruebaDelegado.autentifyPerson(email, password);
+			Person p = pruebaDelegado.autentifyPerson(email, password);
 			System.out.println(p);
 		}
 	}

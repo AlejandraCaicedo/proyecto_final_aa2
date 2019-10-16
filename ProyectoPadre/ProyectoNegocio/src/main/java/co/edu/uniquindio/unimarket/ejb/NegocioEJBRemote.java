@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
 import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
@@ -28,7 +29,7 @@ public interface NegocioEJBRemote {
 
 	void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException;
 
-	void toLogginAdmin(String ID, String password) throws NotFoundAdminException;
+	Admin toLogginAdmin(String email, String password) throws NotFoundAdminException;
 
 	Product toEditProduct(Product p);
 

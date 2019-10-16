@@ -17,7 +17,7 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = Admin.ALL_ADMIN, query = "select a from Admin a"),
-		@NamedQuery(name = Admin.FIND_ADMIN, query = "select a from Admin a where a.ID =:ID and a.password =:password") })
+		@NamedQuery(name = Admin.FIND_ADMIN, query = "select a from Admin a where a.email =:email and a.password =:password") })
 public class Admin extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -25,7 +25,7 @@ public class Admin extends Person implements Serializable {
 	// Query que retorna todos los administradores actuales
 	public static final String ALL_ADMIN = "ALL_ADMIN";
 
-	// Query que retorna un Admin dado un ID y la contraseña
+	// Query que retorna un Admin dado un ID y la contrasenia
 	public static final String FIND_ADMIN = "FIND_ADMIN";
 
 	/**

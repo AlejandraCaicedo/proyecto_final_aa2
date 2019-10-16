@@ -5,6 +5,7 @@ import java.util.List;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
 import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
@@ -56,8 +57,8 @@ public class PruebaDelegado implements NegocioEJBRemote {
 		negocioEJB.toRegisterUser(u);
 	}
 
-	public void toLogginAdmin(String ID, String password) throws NotFoundAdminException {
-		negocioEJB.toLogginAdmin(ID, password);
+	public Admin toLogginAdmin(String email, String password) throws NotFoundAdminException {
+		return negocioEJB.toLogginAdmin(email, password);
 	}
 
 	public Product toEditProduct(Product p) {

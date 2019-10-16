@@ -12,7 +12,7 @@ public class Principal extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/iniciarSesion.fxml"));
+		loader.setLocation(getClass().getResource("/signin.fxml"));
 
 		Parent p = loader.load();
 		Scene scene = new Scene(p);
@@ -25,7 +25,7 @@ public class Principal extends Application {
 	public static void main(String[] args) {
 		launch(args);
 
-		// run as Java application
+		// run as Java applicationd
 	}
 
 }

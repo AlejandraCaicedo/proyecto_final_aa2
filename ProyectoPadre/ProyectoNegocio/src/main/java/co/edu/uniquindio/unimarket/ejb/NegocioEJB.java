@@ -103,10 +103,14 @@ public class NegocioEJB implements NegocioEJBRemote {
 	}
 
 	@Override
-	public void toLogginAdmin(String ID, String password) throws NotFoundAdminException {
+	public Admin toLogginAdmin(String email, String password) throws NotFoundAdminException {
 
-		if (findAdmin(ID, password) == null) {
-			throw new NotFoundAdminException("El ID o la Contrasenia son incorrectos");
+		Admin admin = findAdmin(email, password);
+
+		if (admin == null) {
+			throw new NotFoundAdminException("El email o la Contrasenia son incorrectos");
+		} else {
+			return admin;
 		}
 	}
 
@@ -154,11 +158,14 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return listUsers.get(0);
 	}
 
-	private Admin findAdmin(String ID, String password) {
+	private Admin findAdmin(String email, String password) {
 		TypedQuery<Admin> p = entityManager.createNamedQuery(Admin.FIND_ADMIN, Admin.class);
-		p.setParameter("ID", ID);
+		p.setParameter("email", email);
 		p.setParameter("password", password);
 
+		if (p.getResultList().size() == 0) {
+			return null;
+		}
 		return p.getResultList().get(0);
 	}
 
