@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="684.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="684.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 		<StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
 			<effect>
@@ -34,11 +34,56 @@
 								<DropShadow />
 							</effect>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-family: Quicksand; -fx-font-weight: bold; -fx-fill: #35AB94;" text="LOGIN" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-family: Quicksand; -fx-font-weight: bold; -fx-fill: #35AB94;" text="NEW ACCOUNT" />
                         <HBox maxWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: #6B8B8E; -fx-border-width: 0px 0px 2px 0px;">
                            <VBox.margin>
                               <Insets top="30.0" />
                            </VBox.margin>
+                           <children>
+                              <TextField promptText="full name" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox maxWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: #6B8B8E; -fx-border-width: 0px 0px 2px 0px;">
+                           <children>
+                              <TextField promptText="identifier" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox maxWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: #6B8B8E; -fx-border-width: 0px 0px 2px 0px;">
+                           <children>
+                              <TextField promptText="adress" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox maxWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: #6B8B8E; -fx-border-width: 0px 0px 2px 0px;">
+                           <children>
+                              <TextField promptText="cell phone number" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox maxWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: #6B8B8E; -fx-border-width: 0px 0px 2px 0px;">
                            <children>
                               <TextField promptText="email adress" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
@@ -46,6 +91,9 @@
                                  </HBox.margin>
                               </TextField>
                            </children>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
                         </HBox>
                         <HBox maxWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: #6B8B8E; -fx-border-width: 0px 0px 2px 0px;">
                            <children>
@@ -59,7 +107,7 @@
                               <Insets top="30.0" />
                            </VBox.margin>
                         </HBox>
-                        <Button mnemonicParsing="false" prefWidth="176.0" style="-fx-background-color: #35AB94; -fx-background-radius: 100px; -fx-text-fill: white;" text="Sign in">
+                        <Button mnemonicParsing="false" prefWidth="176.0" style="-fx-background-color: #35AB94; -fx-background-radius: 100px; -fx-text-fill: white;" text="Sign up">
                            <VBox.margin>
                               <Insets top="30.0" />
                            </VBox.margin>
@@ -69,12 +117,12 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-family: Quicksand;" text="Forgot password?">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-family: Quicksand;" text="Already have an account">
                                  <HBox.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-family: Quicksand; -fx-fill: #35AB94;" text="Sing up">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-family: Quicksand; -fx-fill: #35AB94;" text="Sign in">
                                  <HBox.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </HBox.margin>
