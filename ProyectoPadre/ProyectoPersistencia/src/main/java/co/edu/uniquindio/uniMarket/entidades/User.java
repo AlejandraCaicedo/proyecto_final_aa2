@@ -17,6 +17,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@DiscriminatorValue("USER")
 @NamedQueries({
 		// @NamedQuery(name = "TODOS_PRODUCTOS_COMPRA_OTRO_EJEMPLO", query = "select
 		// d.productoCompra from Compra c, IN( c.detalleCompra) d where c.codigo = :

@@ -10,7 +10,6 @@ public class Principal extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/signin.fxml"));
 

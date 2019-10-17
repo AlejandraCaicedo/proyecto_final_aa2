@@ -17,6 +17,7 @@ import javax.persistence.*;
  */
 @Entity
 @Inheritance
+@DiscriminatorColumn(name = "TYPE")
 @NamedQueries({ @NamedQuery(name = Person.ALL_PERSONS, query = "select p from Person p"),
 		@NamedQuery(name = Person.FIND_BY_ID, query = "select p from Person p where p.ID = :ID"),
 		@NamedQuery(name = Person.AUTENTIFY_PERSON, query = "select p from Person p where p.password = :password and p.email = :email") })
