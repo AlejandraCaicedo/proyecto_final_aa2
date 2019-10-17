@@ -163,10 +163,10 @@ public class NegocioEJB implements NegocioEJBRemote {
 		p.setParameter("email", email);
 		p.setParameter("password", password);
 
-		if (p.getResultList().size() == 0) {
-			return null;
+		if (!p.getResultList().isEmpty()) {
+			return p.getResultList().get(0);
 		}
-		return p.getResultList().get(0);
+		return null;
 	}
 
 }
