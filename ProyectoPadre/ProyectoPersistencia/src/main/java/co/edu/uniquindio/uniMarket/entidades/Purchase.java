@@ -2,6 +2,7 @@ package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -38,7 +39,7 @@ public class Purchase implements Serializable {
 	@Column(name = "purchaseCode")
 	private String purchaseCode; // Codigo asignado a una compra
 
-	private String purchaseDate; // Fecha en la que se realiza dicha compra
+	private Date purchaseDate; // Fecha en la que se realiza dicha compra
 
 	@Enumerated(EnumType.STRING)
 	private PaymentMethod paymentMethod; // Enumeracion que corresponde al metodo de pago
@@ -63,7 +64,6 @@ public class Purchase implements Serializable {
 	// Query que retorna una lista de Detalle Compra dadas 2 fechas y un metodo de
 	// pago
 	public static final String PURCHASE_DATE_PAYMENT = "PURCHASE_DATE_PAYMENT";
-
 	// Query que retorna las compras de un usuario y sus detalles de compra
 	public static final String USER_PURCHASES = "USER_PURCHASES";
 
@@ -82,7 +82,7 @@ public class Purchase implements Serializable {
 	 * @param purchaseDate,  fecha en la que el usuario tramita la compra
 	 * @param paymentMethod, metodo de pago por el cual cancelara el usuario
 	 */
-	public Purchase(String purchaseCode, User user, String purchaseDate, PaymentMethod paymentMethod) {
+	public Purchase(String purchaseCode, User user, Date purchaseDate, PaymentMethod paymentMethod) {
 		super();
 		this.purchaseCode = purchaseCode;
 		this.user = user;
@@ -131,7 +131,7 @@ public class Purchase implements Serializable {
 	 * 
 	 * @return purchaseDate
 	 */
-	public String getPurchaseDate() {
+	public Date getPurchaseDate() {
 		return purchaseDate;
 	}
 
@@ -140,7 +140,7 @@ public class Purchase implements Serializable {
 	 * 
 	 * @param purchaseDate, fecha en que se tramita una compra
 	 */
-	public void setPurchaseDate(String purchaseDate) {
+	public void setPurchaseDate(Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 

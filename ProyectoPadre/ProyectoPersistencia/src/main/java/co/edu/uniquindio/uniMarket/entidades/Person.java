@@ -19,8 +19,7 @@ import javax.persistence.*;
 @Inheritance
 @DiscriminatorColumn(name = "TYPE")
 @NamedQueries({ @NamedQuery(name = Person.ALL_PERSONS, query = "select p from Person p"),
-		@NamedQuery(name = Person.FIND_BY_ID, query = "select p from Person p where p.ID = :ID"),
-		@NamedQuery(name = Person.AUTENTIFY_PERSON, query = "select p from Person p where p.password = :password and p.email = :email") })
+		@NamedQuery(name = Person.FIND_BY_ID, query = "select p from Person p where p.ID = :ID") })
 public class Person implements Serializable {
 
 	@Id
@@ -46,8 +45,6 @@ public class Person implements Serializable {
 
 	// Query que retorna una Persona dado su ID
 	public static final String FIND_BY_ID = "FIND_BY_ID";
-
-	public static final String AUTENTIFY_PERSON = "AUTENTIFY_PERSON";
 
 	private static final long serialVersionUID = 1L;
 

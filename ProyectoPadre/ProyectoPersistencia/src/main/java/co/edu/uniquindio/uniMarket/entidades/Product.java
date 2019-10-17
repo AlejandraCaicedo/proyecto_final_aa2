@@ -1,6 +1,7 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Entity implementation class for Entity: Producto
@@ -61,7 +64,8 @@ public class Product implements Serializable {
 	@Column(name = "type")
 	private Type type; // Clasificacion del producto
 
-	private String limit_Date; // Fecha limite para la que puede estar un producto en UniMarket
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date limit_Date; // Fecha limite para la que puede estar un producto en UniMarket
 
 	@ElementCollection
 	private List<String> images; // litsa de imagenes que puede existir sobre un producto
@@ -112,7 +116,7 @@ public class Product implements Serializable {
 	// Query que retorna el producto mas costoso por tipo
 	public static final String MOST_EXPENSIVE_PRODUCT_BY_TYPE = "MOST_EXPENSIVE_PRODUCT_BY_TYPE";
 
-	// Query que retorna los productos según su tipo
+	// Query que retorna los productos segï¿½n su tipo
 	public static final String PRODUCTS_BY_TYPE = "PRODUCTS_BY_TYPE";
 
 	// Query que retorna una lista de productos dato el tipo de estos.
@@ -145,7 +149,7 @@ public class Product implements Serializable {
 	 *                      publicado en la tienda
 	 */
 	public Product(String code, String name, String description, double price, int availability, Type type,
-			String limit_Date) {
+			Date limit_Date) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -271,7 +275,7 @@ public class Product implements Serializable {
 	 * 
 	 * @return limit_Date
 	 */
-	public String getLimit_Date() {
+	public Date getLimit_Date() {
 		return limit_Date;
 	}
 
@@ -280,7 +284,7 @@ public class Product implements Serializable {
 	 * 
 	 * @param limit_Date, fecha limite de publicacion de un producto
 	 */
-	public void setLimit_Date(String limit_Date) {
+	public void setLimit_Date(Date limit_Date) {
 		this.limit_Date = limit_Date;
 	}
 

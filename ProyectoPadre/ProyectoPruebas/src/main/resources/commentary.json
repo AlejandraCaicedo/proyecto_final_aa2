@@ -1,34 +1,34 @@
 {
 	"COMMENTARY": [
 		{
-			"ID": "00000112",
+			"ID": "C001",
 			"comment": "The product is in good conditions but I don't need that.",
-			"USER_ID": "0000",
-			"PRODUCT_code": "CCDJDJD"
+			"USER_ID": "U001",
+			"PRODUCT_code": "P001"
 		},
 		{
-			"ID": "00000113",
+			"ID": "C002",
 			"comment": "The product is awful",
-			"USER_ID": "0001",
-			"PRODUCT_code": "HHDJCN"
+			"USER_ID": "U002",
+			"PRODUCT_code": "P002"
 		},
 		{
-			"ID": "000000114",
+			"ID": "C003",
 			"comment": "It's just what I needed.",
-			"USER_ID": "0000",
-			"PRODUCT_code": "HHDJCN"
+			"USER_ID": "U002",
+			"PRODUCT_code": "P002"
 		},
 		{
-			"ID": "00000115",
+			"ID": "C004",
 			"comment": "The product is in bad conditions but I don't need that.",
-			"USER_ID": "0002",
-			"PRODUCT_code": "IIRPOR"
+			"USER_ID": "U003",
+			"PRODUCT_code": "P004"
 		},
 		{
-			"ID": "000000116",
+			"ID": "C005",
 			"comment": "His color was not the indicated",
-			"USER_ID": "0002",
-			"PRODUCT_code": "YYFUIWNN"
+			"USER_ID": "U004",
+			"PRODUCT_code": "P003"
 		}
 	]
 }

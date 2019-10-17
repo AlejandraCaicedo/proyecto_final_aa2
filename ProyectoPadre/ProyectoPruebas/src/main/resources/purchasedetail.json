@@ -4,29 +4,29 @@
 			"ID": 1,
 			"price": 97500.0,
 			"quantity": 2,
-			"PRODUCT_code": "CCDJDJD",
-			"PURCHASE_purchaseCode": "1234-ABC"
+			"PRODUCT_code": "P001",
+			"PURCHASE_purchaseCode": "PS001"
 		},
 		{
 			"ID": 2,
 			"quantity": 5,
 			"price": 14380.0,
-			"PRODUCT_code": "HHDJCN",
-			"PURCHASE_purchaseCode": "1235-ABD"
+			"PRODUCT_code": "P002",
+			"PURCHASE_purchaseCode": "PS002"
 		},
 		{
 			"ID": 3,
 			"quantity": 2,
 			"price": 1200.0,
-			"PRODUCT_code": "YYFUIWNN",
-			"PURCHASE_purchaseCode": "1236-ABE"
+			"PRODUCT_code": "P003",
+			"PURCHASE_purchaseCode": "PS003"
 		},
 		{
 			"ID": 4,
 			"quantity": 1,
 			"price": 4200.67,
-			"PRODUCT_code": "IIRPOR",
-			"PURCHASE_purchaseCode": "1237-ABF"
+			"PRODUCT_code": "P004",
+			"PURCHASE_purchaseCode": "PS004"
 		}
 	]
 }

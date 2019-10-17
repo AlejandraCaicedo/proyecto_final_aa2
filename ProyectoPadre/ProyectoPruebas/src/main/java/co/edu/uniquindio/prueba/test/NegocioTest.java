@@ -35,14 +35,14 @@ public class NegocioTest {
 
 	}
 
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "person.json" })
-	public void probarAutenticacion() {
-
-		Person p = negocioEJB.autentifyPerson("macaicedoc@uqvirtual.edu.co", "vofh");
-		Assert.assertNotNull(p);
-
-	}
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	@UsingDataSet({ "person.json" })
+//	public void probarAutenticacion() {
+//
+//		Person p = negocioEJB.autentifyPerson("macaicedoc@uqvirtual.edu.co", "vofh");
+//		Assert.assertNotNull(p);
+//
+//	}
 
 }

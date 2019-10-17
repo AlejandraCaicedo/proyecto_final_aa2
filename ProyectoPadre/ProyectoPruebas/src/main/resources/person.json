@@ -1,8 +1,8 @@
 {
 	"PERSON": [
 		{
-			"ID": "0000",
-			"DTYPE": "User",
+			"ID": "U001",
+			"TYPE": "User",
 			"adress": "adress 1",
 			"cellphoneNumber": "324343",
 			"email": "dagutierrezv@uqvirtual.edu.co",
@@ -10,8 +10,8 @@
 			"password": "12345"
 		},
 		{
-			"ID": "0001",
-			"DTYPE": "User",
+			"ID": "U002",
+			"TYPE": "User",
 			"adress": "adress 2",
 			"cellphoneNumber": "11645465",
 			"email": "jdarizas@uqvirtual.edu.co",
@@ -19,40 +19,22 @@
 			"password": "12345"
 		},
 		{
-			"ID": "0002",
-			"DTYPE": "User",
+			"ID": "U003",
+			"TYPE": "User",
 			"adress": "adress 3",
 			"cellphoneNumber": "79874",
 			"email": "macaicedoc@uqvirtual.edu.co",
 			"fullName": "Maria Alejandra",
-			"password": "vofh"
+			"password": "12345"
 		},
 		{
-			"ID": "0003",
-			"DTYPE": "Admin",
+			"ID": "A001",
+			"TYPE": "Admin",
 			"adress": "Adress Admin 1",
 			"cellphoneNumber": "7894132",
-			"email": "dagutierrezv@uqvirtual.edu.co",
-			"fullName": "Alejandro",
-			"password": "vofh"
-		},
-		{
-			"ID": "0004",
-			"DTYPE": "Admin",
-			"adress": "Adress Admin 2",
-			"cellphoneNumber": "3118619017",
-			"email": "macaicedoc@uqvirtual.edu.co",
-			"fullName": "Maria Alejandra",
-			"password": "password2"
-		},
-		{
-			"ID": "0005",
-			"DTYPE": "Admin",
-			"adress": "Adress Admin 3",
-			"cellphoneNumber": "3222025613",
-			"email": "jdarizas@uqvirtual.edu.co",
-			"fullName": "Juan David",
-			"password": "password3"
+			"email": "admin@admin.com",
+			"fullName": "Alejandra Ariza",
+			"password": "admin12345"
 		}
 	]
 }

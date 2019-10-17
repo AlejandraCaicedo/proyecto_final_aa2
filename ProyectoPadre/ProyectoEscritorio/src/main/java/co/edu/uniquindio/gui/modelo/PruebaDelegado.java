@@ -7,7 +7,6 @@ import javax.naming.NamingException;
 
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
-import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
@@ -37,8 +36,8 @@ public class PruebaDelegado implements NegocioEJBRemote {
 		}
 	}
 
-	public Person autentifyPerson(String email, String password) {
-		return negocioEJB.autentifyPerson(email, password);
+	public User autentifyUser(String email, String password) {
+		return negocioEJB.autentifyUser(email, password);
 	}
 
 	public List<Product> toListAvailableProducts() {

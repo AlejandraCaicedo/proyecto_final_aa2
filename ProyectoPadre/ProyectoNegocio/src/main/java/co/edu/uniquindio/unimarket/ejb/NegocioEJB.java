@@ -49,13 +49,13 @@ public class NegocioEJB implements NegocioEJBRemote {
 	}
 
 	@Override
-	public Person autentifyPerson(String email, String password) {
+	public User autentifyUser(String email, String password) {
 
-		TypedQuery<Person> p = entityManager.createNamedQuery(Person.AUTENTIFY_PERSON, Person.class);
+		TypedQuery<User> p = entityManager.createNamedQuery(User.AUTENTIFY_USER, User.class);
 		p.setParameter("password", password);
 		p.setParameter("email", email);
 
-		List<Person> list = p.getResultList();
+		List<User> list = p.getResultList();
 
 		if (!list.isEmpty()) {
 			return list.get(0);

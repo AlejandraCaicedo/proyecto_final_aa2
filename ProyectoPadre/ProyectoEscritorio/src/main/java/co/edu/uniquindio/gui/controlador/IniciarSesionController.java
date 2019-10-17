@@ -31,7 +31,7 @@ public class IniciarSesionController implements Initializable {
 
 		if (!email.isEmpty() && !password.isEmpty()) {
 
-			Person p = pruebaDelegado.autentifyPerson(email, password);
+			Person p = pruebaDelegado.autentifyUser(email, password);
 			System.out.println(p);
 		}
 	}

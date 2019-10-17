@@ -31,7 +31,8 @@ import javax.persistence.*;
 		@NamedQuery(name = User.PUBLISHED_PRODUCTS, query = "select new co.edu.uniquindio.uniMarket.dto.PUBLISHED_PRODUCTS(u.ID,u.email, count(p)) from User u INNER JOIN u.listProducts p"),
 		@NamedQuery(name = User.FIND_BY_EMAIL, query = "select u from User u where u.email =:EMAIL"),
 		@NamedQuery(name = User.ALL_SELLING_USERS, query = "select u from User u INNER JOIN u.listProducts p group by u having count(p)>0"),
-		@NamedQuery(name = User.All_SHOPPERS_USERS, query = "select u from User u INNER JOIN u.listPurchases p group by u having count(p)>0") })
+		@NamedQuery(name = User.All_SHOPPERS_USERS, query = "select u from User u INNER JOIN u.listPurchases p group by u having count(p)>0"),
+		@NamedQuery(name = User.AUTENTIFY_USER, query = "select u from User u where u.password = :password and u.email = :email") })
 
 public class User extends Person implements Serializable {
 
@@ -70,6 +71,8 @@ public class User extends Person implements Serializable {
 	public static final String ALL_SELLING_USERS = "TODOS_USUARIOS_VENDEDORES";
 
 	public static final String All_SHOPPERS_USERS = "All_SHOPPERS_USERS";
+
+	public static final String AUTENTIFY_USER = "AUTENTIFY_USER";
 
 	/**
 	 * Constructor vacio de la clase usuario, hereda de la clase persona

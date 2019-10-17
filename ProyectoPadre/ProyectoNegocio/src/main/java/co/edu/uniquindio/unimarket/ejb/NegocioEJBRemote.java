@@ -19,7 +19,7 @@ public interface NegocioEJBRemote {
 
 	String JDNI = "java:global/ProyectoEAR/ProyectoNegocio/NegocioEJB!co.edu.uniquindio.unimarket.ejb.NegocioEJBRemote";
 
-	Person autentifyPerson(String email, String password);
+	User autentifyUser(String email, String password);
 
 	List<Product> toListAvailableProducts();
 
