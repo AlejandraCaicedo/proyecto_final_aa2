@@ -108,7 +108,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 		Admin admin = findAdmin(email, password);
 
 		if (admin == null) {
-			throw new NotFoundAdminException("El email o la Contrasenia son incorrectos");
+			throw new NotFoundAdminException("El email o la contrasenia son incorrectos");
 		} else {
 			return admin;
 		}
