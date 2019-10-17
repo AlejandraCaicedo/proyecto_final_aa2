@@ -75,12 +75,9 @@ public class Admin extends Person implements Serializable {
 		return true;
 	}
 
-	/**
-	 * Metodo toString para dar una forma standar al muestreo de los administradores
-	 */
 	@Override
 	public String toString() {
-		return "Admin []";
+		return "Admin [" + super.toString() + "]";
 	}
 
 }

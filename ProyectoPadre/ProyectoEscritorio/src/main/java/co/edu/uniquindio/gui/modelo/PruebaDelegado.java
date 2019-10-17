@@ -64,4 +64,8 @@ public class PruebaDelegado implements NegocioEJBRemote {
 		return negocioEJB.toEditProduct(p);
 	}
 
+	public void showErrorMessage(String message) {
+		negocioEJB.showErrorMessage(message);
+	}
+
 }

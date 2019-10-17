@@ -8,6 +8,7 @@ import javax.enterprise.inject.Typed;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 
 import com.sun.security.ntlm.Client;
 
@@ -149,13 +150,13 @@ public class NegocioEJB implements NegocioEJBRemote {
 
 	private User findUser(String email) {
 		TypedQuery<User> q = entityManager.createNamedQuery(User.FIND_BY_EMAIL, User.class);
+		q.setParameter("email", email);
 		List<User> listUsers = q.getResultList();
 
-		if (listUsers.isEmpty()) {
-			return null;
+		if (!listUsers.isEmpty()) {
+			return listUsers.get(0);
 		}
-
-		return listUsers.get(0);
+		return null;
 	}
 
 	private Admin findAdmin(String email, String password) {
@@ -167,6 +168,11 @@ public class NegocioEJB implements NegocioEJBRemote {
 			return p.getResultList().get(0);
 		}
 		return null;
+	}
+
+	@Override
+	public void showErrorMessage(String message) {
+		JOptionPane.showMessageDialog(null, message, "ERROR", JOptionPane.WARNING_MESSAGE);
 	}
 
 }

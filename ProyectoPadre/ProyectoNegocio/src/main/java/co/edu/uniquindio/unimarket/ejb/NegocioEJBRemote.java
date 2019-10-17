@@ -3,6 +3,7 @@ package co.edu.uniquindio.unimarket.ejb;
 import java.util.List;
 
 import javax.ejb.Remote;
+import javax.swing.JOptionPane;
 
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
@@ -32,5 +33,7 @@ public interface NegocioEJBRemote {
 	Admin toLogginAdmin(String email, String password) throws NotFoundAdminException;
 
 	Product toEditProduct(Product p);
+
+	void showErrorMessage(String message);
 
 }

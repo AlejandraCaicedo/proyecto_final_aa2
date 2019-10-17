@@ -11,7 +11,7 @@ public class Principal extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/signin.fxml"));
+		loader.setLocation(getClass().getResource("/signup.fxml"));
 
 		Parent p = loader.load();
 		Scene scene = new Scene(p);

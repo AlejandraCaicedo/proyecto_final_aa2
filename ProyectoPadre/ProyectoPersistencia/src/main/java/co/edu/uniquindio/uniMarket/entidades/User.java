@@ -29,7 +29,7 @@ import javax.persistence.*;
 		@NamedQuery(name = User.ALL_USERS, query = "select u from User u"),
 		@NamedQuery(name = User.GMAIL_USERS, query = "select u from User u where u.email like '%gmail%' "),
 		@NamedQuery(name = User.PUBLISHED_PRODUCTS, query = "select new co.edu.uniquindio.uniMarket.dto.PUBLISHED_PRODUCTS(u.ID,u.email, count(p)) from User u INNER JOIN u.listProducts p"),
-		@NamedQuery(name = User.FIND_BY_EMAIL, query = "select u from User u where u.email =:EMAIL"),
+		@NamedQuery(name = User.FIND_BY_EMAIL, query = "select u from User u where u.email =:email"),
 		@NamedQuery(name = User.ALL_SELLING_USERS, query = "select u from User u INNER JOIN u.listProducts p group by u having count(p)>0"),
 		@NamedQuery(name = User.All_SHOPPERS_USERS, query = "select u from User u INNER JOIN u.listPurchases p group by u having count(p)>0"),
 		@NamedQuery(name = User.AUTENTIFY_USER, query = "select u from User u where u.password = :password and u.email = :email") })
@@ -155,7 +155,7 @@ public class User extends Person implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "User [listCompra=" + listPurchases + ", rates=" + listRates + ", comments=" + listComments + "]";
+		return "User [" + super.toString() + "]";
 	}
 
 	/**
