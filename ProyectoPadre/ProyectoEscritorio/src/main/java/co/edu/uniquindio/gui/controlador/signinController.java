@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.gui.modelo.PruebaDelegado;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
-import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

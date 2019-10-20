@@ -3,11 +3,9 @@ package co.edu.uniquindio.unimarket.ejb;
 import java.util.List;
 
 import javax.ejb.Remote;
-import javax.swing.JOptionPane;
 
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
-import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
