@@ -19,7 +19,7 @@ public class Principal extends Application {
 
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("LOGIN ADMIN");
-		primaryStage.initStyle(StageStyle.UNDECORATED);
+//		primaryStage.initStyle(StageStyle.UNDECORATED);
 		primaryStage.show();
 
 	}
