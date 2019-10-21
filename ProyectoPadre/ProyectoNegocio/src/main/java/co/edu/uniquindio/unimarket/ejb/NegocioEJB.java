@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
 
+import co.edu.uniquindio.uniMarket.dto.PRODUCT_INFORMATION;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
 import co.edu.uniquindio.uniMarket.entidades.Product;
@@ -60,6 +61,47 @@ public class NegocioEJB implements NegocioEJBRemote {
 		}
 	}
 
+	public User toGiveUser(String ID) {
+		User user = entityManager.find(User.class, ID);
+		return user;
+	}
+
+	@Override
+	public void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException {
+
+		if (entityManager.find(User.class, u.getID()) != null) {
+			throw new RepeatedIDException("El usuario ya se encuentra registrado");
+		}
+
+		if (findUser(u.getEmail()) != null) {
+			throw new RepeatedEmailException("El email ya se encuentra en uso");
+		}
+
+		entityManager.persist(u);
+	}
+
+	public User toRemoveUser(String ID) {
+		User user = entityManager.find(User.class, ID);
+		entityManager.remove(user);
+
+		return entityManager.find(User.class, ID);
+	}
+
+	public User toEditUser(User user, String ID) {
+
+		User actual = entityManager.find(User.class, ID);
+		actual.setAdress(user.getAdress());
+		actual.setCellphoneNumber(user.getCellphoneNumber());
+		actual.setEmail(user.getEmail());
+		actual.setFullName(user.getFullName());
+		actual.setID(user.getID());
+		actual.setPassword(user.getPassword());
+
+		entityManager.merge(actual);
+
+		return entityManager.find(User.class, ID);
+	}
+
 	@Override
 	public List<Commentary> toListProductsComments(String codeProducto) {
 		TypedQuery<Commentary> c = entityManager.createNamedQuery(Commentary.COMMENTS_PRODUCT, Commentary.class);
@@ -82,20 +124,6 @@ public class NegocioEJB implements NegocioEJBRemote {
 	public Product toEditProduct(Product p) {
 		entityManager.merge(p);
 		return p;
-	}
-
-	@Override
-	public void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException {
-
-		if (entityManager.find(User.class, u.getID()) != null) {
-			throw new RepeatedIDException("El usuario ya se encuentra registrado");
-		}
-
-		if (findUser(u.getEmail()) != null) {
-			throw new RepeatedEmailException("El email ya se encuentra en uso");
-		}
-
-		entityManager.persist(u);
 	}
 
 	@Override
@@ -136,11 +164,22 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return p.getResultList();
 	}
 
-	public String toGiveProductDescription(String code) {
-		TypedQuery<Product> p = entityManager.createNamedQuery(Product.DESCRIPTION, Product.class);
+	public List<Product> toListExpiredProducts() {
+		TypedQuery<Product> p = entityManager.createNamedQuery(Product.EXPIRED_PRODUCTS, Product.class);
+		return p.getResultList();
+	}
+
+	public List<Product> toListNotExpiredProducts() {
+		TypedQuery<Product> p = entityManager.createNamedQuery(Product.NOT_EXPIRED_PRODUCTS, Product.class);
+		return p.getResultList();
+	}
+
+	public PRODUCT_INFORMATION toGiveProductInformation(String code) {
+		TypedQuery<PRODUCT_INFORMATION> p = entityManager.createNamedQuery(Product.INFORMATION,
+				PRODUCT_INFORMATION.class);
 		p.setParameter("code", code);
 
-		return p.getResultList().get(0).getDescription();
+		return p.getResultList().get(0);
 	}
 
 	private User findUser(String email) {

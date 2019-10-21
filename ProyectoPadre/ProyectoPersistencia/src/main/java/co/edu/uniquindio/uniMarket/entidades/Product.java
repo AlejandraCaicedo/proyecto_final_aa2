@@ -38,10 +38,12 @@ import javax.persistence.TemporalType;
 		@NamedQuery(name = Product.EMPTY_COMMENTARY, query = "select p from Product p where p.listCommentaries is empty"),
 		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT, query = "select p from Product p where p =select MAX(p.price) from Product p"),
 		@NamedQuery(name = Product.MOST_EXPENSIVE_PRODUCT_BY_TYPE, query = "select MAX(p.price) from Product p group by p.type"),
-		@NamedQuery(name = Product.ALL_PRODUCT_AVAILABLE, query = "select p from Product p where p.availability>0 and p.limit_Date <= :fechaActual"),
+		@NamedQuery(name = Product.ALL_PRODUCT_AVAILABLE, query = "select p from Product p where p.availability>0 and p.limit_Date >= :fechaActual"),
 		@NamedQuery(name = Product.PRODUCTS_BY_TYPE, query = "select p from Product p group by p.type"),
-		@NamedQuery(name = Product.DESCRIPTION, query = "select p.description from Product p where p.code=:code"),
-		@NamedQuery(name = Product.PRODUCTS_BY_GIVEN_TYPE, query = "select p from Product p where p.type =:type") })
+		@NamedQuery(name = Product.INFORMATION, query = "select new co.edu.uniquindio.uniMarket.dto.PRODUCT_INFORMATION(p.code, p.name, p.description, p.price, p.availability, p.type, p.limit_Date) from Product p where p.code=:code"),
+		@NamedQuery(name = Product.PRODUCTS_BY_GIVEN_TYPE, query = "select p from Product p where p.type =:type"),
+		@NamedQuery(name = Product.EXPIRED_PRODUCTS, query = "select p from Product p where p.limit_Date < CURRENT_DATE"),
+		@NamedQuery(name = Product.NOT_EXPIRED_PRODUCTS, query = "select p from Product p where p.limit_Date > CURRENT_DATE") })
 public class Product implements Serializable {
 
 	@Id
@@ -122,8 +124,14 @@ public class Product implements Serializable {
 	// Query que retorna una lista de productos dato el tipo de estos.
 	public static final String PRODUCTS_BY_GIVEN_TYPE = "PRODUCTS_BY_GIVEN_TYPE";
 
-	// Query que retorna la descripcion de un producto dado su codigo
-	public static final String DESCRIPTION = "DESCRIPTION";
+	// Query que retorna la informacion de un producto dado su codigo
+	public static final String INFORMATION = "INFORMATION";
+
+	// Query que retorna los productos vencidos
+	public static final String EXPIRED_PRODUCTS = "EXPIRED_PRODUCTS";
+
+	// Query que retorna los productos que aun no han expirado
+	public static final String NOT_EXPIRED_PRODUCTS = "NOT_EXPIRED_PRODUCTS";
 
 	private static final long serialVersionUID = 1L;
 

@@ -68,7 +68,7 @@ public class User extends Person implements Serializable {
 	public static final String FIND_BY_EMAIL = "FIND_BY_EMAIL";
 
 	// Query que retorna todos los Usuarios que son vendedores
-	public static final String ALL_SELLING_USERS = "TODOS_USUARIOS_VENDEDORES";
+	public static final String ALL_SELLING_USERS = "ALL_SELLING_USERS";
 
 	public static final String All_SHOPPERS_USERS = "All_SHOPPERS_USERS";
 
