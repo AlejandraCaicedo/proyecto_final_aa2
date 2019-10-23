@@ -1,93 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0"
+	prefWidth="743.0" xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1">
 	<children>
-		<VBox prefHeight="515.0" prefWidth="236.0" style="-fx-background-color: #154360;">
+		<VBox prefHeight="490.0" prefWidth="245.0"
+			style="-fx-background-color: #154360;" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
 			<effect>
 				<DropShadow />
 			</effect>
 			<children>
-				<Button fx:id="butonAdmin" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#action_admin" prefHeight="50.0" prefWidth="284.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold;" text="Admin">
-					<padding>
-						<Insets left="50.0" />
-					</padding>
-					<cursor>
-						<Cursor fx:constant="OPEN_HAND" />
-					</cursor>
+				<Pane prefHeight="150.0" prefWidth="226.0"
+					style="-fx-background-color: #1A5276;" />
+				<Separator opacity="0.0" prefHeight="20.0" />
+				<JFXButton fx:id="buttonAdmin" alignment="CENTER"
+					buttonType="RAISED" onAction="#action_admin" prefHeight="55.0"
+					prefWidth="267.0" ripplerFill="#5cdab2" text="Admin"
+					textFill="WHITE">
 					<graphic>
-						<ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="45.0" fitWidth="45.0"
+							pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@images/admin.png" />
 							</image>
 						</ImageView>
 					</graphic>
-					<VBox.margin>
-						<Insets bottom="10.0" />
-					</VBox.margin>
-				</Button>
-				<Button fx:id="butonUsers" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#action_users" prefHeight="50.0" prefWidth="243.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold;" text="Users">
-					<padding>
-						<Insets left="50.0" />
-					</padding>
+					<font>
+						<Font name="System Bold" size="13.0" />
+					</font>
 					<cursor>
 						<Cursor fx:constant="OPEN_HAND" />
 					</cursor>
+				</JFXButton>
+				<Separator prefHeight="20.0" />
+				<JFXButton fx:id="buttonUsers" alignment="CENTER"
+					buttonType="RAISED" onAction="#action_users" prefHeight="55.0"
+					prefWidth="253.0" ripplerFill="#5cdab2" text="Users"
+					textFill="#fcfafa">
 					<graphic>
-						<ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="45.0" fitWidth="45.0"
+							pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@images/grupo.png" />
 							</image>
 						</ImageView>
 					</graphic>
-					<VBox.margin>
-						<Insets bottom="10.0" />
-					</VBox.margin>
-				</Button>
-				<Button fx:id="butonProducts" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#action_products" prefHeight="50.0" prefWidth="235.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold;" text="Products">
-					<padding>
-						<Insets left="50.0" />
-					</padding>
+					<font>
+						<Font name="System Bold" size="13.0" />
+					</font>
 					<cursor>
 						<Cursor fx:constant="OPEN_HAND" />
 					</cursor>
-					<VBox.margin>
-						<Insets bottom="10.0" />
-					</VBox.margin>
+				</JFXButton>
+				<Separator prefHeight="20.0" />
+				<JFXButton fx:id="buttonProducts" alignment="CENTER"
+					buttonType="RAISED" onAction="#action_products" prefHeight="55.0"
+					prefWidth="234.0" ripplerFill="#5cdab2" text="Products"
+					textFill="WHITE">
 					<graphic>
-						<ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="45.0" fitWidth="45.0"
+							pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@images/estante.png" />
 							</image>
 						</ImageView>
 					</graphic>
-				</Button>
-				<Button fx:id="butonPurchases" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#action_purchases" prefHeight="50.0" prefWidth="257.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold;" text="Purchases">
-					<padding>
-						<Insets left="50.0" />
-					</padding>
+					<font>
+						<Font name="System Bold" size="13.0" />
+					</font>
 					<cursor>
 						<Cursor fx:constant="OPEN_HAND" />
 					</cursor>
-					<VBox.margin>
-						<Insets bottom="10.0" />
-					</VBox.margin>
+				</JFXButton>
+				<Separator prefHeight="20.0" />
+				<JFXButton fx:id="buttonPurchases" alignment="CENTER"
+					buttonType="RAISED" onAction="#action_purchases" prefHeight="55.0"
+					prefWidth="239.0" ripplerFill="#5cdab2" text="Purchases"
+					textFill="WHITE">
 					<graphic>
-						<ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="45.0" fitWidth="45.0"
+							pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@images/ventas.png" />
 							</image>
 						</ImageView>
 					</graphic>
-				</Button>
+					<font>
+						<Font name="System Bold" size="13.0" />
+					</font>
+					<cursor>
+						<Cursor fx:constant="OPEN_HAND" />
+					</cursor>
+				</JFXButton>
 			</children>
 			<padding>
 				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
