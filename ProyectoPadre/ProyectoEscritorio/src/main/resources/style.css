@@ -1,0 +1,22 @@
+.table-view {
+	-fx-base: #189499;
+	-fx-background-color: white;
+	-fx-padding: 5;
+}
+
+.table-view .column-header .label {
+	-fx-text-fill: #eeeeec;
+	-fx-alignment: CENTER;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+	-fx-background-color: -fx-focus-color;
+}
+
+.table-cell:hover {
+	-fx-background-color: #8493b9;
+}
+
+.table-view .column-header:hover {
+	-fx-background-color: #52677a;
+}
