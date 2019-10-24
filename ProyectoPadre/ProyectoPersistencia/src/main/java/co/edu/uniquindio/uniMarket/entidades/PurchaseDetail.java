@@ -45,9 +45,11 @@ public class PurchaseDetail implements Serializable {
 
 	// Query que retorna la cantidad de dinero gastado por un usuario especifico
 	public static final String TOTAL_SPEND_USER = "TOTAL_SPEND_USER";
+
 	// Query que retorna la cantidad de dinero ganado por un usuario especifico
 	public static final String TOTAL_EARN_USER = "TOTAL_EARN_USER";
 
+	// Query que retona
 	public static final String MAX_RECORD_PRODUCT = "MAX_RECORD_PRODUCT";
 
 	private static final long serialVersionUID = 1L;

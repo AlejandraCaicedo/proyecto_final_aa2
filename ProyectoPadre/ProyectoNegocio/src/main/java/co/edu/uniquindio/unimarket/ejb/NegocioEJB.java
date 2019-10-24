@@ -13,6 +13,9 @@ import co.edu.uniquindio.uniMarket.dto.PRODUCT_INFORMATION;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
 import co.edu.uniquindio.uniMarket.entidades.Product;
+import co.edu.uniquindio.uniMarket.entidades.Purchase;
+import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
+import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.Type;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
@@ -38,11 +41,15 @@ public class NegocioEJB implements NegocioEJBRemote {
 	}
 
 	@Override
-	public List<Product> toListAvailableProducts() {
-//		TypedQuery<Product> productos = entityManager.createNamedQuery(Product.ALL_PRODUCT_AVAILABLE, Product.class);
-//		productos.setParameter("fechaActual", "new Date() --- new SimpleFormat()");
-//		return productos.getResultList();
-		return null;
+	public Admin toLogginAdmin(String email, String password) throws NotFoundAdminException {
+
+		Admin admin = findAdmin(email, password);
+
+		if (admin == null) {
+			throw new NotFoundAdminException("El email o la contrasenia son incorrectos");
+		} else {
+			return admin;
+		}
 	}
 
 	@Override
@@ -61,11 +68,56 @@ public class NegocioEJB implements NegocioEJBRemote {
 		}
 	}
 
-	public User toGiveUser(String ID) {
-		User user = entityManager.find(User.class, ID);
-		return user;
+//	@Override
+//	public List<Product> toListAvailableProducts() {
+////		TypedQuery<Product> productos = entityManager.createNamedQuery(Product.ALL_PRODUCT_AVAILABLE, Product.class);
+////		productos.setParameter("fechaActual", "new Date() --- new SimpleFormat()");
+////		return productos.getResultList();
+//		return null;
+//	}
+
+	// METODOS DE PERSISTENCIA
+
+	/**
+	 * Metodo que realiza la persistencia de los comentarios
+	 */
+	@Override
+	public void toCreateCommentary(Commentary c) {
+		entityManager.persist(c);
 	}
 
+	/**
+	 * Metodo que realiza la persistencia de la calificacion de un producto
+	 */
+	@Override
+	public void toCreateRate(Rate r) {
+		entityManager.persist(r);
+	}
+
+	/**
+	 * Metodo que realiza la persistencia de las compras
+	 */
+	@Override
+	public void toCreatePurchase(Purchase p) {
+		entityManager.persist(p);
+	}
+
+	/**
+	 * Metodo que realiza la persistencia a los productos registrados
+	 */
+	@Override
+	public void toCreateProduct(Product p) throws RepeatedProductException {
+
+		if (entityManager.find(Product.class, p.getCode()) != null) {
+			throw new RepeatedProductException("El producto ya se encuentra registrado");
+		}
+		entityManager.persist(p);
+	}
+
+	/**
+	 * Metodo que realiza la persistencia de los usuarios registrados en la base de
+	 * datos
+	 */
 	@Override
 	public void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException {
 
@@ -80,12 +132,15 @@ public class NegocioEJB implements NegocioEJBRemote {
 		entityManager.persist(u);
 	}
 
-	public User toRemoveUser(String ID) {
-		User user = entityManager.find(User.class, ID);
-		entityManager.remove(user);
-
-		return entityManager.find(User.class, ID);
+	/**
+	 * Metodo que realiza la persistencia de los detalles de cada compra
+	 */
+	public void persistenciaPurchaseDetail(Product product, Purchase purchase) {
+		PurchaseDetail purchaseDetail = new PurchaseDetail();
+		entityManager.persist(purchaseDetail);
 	}
+
+	// METODOS DE EDITAR O ACTUALIZAR
 
 	public User toEditUser(User user, String ID) {
 
@@ -102,41 +157,67 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return entityManager.find(User.class, ID);
 	}
 
-	@Override
-	public List<Commentary> toListProductsComments(String codeProducto) {
-		TypedQuery<Commentary> c = entityManager.createNamedQuery(Commentary.COMMENTS_PRODUCT, Commentary.class);
-		c.setParameter("codeProduct", codeProducto);
-		return c.getResultList();
+//	@Override
+//	public Product toEditProduct(Product p, String code) {
+//
+//		Product actual = entityManager.find(Product.class, code);
+//		actual.setAvailability(p.getAvailability());
+//		actual.setDescription(p.getDescription());
+//		actual.setLimit_Date(p.getLimit_Date());
+//		actual.setName(p.getName());
+//		actual.setPrice(p.getPrice());
+//
+//		entityManager.merge(actual);
+//		return p;
+//	}
+
+	// METODOS DE ELIMINAR
+
+	public User toRemoveUser(String ID) {
+		User user = entityManager.find(User.class, ID);
+		entityManager.remove(user);
+
+		return entityManager.find(User.class, ID);
 	}
 
-	@Override
-	public void toCreateProduct(Product p) throws RepeatedProductException {
+	// METODOS DE ENCONTRAR U OBTENER
 
-		if (entityManager.find(Product.class, p.getCode()) != null) {
-			throw new RepeatedProductException("El producto ya se encuentra registrado");
+	private User findUser(String email) {
+		TypedQuery<User> q = entityManager.createNamedQuery(User.FIND_BY_EMAIL, User.class);
+		q.setParameter("email", email);
+		List<User> listUsers = q.getResultList();
+
+		if (!listUsers.isEmpty()) {
+			return listUsers.get(0);
 		}
-
-		entityManager.persist(p);
-
+		return null;
 	}
 
-	@Override
-	public Product toEditProduct(Product p) {
-		entityManager.merge(p);
-		return p;
-	}
+	private Admin findAdmin(String email, String password) {
+		TypedQuery<Admin> p = entityManager.createNamedQuery(Admin.FIND_ADMIN, Admin.class);
+		p.setParameter("email", email);
+		p.setParameter("password", password);
 
-	@Override
-	public Admin toLogginAdmin(String email, String password) throws NotFoundAdminException {
-
-		Admin admin = findAdmin(email, password);
-
-		if (admin == null) {
-			throw new NotFoundAdminException("El email o la contrasenia son incorrectos");
-		} else {
-			return admin;
+		if (!p.getResultList().isEmpty()) {
+			return p.getResultList().get(0);
 		}
+		return null;
 	}
+
+	public PRODUCT_INFORMATION toGiveProductInformation(String code) {
+		TypedQuery<PRODUCT_INFORMATION> p = entityManager.createNamedQuery(Product.INFORMATION,
+				PRODUCT_INFORMATION.class);
+		p.setParameter("code", code);
+
+		return p.getResultList().get(0);
+	}
+
+	public User toGiveUser(String ID) {
+		User user = entityManager.find(User.class, ID);
+		return user;
+	}
+
+	// METODOS DE LISTAR
 
 	public List<User> toListSellers() {
 		TypedQuery<User> p = entityManager.createNamedQuery(User.ALL_SELLING_USERS, User.class);
@@ -174,39 +255,16 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return p.getResultList();
 	}
 
-	public PRODUCT_INFORMATION toGiveProductInformation(String code) {
-		TypedQuery<PRODUCT_INFORMATION> p = entityManager.createNamedQuery(Product.INFORMATION,
-				PRODUCT_INFORMATION.class);
-		p.setParameter("code", code);
-
-		return p.getResultList().get(0);
+	public List<Commentary> toListProductsComments(String codeProducto) {
+		TypedQuery<Commentary> c = entityManager.createNamedQuery(Commentary.COMMENTS_PRODUCT, Commentary.class);
+		c.setParameter("codeProduct", codeProducto);
+		return c.getResultList();
 	}
 
-	private User findUser(String email) {
-		TypedQuery<User> q = entityManager.createNamedQuery(User.FIND_BY_EMAIL, User.class);
-		q.setParameter("email", email);
-		List<User> listUsers = q.getResultList();
-
-		if (!listUsers.isEmpty()) {
-			return listUsers.get(0);
-		}
-		return null;
-	}
-
-	private Admin findAdmin(String email, String password) {
-		TypedQuery<Admin> p = entityManager.createNamedQuery(Admin.FIND_ADMIN, Admin.class);
-		p.setParameter("email", email);
-		p.setParameter("password", password);
-
-		if (!p.getResultList().isEmpty()) {
-			return p.getResultList().get(0);
-		}
-		return null;
-	}
+	// OTROS
 
 	@Override
 	public void showErrorMessage(String message) {
 		JOptionPane.showMessageDialog(null, message, "ERROR", JOptionPane.WARNING_MESSAGE);
 	}
-
 }

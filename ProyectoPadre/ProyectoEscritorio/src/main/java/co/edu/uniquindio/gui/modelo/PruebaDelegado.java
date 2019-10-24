@@ -8,6 +8,8 @@ import javax.naming.NamingException;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
 import co.edu.uniquindio.uniMarket.entidades.Product;
+import co.edu.uniquindio.uniMarket.entidades.Purchase;
+import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
@@ -40,10 +42,6 @@ public class PruebaDelegado implements NegocioEJBRemote {
 		return negocioEJB.autentifyUser(email, password);
 	}
 
-	public List<Product> toListAvailableProducts() {
-		return negocioEJB.toListAvailableProducts();
-	}
-
 	public List<Commentary> toListProductsComments(String codeProducto) {
 		return negocioEJB.toListProductsComments(codeProducto);
 	}
@@ -60,12 +58,27 @@ public class PruebaDelegado implements NegocioEJBRemote {
 		return negocioEJB.toLogginAdmin(email, password);
 	}
 
-	public Product toEditProduct(Product p) {
-		return negocioEJB.toEditProduct(p);
-	}
+//	public Product toEditProduct(Product p, String code) {
+//		return negocioEJB.toEditProduct(p, code);
+//	}
 
 	public void showErrorMessage(String message) {
 		negocioEJB.showErrorMessage(message);
+	}
+
+	@Override
+	public void toCreateCommentary(Commentary c) {
+		negocioEJB.toCreateCommentary(c);
+	}
+
+	@Override
+	public void toCreatePurchase(Purchase p) {
+		negocioEJB.toCreatePurchase(p);
+	}
+
+	@Override
+	public void toCreateRate(Rate r) {
+		negocioEJB.toCreateRate(r);
 	}
 
 }

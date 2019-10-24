@@ -3,6 +3,7 @@ package co.edu.uniquindio.prueba.test;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.persistence.TypedQuery;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -19,7 +20,13 @@ import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.uniMarket.dto.PRODUCT_INFORMATION;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
+import co.edu.uniquindio.uniMarket.entidades.Commentary;
+import co.edu.uniquindio.uniMarket.entidades.PaymentMethod;
+import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
+import co.edu.uniquindio.uniMarket.entidades.Purchase;
+import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
+import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
@@ -40,23 +47,11 @@ public class NegocioTest {
 
 	}
 
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	@UsingDataSet({ "person.json" })
-//	public void probarAutenticacion() {
-//
-//		Person p = negocioEJB.autentifyPerson("macaicedoc@uqvirtual.edu.co", "vofh");
-//		Assert.assertNotNull(p);
-//
-//	}
-
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "person.json" })
 	public void adminLogging() throws NotFoundAdminException {
-
 		Admin a = negocioEJB.toLogginAdmin("admin@admin.com", "admin12345");
-
 		Assert.assertNotNull(a);
 	}
 
@@ -73,7 +68,6 @@ public class NegocioTest {
 	@UsingDataSet({ "person.json" })
 	public void toEditUser() {
 		User user = new User("U001", "Nuevo", "email", "101011", "dir", "123");
-
 		User nuevo = negocioEJB.toEditUser(user, "U001");
 		Assert.assertEquals("dir", nuevo.getAdress());
 	}
@@ -91,7 +85,6 @@ public class NegocioTest {
 	@UsingDataSet({ "product.json" })
 	public void toGiveDetail() {
 		PRODUCT_INFORMATION product_INFORMATION = negocioEJB.toGiveProductInformation("P001");
-
 		Assert.assertEquals("Computer LENOVO", product_INFORMATION.getName());
 	}
 

@@ -36,6 +36,8 @@ public class Commentary implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	// Query que retorna la lista de comentarios asociados a un producto dado su
+	// codigo
 	public static final String COMMENTS_PRODUCT = "COMMENTS_PRODUCT";
 
 	/**

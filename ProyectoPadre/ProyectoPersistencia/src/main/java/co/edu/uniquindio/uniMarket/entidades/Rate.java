@@ -40,6 +40,7 @@ public class Rate implements Serializable {
 
 	// Query que retorna todos los ratings del UniMarket
 	public static final String ALL_RATINGS = "ALL_RATINGS";
+
 	// Query que retorna la calificacion de un producto dado su codigo
 	public static final String RATINGS_PRODUCT = "RATIGNS_PRODUCT";
 

@@ -70,8 +70,10 @@ public class User extends Person implements Serializable {
 	// Query que retorna todos los Usuarios que son vendedores
 	public static final String ALL_SELLING_USERS = "ALL_SELLING_USERS";
 
+	// Query que retorna todos los Usuarios que son compradores
 	public static final String All_SHOPPERS_USERS = "All_SHOPPERS_USERS";
 
+	// Query que retorna un usuario dado su email y su contrasenia
 	public static final String AUTENTIFY_USER = "AUTENTIFY_USER";
 
 	/**

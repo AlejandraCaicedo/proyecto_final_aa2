@@ -52,18 +52,23 @@ public class Purchase implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	// Query que retorna la lista de todas las compras
 	public static final String ALL_PURCHASES = "ALL_PURCHASES";
 
 	// Query que retorna los codigos, los metodos de pago, las ID y los email de los
 	// usuarios que hicieron una compra en una fecha especificada
 	public static final String PURCHASE_DATE = "PURCHASE_DATE";
+
 	// Query que retorna lo mismo del query PURCHASE_DATE usando DTO
 	public static final String PURCHASE_DATE_DTO = "PURCHASE_DATE_DTO";
+
 	// Query que retorna el numero de compras unicas
 	public static final String UNIQUE_PURCHASES = "UNIQUE_PURCHASES";
+
 	// Query que retorna una lista de Detalle Compra dadas 2 fechas y un metodo de
 	// pago
 	public static final String PURCHASE_DATE_PAYMENT = "PURCHASE_DATE_PAYMENT";
+
 	// Query que retorna las compras de un usuario y sus detalles de compra
 	public static final String USER_PURCHASES = "USER_PURCHASES";
 

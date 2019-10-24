@@ -200,7 +200,7 @@ public class ModeloTest {
 //		entityManager.persist(rate);
 //		Assert.assertNotNull(rate);
 //	}
-//
+
 //	@Test
 //	@Transactional(value = TransactionMode.ROLLBACK)
 //	@UsingDataSet({ "person.json" })
