@@ -3,7 +3,6 @@ package co.edu.uniquindio.prueba.test;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.persistence.TypedQuery;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -20,13 +19,7 @@ import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.uniMarket.dto.PRODUCT_INFORMATION;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
-import co.edu.uniquindio.uniMarket.entidades.Commentary;
-import co.edu.uniquindio.uniMarket.entidades.PaymentMethod;
-import co.edu.uniquindio.uniMarket.entidades.Person;
 import co.edu.uniquindio.uniMarket.entidades.Product;
-import co.edu.uniquindio.uniMarket.entidades.Purchase;
-import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
-import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
