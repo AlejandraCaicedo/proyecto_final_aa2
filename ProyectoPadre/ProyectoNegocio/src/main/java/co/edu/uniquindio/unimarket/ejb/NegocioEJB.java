@@ -76,7 +76,9 @@ public class NegocioEJB implements NegocioEJBRemote {
 //		return null;
 //	}
 
-	// METODOS DE PERSISTENCIA
+	// ----------------------------------------
+	// M E T O D O S - P E R S I S T E N C I A
+	// ----------------------------------------
 
 	/**
 	 * Metodo que realiza la persistencia de los comentarios
@@ -140,7 +142,9 @@ public class NegocioEJB implements NegocioEJBRemote {
 		entityManager.persist(purchaseDetail);
 	}
 
-	// METODOS DE EDITAR O ACTUALIZAR
+	// --------------------------------------------------
+	// M E T O D O S - A C T U A L I Z A R - E D I T A R
+	// --------------------------------------------------
 
 	public User toEditUser(User user, String ID) {
 
@@ -171,7 +175,9 @@ public class NegocioEJB implements NegocioEJBRemote {
 //		return p;
 //	}
 
-	// METODOS DE ELIMINAR
+	// ----------------------------------------
+	// M E T O D O S - E L I M I N A R
+	// ----------------------------------------
 
 	public User toRemoveUser(String ID) {
 		User user = entityManager.find(User.class, ID);
@@ -180,7 +186,9 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return entityManager.find(User.class, ID);
 	}
 
-	// METODOS DE ENCONTRAR U OBTENER
+	// --------------------------------------------------
+	// M E T O D O S - E N C O N T R A R - O B T E N E R
+	// --------------------------------------------------
 
 	private User findUser(String email) {
 		TypedQuery<User> q = entityManager.createNamedQuery(User.FIND_BY_EMAIL, User.class);
@@ -217,7 +225,9 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return user;
 	}
 
-	// METODOS DE LISTAR
+	// ----------------------------------------
+	// M E T O D O S - P A R A - L I S T A R
+	// ----------------------------------------
 
 	public List<User> toListSellers() {
 		TypedQuery<User> p = entityManager.createNamedQuery(User.ALL_SELLING_USERS, User.class);
