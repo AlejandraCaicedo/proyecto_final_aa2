@@ -1,16 +1,13 @@
 package co.edu.uniquindio.gui.controlador;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-import co.edu.uniquindio.gui.modelo.PruebaDelegado;
+import co.edu.uniquindio.gui.vista.ManejadorEscenarios;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,13 +18,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class signinController implements Initializable {
+public class signinController {
 
-	private PruebaDelegado pruebaDelegado;
+	private ManejadorEscenarios manejadorEscenarios;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		pruebaDelegado = PruebaDelegado.pruebaDelegado;
+	public ManejadorEscenarios getManejadorEscenarios() {
+		return manejadorEscenarios;
+	}
+
+	public void setManejadorEscenarios(ManejadorEscenarios manejadorEscenarios) {
+		this.manejadorEscenarios = manejadorEscenarios;
 	}
 
 	@FXML
@@ -58,7 +58,7 @@ public class signinController implements Initializable {
 
 			Admin admin;
 			try {
-				admin = pruebaDelegado.toLogginAdmin(email, password);
+				admin = manejadorEscenarios.toLogginAdmin(email, password);
 				System.out.println(admin);
 			} catch (NotFoundAdminException e) {
 				System.out.println(e.getMessage());

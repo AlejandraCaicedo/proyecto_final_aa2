@@ -1,28 +1,25 @@
 package co.edu.uniquindio.gui.controlador;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import javax.persistence.EntityManager;
-
-import co.edu.uniquindio.gui.modelo.PruebaDelegado;
+import co.edu.uniquindio.gui.vista.ManejadorEscenarios;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-public class signupController implements Initializable {
+public class signupController {
 
-	private PruebaDelegado pruebaDelegado;
+	private ManejadorEscenarios manejadorEscenarios;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		pruebaDelegado = PruebaDelegado.pruebaDelegado;
+	public ManejadorEscenarios getManejadorEscenarios() {
+		return manejadorEscenarios;
+	}
+
+	public void setManejadorEscenarios(ManejadorEscenarios manejadorEscenarios) {
+		this.manejadorEscenarios = manejadorEscenarios;
 	}
 
 	@FXML
@@ -58,15 +55,15 @@ public class signupController implements Initializable {
 
 		if (name.isEmpty() || ID.isEmpty() || adress.isEmpty() || cellPhoneNumer.isEmpty() || email.isEmpty()
 				|| password.isEmpty()) {
-			pruebaDelegado.showErrorMessage("There are empty fields");
+			manejadorEscenarios.showErrorMessage("There are empty fields");
 		} else {
 			User user = new User(ID, name, email, cellPhoneNumer, adress, password);
 			try {
-				pruebaDelegado.toRegisterUser(user);
+				manejadorEscenarios.toRegisterUser(user);
 			} catch (RepeatedIDException e) {
-				pruebaDelegado.showErrorMessage(e.getMessage());
+				manejadorEscenarios.showErrorMessage(e.getMessage());
 			} catch (RepeatedEmailException e) {
-				pruebaDelegado.showErrorMessage(e.getMessage());
+				manejadorEscenarios.showErrorMessage(e.getMessage());
 			}
 		}
 

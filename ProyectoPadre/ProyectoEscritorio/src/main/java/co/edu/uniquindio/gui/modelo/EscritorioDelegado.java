@@ -17,20 +17,20 @@ import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJBRemote;
 
-public class PruebaDelegado implements NegocioEJBRemote {
+public class EscritorioDelegado implements NegocioEJBRemote {
 
 	private NegocioEJBRemote negocioEJB;
-	public static PruebaDelegado pruebaDelegado = instancia();
+	public static EscritorioDelegado escritorioDelegado = instancia();
 
-	private static PruebaDelegado instancia() {
-		if (pruebaDelegado == null) {
-			pruebaDelegado = new PruebaDelegado();
-			return pruebaDelegado;
+	private static EscritorioDelegado instancia() {
+		if (escritorioDelegado == null) {
+			escritorioDelegado = new EscritorioDelegado();
+			return escritorioDelegado;
 		}
-		return pruebaDelegado;
+		return escritorioDelegado;
 	}
 
-	private PruebaDelegado() {
+	private EscritorioDelegado() {
 		try {
 			negocioEJB = (NegocioEJBRemote) new InitialContext().lookup(NegocioEJBRemote.JDNI);
 		} catch (NamingException e) {
@@ -38,32 +38,24 @@ public class PruebaDelegado implements NegocioEJBRemote {
 		}
 	}
 
+	@Override
 	public User autentifyUser(String email, String password) {
 		return negocioEJB.autentifyUser(email, password);
 	}
 
+	@Override
 	public List<Commentary> toListProductsComments(String codeProducto) {
 		return negocioEJB.toListProductsComments(codeProducto);
 	}
 
+	@Override
 	public void toCreateProduct(Product p) throws RepeatedProductException {
 		negocioEJB.toCreateProduct(p);
 	}
 
+	@Override
 	public void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException {
 		negocioEJB.toRegisterUser(u);
-	}
-
-	public Admin toLogginAdmin(String email, String password) throws NotFoundAdminException {
-		return negocioEJB.toLogginAdmin(email, password);
-	}
-
-//	public Product toEditProduct(Product p, String code) {
-//		return negocioEJB.toEditProduct(p, code);
-//	}
-
-	public void showErrorMessage(String message) {
-		negocioEJB.showErrorMessage(message);
 	}
 
 	@Override
@@ -81,4 +73,13 @@ public class PruebaDelegado implements NegocioEJBRemote {
 		negocioEJB.toCreateRate(r);
 	}
 
+	@Override
+	public Admin toLogginAdmin(String email, String password) throws NotFoundAdminException {
+		return negocioEJB.toLogginAdmin(email, password);
+	}
+
+	@Override
+	public void showErrorMessage(String message) {
+		negocioEJB.showErrorMessage(message);
+	}
 }

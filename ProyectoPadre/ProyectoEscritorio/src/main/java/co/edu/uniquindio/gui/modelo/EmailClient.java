@@ -48,6 +48,6 @@ public class EmailClient {
 
 	public static void main(String[] args) throws MessagingException {
 		EmailClient.sendAsHtml("macaicedoc@uqvirtual.edu.co", "Test email",
-				"<h2>Me enviaron a través de ECLIPSE</h2><p>Espero que estes leyendo esto</p>");
+				"<h2>Me enviaron a traves de ECLIPSE</h2><p>Espero que estes leyendo esto</p>");
 	}
 }

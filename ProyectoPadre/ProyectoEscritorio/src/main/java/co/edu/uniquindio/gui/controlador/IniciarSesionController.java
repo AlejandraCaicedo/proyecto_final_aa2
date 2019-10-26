@@ -3,7 +3,7 @@ package co.edu.uniquindio.gui.controlador;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.gui.modelo.PruebaDelegado;
+import co.edu.uniquindio.gui.modelo.EscritorioDelegado;
 import co.edu.uniquindio.uniMarket.entidades.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 
 public class IniciarSesionController implements Initializable {
 
-	private PruebaDelegado pruebaDelegado;
+	private EscritorioDelegado pruebaDelegado;
 
 	@FXML
 	private TextField txtEmail;
@@ -21,7 +21,7 @@ public class IniciarSesionController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		pruebaDelegado = PruebaDelegado.pruebaDelegado;
+		pruebaDelegado = EscritorioDelegado.escritorioDelegado;
 	}
 
 	@FXML
