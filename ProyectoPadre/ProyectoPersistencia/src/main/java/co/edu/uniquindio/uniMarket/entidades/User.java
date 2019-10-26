@@ -32,7 +32,8 @@ import javax.persistence.*;
 		@NamedQuery(name = User.FIND_BY_EMAIL, query = "select u from User u where u.email =:email"),
 		@NamedQuery(name = User.ALL_SELLING_USERS, query = "select u from User u INNER JOIN u.listProducts p group by u having count(p)>0"),
 		@NamedQuery(name = User.All_SHOPPERS_USERS, query = "select u from User u INNER JOIN u.listPurchases p group by u having count(p)>0"),
-		@NamedQuery(name = User.AUTENTIFY_USER, query = "select u from User u where u.password = :password and u.email = :email") })
+		@NamedQuery(name = User.AUTENTIFY_USER, query = "select u from User u where u.password = :password and u.email = :email"),
+		@NamedQuery(name = User.DELETE_PRODUCTS, query = "DELETE FROM Product p where p IN (select a from User u INNER JOIN u.listProducts a)") })
 
 public class User extends Person implements Serializable {
 
@@ -75,6 +76,9 @@ public class User extends Person implements Serializable {
 
 	// Query que retorna un usuario dado su email y su contrasenia
 	public static final String AUTENTIFY_USER = "AUTENTIFY_USER";
+
+	// Query que elimina los productos de un usuario
+	public static final String DELETE_PRODUCTS = "DELETE_PRODUCTS";
 
 	/**
 	 * Constructor vacio de la clase usuario, hereda de la clase persona
