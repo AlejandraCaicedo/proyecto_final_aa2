@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane fx:id="panelPrincipal" prefHeight="495.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.gui.controlador.usersController">
+<Pane fx:id="panelPrincipal" prefHeight="495.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.gui.controlador.productsController">
 	<children>
 		<Pane fx:id="panelTabla" layoutX="7.0" layoutY="196.0" prefHeight="293.0" prefWidth="636.0" style="-fx-background-color: #D7DBDD;">
 			<children>
@@ -30,7 +30,7 @@
 					<children>
 						<HBox alignment="CENTER" prefHeight="82.0" prefWidth="476.0" GridPane.rowIndex="1">
 							<children>
-								<Button fx:id="buttonSearch" alignment="CENTER" mnemonicParsing="false" onAction="#action_search_user" prefHeight="29.0" prefWidth="83.0" style="-fx-background-color: #154360;" text="Search" textFill="WHITE">
+								<Button fx:id="buttonSearch" alignment="CENTER" mnemonicParsing="false" onAction="#action_search_product" prefHeight="29.0" prefWidth="83.0" style="-fx-background-color: #154360;" text="Search" textFill="WHITE">
 									<HBox.margin>
 										<Insets />
 									</HBox.margin>
@@ -57,7 +57,7 @@
 								<Insets bottom="5.0" right="5.0" top="5.0" />
 							</padding>
 						</HBox>
-						<TableView fx:id="tableUsers" prefHeight="200.0" prefWidth="603.0" stylesheets="@style.css" GridPane.rowIndex="2">
+						<TableView fx:id="tableProducts" prefHeight="200.0" prefWidth="603.0" stylesheets="@style.css" GridPane.rowIndex="2">
 							<columns>
 								<TableColumn prefWidth="90.0" text="Identifier" />
 								<TableColumn prefWidth="136.0" text="Full name" />

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.gui.controlador.appController;
+import co.edu.uniquindio.gui.controlador.productsController;
+import co.edu.uniquindio.gui.controlador.usersController;
 import co.edu.uniquindio.gui.modelo.EscritorioDelegado;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.Commentary;
@@ -21,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ManejadorEscenarios implements Initializable {
@@ -51,6 +54,42 @@ public class ManejadorEscenarios implements Initializable {
 			Scene scene = new Scene(pantallaBase);
 			stageBase.setScene(scene);
 			stageBase.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void showUsersScene() {
+		try {
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/users.fxml"));
+
+			Pane panel = (Pane) loader.load();
+
+			usersController usersController = loader.getController();
+			usersController.setManejadorEscenarios(this);
+
+			pantallaBase.setCenter(panel);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void showProductsScene() {
+		try {
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/products.fxml"));
+
+			Pane panel = (Pane) loader.load();
+
+			productsController productsController = loader.getController();
+			productsController.setManejadorEscenarios(this);
+
+			pantallaBase.setCenter(panel);
 
 		} catch (IOException e) {
 			e.printStackTrace();

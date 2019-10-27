@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-public class usersController {
+public class productsController {
 
 	private ManejadorEscenarios manejadorEscenarios;
 
@@ -36,7 +36,7 @@ public class usersController {
 	private JFXTextField textSearch;
 
 	@FXML
-	private TableView<?> tableUsers;
+	private TableView<?> tableProducts;
 
 	@FXML
 	private Pane panelSuperior;
@@ -50,7 +50,7 @@ public class usersController {
 	}
 
 	@FXML
-	void action_search_user(ActionEvent event) {
+	void action_search_product(ActionEvent event) {
 
 	}
 

@@ -49,7 +49,7 @@ public class appController {
 
 	@FXML
 	void action_products(ActionEvent event) {
-
+		manejadorEscenarios.showProductsScene();
 	}
 
 	@FXML
@@ -59,7 +59,7 @@ public class appController {
 
 	@FXML
 	void action_users(ActionEvent event) {
-
+		manejadorEscenarios.showUsersScene();
 	}
 
 }

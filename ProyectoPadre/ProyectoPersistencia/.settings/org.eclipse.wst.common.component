@@ -14,7 +14,6 @@
         
         
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/src/test/resources"/>
                                     
     
     
