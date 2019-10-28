@@ -58,7 +58,7 @@ public class EmailClient {
 		User user = lista.getResultList().get(0);
 
 		EmailClient.sendAsHtml(user.getEmail(), "Recover Password",
-				"<h2>Forgotten Password</h2><p>You have solicited the recover of you password, if you didn't just ignore this message</p><p>Ypur password is: "
+				"<h2>Forgotten Password</h2><p>You have solicited the recover of you password, if you didn't just ignore this message</p><p>Your password is: "
 						+ user.getPassword() + "</p>");
 	}
 
