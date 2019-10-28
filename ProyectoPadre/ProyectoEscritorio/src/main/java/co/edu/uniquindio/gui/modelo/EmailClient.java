@@ -3,13 +3,19 @@ package co.edu.uniquindio.gui.modelo;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
+import co.edu.uniquindio.uniMarket.entidades.User;
+
 import java.util.Properties;
 
 public class EmailClient {
 	private static final String senderEmail = "pruebaemailproyectoanalisis@gmail.com";// change with your sender email
 	private static final String senderPassword = "181102002";// change with your sender password
+	private static EntityManager entityManager;
 
-	public static void sendAsHtml(String to, String title, String html) throws MessagingException {
+	private static void sendAsHtml(String to, String title, String html) throws MessagingException {
 		System.out.println("Sending email to " + to);
 
 		Session session = createSession();
@@ -46,8 +52,20 @@ public class EmailClient {
 		return session;
 	}
 
+	public static void toRecoverPassword(String email) throws MessagingException {
+
+		TypedQuery<User> lista = entityManager.createNamedQuery(User.FIND_BY_EMAIL, User.class);
+		User user = lista.getResultList().get(0);
+
+		EmailClient.sendAsHtml(user.getEmail(), "Recover Password",
+				"<h2>Forgotten Password</h2><p>You have solicited the recover of you password, if you didn't just ignore this message</p><p>Ypur password is: "
+						+ user.getPassword() + "</p>");
+	}
+
 	public static void main(String[] args) throws MessagingException {
-		EmailClient.sendAsHtml("macaicedoc@uqvirtual.edu.co", "Test email",
-				"<h2>Me enviaron a traves de ECLIPSE</h2><p>Espero que estes leyendo esto</p>");
+		String contra = "12345";
+		EmailClient.sendAsHtml("jdarizas@uqvirtual.edu.co", "Test email",
+				"<h2>Contraseña Olvidada</h2><p>Se ha solicitado la recuperación de la contraseña, si no es así ignore este mensaje</p><p>Su contrasenia es: "
+						+ contra + "</p>");
 	}
 }
