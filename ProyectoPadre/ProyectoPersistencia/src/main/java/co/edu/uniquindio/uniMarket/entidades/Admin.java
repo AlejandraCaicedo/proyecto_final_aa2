@@ -19,7 +19,8 @@ import javax.persistence.*;
 @DiscriminatorValue("ADMIN")
 @NamedQueries({ @NamedQuery(name = Admin.ALL_ADMIN, query = "select a from Admin a"),
 		@NamedQuery(name = Admin.FIND_ADMIN, query = "select a from Admin a where a.email = :email and a.password = :password"),
-		@NamedQuery(name = Admin.GET_ADMIN, query = "select a from Admin a") })
+		@NamedQuery(name = Admin.GET_ADMIN, query = "select a from Admin a"),
+		@NamedQuery(name = Admin.FIND_BY_EMAIL, query = "select a from Admin a where a.email =:email") })
 public class Admin extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,6 +33,9 @@ public class Admin extends Person implements Serializable {
 
 	// Query que retorna la lista de administradores
 	public static final String GET_ADMIN = "GET_ADMIN";
+
+	// Query que retorna un usuario dado un Correo Electronico
+	public static final String FIND_BY_EMAIL = "FIND_BY_EMAIL_ADMIN";
 
 	/**
 	 * Constructor vacio de la clase administrador, hereda de la clase persona

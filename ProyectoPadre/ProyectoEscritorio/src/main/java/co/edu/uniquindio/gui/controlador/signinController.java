@@ -49,7 +49,7 @@ public class signinController {
 	void action_click_here(MouseEvent event) {
 
 		try {
-			EmailClient.toRecoverPassword(textEmail.getText());
+			EmailClient.toRecoverPasswordAdmin(textEmail.getText());
 			JOptionPane.showMessageDialog(null, "The email have been send", "Forgotten Password",
 					JOptionPane.INFORMATION_MESSAGE);
 		} catch (MessagingException e) {

@@ -37,7 +37,7 @@ public class SetupEJB {
 		TypedQuery<Admin> q = entityManager.createNamedQuery(Admin.GET_ADMIN, Admin.class);
 
 		if (q.getResultList().isEmpty()) {
-			Admin admin = new Admin("A001", "Administrador", "admin@admin.com", "7894132", "Adress Admin 1",
+			Admin admin = new Admin("A001", "Administrador", "jdarizas@uqvirtual.edu.co", "7894132", "Adress Admin 1",
 					"admin12345");
 			entityManager.persist(admin);
 
