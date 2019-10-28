@@ -209,6 +209,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 		if (!p.getResultList().isEmpty()) {
 			return p.getResultList().get(0);
 		}
+
 		return null;
 	}
 
@@ -271,10 +272,4 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return c.getResultList();
 	}
 
-	// OTROS
-
-	@Override
-	public void showErrorMessage(String message) {
-		JOptionPane.showMessageDialog(null, message, "ERROR", JOptionPane.WARNING_MESSAGE);
-	}
 }

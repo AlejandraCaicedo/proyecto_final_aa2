@@ -77,9 +77,4 @@ public class EscritorioDelegado implements NegocioEJBRemote {
 	public Admin toLogginAdmin(String email, String password) throws NotFoundAdminException {
 		return negocioEJB.toLogginAdmin(email, password);
 	}
-
-	@Override
-	public void showErrorMessage(String message) {
-		negocioEJB.showErrorMessage(message);
-	}
 }

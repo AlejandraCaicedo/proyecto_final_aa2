@@ -38,6 +38,4 @@ public interface NegocioEJBRemote {
 
 //	Product toEditProduct(Product p, String code);
 
-	void showErrorMessage(String message);
-
 }

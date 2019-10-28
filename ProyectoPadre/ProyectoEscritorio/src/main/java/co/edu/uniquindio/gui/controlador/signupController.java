@@ -55,15 +55,16 @@ public class signupController {
 
 		if (name.isEmpty() || ID.isEmpty() || adress.isEmpty() || cellPhoneNumer.isEmpty() || email.isEmpty()
 				|| password.isEmpty()) {
-			manejadorEscenarios.showErrorMessage("There are empty fields");
+			manejadorEscenarios.showErrorMessage("You have to fill all the fields before continuing",
+					"There are empty fields");
 		} else {
 			User user = new User(ID, name, email, cellPhoneNumer, adress, password);
 			try {
 				manejadorEscenarios.toRegisterUser(user);
 			} catch (RepeatedIDException e) {
-				manejadorEscenarios.showErrorMessage(e.getMessage());
+				manejadorEscenarios.showErrorMessage(e.getMessage(), "");
 			} catch (RepeatedEmailException e) {
-				manejadorEscenarios.showErrorMessage(e.getMessage());
+				manejadorEscenarios.showErrorMessage(e.getMessage(), "");
 			}
 		}
 

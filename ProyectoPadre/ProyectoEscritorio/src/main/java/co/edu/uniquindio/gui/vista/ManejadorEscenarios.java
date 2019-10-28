@@ -1,12 +1,11 @@
 package co.edu.uniquindio.gui.vista;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import co.edu.uniquindio.gui.controlador.appController;
 import co.edu.uniquindio.gui.controlador.productsController;
+import co.edu.uniquindio.gui.controlador.signinController;
 import co.edu.uniquindio.gui.controlador.usersController;
 import co.edu.uniquindio.gui.modelo.EscritorioDelegado;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
@@ -20,28 +19,49 @@ import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-public class ManejadorEscenarios implements Initializable {
+public class ManejadorEscenarios {
 
 	private BorderPane pantallaBase;
 	private Stage stageBase;
-
 	private EscritorioDelegado escritorioDelegado;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		escritorioDelegado = EscritorioDelegado.escritorioDelegado;
+	public ManejadorEscenarios(Stage primaryStage) {
+		try {
+			escritorioDelegado = EscritorioDelegado.escritorioDelegado;
+			this.stageBase = primaryStage;
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/signin.fxml"));
+
+			AnchorPane panel = (AnchorPane) loader.load();
+
+			signinController signinController = loader.getController();
+			signinController.setManejadorEscenarios(this);
+
+			Scene scene = new Scene(panel);
+			stageBase.setScene(scene);
+			stageBase.setTitle("Login as administrator");
+			stageBase.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public ManejadorEscenarios(Stage primaryStage) {
-		this.stageBase = primaryStage;
+	public void showPrincipal() {
 
 		try {
+
+			stageBase.close();
 
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/app.fxml"));
@@ -53,11 +73,13 @@ public class ManejadorEscenarios implements Initializable {
 
 			Scene scene = new Scene(pantallaBase);
 			stageBase.setScene(scene);
+			stageBase.setTitle("Admin menu");
 			stageBase.show();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public void showUsersScene() {
@@ -96,6 +118,24 @@ public class ManejadorEscenarios implements Initializable {
 		}
 	}
 
+	public void showErrorMessage(String message, String tittle) {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("ERROR");
+		alert.setHeaderText(tittle);
+		alert.setContentText(message);
+		alert.initStyle(StageStyle.UTILITY);
+		alert.showAndWait();
+	}
+
+	public void showMessage(String message, String tittle) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("INFORMATION");
+		alert.setHeaderText(tittle);
+		alert.setContentText(message);
+		alert.initStyle(StageStyle.UTILITY);
+		alert.showAndWait();
+	}
+
 	public User autentifyUser(String email, String password) {
 		return escritorioDelegado.autentifyUser(email, password);
 	}
@@ -128,7 +168,4 @@ public class ManejadorEscenarios implements Initializable {
 		return escritorioDelegado.toLogginAdmin(email, password);
 	}
 
-	public void showErrorMessage(String message) {
-		escritorioDelegado.showErrorMessage(message);
-	}
 }

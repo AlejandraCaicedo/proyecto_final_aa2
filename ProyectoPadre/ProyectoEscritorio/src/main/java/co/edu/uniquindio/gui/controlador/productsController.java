@@ -45,11 +45,6 @@ public class productsController {
 	private FontAwesomeIcon buttonClose;
 
 	@FXML
-	void action_close(MouseEvent event) {
-
-	}
-
-	@FXML
 	void action_search_product(ActionEvent event) {
 
 	}

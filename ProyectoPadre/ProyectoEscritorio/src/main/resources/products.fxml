@@ -76,11 +76,6 @@
 				<DropShadow />
 			</effect>
 		</Pane>
-		<Pane fx:id="panelSuperior" layoutX="7.0" layoutY="20.0" prefHeight="167.0" prefWidth="636.0" style="-fx-background-color: yellow;" />
-				<FontAwesomeIcon fx:id="buttonClose" fill="#451d5e" glyphName="CLOSE" layoutX="630.0" layoutY="18.0" onMouseClicked="#action_close" wrappingWidth="10.214285850524902">
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-      </FontAwesomeIcon>
+		<Pane fx:id="panelSuperior" layoutX="7.0" layoutY="7.0" prefHeight="180.0" prefWidth="636.0" style="-fx-background-color: yellow;" />
 	</children>
 </Pane>

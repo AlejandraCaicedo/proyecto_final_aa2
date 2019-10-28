@@ -18,7 +18,7 @@ import javax.persistence.*;
 @Entity
 @DiscriminatorValue("ADMIN")
 @NamedQueries({ @NamedQuery(name = Admin.ALL_ADMIN, query = "select a from Admin a"),
-		@NamedQuery(name = Admin.FIND_ADMIN, query = "select a from Admin a where a.email =:email and a.password =:password"),
+		@NamedQuery(name = Admin.FIND_ADMIN, query = "select a from Admin a where a.email = :email and a.password = :password"),
 		@NamedQuery(name = Admin.GET_ADMIN, query = "select a from Admin a") })
 public class Admin extends Person implements Serializable {
 
