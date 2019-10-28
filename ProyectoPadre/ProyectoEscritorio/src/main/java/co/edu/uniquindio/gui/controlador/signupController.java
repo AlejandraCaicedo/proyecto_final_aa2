@@ -6,6 +6,7 @@ import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -42,6 +43,9 @@ public class signupController {
 
 	@FXML
 	private PasswordField textPassword;
+
+	@FXML
+	private Button buttonSignUp;
 
 	@FXML
 	void action_sign_up(ActionEvent event) {

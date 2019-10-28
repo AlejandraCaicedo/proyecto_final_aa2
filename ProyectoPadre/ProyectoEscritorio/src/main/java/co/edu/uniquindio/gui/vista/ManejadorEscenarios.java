@@ -6,6 +6,7 @@ import java.util.List;
 import co.edu.uniquindio.gui.controlador.appController;
 import co.edu.uniquindio.gui.controlador.productsController;
 import co.edu.uniquindio.gui.controlador.signinController;
+import co.edu.uniquindio.gui.controlador.signupController;
 import co.edu.uniquindio.gui.controlador.usersController;
 import co.edu.uniquindio.gui.modelo.EscritorioDelegado;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
@@ -19,6 +20,7 @@ import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -112,6 +114,28 @@ public class ManejadorEscenarios {
 			productsController.setManejadorEscenarios(this);
 
 			pantallaBase.setCenter(panel);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void showSignUp() {
+		try {
+			Stage stage = new Stage();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/signup.fxml"));
+
+			Parent root = loader.load();
+
+			signupController signupController = loader.getController();
+			signupController.setManejadorEscenarios(this);
+
+			Scene scene = new Scene(root);
+
+			stage.setScene(scene);
+			stage.show();
 
 		} catch (IOException e) {
 			e.printStackTrace();
