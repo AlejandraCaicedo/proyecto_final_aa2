@@ -1,5 +1,9 @@
 package co.edu.uniquindio.gui.controlador;
 
+import javax.mail.MessagingException;
+import javax.swing.JOptionPane;
+
+import co.edu.uniquindio.gui.modelo.EmailClient;
 import co.edu.uniquindio.gui.vista.ManejadorEscenarios;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
@@ -44,6 +48,17 @@ public class signinController {
 	@FXML
 	void action_click_here(MouseEvent event) {
 
+		try {
+			EmailClient.toRecoverPasswordAdmin(textEmail.getText());
+			JOptionPane.showMessageDialog(null, "The email have been send", "Forgotten Password",
+					JOptionPane.INFORMATION_MESSAGE);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotFoundAdminException e1) {
+			// TODO: handle exception
+			JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+		}
 	}
 
 	@FXML
