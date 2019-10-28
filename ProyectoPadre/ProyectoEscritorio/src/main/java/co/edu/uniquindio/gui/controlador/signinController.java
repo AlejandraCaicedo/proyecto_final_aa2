@@ -55,6 +55,9 @@ public class signinController {
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (NotFoundAdminException e1) {
+			// TODO: handle exception
+			JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 

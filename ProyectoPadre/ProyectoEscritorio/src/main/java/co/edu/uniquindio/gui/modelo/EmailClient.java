@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.entidades.User;
+import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 
 import java.util.Properties;
 
@@ -57,21 +58,28 @@ public class EmailClient {
 
 		TypedQuery<User> lista = entityManager.createNamedQuery(User.FIND_BY_EMAIL, User.class);
 		lista.setParameter("email", email);
-		User user = lista.getResultList().get(0);
+		if (!lista.getResultList().isEmpty()) {
+			User user = lista.getResultList().get(0);
+			EmailClient.sendAsHtml(user.getEmail(), "Recover Password",
+					"<h2>Forgotten Password</h2><p>You have solicited the recover of you password, if you didn't just ignore this message</p><p>Your password is: "
+							+ user.getPassword() + "</p>");
+		}
 
-		EmailClient.sendAsHtml(user.getEmail(), "Recover Password",
-				"<h2>Forgotten Password</h2><p>You have solicited the recover of you password, if you didn't just ignore this message</p><p>Your password is: "
-						+ user.getPassword() + "</p>");
 	}
 
-	public static void toRecoverPasswordAdmin(String email) throws MessagingException {
+	public static void toRecoverPasswordAdmin(String email) throws MessagingException, NotFoundAdminException {
 
 		TypedQuery<Admin> lista = entityManager.createNamedQuery(Admin.FIND_BY_EMAIL, Admin.class);
-		Admin admin = lista.getResultList().get(0);
 		lista.setParameter("email", email);
-		EmailClient.sendAsHtml(admin.getEmail(), "Recover Password",
-				"<h2>Forgotten Password</h2><p>You have solicited the recover of you password, if you didn't just ignore this message</p><p>Your password is: "
-						+ admin.getPassword() + "</p>");
+		if (!lista.getResultList().isEmpty()) {
+
+			Admin admin = lista.getResultList().get(0);
+			EmailClient.sendAsHtml(admin.getEmail(), "Recover Password",
+					"<h2>Forgotten Password</h2><p>You have solicited the recover of you password, if you didn't just ignore this message</p><p>Your password is: "
+							+ admin.getPassword() + "</p>");
+		} else {
+			throw new NotFoundAdminException("El email no corresponde a un Admin registrado");
+		}
 	}
 
 	public static void main(String[] args) throws MessagingException {
