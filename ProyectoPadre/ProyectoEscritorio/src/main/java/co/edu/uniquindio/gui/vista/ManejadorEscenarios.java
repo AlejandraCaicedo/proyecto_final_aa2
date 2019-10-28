@@ -3,6 +3,7 @@ package co.edu.uniquindio.gui.vista;
 import java.io.IOException;
 import java.util.List;
 
+import co.edu.uniquindio.gui.controlador.adminController;
 import co.edu.uniquindio.gui.controlador.appController;
 import co.edu.uniquindio.gui.controlador.productsController;
 import co.edu.uniquindio.gui.controlador.signinController;
@@ -112,6 +113,24 @@ public class ManejadorEscenarios {
 
 			productsController productsController = loader.getController();
 			productsController.setManejadorEscenarios(this);
+
+			pantallaBase.setCenter(panel);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void showAdminScene() {
+		try {
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/admin.fxml"));
+
+			Pane panel = (Pane) loader.load();
+
+			adminController adminController = loader.getController();
+			adminController.setManejadorEscenarios(this);
 
 			pantallaBase.setCenter(panel);
 

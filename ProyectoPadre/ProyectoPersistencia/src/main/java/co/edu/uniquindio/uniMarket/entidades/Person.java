@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.lang.String;
 import javax.persistence.*;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * Entity implementation class for Entity: Persona
  *
@@ -48,11 +51,8 @@ public class Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Constructor vacio de la clase Persona
-	 */
 	public Person() {
-		super();
+		
 	}
 
 	/**
@@ -68,13 +68,52 @@ public class Person implements Serializable {
 	 */
 	public Person(String iD, String fullName, String email, String cellphoneNumber, String adress, String password) {
 		super();
-		ID = iD;
+		this.ID = iD;
 		this.fullName = fullName;
 		this.email = email;
 		this.cellphoneNumber = cellphoneNumber;
 		this.adress = adress;
 		this.password = password;
+//
+//		this.IdProperty = new SimpleStringProperty(ID);
+//		this.adressProperty = new SimpleStringProperty(adress);
+//		this.fullNameProperty = new SimpleStringProperty(fullName);
+//		this.emailProperty = new SimpleStringProperty(email);
+//		this.cellPhoneNumberProperty = new SimpleStringProperty(cellphoneNumber);
+//		this.passwordProperty = new SimpleStringProperty(password);
+
 	}
+
+//	private final StringProperty IdProperty;
+//	private final StringProperty fullNameProperty;
+//	private final StringProperty emailProperty;
+//	private final StringProperty cellPhoneNumberProperty;
+//	private final StringProperty adressProperty;
+//	private final StringProperty passwordProperty;
+
+//	public StringProperty getIdProperty() {
+//		return IdProperty;
+//	}
+//
+//	public StringProperty getFullNameProperty() {
+//		return fullNameProperty;
+//	}
+//
+//	public StringProperty getEmailProperty() {
+//		return emailProperty;
+//	}
+//
+//	public StringProperty getCellPhoneNumberProperty() {
+//		return cellPhoneNumberProperty;
+//	}
+//
+//	public StringProperty getAdressProperty() {
+//		return adressProperty;
+//	}
+//
+//	public StringProperty getPasswordProperty() {
+//		return passwordProperty;
+//	}
 
 	/**
 	 * Metodo que obtiene la identificacion de una persona

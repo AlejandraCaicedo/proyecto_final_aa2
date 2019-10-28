@@ -4,11 +4,17 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
 import co.edu.uniquindio.gui.vista.ManejadorEscenarios;
+import co.edu.uniquindio.uniMarket.entidades.User;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.layout.Pane;
+import javafx.util.Callback;
 
 public class usersController {
 
@@ -35,7 +41,22 @@ public class usersController {
 	private JFXTextField textSearch;
 
 	@FXML
-	private TableView<?> tableUsers;
+	private TableView<User> tableUsers;
+
+	@FXML
+	private TableColumn<User, String> columID;
+
+	@FXML
+	private TableColumn<User, String> columnName;
+
+	@FXML
+	private TableColumn<User, String> columnAdress;
+
+	@FXML
+	private TableColumn<User, String> columnCellPhone;
+
+	@FXML
+	private TableColumn<User, String> columnEmail;
 
 	@FXML
 	private Pane panelSuperior;
@@ -85,4 +106,9 @@ public class usersController {
 
 	}
 
+	@FXML
+	private void initialize() {
+//		columID.setCellValueFactory(cellData -> cellData.getValue().getID());
+//		columnName.setCellValueFactory(cellData -> cellData.getValue().getFullName());
+	}
 }
