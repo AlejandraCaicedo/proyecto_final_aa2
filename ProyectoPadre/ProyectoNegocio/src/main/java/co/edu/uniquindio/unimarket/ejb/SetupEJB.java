@@ -43,6 +43,13 @@ public class SetupEJB {
 
 			Product product = new Product("P001", "Producto 1", "new product", 5500.0, 10, Type.FASHION, new Date());
 			entityManager.persist(product);
+
+			Product product2 = new Product("P002", "Producto 2", "new product", 7500.0, 10, Type.BOOKS, new Date());
+			entityManager.persist(product2);
+
+			Product product3 = new Product("P002", "Producto 3", "new product", 9500.0, 10, Type.SPORTS, new Date());
+			entityManager.persist(product3);
+
 		}
 	}
 }

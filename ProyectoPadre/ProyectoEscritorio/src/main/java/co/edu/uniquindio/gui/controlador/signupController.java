@@ -68,6 +68,7 @@ public class signupController {
 			manejadorEscenarios.showMessage("Usuario Registrado", "CRUD - User");
 			try {
 				manejadorEscenarios.toRegisterUser(user);
+				manejadorEscenarios.showMessage("new user " + user.getFullName() + " created", "Confirmed data");
 			} catch (RepeatedIDException e) {
 				manejadorEscenarios.showErrorMessage(e.getMessage(), "");
 			} catch (RepeatedEmailException e) {
