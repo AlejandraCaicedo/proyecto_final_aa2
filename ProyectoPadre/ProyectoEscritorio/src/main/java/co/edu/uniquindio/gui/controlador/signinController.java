@@ -54,10 +54,11 @@ public class signinController {
 					JOptionPane.INFORMATION_MESSAGE);
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			manejadorEscenarios.showErrorMessage("No se ha podido enviar el correo, asegurese de que sea correcto",
+					"Error al enviar el correo");
 		} catch (NotFoundAdminException e1) {
 			// TODO: handle exception
-			JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+			manejadorEscenarios.showErrorMessage(e1.getMessage(), "Error al enviar el correo");
 		}
 	}
 

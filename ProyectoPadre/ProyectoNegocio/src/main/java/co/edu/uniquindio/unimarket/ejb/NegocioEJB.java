@@ -230,11 +230,13 @@ public class NegocioEJB implements NegocioEJBRemote {
 	// M E T O D O S - P A R A - L I S T A R
 	// ----------------------------------------
 
+	@Override
 	public List<User> toListSellers() {
 		TypedQuery<User> p = entityManager.createNamedQuery(User.ALL_SELLING_USERS, User.class);
 		return p.getResultList();
 	}
 
+	@Override
 	public List<User> toListShoppers() {
 		TypedQuery<User> p = entityManager.createNamedQuery(User.All_SHOPPERS_USERS, User.class);
 		return p.getResultList();
@@ -270,6 +272,21 @@ public class NegocioEJB implements NegocioEJBRemote {
 		TypedQuery<Commentary> c = entityManager.createNamedQuery(Commentary.COMMENTS_PRODUCT, Commentary.class);
 		c.setParameter("codeProduct", codeProducto);
 		return c.getResultList();
+	}
+
+	@Override
+	public User searchUser(String ID) {
+		User user = entityManager.find(User.class, ID);
+		return user;
+	}
+
+	@Override
+	public void removeUser(String ID) {
+		entityManager.createNamedQuery(User.DELETE_PRODUCTS).executeUpdate();
+		entityManager.createNamedQuery(User.DELETE_RATES).executeUpdate();
+		entityManager.createNamedQuery(User.DELETE_COMMENTARIES).executeUpdate();
+		User user = entityManager.find(User.class, ID);
+		entityManager.remove(user);
 	}
 
 }

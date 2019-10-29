@@ -36,6 +36,14 @@ public interface NegocioEJBRemote {
 
 	Admin toLogginAdmin(String email, String password) throws NotFoundAdminException;
 
+	List<User> toListSellers();
+
+	List<User> toListShoppers();
+
+	User searchUser(String ID);
+
+	void removeUser(String ID);
+
 //	Product toEditProduct(Product p, String code);
 
 }
