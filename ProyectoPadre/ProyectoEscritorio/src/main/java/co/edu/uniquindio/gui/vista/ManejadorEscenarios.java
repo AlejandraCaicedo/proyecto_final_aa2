@@ -20,9 +20,6 @@ import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -39,7 +36,6 @@ public class ManejadorEscenarios {
 	private BorderPane pantallaBase;
 	private Stage stageBase;
 	private EscritorioDelegado escritorioDelegado;
-	private ObservableList<User> userList = FXCollections.observableArrayList();
 
 	public ManejadorEscenarios(Stage primaryStage) {
 		try {
@@ -183,28 +179,12 @@ public class ManejadorEscenarios {
 		alert.showAndWait();
 	}
 
-	public ObservableList<User> getUserList() {
-		return userList;
-	}
-
-	public void setUserList(ObservableList<User> newList) {
-		userList = newList;
-	}
-
 	public User autentifyUser(String email, String password) {
 		return escritorioDelegado.autentifyUser(email, password);
 	}
 
 	public List<Commentary> toListProductsComments(String codeProducto) {
 		return escritorioDelegado.toListProductsComments(codeProducto);
-	}
-
-	public List<User> toListSellers() {
-		return escritorioDelegado.toListSellers();
-	}
-
-	public List<User> toListShoppers() {
-		return escritorioDelegado.toListShoppers();
 	}
 
 	public void toCreateProduct(Product p) throws RepeatedProductException {
@@ -229,24 +209,6 @@ public class ManejadorEscenarios {
 
 	public Admin toLogginAdmin(String email, String password) throws NotFoundAdminException {
 		return escritorioDelegado.toLogginAdmin(email, password);
-	}
-
-	public User searchUser(String ID) {
-		return escritorioDelegado.searchUser(ID);
-	}
-
-	public void removeUser(String ID) {
-		escritorioDelegado.removeUser(ID);
-	}
-
-	public ObservableList<User> listToObservable(List<User> usersList) {
-
-		ObservableList<User> res = FXCollections.observableArrayList();
-		for (int i = 0; i < usersList.size(); i++) {
-			res.add(usersList.get(i));
-		}
-
-		return res;
 	}
 
 }

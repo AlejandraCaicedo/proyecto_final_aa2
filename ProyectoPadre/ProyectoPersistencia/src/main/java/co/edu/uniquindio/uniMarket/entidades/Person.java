@@ -2,8 +2,6 @@ package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
 import java.lang.String;
-
-import javax.mail.internet.NewsAddress;
 import javax.persistence.*;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -54,7 +52,7 @@ public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Person() {
-
+		
 	}
 
 	/**
@@ -223,36 +221,6 @@ public class Person implements Serializable {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public StringProperty getIDProperty() {
-		StringProperty iDProperty = new SimpleStringProperty(ID);
-		return iDProperty;
-	}
-
-	public StringProperty getFirstNameProperty() {
-		StringProperty firstNameProperty = new SimpleStringProperty(fullName);
-		return firstNameProperty;
-	}
-
-	public StringProperty getCellphoneNumberProperty() {
-		StringProperty cellphoneProperty = new SimpleStringProperty(cellphoneNumber);
-		return cellphoneProperty;
-	}
-
-	public StringProperty getAdressProperty() {
-		StringProperty adressProperty = new SimpleStringProperty(adress);
-		return adressProperty;
-	}
-
-	public StringProperty getPasswordProperty() {
-		StringProperty passwordProperty = new SimpleStringProperty(password);
-		return passwordProperty;
-	}
-
-	public StringProperty getEmailProperty() {
-		StringProperty emailProperty = new SimpleStringProperty(email);
-		return emailProperty;
 	}
 
 	/**

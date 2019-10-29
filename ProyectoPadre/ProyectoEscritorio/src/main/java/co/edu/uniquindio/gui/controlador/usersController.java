@@ -1,22 +1,20 @@
 package co.edu.uniquindio.gui.controlador;
 
-import java.util.List;
-
-import javax.transaction.Transactional.TxType;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
 import co.edu.uniquindio.gui.vista.ManejadorEscenarios;
 import co.edu.uniquindio.uniMarket.entidades.User;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.layout.Pane;
+import javafx.util.Callback;
 
 public class usersController {
 
@@ -24,6 +22,10 @@ public class usersController {
 
 	public ManejadorEscenarios getManejadorEscenarios() {
 		return manejadorEscenarios;
+	}
+
+	public void setManejadorEscenarios(ManejadorEscenarios manejadorEscenarios) {
+		this.manejadorEscenarios = manejadorEscenarios;
 	}
 
 	@FXML
@@ -76,21 +78,12 @@ public class usersController {
 
 	@FXML
 	void action_list_sellers(ActionEvent event) {
-		List<User> list = manejadorEscenarios.toListSellers();
-		ObservableList<User> observableList = manejadorEscenarios.listToObservable(list);
-		manejadorEscenarios.setUserList(observableList);
-
-		tableUsers.setItems(observableList);
 
 	}
 
 	@FXML
 	void action_list_shoppers(ActionEvent event) {
-		List<User> list = manejadorEscenarios.toListShoppers();
-		ObservableList<User> observableList = manejadorEscenarios.listToObservable(list);
-		manejadorEscenarios.setUserList(observableList);
 
-		tableUsers.setItems(observableList);
 	}
 
 	@FXML
@@ -100,18 +93,12 @@ public class usersController {
 
 	@FXML
 	void action_search_user(ActionEvent event) {
-		User user = manejadorEscenarios.searchUser(textSearch.getText());
-		ObservableList<User> newList = FXCollections.observableArrayList();
-		newList.add(user);
-		manejadorEscenarios.setUserList(newList);
 
-		tableUsers.setItems(newList);
 	}
 
 	@FXML
 	void action_remove(ActionEvent event) {
-		User user = tableUsers.getSelectionModel().getSelectedItem();
-		manejadorEscenarios.removeUser(user.getID());
+
 	}
 
 	@FXML
@@ -121,18 +108,7 @@ public class usersController {
 
 	@FXML
 	private void initialize() {
-
-		columID.setCellValueFactory(celldata -> celldata.getValue().getIDProperty());
-		columnName.setCellValueFactory(cellData -> cellData.getValue().getFirstNameProperty());
-		columnAdress.setCellValueFactory(celldata -> celldata.getValue().getAdressProperty());
-		columnEmail.setCellValueFactory(celldata -> celldata.getValue().getEmailProperty());
-		columnCellPhone.setCellValueFactory(celldata -> celldata.getValue().getCellphoneNumberProperty());
-
-	}
-
-	public void setManejadorEscenarios(ManejadorEscenarios manejadorEscenarios) {
-		this.manejadorEscenarios = manejadorEscenarios;
-
-		tableUsers.setItems(manejadorEscenarios.getUserList());
+//		columID.setCellValueFactory(cellData -> cellData.getValue().getID());
+//		columnName.setCellValueFactory(cellData -> cellData.getValue().getFullName());
 	}
 }

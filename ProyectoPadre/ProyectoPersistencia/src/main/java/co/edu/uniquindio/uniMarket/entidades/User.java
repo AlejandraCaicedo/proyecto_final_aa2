@@ -33,9 +33,7 @@ import javax.persistence.*;
 		@NamedQuery(name = User.ALL_SELLING_USERS, query = "select u from User u INNER JOIN u.listProducts p group by u having count(p)>0"),
 		@NamedQuery(name = User.All_SHOPPERS_USERS, query = "select u from User u INNER JOIN u.listPurchases p group by u having count(p)>0"),
 		@NamedQuery(name = User.AUTENTIFY_USER, query = "select u from User u where u.password = :password and u.email = :email"),
-		@NamedQuery(name = User.DELETE_PRODUCTS, query = "DELETE FROM Product p where p IN (select a from User u INNER JOIN u.listProducts a)"),
-		@NamedQuery(name = User.DELETE_RATES, query = "DELETE FROM Rate r where r IN (select a from User u INNER JOIN u.listRates a where a.user=u)"),
-		@NamedQuery(name = User.DELETE_COMMENTARIES, query = "DELETE FROM Rate r where r IN (select a from User u INNER JOIN u.listComments a where a.user=u)") })
+		@NamedQuery(name = User.DELETE_PRODUCTS, query = "DELETE FROM Product p where p IN (select a from User u INNER JOIN u.listProducts a)") })
 
 public class User extends Person implements Serializable {
 
@@ -81,12 +79,6 @@ public class User extends Person implements Serializable {
 
 	// Query que elimina los productos de un usuario
 	public static final String DELETE_PRODUCTS = "DELETE_PRODUCTS";
-
-	// Query que elimina las calificaciones de un usuario
-	public static final String DELETE_RATES = "DELETE_RATES";
-
-	// Query que elimina los comentarios de un usuario
-	public static final String DELETE_COMMENTARIES = "DELETE_COMMENTARIES";
 
 	/**
 	 * Constructor vacio de la clase usuario, hereda de la clase persona
