@@ -53,11 +53,9 @@ public class signinController {
 			JOptionPane.showMessageDialog(null, "The email have been send", "Forgotten Password",
 					JOptionPane.INFORMATION_MESSAGE);
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			manejadorEscenarios.showErrorMessage("No se ha podido enviar el correo, asegurese de que sea correcto",
 					"Error al enviar el correo");
 		} catch (NotFoundAdminException e1) {
-			// TODO: handle exception
 			manejadorEscenarios.showErrorMessage(e1.getMessage(), "Error al enviar el correo");
 		}
 	}

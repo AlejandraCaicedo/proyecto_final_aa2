@@ -7,7 +7,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.swing.JOptionPane;
 
 import co.edu.uniquindio.uniMarket.dto.PRODUCT_INFORMATION;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
@@ -186,6 +185,15 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return entityManager.find(User.class, ID);
 	}
 
+	@Override
+	public void removeUser(String ID) {
+		entityManager.createNamedQuery(User.DELETE_PRODUCTS).executeUpdate();
+		entityManager.createNamedQuery(User.DELETE_RATES).executeUpdate();
+		entityManager.createNamedQuery(User.DELETE_COMMENTARIES).executeUpdate();
+		User user = entityManager.find(User.class, ID);
+		entityManager.remove(user);
+	}
+
 	// --------------------------------------------------
 	// M E T O D O S - E N C O N T R A R - O B T E N E R
 	// --------------------------------------------------
@@ -199,6 +207,12 @@ public class NegocioEJB implements NegocioEJBRemote {
 			return listUsers.get(0);
 		}
 		return null;
+	}
+
+	@Override
+	public User searchUser(String ID) {
+		User user = entityManager.find(User.class, ID);
+		return user;
 	}
 
 	private Admin findAdmin(String email, String password) {
@@ -272,21 +286,6 @@ public class NegocioEJB implements NegocioEJBRemote {
 		TypedQuery<Commentary> c = entityManager.createNamedQuery(Commentary.COMMENTS_PRODUCT, Commentary.class);
 		c.setParameter("codeProduct", codeProducto);
 		return c.getResultList();
-	}
-
-	@Override
-	public User searchUser(String ID) {
-		User user = entityManager.find(User.class, ID);
-		return user;
-	}
-
-	@Override
-	public void removeUser(String ID) {
-		entityManager.createNamedQuery(User.DELETE_PRODUCTS).executeUpdate();
-		entityManager.createNamedQuery(User.DELETE_RATES).executeUpdate();
-		entityManager.createNamedQuery(User.DELETE_COMMENTARIES).executeUpdate();
-		User user = entityManager.find(User.class, ID);
-		entityManager.remove(user);
 	}
 
 }

@@ -75,6 +75,21 @@ public class usersController {
 	private Button buttonRemove;
 
 	@FXML
+	private JFXTextField textFullName;
+
+	@FXML
+	private JFXTextField textID;
+
+	@FXML
+	private JFXTextField textAdress;
+
+	@FXML
+	private JFXTextField textCellPhoneNumber;
+
+	@FXML
+	private JFXTextField textEmail;
+
+	@FXML
 	void action_list_sellers(ActionEvent event) {
 		List<User> list = manejadorEscenarios.toListSellers();
 		ObservableList<User> observableList = manejadorEscenarios.listToObservable(list);

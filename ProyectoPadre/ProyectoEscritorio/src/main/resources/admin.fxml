@@ -28,7 +28,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXTextField prefHeight="26.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                        <JFXTextField fx:id="textFullName" prefHeight="26.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Full name" textAlignment="CENTER" wrappingWidth="90.93994140625" GridPane.hgrow="ALWAYS">
                            <GridPane.margin>
                               <Insets top="10.0" />
@@ -39,25 +39,25 @@
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Text>
-                        <JFXTextField prefHeight="26.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="textID" prefHeight="26.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adress" textAlignment="CENTER" wrappingWidth="76.93994140625" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Text>
-                        <JFXTextField prefHeight="26.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="textAdress" prefHeight="26.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cell phone number" textAlignment="CENTER" wrappingWidth="137.93994140625" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Text>
-                        <JFXTextField prefHeight="26.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <JFXTextField fx:id="textCellPhoneNumber" prefHeight="26.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email adress" textAlignment="CENTER" wrappingWidth="137.93994140625" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Text>
-                        <JFXTextField prefHeight="26.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <JFXTextField fx:id="textEmail" prefHeight="26.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                   <Text fx:id="textTittle" layoutX="27.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-family: Quicksand; -fx-font-weight: bold; -fx-fill: #35AB94;" text="Detail administrator profile" />

@@ -45,6 +45,7 @@ public class appController {
 	@FXML
 	void action_admin(ActionEvent event) {
 
+		manejadorEscenarios.showAdminScene();
 	}
 
 	@FXML

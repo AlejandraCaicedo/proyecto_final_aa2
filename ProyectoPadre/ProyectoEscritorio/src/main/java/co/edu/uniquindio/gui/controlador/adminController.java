@@ -1,5 +1,7 @@
 package co.edu.uniquindio.gui.controlador;
 
+import com.jfoenix.controls.JFXTextField;
+
 import co.edu.uniquindio.gui.vista.ManejadorEscenarios;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
@@ -24,6 +26,20 @@ public class adminController {
 	private Pane panelSuperior;
 
 	@FXML
-	private Text textTittle;
+	private JFXTextField textFullName;
 
+	@FXML
+	private JFXTextField textID;
+
+	@FXML
+	private JFXTextField textAdress;
+
+	@FXML
+	private JFXTextField textCellPhoneNumber;
+
+	@FXML
+	private JFXTextField textEmail;
+
+	@FXML
+	private Text textTittle;
 }
