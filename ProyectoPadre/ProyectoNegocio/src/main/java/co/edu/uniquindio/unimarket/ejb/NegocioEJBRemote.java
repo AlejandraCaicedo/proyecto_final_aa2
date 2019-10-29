@@ -40,9 +40,13 @@ public interface NegocioEJBRemote {
 
 	List<User> toListShoppers();
 
+	List<Product> toListByType(String type);
+
 	User searchUser(String ID);
 
 	void removeUser(String ID);
+
+	void updateUser(User user, String ID);
 
 //	Product toEditProduct(Product p, String code);
 

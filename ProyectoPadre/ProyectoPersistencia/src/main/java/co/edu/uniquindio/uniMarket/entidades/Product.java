@@ -17,6 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * Entity implementation class for Entity: Producto
  *
@@ -330,6 +333,11 @@ public class Product implements Serializable {
 	 */
 	public void setListPurchaseDetails(List<PurchaseDetail> listPurchaseDetails) {
 		this.listPurchaseDetails = listPurchaseDetails;
+	}
+
+	public StringProperty getCodeProperty() {
+		StringProperty code = new SimpleStringProperty(this.code);
+		return code;
 	}
 
 	/**

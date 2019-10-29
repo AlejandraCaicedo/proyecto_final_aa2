@@ -39,6 +39,7 @@ public class ManejadorEscenarios {
 	private Stage stageBase;
 	private EscritorioDelegado escritorioDelegado;
 	private ObservableList<User> userList = FXCollections.observableArrayList();
+	private ObservableList<Product> productList = FXCollections.observableArrayList();
 
 	public ManejadorEscenarios(Stage primaryStage) {
 		try {
@@ -190,6 +191,14 @@ public class ManejadorEscenarios {
 		userList = newList;
 	}
 
+	public ObservableList<Product> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(ObservableList<Product> newList) {
+		productList = newList;
+	}
+
 	public User autentifyUser(String email, String password) {
 		return escritorioDelegado.autentifyUser(email, password);
 	}
@@ -204,6 +213,10 @@ public class ManejadorEscenarios {
 
 	public List<User> toListShoppers() {
 		return escritorioDelegado.toListShoppers();
+	}
+
+	public List<Product> toListByType(String type) {
+		return escritorioDelegado.toListByType(type);
 	}
 
 	public void toCreateProduct(Product p) throws RepeatedProductException {
@@ -238,11 +251,25 @@ public class ManejadorEscenarios {
 		escritorioDelegado.removeUser(ID);
 	}
 
-	public ObservableList<User> listToObservable(List<User> usersList) {
+	public void updateUser(User user, String ID) {
+		escritorioDelegado.updateUser(user, ID);
+	}
+
+	public ObservableList<User> listToObservableUser(List<User> usersList) {
 
 		ObservableList<User> res = FXCollections.observableArrayList();
 		for (int i = 0; i < usersList.size(); i++) {
 			res.add(usersList.get(i));
+		}
+
+		return res;
+	}
+
+	public ObservableList<Product> listToObservableProduct(List<Product> productList) {
+
+		ObservableList<Product> res = FXCollections.observableArrayList();
+		for (int i = 0; i < productList.size(); i++) {
+			res.add(productList.get(i));
 		}
 
 		return res;

@@ -97,4 +97,14 @@ public class EscritorioDelegado implements NegocioEJBRemote {
 	public void removeUser(String ID) {
 		negocioEJB.removeUser(ID);
 	}
+
+	@Override
+	public void updateUser(User user, String ID) {
+		negocioEJB.updateUser(user, ID);
+	}
+
+	@Override
+	public List<Product> toListByType(String type) {
+		return negocioEJB.toListByType(type);
+	}
 }

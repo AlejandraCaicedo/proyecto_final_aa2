@@ -288,4 +288,25 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return c.getResultList();
 	}
 
+	@Override
+	public void updateUser(User user, String ID) {
+		User actual = entityManager.find(User.class, ID);
+		actual.setAdress(user.getAdress());
+		actual.setCellphoneNumber(user.getCellphoneNumber());
+		actual.setEmail(user.getEmail());
+		actual.setFullName(user.getFullName());
+
+		entityManager.merge(actual);
+	}
+
+	@Override
+	public List<Product> toListByType(String type) {
+		if (type.equals("EXPIRED")) {
+			return toListExpiredProducts();
+		} else if (type.equals("NOT EXPIRED")) {
+			return toListNotExpiredProducts();
+		}
+		return null;
+	}
+
 }

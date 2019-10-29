@@ -92,7 +92,7 @@ public class usersController {
 	@FXML
 	void action_list_sellers(ActionEvent event) {
 		List<User> list = manejadorEscenarios.toListSellers();
-		ObservableList<User> observableList = manejadorEscenarios.listToObservable(list);
+		ObservableList<User> observableList = manejadorEscenarios.listToObservableUser(list);
 		manejadorEscenarios.setUserList(observableList);
 
 		tableUsers.setItems(observableList);
@@ -102,7 +102,7 @@ public class usersController {
 	@FXML
 	void action_list_shoppers(ActionEvent event) {
 		List<User> list = manejadorEscenarios.toListShoppers();
-		ObservableList<User> observableList = manejadorEscenarios.listToObservable(list);
+		ObservableList<User> observableList = manejadorEscenarios.listToObservableUser(list);
 		manejadorEscenarios.setUserList(observableList);
 
 		tableUsers.setItems(observableList);
@@ -121,17 +121,30 @@ public class usersController {
 		manejadorEscenarios.setUserList(newList);
 
 		tableUsers.setItems(newList);
+
+		textAdress.setText(user.getAdress());
+		textCellPhoneNumber.setText(user.getCellphoneNumber());
+		textEmail.setText(user.getEmail());
+		textFullName.setText(user.getFullName());
+
 	}
 
 	@FXML
 	void action_remove(ActionEvent event) {
-		User user = tableUsers.getSelectionModel().getSelectedItem();
-		manejadorEscenarios.removeUser(user.getID());
+		String ID = textID.getText();
+		manejadorEscenarios.removeUser(ID);
+
+		manejadorEscenarios.showMessage("Usuario eliminado con éxito", "CRUD - User");
 	}
 
 	@FXML
 	void action_upDate(ActionEvent event) {
 
+		User updatedUser = new User(textID.getText(), textFullName.getText(), textEmail.getText(),
+				textCellPhoneNumber.getText(), textAdress.getText(), "");
+		manejadorEscenarios.updateUser(updatedUser, textID.getText());
+
+		manejadorEscenarios.showMessage("Usuario actualizado exitosamente", "CRUD - User");
 	}
 
 	@FXML
