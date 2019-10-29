@@ -51,7 +51,7 @@ public class productsController {
 	private TableColumn<Product, String> columnName;
 
 	@FXML
-	private TableColumn<Product, String> columnDescrioption;
+	private TableColumn<Product, String> columnDescription;
 
 	@FXML
 	private TableColumn<Product, Double> columnPrice;
@@ -63,7 +63,7 @@ public class productsController {
 	private TableColumn<Product, String> columnType;
 
 	@FXML
-	private TableColumn<Product, Date> columnLimit_Date;
+	private TableColumn<Product, String> columnLimit_Date;
 
 	@FXML
 	private Pane panelSuperior;
@@ -121,8 +121,12 @@ public class productsController {
 	private void initialize() {
 
 		columnCode.setCellValueFactory(celldata -> celldata.getValue().getCodeProperty());
-		// columnName.setCellValueFactory(cellData ->
-		// cellData.getValue().getFirstNameProperty());
+		columnName.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+		columnAvailability.setCellValueFactory(celldata -> celldata.getValue().getAvailabilityProperty().asObject());
+		columnDescription.setCellValueFactory(celldata -> celldata.getValue().getDescriptionProperty());
+		columnLimit_Date.setCellValueFactory(celldata -> celldata.getValue().getDateProperty());
+		columnPrice.setCellValueFactory(celldata -> celldata.getValue().getPriceProperty().asObject());
+		columnType.setCellValueFactory(celldata -> celldata.getValue().getTypeProperty());
 
 	}
 
