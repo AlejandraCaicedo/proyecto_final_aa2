@@ -107,4 +107,9 @@ public class EscritorioDelegado implements NegocioEJBRemote {
 	public List<Product> toListByType(String type) {
 		return negocioEJB.toListByType(type);
 	}
+
+	@Override
+	public Product searchProduct(String ID) {
+		return negocioEJB.searchProduct(ID);
+	}
 }

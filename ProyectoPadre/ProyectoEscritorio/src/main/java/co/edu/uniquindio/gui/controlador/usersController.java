@@ -2,6 +2,7 @@ package co.edu.uniquindio.gui.controlador;
 
 import java.util.List;
 
+import javax.swing.plaf.TableUI;
 import javax.transaction.Transactional.TxType;
 
 import com.jfoenix.controls.JFXButton;
@@ -156,6 +157,14 @@ public class usersController {
 		columnEmail.setCellValueFactory(celldata -> celldata.getValue().getEmailProperty());
 		columnCellPhone.setCellValueFactory(celldata -> celldata.getValue().getCellphoneNumberProperty());
 
+	}
+
+	public void actualizarTabla(User user) {
+		ObservableList<User> userList = FXCollections.observableArrayList();
+		userList.add(user);
+		manejadorEscenarios.setUserList(userList);
+
+		tableUsers.setItems(userList);
 	}
 
 	public void setManejadorEscenarios(ManejadorEscenarios manejadorEscenarios) {

@@ -141,6 +141,8 @@ public class Product implements Serializable {
 	// Query que retorna los productos que aun no han expirado
 	public static final String NOT_EXPIRED_PRODUCTS = "NOT_EXPIRED_PRODUCTS";
 
+	public static final String SEARCH_PRODUCT = "SEARCH_PRODUCT";
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -338,6 +340,14 @@ public class Product implements Serializable {
 	 */
 	public void setListPurchaseDetails(List<PurchaseDetail> listPurchaseDetails) {
 		this.listPurchaseDetails = listPurchaseDetails;
+	}
+
+	public String getUserID() {
+		return user.getID();
+	}
+
+	public StringProperty getUserIDProperty() {
+		return new SimpleStringProperty(user.getID());
 	}
 
 	public StringProperty getCodeProperty() {

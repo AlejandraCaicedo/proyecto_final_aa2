@@ -309,4 +309,10 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return null;
 	}
 
+	@Override
+	public Product searchProduct(String ID) {
+		Product product = entityManager.find(Product.class, ID);
+		return product;
+	}
+
 }

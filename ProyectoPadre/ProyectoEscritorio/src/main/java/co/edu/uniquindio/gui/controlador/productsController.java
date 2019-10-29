@@ -3,12 +3,15 @@ package co.edu.uniquindio.gui.controlador;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional.TxType;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
 import co.edu.uniquindio.gui.vista.ManejadorEscenarios;
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.User;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,6 +69,9 @@ public class productsController {
 	private TableColumn<Product, String> columnLimit_Date;
 
 	@FXML
+	private TableColumn<Product, String> columnUserID;
+
+	@FXML
 	private Pane panelSuperior;
 
 	@FXML
@@ -109,7 +115,21 @@ public class productsController {
 
 	@FXML
 	void action_search_product(ActionEvent event) {
+		Product product = manejadorEscenarios.searchProduct(textCode.getText());
+		ObservableList<Product> productList = FXCollections.observableArrayList();
+		productList.add(product);
+		manejadorEscenarios.setProductList(productList);
 
+		tableProducts.setItems(productList);
+
+		textAvailability.setText(product.getAvailability() + "");
+		textCode.setText(product.getCode());
+		textDescription.setText(product.getDescription());
+		textLimitDate.setText(product.getDateProperty().getValue());
+		textName.setText(product.getName());
+		textPrice.setText(product.getPrice() + "");
+		textType.setText(product.getTypeProperty().getValue());
+		textUserID.setText(product.getUserID());
 	}
 
 	@FXML
@@ -127,6 +147,7 @@ public class productsController {
 		columnLimit_Date.setCellValueFactory(celldata -> celldata.getValue().getDateProperty());
 		columnPrice.setCellValueFactory(celldata -> celldata.getValue().getPriceProperty().asObject());
 		columnType.setCellValueFactory(celldata -> celldata.getValue().getTypeProperty());
+		columnUserID.setCellValueFactory(celldata -> celldata.getValue().getUserIDProperty());
 
 	}
 

@@ -48,6 +48,8 @@ public interface NegocioEJBRemote {
 
 	void updateUser(User user, String ID);
 
+	Product searchProduct(String ID);
+
 //	Product toEditProduct(Product p, String code);
 
 }

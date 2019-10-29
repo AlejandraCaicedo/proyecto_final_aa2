@@ -223,6 +223,10 @@ public class ManejadorEscenarios {
 		escritorioDelegado.toCreateProduct(p);
 	}
 
+	public Product searchProduct(String ID) {
+		return escritorioDelegado.searchProduct(ID);
+	}
+
 	public void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException {
 		escritorioDelegado.toRegisterUser(u);
 	}
