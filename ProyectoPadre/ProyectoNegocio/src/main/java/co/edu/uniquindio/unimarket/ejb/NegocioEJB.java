@@ -289,4 +289,15 @@ public class NegocioEJB implements NegocioEJBRemote {
 		entityManager.remove(user);
 	}
 
+	@Override
+	public void updateUser(User user, String ID) {
+		User actual = entityManager.find(User.class, ID);
+		actual.setAdress(user.getAdress());
+		actual.setCellphoneNumber(user.getCellphoneNumber());
+		actual.setEmail(user.getEmail());
+		actual.setFullName(user.getFullName());
+		actual.setID(user.getID());
+		actual.setPassword(user.getPassword());
+	}
+
 }

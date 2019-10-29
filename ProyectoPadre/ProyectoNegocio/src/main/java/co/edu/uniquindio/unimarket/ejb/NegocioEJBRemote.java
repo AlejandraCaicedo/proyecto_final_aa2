@@ -44,6 +44,8 @@ public interface NegocioEJBRemote {
 
 	void removeUser(String ID);
 
+	void updateUser(User user, String ID);
+
 //	Product toEditProduct(Product p, String code);
 
 }
