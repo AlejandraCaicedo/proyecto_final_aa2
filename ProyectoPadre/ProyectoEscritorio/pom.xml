@@ -10,6 +10,7 @@
 	<artifactId>ProyectoEscritorio</artifactId>
 	<name>Proyecto de esccritorio</name>
 	<description>Proyecto destinado para el desarrollo de la interfaz grafica del administrador del aplicativo</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.glassfish.main.extras</groupId>
@@ -39,4 +40,5 @@
 			<version>1.6.1</version>
 		</dependency>
 	</dependencies>
+
 </project>
