@@ -2,8 +2,6 @@ package co.edu.uniquindio.gui.controlador;
 
 import java.util.List;
 
-import javax.transaction.Transactional.TxType;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
@@ -73,6 +71,21 @@ public class usersController {
 
 	@FXML
 	private Button buttonRemove;
+
+	@FXML
+	private JFXTextField textFullName;
+
+	@FXML
+	private JFXTextField textID;
+
+	@FXML
+	private JFXTextField textAdress;
+
+	@FXML
+	private JFXTextField textCellPhoneNumber;
+
+	@FXML
+	private JFXTextField textEmail;
 
 	@FXML
 	void action_list_sellers(ActionEvent event) {

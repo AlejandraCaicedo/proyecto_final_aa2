@@ -20,7 +20,6 @@ import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
