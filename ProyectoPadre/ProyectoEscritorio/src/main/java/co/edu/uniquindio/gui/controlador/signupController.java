@@ -62,11 +62,8 @@ public class signupController {
 			manejadorEscenarios.showErrorMessage("You have to fill all the fields before continuing",
 					"There are empty fields");
 		} else {
-			User user = new User(ID, name, email, cellPhoneNumer, adress, password);
-			usersController controller = new usersController();
-			controller.actualizarTabla(user);
-			manejadorEscenarios.showMessage("Usuario Registrado", "CRUD - User");
 			try {
+				User user = new User(ID, name, email, cellPhoneNumer, adress, password);
 				manejadorEscenarios.toRegisterUser(user);
 				manejadorEscenarios.showMessage("new user " + user.getFullName() + " created", "Confirmed data");
 			} catch (RepeatedIDException e) {

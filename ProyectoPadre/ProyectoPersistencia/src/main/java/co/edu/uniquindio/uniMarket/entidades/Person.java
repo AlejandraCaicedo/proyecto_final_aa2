@@ -225,35 +225,35 @@ public class Person implements Serializable {
 		this.password = password;
 	}
 
-	public StringProperty getIDProperty() {
-		StringProperty iDProperty = new SimpleStringProperty(ID);
-		return iDProperty;
-	}
-
-	public StringProperty getFirstNameProperty() {
-		StringProperty firstNameProperty = new SimpleStringProperty(fullName);
-		return firstNameProperty;
-	}
-
-	public StringProperty getCellphoneNumberProperty() {
-		StringProperty cellphoneProperty = new SimpleStringProperty(cellphoneNumber);
-		return cellphoneProperty;
-	}
-
-	public StringProperty getAdressProperty() {
-		StringProperty adressProperty = new SimpleStringProperty(adress);
-		return adressProperty;
-	}
-
-	public StringProperty getPasswordProperty() {
-		StringProperty passwordProperty = new SimpleStringProperty(password);
-		return passwordProperty;
-	}
-
-	public StringProperty getEmailProperty() {
-		StringProperty emailProperty = new SimpleStringProperty(email);
-		return emailProperty;
-	}
+//	public StringProperty getIDProperty() {
+//		StringProperty iDProperty = new SimpleStringProperty(ID);
+//		return iDProperty;
+//	}
+//
+//	public StringProperty getFirstNameProperty() {
+//		StringProperty firstNameProperty = new SimpleStringProperty(fullName);
+//		return firstNameProperty;
+//	}
+//
+//	public StringProperty getCellphoneNumberProperty() {
+//		StringProperty cellphoneProperty = new SimpleStringProperty(cellphoneNumber);
+//		return cellphoneProperty;
+//	}
+//
+//	public StringProperty getAdressProperty() {
+//		StringProperty adressProperty = new SimpleStringProperty(adress);
+//		return adressProperty;
+//	}
+//
+//	public StringProperty getPasswordProperty() {
+//		StringProperty passwordProperty = new SimpleStringProperty(password);
+//		return passwordProperty;
+//	}
+//
+//	public StringProperty getEmailProperty() {
+//		StringProperty emailProperty = new SimpleStringProperty(email);
+//		return emailProperty;
+//	}
 
 	/**
 	 * Metodo hashCode de la clase persona

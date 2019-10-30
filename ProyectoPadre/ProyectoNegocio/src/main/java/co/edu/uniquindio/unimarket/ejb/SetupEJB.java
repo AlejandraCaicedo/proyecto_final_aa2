@@ -1,6 +1,5 @@
 package co.edu.uniquindio.unimarket.ejb;
 
-import java.awt.List;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;

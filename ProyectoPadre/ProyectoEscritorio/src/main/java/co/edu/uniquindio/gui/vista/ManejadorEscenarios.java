@@ -38,12 +38,15 @@ public class ManejadorEscenarios {
 	private BorderPane pantallaBase;
 	private Stage stageBase;
 	private EscritorioDelegado escritorioDelegado;
-	private ObservableList<User> userList = FXCollections.observableArrayList();
-	private ObservableList<Product> productList = FXCollections.observableArrayList();
+	private List<User> userList;
+	private List<Product> productList;
 
 	public ManejadorEscenarios(Stage primaryStage) {
 		try {
 			escritorioDelegado = EscritorioDelegado.escritorioDelegado;
+			userList = escritorioDelegado.toListUsers();
+			productList = escritorioDelegado.toListProducts();
+
 			this.stageBase = primaryStage;
 
 			FXMLLoader loader = new FXMLLoader();
@@ -183,20 +186,20 @@ public class ManejadorEscenarios {
 		alert.showAndWait();
 	}
 
-	public ObservableList<User> getUserList() {
+	public List<User> getUserList() {
 		return userList;
 	}
 
-	public void setUserList(ObservableList<User> newList) {
-		userList = newList;
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
 	}
 
-	public ObservableList<Product> getProductList() {
+	public List<Product> getProductList() {
 		return productList;
 	}
 
-	public void setProductList(ObservableList<Product> newList) {
-		productList = newList;
+	public void setProductList(List<Product> productList) {
+		this.productList = productList;
 	}
 
 	public User autentifyUser(String email, String password) {

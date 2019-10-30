@@ -251,13 +251,14 @@ public class NegocioEJB implements NegocioEJBRemote {
 	}
 
 	@Override
-	public List<User> toListShoppers() {
-		TypedQuery<User> p = entityManager.createNamedQuery(User.All_SHOPPERS_USERS, User.class);
+	public List<User> toListUsers() {
+		TypedQuery<User> p = entityManager.createNamedQuery(User.ALL_USERS, User.class);
 		return p.getResultList();
 	}
 
-	public List<User> toListUsers() {
-		TypedQuery<User> p = entityManager.createNamedQuery(User.ALL_USERS, User.class);
+	@Override
+	public List<User> toListShoppers() {
+		TypedQuery<User> p = entityManager.createNamedQuery(User.All_SHOPPERS_USERS, User.class);
 		return p.getResultList();
 	}
 
@@ -270,6 +271,12 @@ public class NegocioEJB implements NegocioEJBRemote {
 		TypedQuery<Product> p = entityManager.createNamedQuery(Product.PRODUCTS_BY_GIVEN_TYPE, Product.class);
 		p.setParameter("type", type);
 		return p.getResultList();
+	}
+
+	@Override
+	public List<Product> toListProducts() {
+		TypedQuery<Product> q = entityManager.createNamedQuery(Product.ALL_PRODUCTS, Product.class);
+		return q.getResultList();
 	}
 
 	public List<Product> toListExpiredProducts() {

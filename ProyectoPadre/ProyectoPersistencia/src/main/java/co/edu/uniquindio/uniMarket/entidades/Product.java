@@ -1,7 +1,6 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -17,13 +16,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 /**
  * Entity implementation class for Entity: Producto
@@ -91,7 +83,9 @@ public class Product implements Serializable {
 	private List<PurchaseDetail> listPurchaseDetails; // Lista de detalles de compra sobre un producto
 
 	@ManyToOne
-	private User user; // Usuario que ha publicado el producto
+	private static User user; // Usuario que ha publicado el producto
+
+	public static final String userID = user.getID();
 
 	// Query que retorna todas las calificaciones de un producto
 	public static final String ALL_PRODUCT_RATINGS = "TODAS_CALIFICACIONES_PRODUCTO";
@@ -344,46 +338,6 @@ public class Product implements Serializable {
 
 	public String getUserID() {
 		return user.getID();
-	}
-
-	public StringProperty getUserIDProperty() {
-		return new SimpleStringProperty(user.getID());
-	}
-
-	public StringProperty getCodeProperty() {
-		StringProperty code = new SimpleStringProperty(this.code);
-		return code;
-	}
-
-	public StringProperty getNameProperty() {
-		StringProperty nameProperty = new SimpleStringProperty(name);
-		return nameProperty;
-	}
-
-	public StringProperty getDescriptionProperty() {
-		StringProperty descriptionProperty = new SimpleStringProperty(description);
-		return descriptionProperty;
-	}
-
-	public DoubleProperty getPriceProperty() {
-		DoubleProperty priceProperty = new SimpleDoubleProperty(price);
-		return priceProperty;
-	}
-
-	public IntegerProperty getAvailabilityProperty() {
-		IntegerProperty availabilityProperty = new SimpleIntegerProperty(availability);
-		return availabilityProperty;
-	}
-
-	public StringProperty getTypeProperty() {
-		StringProperty typeProperty = new SimpleStringProperty(type.name());
-		return typeProperty;
-	}
-
-	public StringProperty getDateProperty() {
-		SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy");
-		StringProperty dateProperty = new SimpleStringProperty(format.format(limit_Date));
-		return dateProperty;
 	}
 
 	/**

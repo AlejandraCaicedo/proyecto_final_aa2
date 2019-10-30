@@ -2,9 +2,6 @@ package co.edu.uniquindio.gui.controlador;
 
 import java.util.List;
 
-import javax.swing.plaf.TableUI;
-import javax.transaction.Transactional.TxType;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
@@ -17,14 +14,22 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 public class usersController {
 
 	private ManejadorEscenarios manejadorEscenarios;
+	private ObservableList<User> userObservableList;
 
 	public ManejadorEscenarios getManejadorEscenarios() {
 		return manejadorEscenarios;
+	}
+
+	public void setManejadorEscenarios(ManejadorEscenarios manejadorEscenarios) {
+		this.manejadorEscenarios = manejadorEscenarios;
+		userObservableList = FXCollections.observableArrayList(manejadorEscenarios.getUserList());
+		tableUsers.setItems(userObservableList);
 	}
 
 	@FXML
@@ -135,7 +140,7 @@ public class usersController {
 		String ID = textID.getText();
 		manejadorEscenarios.removeUser(ID);
 
-		manejadorEscenarios.showMessage("Usuario eliminado con éxito", "CRUD - User");
+		manejadorEscenarios.showMessage("Usuario eliminado con ï¿½xito", "CRUD - User");
 	}
 
 	@FXML
@@ -151,25 +156,20 @@ public class usersController {
 	@FXML
 	private void initialize() {
 
-		columID.setCellValueFactory(celldata -> celldata.getValue().getIDProperty());
-		columnName.setCellValueFactory(cellData -> cellData.getValue().getFirstNameProperty());
-		columnAdress.setCellValueFactory(celldata -> celldata.getValue().getAdressProperty());
-		columnEmail.setCellValueFactory(celldata -> celldata.getValue().getEmailProperty());
-		columnCellPhone.setCellValueFactory(celldata -> celldata.getValue().getCellphoneNumberProperty());
+		columID.setCellValueFactory(new PropertyValueFactory<User, String>("ID"));
+		columnName.setCellValueFactory(new PropertyValueFactory<User, String>("fullName"));
+		columnEmail.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
+		columnCellPhone.setCellValueFactory(new PropertyValueFactory<User, String>("cellphoneNumber"));
+		columnAdress.setCellValueFactory(new PropertyValueFactory<User, String>("adress"));
 
 	}
 
-	public void actualizarTabla(User user) {
-		ObservableList<User> userList = FXCollections.observableArrayList();
-		userList.add(user);
-		manejadorEscenarios.setUserList(userList);
+//	public void actualizarTabla(User user) {
+//		ObservableList<User> userList = FXCollections.observableArrayList();
+//		userList.add(user);
+//		manejadorEscenarios.setUserList(userList);
+//
+//		tableUsers.setItems(userList);
+//	}
 
-		tableUsers.setItems(userList);
-	}
-
-	public void setManejadorEscenarios(ManejadorEscenarios manejadorEscenarios) {
-		this.manejadorEscenarios = manejadorEscenarios;
-
-		tableUsers.setItems(manejadorEscenarios.getUserList());
-	}
 }

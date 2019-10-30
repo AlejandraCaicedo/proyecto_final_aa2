@@ -89,6 +89,11 @@ public class EscritorioDelegado implements NegocioEJBRemote {
 	}
 
 	@Override
+	public List<User> toListUsers() {
+		return negocioEJB.toListUsers();
+	}
+
+	@Override
 	public User searchUser(String ID) {
 		return negocioEJB.searchUser(ID);
 	}
@@ -111,5 +116,10 @@ public class EscritorioDelegado implements NegocioEJBRemote {
 	@Override
 	public Product searchProduct(String ID) {
 		return negocioEJB.searchProduct(ID);
+	}
+
+	@Override
+	public List<Product> toListProducts() {
+		return negocioEJB.toListProducts();
 	}
 }
