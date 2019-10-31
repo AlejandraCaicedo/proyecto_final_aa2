@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                                    
+                                        
+    
     
     
     
@@ -8,9 +9,12 @@
     
     
     <wb-module deploy-name="ProyectoNegocio">
+                
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
+                
         <wb-resource deploy-path="/" source-path="/src/main/resources" tag="defaultRootSource"/>
-                                                                        
+                                                                                
+        
         
         
         
@@ -19,7 +23,8 @@
         
         
         <property name="java-output-path" value="/ProyectoNegocio/target/classes"/>
-                                                                    
+                                                                            
+    
     
     
     
@@ -28,7 +33,8 @@
     
     
     </wb-module>
-                                
+                                    
+
 
 
 
