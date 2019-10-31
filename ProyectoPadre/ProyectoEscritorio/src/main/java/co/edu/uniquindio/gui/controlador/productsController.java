@@ -1,5 +1,7 @@
 package co.edu.uniquindio.gui.controlador;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
@@ -110,30 +112,31 @@ public class productsController {
 
 	@FXML
 	void action_list_by_type(ActionEvent event) {
-		List<Product> type = manejadorEscenarios.toListByType(textType.getText());
-		ObservableList<Product> newList = manejadorEscenarios.listToObservableProduct(type);
-		manejadorEscenarios.setProductList(newList);
+		List<Product> list = manejadorEscenarios.toListByType(textType.getText());
+		ObservableList<Product> observableList = FXCollections.observableArrayList(list);
+		manejadorEscenarios.setProductList(list);
 
-		tableProducts.setItems(newList);
+		tableProducts.setItems(observableList);
 	}
 
 	@FXML
 	void action_search_product(ActionEvent event) {
-//		Product product = manejadorEscenarios.searchProduct(textCode.getText());
-//		ObservableList<Product> productList = FXCollections.observableArrayList();
-//		productList.add(product);
-//		manejadorEscenarios.setProductList(productList);
-//
-//		tableProducts.setItems(productList);
-//
-//		textAvailability.setText(product.getAvailability() + "");
-//		textCode.setText(product.getCode());
-//		textDescription.setText(product.getDescription());
-//		textLimitDate.setText(product.getDateProperty().getValue());
-//		textName.setText(product.getName());
-//		textPrice.setText(product.getPrice() + "");
-//		textType.setText(product.getTypeProperty().getValue());
-//		textUserID.setText(product.getUserID());
+		Product product = manejadorEscenarios.searchProduct(textCode.getText());
+		List<Product> list = Arrays.asList(product);
+		ObservableList<Product> productList = FXCollections.observableArrayList(list);
+		manejadorEscenarios.setProductList(list);
+
+		tableProducts.setItems(productList);
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+		textAvailability.setText(product.getAvailability() + "");
+		textCode.setText(product.getCode());
+		textDescription.setText(product.getDescription());
+		textLimitDate.setText(dateFormat.format(product.getLimit_Date()));
+		textName.setText(product.getName());
+		textPrice.setText(product.getPrice() + "");
+		textType.setText(product.getType().name());
+		textUserID.setText(product.getUserID());
 	}
 
 	@FXML

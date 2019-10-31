@@ -1,5 +1,7 @@
 package co.edu.uniquindio.gui.controlador;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
@@ -98,8 +100,8 @@ public class usersController {
 	@FXML
 	void action_list_sellers(ActionEvent event) {
 		List<User> list = manejadorEscenarios.toListSellers();
-		ObservableList<User> observableList = manejadorEscenarios.listToObservableUser(list);
-		manejadorEscenarios.setUserList(observableList);
+		ObservableList<User> observableList = FXCollections.observableArrayList(list);
+		manejadorEscenarios.setUserList(list);
 
 		tableUsers.setItems(observableList);
 
@@ -108,8 +110,8 @@ public class usersController {
 	@FXML
 	void action_list_shoppers(ActionEvent event) {
 		List<User> list = manejadorEscenarios.toListShoppers();
-		ObservableList<User> observableList = manejadorEscenarios.listToObservableUser(list);
-		manejadorEscenarios.setUserList(observableList);
+		ObservableList<User> observableList = FXCollections.observableArrayList(list);
+		manejadorEscenarios.setUserList(list);
 
 		tableUsers.setItems(observableList);
 	}
@@ -122,11 +124,11 @@ public class usersController {
 	@FXML
 	void action_search_user(ActionEvent event) {
 		User user = manejadorEscenarios.searchUser(textSearch.getText());
-		ObservableList<User> newList = FXCollections.observableArrayList();
-		newList.add(user);
-		manejadorEscenarios.setUserList(newList);
+		List<User> list = Arrays.asList(user);
+		ObservableList<User> observableList = FXCollections.observableArrayList(list);
+		manejadorEscenarios.setUserList(list);
 
-		tableUsers.setItems(newList);
+		tableUsers.setItems(observableList);
 
 		textAdress.setText(user.getAdress());
 		textCellPhoneNumber.setText(user.getCellphoneNumber());
@@ -140,7 +142,8 @@ public class usersController {
 		String ID = textID.getText();
 		manejadorEscenarios.removeUser(ID);
 
-		manejadorEscenarios.showMessage("Usuario eliminado con �xito", "CRUD - User");
+		manejadorEscenarios.showMessage("Usuario eliminado con Exito", "CRUD - User");
+
 	}
 
 	@FXML

@@ -336,6 +336,29 @@ public class Product implements Serializable {
 		this.listPurchaseDetails = listPurchaseDetails;
 	}
 
+	/**
+	 * Metodo que retorna el Type de un producto (Categoria)
+	 * 
+	 * @return El Type de un Producto
+	 */
+	public Type getType() {
+		return type;
+	}
+
+	/**
+	 * Metodo para poner un Type de un producto
+	 * 
+	 * @param type el Type que se ha de poner
+	 */
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	/**
+	 * Metodo que retorna el ID de un usuario
+	 * 
+	 * @return el ID de un Usuario
+	 */
 	public String getUserID() {
 		return user.getID();
 	}

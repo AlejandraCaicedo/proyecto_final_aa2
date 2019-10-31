@@ -256,6 +256,7 @@ public class ManejadorEscenarios {
 
 	public void removeUser(String ID) {
 		escritorioDelegado.removeUser(ID);
+		userList.remove(searchUser(ID));
 	}
 
 	public void updateUser(User user, String ID) {
