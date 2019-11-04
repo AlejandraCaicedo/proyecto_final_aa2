@@ -122,18 +122,23 @@ public class usersController {
 
 	@FXML
 	void action_search_user(ActionEvent event) {
-		User user = manejadorEscenarios.searchUser(textSearch.getText());
-		List<User> list = Arrays.asList(user);
-		ObservableList<User> observableList = FXCollections.observableArrayList(list);
-		manejadorEscenarios.setUserList(list);
+		User user;
+		try {
+			user = manejadorEscenarios.searchUser(textSearch.getText());
+			List<User> list = Arrays.asList(user);
+			ObservableList<User> observableList = FXCollections.observableArrayList(list);
+			manejadorEscenarios.setUserList(list);
 
-		tableUsers.setItems(observableList);
+			tableUsers.setItems(observableList);
 
-		textID.setText(user.getID());
-		textAdress.setText(user.getAdress());
-		textCellPhoneNumber.setText(user.getCellphoneNumber());
-		textEmail.setText(user.getEmail());
-		textFullName.setText(user.getFullName());
+			textID.setText(user.getID());
+			textAdress.setText(user.getAdress());
+			textCellPhoneNumber.setText(user.getCellphoneNumber());
+			textEmail.setText(user.getEmail());
+			textFullName.setText(user.getFullName());
+		} catch (NullPointerException e) {
+			manejadorEscenarios.showErrorMessage("To search you must enter the user identifier", "Empty fields");
+		}
 
 	}
 

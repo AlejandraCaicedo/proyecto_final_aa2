@@ -119,22 +119,30 @@ public class productsController {
 
 	@FXML
 	void action_search_product(ActionEvent event) {
-		Product product = manejadorEscenarios.searchProduct(textSearch.getText());
-		List<Product> list = Arrays.asList(product);
-		ObservableList<Product> productList = FXCollections.observableArrayList(list);
-		manejadorEscenarios.setProductList(list);
 
-		tableProducts.setItems(productList);
+		Product product;
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
-		textAvailability.setText(product.getAvailability() + "");
-		textCode.setText(product.getCode());
-		textDescription.setText(product.getDescription());
-		textLimitDate.setText(dateFormat.format(product.getLimit_Date()));
-		textName.setText(product.getName());
-		textPrice.setText(product.getPrice() + "");
-		textType.setText(product.getType().name());
-		textUserID.setText(product.getUserID());
+		try {
+			product = manejadorEscenarios.searchProduct(textSearch.getText());
+
+			List<Product> list = Arrays.asList(product);
+			ObservableList<Product> productList = FXCollections.observableArrayList(list);
+			manejadorEscenarios.setProductList(list);
+
+			tableProducts.setItems(productList);
+
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+			textAvailability.setText(product.getAvailability() + "");
+			textCode.setText(product.getCode());
+			textDescription.setText(product.getDescription());
+			textLimitDate.setText(dateFormat.format(product.getLimit_Date()));
+			textName.setText(product.getName());
+			textPrice.setText(product.getPrice() + "");
+			textType.setText(product.getType().name());
+			textUserID.setText(product.getUserID());
+		} catch (NullPointerException e) {
+			manejadorEscenarios.showErrorMessage("To search you must enter the product code", "Empty fields");
+		}
 	}
 
 	@FXML
