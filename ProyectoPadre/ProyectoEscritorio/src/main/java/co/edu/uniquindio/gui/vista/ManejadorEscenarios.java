@@ -220,6 +220,7 @@ public class ManejadorEscenarios {
 	}
 
 	public List<User> getUserList() {
+		userList = escritorioDelegado.toListUsers();
 		return userList;
 	}
 

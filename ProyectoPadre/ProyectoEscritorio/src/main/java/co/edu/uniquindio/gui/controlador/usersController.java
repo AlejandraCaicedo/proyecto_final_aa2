@@ -172,7 +172,7 @@ public class usersController {
 	}
 
 	public void actualizarTablaBorrar(String ID) {
-		ObservableList<User> userList = FXCollections.observableArrayList();
+		ObservableList<User> userList = FXCollections.observableArrayList(manejadorEscenarios.getUserList());
 		User user = manejadorEscenarios.searchUser(ID);
 		userList.remove(user);
 		manejadorEscenarios.setUserList(userList);
