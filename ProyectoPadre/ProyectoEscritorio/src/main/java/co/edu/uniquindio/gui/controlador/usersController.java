@@ -166,8 +166,7 @@ public class usersController {
 	}
 
 	public void actualizarTabla(User user) {
-		ObservableList<User> userList = FXCollections.observableArrayList();
-		userList.add(user);
+		ObservableList<User> userList = FXCollections.observableArrayList(manejadorEscenarios.getUserList());
 		manejadorEscenarios.setUserList(userList);
 		tableUsers.setItems(userList);
 	}
