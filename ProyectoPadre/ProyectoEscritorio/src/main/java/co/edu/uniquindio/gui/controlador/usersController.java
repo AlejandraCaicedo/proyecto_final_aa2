@@ -117,7 +117,7 @@ public class usersController {
 
 	@FXML
 	void action_new_user(ActionEvent event) {
-		manejadorEscenarios.showSignUp();
+		manejadorEscenarios.showSignUp(this);
 	}
 
 	@FXML
@@ -129,6 +129,7 @@ public class usersController {
 
 		tableUsers.setItems(observableList);
 
+		textID.setText(user.getID());
 		textAdress.setText(user.getAdress());
 		textCellPhoneNumber.setText(user.getCellphoneNumber());
 		textEmail.setText(user.getEmail());
@@ -141,8 +142,8 @@ public class usersController {
 		String ID = textID.getText();
 		manejadorEscenarios.removeUser(ID);
 
-		manejadorEscenarios.showMessage("Usuario eliminado con Exito", "CRUD - User");
-
+		manejadorEscenarios.showMessage("User successfully removed", "User");
+		actualizarTablaBorrar(ID);
 	}
 
 	@FXML
@@ -152,26 +153,31 @@ public class usersController {
 				textCellPhoneNumber.getText(), textAdress.getText(), "");
 		manejadorEscenarios.updateUser(updatedUser, textID.getText());
 
-		manejadorEscenarios.showMessage("Usuario actualizado exitosamente", "CRUD - User");
+		manejadorEscenarios.showMessage("User successfully updated", "User");
 	}
 
 	@FXML
 	private void initialize() {
-
 		columID.setCellValueFactory(new PropertyValueFactory<User, String>("ID"));
 		columnName.setCellValueFactory(new PropertyValueFactory<User, String>("fullName"));
 		columnEmail.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
 		columnCellPhone.setCellValueFactory(new PropertyValueFactory<User, String>("cellphoneNumber"));
 		columnAdress.setCellValueFactory(new PropertyValueFactory<User, String>("adress"));
-
 	}
 
-//	public void actualizarTabla(User user) {
-//		ObservableList<User> userList = FXCollections.observableArrayList();
-//		userList.add(user);
-//		manejadorEscenarios.setUserList(userList);
-//
-//		tableUsers.setItems(userList);
-//	}
+	public void actualizarTabla(User user) {
+		ObservableList<User> userList = FXCollections.observableArrayList();
+		userList.add(user);
+		manejadorEscenarios.setUserList(userList);
+		tableUsers.setItems(userList);
+	}
+
+	public void actualizarTablaBorrar(String ID) {
+		ObservableList<User> userList = FXCollections.observableArrayList();
+		User user = manejadorEscenarios.searchUser(ID);
+		userList.remove(user);
+		manejadorEscenarios.setUserList(userList);
+		tableUsers.setItems(userList);
+	}
 
 }

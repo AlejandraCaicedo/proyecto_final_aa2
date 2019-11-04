@@ -24,6 +24,12 @@ public class RatePK implements Serializable {
 	public RatePK() {
 	}
 
+	public RatePK(String product, String user) {
+		super();
+		this.product = product;
+		this.user = user;
+	}
+
 	/**
 	 * Metodo que permite obtener el codigo de un producto
 	 * 

@@ -83,9 +83,9 @@ public class Product implements Serializable {
 	private List<PurchaseDetail> listPurchaseDetails; // Lista de detalles de compra sobre un producto
 
 	@ManyToOne
-	private static User user; // Usuario que ha publicado el producto
+	private User user; // Usuario que ha publicado el producto
 
-	public static final String userID = user.getID();
+//	public static final String userID = user.getID();
 
 	// Query que retorna todas las calificaciones de un producto
 	public static final String ALL_PRODUCT_RATINGS = "TODAS_CALIFICACIONES_PRODUCTO";
@@ -361,6 +361,18 @@ public class Product implements Serializable {
 	 */
 	public String getUserID() {
 		return user.getID();
+	}
+
+	public void setListRates(List<Rate> listRates) {
+		this.listRates = listRates;
+	}
+
+	public void setListCommentaries(List<Commentary> listCommentaries) {
+		this.listCommentaries = listCommentaries;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	/**

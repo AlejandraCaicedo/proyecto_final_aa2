@@ -15,9 +15,9 @@
 	<dependencies>
 		<dependency>
 			<groupId>co.edu.uniquindio.grid</groupId>
-			<artifactId>ProyectoWeb</artifactId>
+			<artifactId>ProyectoNegocio</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<type>war</type>
+			<type>ejb</type>
 		</dependency>
 	</dependencies>
 

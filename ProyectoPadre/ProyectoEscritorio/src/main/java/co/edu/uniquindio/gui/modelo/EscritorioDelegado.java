@@ -12,6 +12,7 @@ import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
+import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
@@ -109,7 +110,7 @@ public class EscritorioDelegado implements NegocioEJBRemote {
 	}
 
 	@Override
-	public List<Product> toListByType(String type) {
+	public List<Product> toListByType(String type) throws NotFoundTypeProduct {
 		return negocioEJB.toListByType(type);
 	}
 

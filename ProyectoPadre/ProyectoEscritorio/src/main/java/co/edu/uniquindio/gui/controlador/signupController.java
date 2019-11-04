@@ -10,10 +10,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class signupController {
 
 	private ManejadorEscenarios manejadorEscenarios;
+	private usersController usersController;
+	private Stage stage;
 
 	public ManejadorEscenarios getManejadorEscenarios() {
 		return manejadorEscenarios;
@@ -21,6 +24,22 @@ public class signupController {
 
 	public void setManejadorEscenarios(ManejadorEscenarios manejadorEscenarios) {
 		this.manejadorEscenarios = manejadorEscenarios;
+	}
+
+	public usersController getUsersController() {
+		return usersController;
+	}
+
+	public void setUsersController(usersController usersController) {
+		this.usersController = usersController;
+	}
+
+	public Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
 	}
 
 	@FXML
@@ -66,6 +85,8 @@ public class signupController {
 				User user = new User(ID, name, email, cellPhoneNumer, adress, password);
 				manejadorEscenarios.toRegisterUser(user);
 				manejadorEscenarios.showMessage("new user " + user.getFullName() + " created", "Confirmed data");
+				manejadorEscenarios.closeSign(stage);
+				usersController.actualizarTabla(user);
 			} catch (RepeatedIDException e) {
 				manejadorEscenarios.showErrorMessage(e.getMessage(), "");
 			} catch (RepeatedEmailException e) {

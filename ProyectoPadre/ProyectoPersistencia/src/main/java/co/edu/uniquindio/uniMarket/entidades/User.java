@@ -163,6 +163,38 @@ public class User extends Person implements Serializable {
 		this.listComments = comments;
 	}
 
+	public List<Purchase> getListPurchases() {
+		return listPurchases;
+	}
+
+	public List<Rate> getListRates() {
+		return listRates;
+	}
+
+	public List<Commentary> getListComments() {
+		return listComments;
+	}
+
+	public List<Product> getListProducts() {
+		return listProducts;
+	}
+
+	public void setListPurchases(List<Purchase> listPurchases) {
+		this.listPurchases = listPurchases;
+	}
+
+	public void setListRates(List<Rate> listRates) {
+		this.listRates = listRates;
+	}
+
+	public void setListComments(List<Commentary> listComments) {
+		this.listComments = listComments;
+	}
+
+	public void setListProducts(List<Product> listProducts) {
+		this.listProducts = listProducts;
+	}
+
 	/**
 	 * Metodo que permite dar una estructura definida a la forna en que se muestra
 	 * la informacion sobre el usuario

@@ -11,6 +11,7 @@ import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
+import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
@@ -42,8 +43,8 @@ public interface NegocioEJBRemote {
 
 	List<User> toListUsers();
 
-	List<Product> toListByType(String type);
-	
+	List<Product> toListByType(String type) throws NotFoundTypeProduct;
+
 	List<Product> toListProducts();
 
 	User searchUser(String ID);

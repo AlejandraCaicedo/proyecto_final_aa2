@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import co.edu.uniquindio.gui.vista.ManejadorEscenarios;
 import co.edu.uniquindio.uniMarket.entidades.Product;
+import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -60,22 +61,13 @@ public class productsController {
 	private TableColumn<Product, String> columnName;
 
 	@FXML
-	private TableColumn<Product, String> columnDescription;
+	private TableColumn<Product, Integer> columnAvailability;
 
 	@FXML
 	private TableColumn<Product, Double> columnPrice;
 
 	@FXML
-	private TableColumn<Product, Integer> columnAvailability;
-
-	@FXML
 	private TableColumn<Product, String> columnType;
-
-	@FXML
-	private TableColumn<Product, String> columnLimit_Date;
-
-	@FXML
-	private TableColumn<Product, String> columnUserID;
 
 	@FXML
 	private Pane panelSuperior;
@@ -112,16 +104,22 @@ public class productsController {
 
 	@FXML
 	void action_list_by_type(ActionEvent event) {
-		List<Product> list = manejadorEscenarios.toListByType(textType.getText());
-		ObservableList<Product> observableList = FXCollections.observableArrayList(list);
-		manejadorEscenarios.setProductList(list);
+		String type = manejadorEscenarios.showChoiseMessage();
+		List<Product> list;
+		try {
+			list = manejadorEscenarios.toListByType(type);
+			ObservableList<Product> observableList = FXCollections.observableArrayList(list);
+			manejadorEscenarios.setProductList(list);
 
-		tableProducts.setItems(observableList);
+			tableProducts.setItems(observableList);
+		} catch (NotFoundTypeProduct e) {
+			manejadorEscenarios.showErrorMessage(e.getMessage(), "Not found product type");
+		}
 	}
 
 	@FXML
 	void action_search_product(ActionEvent event) {
-		Product product = manejadorEscenarios.searchProduct(textCode.getText());
+		Product product = manejadorEscenarios.searchProduct(textSearch.getText());
 		List<Product> list = Arrays.asList(product);
 		ObservableList<Product> productList = FXCollections.observableArrayList(list);
 		manejadorEscenarios.setProductList(list);
@@ -150,10 +148,8 @@ public class productsController {
 		columnCode.setCellValueFactory(new PropertyValueFactory<Product, String>("code"));
 		columnName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
 		columnAvailability.setCellValueFactory(new PropertyValueFactory<Product, Integer>("availability"));
-		columnLimit_Date.setCellValueFactory(new PropertyValueFactory<Product, String>("limit_Date"));
 		columnPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
 		columnType.setCellValueFactory(new PropertyValueFactory<Product, String>("type"));
-		columnUserID.setCellValueFactory(new PropertyValueFactory<Product, String>("userID"));
 
 	}
 

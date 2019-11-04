@@ -22,7 +22,14 @@
 				<DropShadow />
 			</effect>
 			<children>
-				<Pane prefHeight="150.0" prefWidth="226.0" style="-fx-background-color: #1A5276;" />
+				<Pane prefHeight="150.0" prefWidth="226.0" style="-fx-background-color: #1A5276;">
+               <children>
+                  <ImageView fitHeight="93.0" fitWidth="114.0" layoutX="128.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/almacenar.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
 				<Separator opacity="0.0" prefHeight="20.0" />
 				<JFXButton fx:id="buttonAdmin" alignment="CENTER" buttonType="RAISED" onAction="#action_admin" prefHeight="55.0" prefWidth="267.0" ripplerFill="#5cdab2" text="Admin" textFill="WHITE">
 					<graphic>

@@ -18,6 +18,7 @@ import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.Type;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
+import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
@@ -45,7 +46,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 		Admin admin = findAdmin(email, password);
 
 		if (admin == null) {
-			throw new NotFoundAdminException("El email o la contrasenia son incorrectos");
+			throw new NotFoundAdminException("Email or password incorrect");
 		} else {
 			return admin;
 		}
@@ -66,14 +67,6 @@ public class NegocioEJB implements NegocioEJBRemote {
 			return null;
 		}
 	}
-
-//	@Override
-//	public List<Product> toListAvailableProducts() {
-////		TypedQuery<Product> productos = entityManager.createNamedQuery(Product.ALL_PRODUCT_AVAILABLE, Product.class);
-////		productos.setParameter("fechaActual", "new Date() --- new SimpleFormat()");
-////		return productos.getResultList();
-//		return null;
-//	}
 
 	// ----------------------------------------
 	// M E T O D O S - P E R S I S T E N C I A
@@ -110,7 +103,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 	public void toCreateProduct(Product p) throws RepeatedProductException {
 
 		if (entityManager.find(Product.class, p.getCode()) != null) {
-			throw new RepeatedProductException("El producto ya se encuentra registrado");
+			throw new RepeatedProductException("The product is already registered");
 		}
 		entityManager.persist(p);
 	}
@@ -123,11 +116,11 @@ public class NegocioEJB implements NegocioEJBRemote {
 	public void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException {
 
 		if (entityManager.find(User.class, u.getID()) != null) {
-			throw new RepeatedIDException("El usuario ya se encuentra registrado");
+			throw new RepeatedIDException("The user is already registered");
 		}
 
 		if (findUser(u.getEmail()) != null) {
-			throw new RepeatedEmailException("El email ya se encuentra en uso");
+			throw new RepeatedEmailException("Email is already in use");
 		}
 
 		entityManager.persist(u);
@@ -240,6 +233,12 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return user;
 	}
 
+	@Override
+	public Product searchProduct(String ID) {
+		Product product = entityManager.find(Product.class, ID);
+		return product;
+	}
+
 	// ----------------------------------------
 	// M E T O D O S - P A R A - L I S T A R
 	// ----------------------------------------
@@ -307,19 +306,19 @@ public class NegocioEJB implements NegocioEJBRemote {
 	}
 
 	@Override
-	public List<Product> toListByType(String type) {
-		if (type.equals("EXPIRED")) {
-			return toListExpiredProducts();
-		} else if (type.equals("NOT EXPIRED")) {
-			return toListNotExpiredProducts();
-		}
-		return null;
-	}
+	public List<Product> toListByType(String type) throws NotFoundTypeProduct {
 
-	@Override
-	public Product searchProduct(String ID) {
-		Product product = entityManager.find(Product.class, ID);
-		return product;
+		if (!type.equals("vacio") && !type.equals("----")) {
+			if (type.equals("EXPIRED")) {
+				return toListExpiredProducts();
+			} else if (type.equals("NOT EXPIRED")) {
+				return toListNotExpiredProducts();
+			} else {
+				return toListProductsByType(Type.valueOf(type));
+			}
+		} else {
+			throw new NotFoundTypeProduct("You must select some type of product");
+		}
 	}
 
 }

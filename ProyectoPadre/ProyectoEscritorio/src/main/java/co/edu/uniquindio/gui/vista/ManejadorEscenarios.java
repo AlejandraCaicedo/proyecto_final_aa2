@@ -1,7 +1,9 @@
 package co.edu.uniquindio.gui.vista;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import co.edu.uniquindio.gui.controlador.adminController;
 import co.edu.uniquindio.gui.controlador.appController;
@@ -17,6 +19,7 @@ import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
+import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
@@ -27,6 +30,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -146,7 +150,7 @@ public class ManejadorEscenarios {
 		}
 	}
 
-	public void showSignUp() {
+	public void showSignUp(usersController usersController) {
 		try {
 			Stage stage = new Stage();
 
@@ -157,6 +161,8 @@ public class ManejadorEscenarios {
 
 			signupController signupController = loader.getController();
 			signupController.setManejadorEscenarios(this);
+			signupController.setStage(stage);
+			signupController.setUsersController(usersController);
 
 			Scene scene = new Scene(root);
 
@@ -166,6 +172,10 @@ public class ManejadorEscenarios {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void closeSign(Stage stage) {
+		stage.close();
 	}
 
 	public void showErrorMessage(String message, String tittle) {
@@ -184,6 +194,29 @@ public class ManejadorEscenarios {
 		alert.setContentText(message);
 		alert.initStyle(StageStyle.UTILITY);
 		alert.showAndWait();
+	}
+
+	public String showChoiseMessage() {
+		List<String> choices = new ArrayList<>();
+		choices.add("BOOKS");
+		choices.add("JEWELRY");
+		choices.add("FASHION");
+		choices.add("SPORTS");
+		choices.add("TECHNOLOGY");
+		choices.add("EXPIRED");
+		choices.add("NOT EXPIRED");
+
+		ChoiceDialog<String> dialog = new ChoiceDialog<>("----", choices);
+		dialog.setTitle("List products by types");
+		dialog.setHeaderText("Product types");
+		dialog.setContentText("Choose a type");
+
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			return result.get();
+		}
+		return "vacio";
 	}
 
 	public List<User> getUserList() {
@@ -218,7 +251,7 @@ public class ManejadorEscenarios {
 		return escritorioDelegado.toListShoppers();
 	}
 
-	public List<Product> toListByType(String type) {
+	public List<Product> toListByType(String type) throws NotFoundTypeProduct {
 		return escritorioDelegado.toListByType(type);
 	}
 
