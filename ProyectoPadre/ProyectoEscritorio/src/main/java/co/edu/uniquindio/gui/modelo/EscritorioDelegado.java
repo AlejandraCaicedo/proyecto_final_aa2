@@ -123,4 +123,9 @@ public class EscritorioDelegado implements NegocioEJBRemote {
 	public List<Product> toListProducts() {
 		return negocioEJB.toListProducts();
 	}
+
+	@Override
+	public Admin getAdmin() {
+		return negocioEJB.getAdmin();
+	}
 }

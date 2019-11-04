@@ -55,6 +55,8 @@ public interface NegocioEJBRemote {
 
 	Product searchProduct(String ID);
 
+	Admin getAdmin();
+
 //	Product toEditProduct(Product p, String code);
 
 }

@@ -321,4 +321,11 @@ public class NegocioEJB implements NegocioEJBRemote {
 		}
 	}
 
+	@Override
+	public Admin getAdmin() {
+		TypedQuery<Admin> admin = entityManager.createNamedQuery(Admin.GET_ADMIN, Admin.class);
+
+		return admin.getResultList().get(0);
+	}
+
 }

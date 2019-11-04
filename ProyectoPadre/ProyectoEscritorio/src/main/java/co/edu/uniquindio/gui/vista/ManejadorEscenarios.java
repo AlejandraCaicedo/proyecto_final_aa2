@@ -297,6 +297,10 @@ public class ManejadorEscenarios {
 		escritorioDelegado.updateUser(user, ID);
 	}
 
+	public Admin getAdmin() {
+		return escritorioDelegado.getAdmin();
+	}
+
 	public ObservableList<User> listToObservableUser(List<User> usersList) {
 
 		ObservableList<User> res = FXCollections.observableArrayList();
