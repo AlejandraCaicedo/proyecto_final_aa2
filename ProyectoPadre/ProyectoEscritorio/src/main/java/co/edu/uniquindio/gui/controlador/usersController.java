@@ -170,8 +170,14 @@ public class usersController {
 		columnAdress.setCellValueFactory(new PropertyValueFactory<User, String>("adress"));
 	}
 
-	public void actualizarTabla(User user) {
+	public void actualizarTabla() {
 		ObservableList<User> userList = FXCollections.observableArrayList(manejadorEscenarios.getUserList());
+		System.out.println("Usuarios en la lista nueva: ");
+		System.out.println();
+		for (int i = 0; i < userList.size(); i++) {
+			System.out.println(userList.get(i).getID());
+		}
+		System.out.println("Fin del for");
 		manejadorEscenarios.setUserList(userList);
 		tableUsers.setItems(userList);
 	}
