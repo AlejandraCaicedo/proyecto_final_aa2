@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                        
+                            
+    
     
     
     
     
     <wb-module deploy-name="ProyectoEAR-0.0.1-SNAPSHOT">
-                                                
+                                                        
+        
         
         
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
-                                                
+                                                        
+        
         
         
         
@@ -23,13 +26,18 @@
         <dependent-module archiveName="ProyectoPersistencia.jar" deploy-path="/lib" handle="module:/resource/ProyectoPersistencia/ProyectoPersistencia">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                                            
+        <dependent-module archiveName="ProyectoWeb.war" deploy-path="/" handle="module:/resource/ProyectoWeb/ProyectoWeb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                                                    
+    
     
     
     
     
     </wb-module>
-                    
+                        
+
 
 
 

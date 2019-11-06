@@ -191,7 +191,8 @@ public class NegocioEJB implements NegocioEJBRemote {
 	// M E T O D O S - E N C O N T R A R - O B T E N E R
 	// --------------------------------------------------
 
-	private User findUser(String email) {
+	@Override
+	public User findUser(String email) {
 		TypedQuery<User> q = entityManager.createNamedQuery(User.FIND_BY_EMAIL, User.class);
 		q.setParameter("email", email);
 		List<User> listUsers = q.getResultList();

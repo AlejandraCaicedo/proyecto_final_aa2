@@ -111,7 +111,8 @@ public class usersController {
 		List<User> list = manejadorEscenarios.toListShoppers();
 		ObservableList<User> observableList = FXCollections.observableArrayList(list);
 		manejadorEscenarios.setUserList(list);
-
+		
+		//Sos re grosa Aleja te amo att: sinónimo xxdXDdxd jsjsjsjs
 		tableUsers.setItems(observableList);
 	}
 

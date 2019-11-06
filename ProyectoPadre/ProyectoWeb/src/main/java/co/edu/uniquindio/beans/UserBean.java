@@ -1,6 +1,9 @@
 package co.edu.uniquindio.beans;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import co.edu.uniquindio.uniMarket.entidades.User;
@@ -12,7 +15,7 @@ import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
 @ApplicationScoped
 public class UserBean {
 
-//	@EJB
+	@EJB
 	private NegocioEJB negocioEJB;
 
 	private String ID, fullName, email, adress, password, cellphoneNumber;
@@ -21,10 +24,16 @@ public class UserBean {
 		User user = new User(ID, fullName, email, cellphoneNumber, adress, password);
 		try {
 			negocioEJB.toRegisterUser(user);
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sumary", "New user created");
+			FacesContext.getCurrentInstance().addMessage(null, message);
 		} catch (RepeatedIDException e) {
-			e.printStackTrace();
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Repeated Identifier Exception",
+					e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, message);
 		} catch (RepeatedEmailException e) {
-			e.printStackTrace();
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Repeated Email Exception",
+					e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
 	}
 

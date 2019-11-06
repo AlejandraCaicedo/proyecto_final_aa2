@@ -128,4 +128,9 @@ public class EscritorioDelegado implements NegocioEJBRemote {
 	public Admin getAdmin() {
 		return negocioEJB.getAdmin();
 	}
+
+	@Override
+	public User findUser(String email) {
+		return negocioEJB.findUser(email);
+	}
 }
