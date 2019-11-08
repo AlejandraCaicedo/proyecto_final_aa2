@@ -111,8 +111,8 @@ public class usersController {
 		List<User> list = manejadorEscenarios.toListShoppers();
 		ObservableList<User> observableList = FXCollections.observableArrayList(list);
 		manejadorEscenarios.setUserList(list);
-		
-		//Sos re grosa Aleja te amo att: sinónimo xxdXDdxd jsjsjsjs
+
+		// Sos re grosa Aleja te amo att: sinónimo xxdXDdxd jsjsjsjs
 		tableUsers.setItems(observableList);
 	}
 
@@ -171,14 +171,9 @@ public class usersController {
 		columnAdress.setCellValueFactory(new PropertyValueFactory<User, String>("adress"));
 	}
 
-	public void actualizarTabla() {
+	public void actualizarTabla(User u) {
 		ObservableList<User> userList = FXCollections.observableArrayList(manejadorEscenarios.getUserList());
-		System.out.println("Usuarios en la lista nueva: ");
-		System.out.println();
-		for (int i = 0; i < userList.size(); i++) {
-			System.out.println(userList.get(i).getID());
-		}
-		System.out.println("Fin del for");
+		userList.add(u);
 		manejadorEscenarios.setUserList(userList);
 		tableUsers.setItems(userList);
 	}

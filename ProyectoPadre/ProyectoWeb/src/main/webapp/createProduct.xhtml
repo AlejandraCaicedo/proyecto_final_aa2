@@ -2,48 +2,61 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
-</head>
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Create product</title>
+</h:head>
 <body>
-	<h:form>
-		<h:panelGrid columns="2">
+	<p:panel header="CREATE NEW PRODUCT">
+		<h:form>
+			<h:panelGrid columns="3" cellpadding="10">
 
-			<h:outputLabel value="Name:" />
-			<h:inputText value="#{productBean.name}" required="true" />
+				<p:outputLabel value="Name:" for="name" />
+				<p:inputText id="name" label="name product"
+					value="#{productBean.name}" required="true" />
+				<p:message for="name" />
 
-			<h:outputLabel value="Code:" />
-			<h:inputText value="#{productBean.code}" required="true" />
+				<p:outputLabel value="Code:" for="code" />
+				<p:inputText id="code" label="code product"
+					value="#{productBean.code}" required="true" />
+				<p:message for="code" />
 
-			<h:outputLabel value="Description:" />
-			<h:inputTextarea value="#{productBean.description}" />
+				<p:outputLabel value="Description:" for="description" />
+				<p:inputTextarea id="description" label="description product"
+					value="#{productBean.description}" required="true" />
+				<p:message for="description" />
 
-			<h:outputLabel value="Price:" />
-			<h:inputText value="#{productBean.price}" />
+				<p:outputLabel value="Price:" for="price" />
+				<p:inputText id="price" label="price product"
+					value="#{productBean.price}" required="true" />
+				<p:message for="price" />
 
-			<h:outputLabel value="Availability:" />
-			<h:inputText value="#{productBean.availability}" />
+				<p:outputLabel value="Availability:" for="availability" />
+				<p:inputText id="availability" label="availability product"
+					value="#{productBean.availability}" required="true" />
+				<p:message for="availability" />
 
-			<h:outputLabel value="Limit date:" />
-			<h:inputText value="#{productBean.limit_date}">
-				<f:convertDateTime pattern="yyyy-MM-dd" />
-			</h:inputText>
+				<p:outputLabel value="Limit date:" for="limit_date" />
+				<p:inputText id="limit_date" label="limit date product"
+					value="#{productBean.limit_date}" required="true">
+					<f:convertDateTime pattern="yyyy-MM-dd" />
+				</p:inputText>
+				<p:message for="limit_date" />
 
-			<h:outputLabel value="Type:" />
-			<h:selectOneMenu value="#{productBean.type}">
-				<f:selectItem itemLabel="TECHNOLOGY" itemValue="TECHNOLOGY" />
-				<f:selectItem itemLabel="BOOKS" itemValue="BOOKS" />
-				<f:selectItem itemLabel="SPORTS" itemValue="SPORTS" />
-				<f:selectItem itemLabel="FASHION" itemValue="FASHION" />
-			</h:selectOneMenu>
+				<p:outputLabel value="Type:" />
+				<p:selectOneMenu id="type" value="#{productBean.type}">
+					<f:selectItems value="#{productBean.listTypes}" />
+				</p:selectOneMenu>
 
-			<h:commandButton action="#{productBean.createProduct}"
-				value="Create product" />
+			</h:panelGrid>
 
-		</h:panelGrid>
-		<h:messages />
-	</h:form>
+			<p:commandButton id="create_product"
+				action="#{productBean.createProduct}" value="Create product"
+				update="@form" for="create_product" />
+			<p:message for="create_product" />
+		</h:form>
+	</p:panel>
 </body>
 </html>

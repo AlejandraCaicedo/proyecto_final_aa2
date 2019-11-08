@@ -22,31 +22,36 @@ public class ProductBean {
 	private NegocioEJB negocioEJB;
 
 	private String code, name, description;
-	private String availability;
-	private String price;
+	private int availability;
+	private double price;
 	private Date limit_date;
-	private String type;
+	private Type type;
 
 	public String createProduct() {
 
 		try {
 			User seller = negocioEJB.findUser("user1@user.com");
 
-			double price = Double.parseDouble(this.price);
-			int availability = Integer.parseInt(this.availability);
-
-			Product p = new Product(code, name, description, price, availability, Type.valueOf(type), limit_date);
+			Product p = new Product(code, name, description, price, availability, type, limit_date);
 			p.setUser(seller);
 
 			negocioEJB.toCreateProduct(p);
 
-			return "product created";
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "New product",
+					"Product created sucessfully");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+
+			return "CRUDProduct";
 		} catch (RepeatedProductException e) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Repeated Product Exception",
 					e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
 		return null;
+	}
+
+	public Type[] getListTypes() {
+		return Type.values();
 	}
 
 	public String getCode() {
@@ -73,19 +78,19 @@ public class ProductBean {
 		this.description = description;
 	}
 
-	public String getAvailability() {
+	public int getAvailability() {
 		return availability;
 	}
 
-	public void setAvailability(String availability) {
+	public void setAvailability(int availability) {
 		this.availability = availability;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -97,11 +102,11 @@ public class ProductBean {
 		this.limit_date = limit_date;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 

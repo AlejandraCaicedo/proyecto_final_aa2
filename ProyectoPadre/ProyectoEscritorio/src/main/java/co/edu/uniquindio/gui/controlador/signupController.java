@@ -85,7 +85,7 @@ public class signupController {
 				User user = new User(ID, name, email, cellPhoneNumer, adress, password);
 				manejadorEscenarios.toRegisterUser(user);
 				manejadorEscenarios.showMessage("new user " + user.getFullName() + " created", "Confirmed data");
-				usersController.actualizarTabla();
+				usersController.actualizarTabla(user);
 				manejadorEscenarios.closeSign(stage);
 			} catch (RepeatedIDException e) {
 				manejadorEscenarios.showErrorMessage(e.getMessage(), "");
