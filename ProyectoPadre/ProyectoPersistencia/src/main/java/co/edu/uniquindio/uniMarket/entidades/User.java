@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.String;
 import java.util.List;
 import javax.persistence.*;
+import javax.websocket.OnError;
 
 /**
  * Entity implementation class for Entity: Usuario
@@ -35,7 +36,8 @@ import javax.persistence.*;
 		@NamedQuery(name = User.AUTENTIFY_USER, query = "select u from User u where u.password = :password and u.email = :email"),
 		@NamedQuery(name = User.DELETE_PRODUCTS, query = "DELETE FROM Product p where p IN (select a from User u INNER JOIN u.listProducts a)"),
 		@NamedQuery(name = User.DELETE_RATES, query = "DELETE FROM Rate r where r IN (select a from User u INNER JOIN u.listRates a where a.user=u)"),
-		@NamedQuery(name = User.DELETE_COMMENTARIES, query = "DELETE FROM Rate r where r IN (select a from User u INNER JOIN u.listComments a where a.user=u)") })
+		@NamedQuery(name = User.DELETE_COMMENTARIES, query = "DELETE FROM Rate r where r IN (select a from User u INNER JOIN u.listComments a where a.user=u)"),
+		@NamedQuery(name = User.All_FAVORITES, query = "select f from User u inner join u.listFavorites f where u.ID = :ID") })
 
 public class User extends Person implements Serializable {
 
@@ -50,6 +52,9 @@ public class User extends Person implements Serializable {
 
 	@OneToMany(mappedBy = "user")
 	private List<Product> listProducts; // Lista de productos que ha creado un usuario
+
+	@OneToMany(mappedBy = "user")
+	private List<Product> listFavorites;
 
 	private static final long serialVersionUID = 1L;
 
@@ -87,6 +92,8 @@ public class User extends Person implements Serializable {
 
 	// Query que elimina los comentarios de un usuario
 	public static final String DELETE_COMMENTARIES = "DELETE_COMMENTARIES";
+
+	public static final String All_FAVORITES = "All_FAVORITES";
 
 	/**
 	 * Constructor vacio de la clase usuario, hereda de la clase persona
@@ -193,6 +200,14 @@ public class User extends Person implements Serializable {
 
 	public void setListProducts(List<Product> listProducts) {
 		this.listProducts = listProducts;
+	}
+
+	public List<Product> getListFavorites() {
+		return listFavorites;
+	}
+
+	public void setListFavorites(List<Product> listFavorites) {
+		this.listFavorites = listFavorites;
 	}
 
 	/**

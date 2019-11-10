@@ -147,6 +147,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 		actual.setFullName(user.getFullName());
 		actual.setID(user.getID());
 		actual.setPassword(user.getPassword());
+		actual.setListFavorites(user.getListFavorites());
 
 		entityManager.merge(actual);
 
@@ -244,6 +245,11 @@ public class NegocioEJB implements NegocioEJBRemote {
 	// M E T O D O S - P A R A - L I S T A R
 	// ----------------------------------------
 
+	public List<Product> toListFavorites(String ID) {
+		TypedQuery<Product> favorites = entityManager.createNamedQuery(User.All_FAVORITES, Product.class);
+		return favorites.getResultList();
+	}
+
 	@Override
 	public List<User> toListSellers() {
 		TypedQuery<User> p = entityManager.createNamedQuery(User.ALL_SELLING_USERS, User.class);
@@ -293,6 +299,24 @@ public class NegocioEJB implements NegocioEJBRemote {
 		TypedQuery<Commentary> c = entityManager.createNamedQuery(Commentary.COMMENTS_PRODUCT, Commentary.class);
 		c.setParameter("codeProduct", codeProducto);
 		return c.getResultList();
+	}
+
+	public Product[] listToArrayProduct(List<Product> list) {
+		Product[] res = new Product[list.size()];
+		for (int i = 0; i < res.length; i++) {
+			res[i] = list.get(i);
+		}
+
+		return res;
+	}
+
+	public Purchase[] listToArrayPurchase(List<Purchase> list) {
+		Purchase[] res = new Purchase[list.size()];
+		for (int i = 0; i < res.length; i++) {
+			res[i] = list.get(i);
+		}
+
+		return res;
 	}
 
 	@Override

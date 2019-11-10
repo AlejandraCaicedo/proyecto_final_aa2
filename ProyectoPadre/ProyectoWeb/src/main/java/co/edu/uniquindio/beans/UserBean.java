@@ -1,12 +1,21 @@
 package co.edu.uniquindio.beans;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.mail.MessagingException;
 
+import co.edu.uniquindio.uniMarket.Email.EmailClient;
+import co.edu.uniquindio.uniMarket.entidades.Product;
+import co.edu.uniquindio.uniMarket.entidades.Purchase;
+import co.edu.uniquindio.uniMarket.entidades.Type;
 import co.edu.uniquindio.uniMarket.entidades.User;
+import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
@@ -35,6 +44,89 @@ public class UserBean {
 					e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
+	}
+
+	public User iniciarSesion(String correo, String contraseña) {
+
+		User user = negocioEJB.autentifyUser(correo, contraseña);
+
+		if (user == null) {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Not found User",
+					"The user can't be find, the password or the email is incorrect");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
+		return user;
+	}
+
+	public Product publishProduct(String code, String name, String description, double price, int availability,
+			Type type, Date limit_Date) {
+		Product product = null;
+		product = new Product(code, name, description, price, availability, type, limit_Date);
+		return product;
+	}
+
+	public Product[] getListAllProducts() {
+		Product[] products;
+		List<Product> list = negocioEJB.toListProducts();
+		products = negocioEJB.listToArrayProduct(list);
+		return products;
+	}
+
+	public Product[] getListProductByType(String type) {
+		Product[] products = null;
+		List<Product> list;
+		try {
+			list = negocioEJB.toListByType(type);
+			products = negocioEJB.listToArrayProduct(list);
+			return products;
+		} catch (NotFoundTypeProduct e) {
+			e.printStackTrace();
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Not Found Type", e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			return null;
+		}
+	}
+
+	public void addFavorite(User user, Product product) {
+		user.getListFavorites().add(product);
+		negocioEJB.toEditUser(user, user.getID());
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succesfull Action",
+				"This product has been added to your \"Favorites\" list");
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+
+	public void removeFavorite(User user, Product product) {
+		user.getListFavorites().remove(product);
+		negocioEJB.toEditUser(user, user.getID());
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succesfull Action",
+				"This product has been removed from your \"Favorites\" list");
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+
+	public void recoverPassword(User user) {
+		try {
+			EmailClient.toRecoverPasswordUser(user.getEmail());
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email Error",
+					"There was an error trying to send the recover email, verify if your email is correct");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
+	}
+
+	public Product[] getOwnProducts(User user) {
+		Product[] products;
+		List<Product> list = user.getListProducts();
+		products = negocioEJB.listToArrayProduct(list);
+		return products;
+	}
+
+	public Purchase[] getOwnPurchases(User user) {
+		Purchase[] purchases;
+		List<Purchase> list = user.getListPurchases();
+		purchases = negocioEJB.listToArrayPurchase(list);
+		return purchases;
 	}
 
 	public String getID() {

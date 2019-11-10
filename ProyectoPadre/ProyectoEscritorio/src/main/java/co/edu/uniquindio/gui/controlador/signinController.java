@@ -3,8 +3,8 @@ package co.edu.uniquindio.gui.controlador;
 import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
 
-import co.edu.uniquindio.gui.modelo.EmailClient;
 import co.edu.uniquindio.gui.vista.ManejadorEscenarios;
+import co.edu.uniquindio.uniMarket.Email.EmailClient;
 import co.edu.uniquindio.uniMarket.entidades.Admin;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import javafx.event.ActionEvent;

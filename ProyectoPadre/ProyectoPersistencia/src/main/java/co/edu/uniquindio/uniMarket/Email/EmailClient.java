@@ -1,4 +1,4 @@
-package co.edu.uniquindio.gui.modelo;
+package co.edu.uniquindio.uniMarket.Email;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
