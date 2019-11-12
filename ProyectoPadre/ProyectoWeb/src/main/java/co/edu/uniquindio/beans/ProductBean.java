@@ -41,7 +41,7 @@ public class ProductBean {
 					"Product created sucessfully");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 
-			return "CRUDProduct";
+			return "CRUDProduct?faces-redirect=true";
 		} catch (RepeatedProductException e) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Repeated Product Exception",
 					e.getMessage());

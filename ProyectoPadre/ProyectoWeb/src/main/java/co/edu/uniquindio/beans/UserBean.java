@@ -46,9 +46,9 @@ public class UserBean {
 		}
 	}
 
-	public User iniciarSesion(String correo, String contraseña) {
+	public User iniciarSesion(String email, String password) {
 
-		User user = negocioEJB.autentifyUser(correo, contraseña);
+		User user = negocioEJB.autentifyUser(email, password);
 
 		if (user == null) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Not found User",
@@ -107,7 +107,6 @@ public class UserBean {
 		try {
 			EmailClient.toRecoverPasswordUser(user.getEmail());
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email Error",
 					"There was an error trying to send the recover email, verify if your email is correct");

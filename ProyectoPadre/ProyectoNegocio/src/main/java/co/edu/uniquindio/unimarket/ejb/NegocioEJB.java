@@ -246,7 +246,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 	// ----------------------------------------
 
 	public List<Product> toListFavorites(String ID) {
-		TypedQuery<Product> favorites = entityManager.createNamedQuery(User.All_FAVORITES, Product.class);
+		TypedQuery<Product> favorites = entityManager.createNamedQuery(User.ALL_FAVORITES, Product.class);
 		return favorites.getResultList();
 	}
 

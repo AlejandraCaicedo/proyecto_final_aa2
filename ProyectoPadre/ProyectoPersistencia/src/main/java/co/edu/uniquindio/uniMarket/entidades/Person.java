@@ -1,13 +1,14 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
-import java.lang.String;
 
-import javax.mail.internet.NewsAddress;
-import javax.persistence.*;
-
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Entity implementation class for Entity: Persona

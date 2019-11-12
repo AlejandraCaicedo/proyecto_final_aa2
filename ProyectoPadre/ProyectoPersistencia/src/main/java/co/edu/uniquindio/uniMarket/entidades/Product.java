@@ -85,8 +85,6 @@ public class Product implements Serializable {
 	@ManyToOne
 	private User user; // Usuario que ha publicado el producto
 
-//	public static final String userID = user.getID();
-
 	// Query que retorna todas las calificaciones de un producto
 	public static final String ALL_PRODUCT_RATINGS = "TODAS_CALIFICACIONES_PRODUCTO";
 

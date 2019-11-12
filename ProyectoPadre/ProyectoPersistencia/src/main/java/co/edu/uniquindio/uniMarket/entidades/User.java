@@ -1,10 +1,13 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
 import java.io.Serializable;
-import java.lang.String;
 import java.util.List;
-import javax.persistence.*;
-import javax.websocket.OnError;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  * Entity implementation class for Entity: Usuario
@@ -19,14 +22,7 @@ import javax.websocket.OnError;
  */
 @Entity
 @DiscriminatorValue("USER")
-@NamedQueries({
-		// @NamedQuery(name = "TODOS_PRODUCTOS_COMPRA_OTRO_EJEMPLO", query = "select
-		// d.productoCompra from Compra c, IN( c.detalleCompra) d where c.codigo = :
-		// codigo"),
-//		@NamedQuery(name = User.ALL_PRODUCTS_PURCHASE, query = "select d.product from Purchase p inner join p.PurchaseDetail d where p.purchaseCode = :codigo"),
-		// @NamedQuery(name = "TODAS_COMPRAS_PERSONA", query = "select c from Compra c
-		// where c.usuarioCompra.nombre = 'pepito'")
-		@NamedQuery(name = User.USER_PRODUCTS, query = "select u, p from User u inner join u.listProducts p"),
+@NamedQueries({ @NamedQuery(name = User.USER_PRODUCTS, query = "select u, p from User u inner join u.listProducts p"),
 		@NamedQuery(name = User.ALL_USERS, query = "select u from User u"),
 		@NamedQuery(name = User.GMAIL_USERS, query = "select u from User u where u.email like '%gmail%' "),
 		@NamedQuery(name = User.PUBLISHED_PRODUCTS, query = "select new co.edu.uniquindio.uniMarket.dto.PUBLISHED_PRODUCTS(u.ID,u.email, count(p)) from User u INNER JOIN u.listProducts p"),
@@ -37,7 +33,7 @@ import javax.websocket.OnError;
 		@NamedQuery(name = User.DELETE_PRODUCTS, query = "DELETE FROM Product p where p IN (select a from User u INNER JOIN u.listProducts a)"),
 		@NamedQuery(name = User.DELETE_RATES, query = "DELETE FROM Rate r where r IN (select a from User u INNER JOIN u.listRates a where a.user=u)"),
 		@NamedQuery(name = User.DELETE_COMMENTARIES, query = "DELETE FROM Rate r where r IN (select a from User u INNER JOIN u.listComments a where a.user=u)"),
-		@NamedQuery(name = User.All_FAVORITES, query = "select f from User u inner join u.listFavorites f where u.ID = :ID") })
+		@NamedQuery(name = User.ALL_FAVORITES, query = "select f from User u inner join u.listFavorites f where u.ID = :ID") })
 
 public class User extends Person implements Serializable {
 
@@ -93,7 +89,7 @@ public class User extends Person implements Serializable {
 	// Query que elimina los comentarios de un usuario
 	public static final String DELETE_COMMENTARIES = "DELETE_COMMENTARIES";
 
-	public static final String All_FAVORITES = "All_FAVORITES";
+	public static final String ALL_FAVORITES = "ALL_FAVORITES";
 
 	/**
 	 * Constructor vacio de la clase usuario, hereda de la clase persona
