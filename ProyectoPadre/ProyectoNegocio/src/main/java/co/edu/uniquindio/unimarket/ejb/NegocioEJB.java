@@ -16,6 +16,7 @@ import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.Type;
+import co.edu.uniquindio.uniMarket.entidades.TypeProduct;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
@@ -154,6 +155,17 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return entityManager.find(User.class, ID);
 	}
 
+	@Override
+	public void updateUser(User user, String ID) {
+		User actual = entityManager.find(User.class, ID);
+		actual.setAdress(user.getAdress());
+		actual.setCellphoneNumber(user.getCellphoneNumber());
+		actual.setEmail(user.getEmail());
+		actual.setFullName(user.getFullName());
+
+		entityManager.merge(actual);
+	}
+
 //	@Override
 //	public Product toEditProduct(Product p, String code) {
 //
@@ -217,6 +229,18 @@ public class NegocioEJB implements NegocioEJBRemote {
 
 		if (!p.getResultList().isEmpty()) {
 			return p.getResultList().get(0);
+		}
+
+		return null;
+	}
+
+	public TypeProduct findTypeProduct(String value) {
+
+		int code = Integer.parseInt(value);
+		TypeProduct tp = entityManager.find(TypeProduct.class, code);
+
+		if (tp != null) {
+			return tp;
 		}
 
 		return null;
@@ -320,14 +344,9 @@ public class NegocioEJB implements NegocioEJBRemote {
 	}
 
 	@Override
-	public void updateUser(User user, String ID) {
-		User actual = entityManager.find(User.class, ID);
-		actual.setAdress(user.getAdress());
-		actual.setCellphoneNumber(user.getCellphoneNumber());
-		actual.setEmail(user.getEmail());
-		actual.setFullName(user.getFullName());
-
-		entityManager.merge(actual);
+	public List<TypeProduct> listTypes() {
+		TypedQuery<TypeProduct> q = entityManager.createNamedQuery(TypeProduct.LIST_TYPES, TypeProduct.class);
+		return q.getResultList();
 	}
 
 	@Override

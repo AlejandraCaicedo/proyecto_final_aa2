@@ -1,7 +1,9 @@
 package co.edu.uniquindio.beans;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
@@ -9,7 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import co.edu.uniquindio.uniMarket.entidades.Product;
-import co.edu.uniquindio.uniMarket.entidades.Type;
+import co.edu.uniquindio.uniMarket.entidades.TypeProduct;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
@@ -25,7 +27,13 @@ public class ProductBean {
 	private int availability;
 	private double price;
 	private Date limit_date;
-	private Type type;
+	private TypeProduct type;
+	private List<TypeProduct> listTypes;
+
+	@PostConstruct
+	public void inicializar() {
+		this.listTypes = negocioEJB.listTypes();
+	}
 
 	public String createProduct() {
 
@@ -48,10 +56,6 @@ public class ProductBean {
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
 		return null;
-	}
-
-	public Type[] getListTypes() {
-		return Type.values();
 	}
 
 	public String getCode() {
@@ -102,12 +106,20 @@ public class ProductBean {
 		this.limit_date = limit_date;
 	}
 
-	public Type getType() {
+	public TypeProduct getType() {
 		return type;
 	}
 
-	public void setType(Type type) {
+	public void setType(TypeProduct type) {
 		this.type = type;
+	}
+
+	public List<TypeProduct> getListTypes() {
+		return listTypes;
+	}
+
+	public void setListTypes(List<TypeProduct> listTypes) {
+		this.listTypes = listTypes;
 	}
 
 }

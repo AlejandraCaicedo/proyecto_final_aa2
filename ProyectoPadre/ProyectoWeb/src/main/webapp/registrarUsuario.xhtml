@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
-<head>
-<meta charset="UTF-8"></meta>
-<title>Create a new user</title>
-</head>
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8"></meta>
+	<title>Create a new user</title>
+</h:head>
 <body>
 	<h:form>
+		<p:panel header="CREATE NEW USER">
+			<h:panelGrid columns="3" cellpadding="10" cellspacing="10">
+
+				<p:outputLabel value="Full name:" for="fullname" />
+				<p:inputText id="fullname" label="full name"
+					value="#{userBean.fullName}" placeholder="full name"
+					required="true" />
+				<p:message for="fullname" />
+
+				<p:outputLabel value="Identifier:" for="ID" />
+				<p:inputText id="ID" label="Identifier" value="#{userBean.ID}"
+					placeholder="identifier" required="true" />
+				<p:message for="ID" />
+
+				<p:outputLabel value="Email adress:" for="email" />
+				<p:inputTextarea id="email" label="email" value="#{userBean.email}"
+					placeholder="email" required="true" />
+				<p:message for="email" />
+
+				<p:outputLabel value="Adress:" for="adress" />
+				<p:inputText id="adress" label="adress" value="#{userBean.adress}"
+					placeholder="adress" required="true" />
+				<p:message for="adress" />
+
+				<p:outputLabel value="Password:" for="password" />
+				<p:inputText id="password" label="password"
+					value="#{userBean.password}" placeholder="password" required="true" />
+				<p:message for="password" />
+
+				<p:outputLabel value="Cell phone number:" for="cellphoneNumber" />
+				<p:inputText id="cellphoneNumber" label="cellphoneNumber"
+					value="#{userBean.cellphoneNumber}" placeholder="cell phone number"
+					required="true" />
+				<p:message for="cellphoneNumber" />
+
+			</h:panelGrid>
+
+			<p:commandButton id="create_user" action="#{userBean.createUser}"
+				value="Create user" update="@form" for="create_user" />
+			<p:message for="create_user" />
+
+		</p:panel>
 
 	</h:form>
 </body>

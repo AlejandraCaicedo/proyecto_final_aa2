@@ -6,11 +6,11 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Create product</title>
+	<title>Create a new product</title>
 </h:head>
 <body>
-	<p:panel header="CREATE NEW PRODUCT">
-		<h:form>
+	<h:form>
+		<p:panel header="CREATE NEW PRODUCT">
 			<h:panelGrid columns="3" cellpadding="10">
 
 				<p:outputLabel value="Name:" for="name" />
@@ -56,7 +56,9 @@
 				action="#{productBean.createProduct}" value="Create product"
 				update="@form" for="create_product" />
 			<p:message for="create_product" />
-		</h:form>
-	</p:panel>
+
+		</p:panel>
+
+	</h:form>
 </body>
 </html>

@@ -7,8 +7,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -62,9 +60,8 @@ public class Product implements Serializable {
 	@Column(name = "availability", nullable = false)
 	private int availability; // Cantidad existente de un producto
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "type")
-	private Type type; // Clasificacion del producto
+	@ManyToOne
+	private TypeProduct type; // Clasificacion del producto
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date limit_Date; // Fecha limite para la que puede estar un producto en UniMarket
@@ -158,7 +155,7 @@ public class Product implements Serializable {
 	 * @param limit_Date,   fecha limite hasta la que un producto se va a encontrar
 	 *                      publicado en la tienda
 	 */
-	public Product(String code, String name, String description, double price, int availability, Type type,
+	public Product(String code, String name, String description, double price, int availability, TypeProduct type,
 			Date limit_Date) {
 		super();
 		this.code = code;
@@ -339,7 +336,7 @@ public class Product implements Serializable {
 	 * 
 	 * @return El Type de un Producto
 	 */
-	public Type getType() {
+	public TypeProduct getType() {
 		return type;
 	}
 
@@ -348,7 +345,7 @@ public class Product implements Serializable {
 	 * 
 	 * @param type el Type que se ha de poner
 	 */
-	public void setType(Type type) {
+	public void setType(TypeProduct type) {
 		this.type = type;
 	}
 

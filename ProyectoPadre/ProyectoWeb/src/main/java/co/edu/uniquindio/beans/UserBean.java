@@ -1,6 +1,5 @@
 package co.edu.uniquindio.beans;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -13,7 +12,6 @@ import javax.mail.MessagingException;
 import co.edu.uniquindio.uniMarket.Email.EmailClient;
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.Purchase;
-import co.edu.uniquindio.uniMarket.entidades.Type;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
@@ -29,12 +27,16 @@ public class UserBean {
 
 	private String ID, fullName, email, adress, password, cellphoneNumber;
 
-	public void registrarUsuario() {
-		User user = new User(ID, fullName, email, cellphoneNumber, adress, password);
+	public String createUser() {
 		try {
+			User user = new User(ID, fullName, email, cellphoneNumber, adress, password);
+
 			negocioEJB.toRegisterUser(user);
+
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sumary", "New user created");
 			FacesContext.getCurrentInstance().addMessage(null, message);
+
+			return "";
 		} catch (RepeatedIDException e) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Repeated Identifier Exception",
 					e.getMessage());
@@ -44,6 +46,7 @@ public class UserBean {
 					e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
+		return null;
 	}
 
 	public User iniciarSesion(String email, String password) {
@@ -58,12 +61,12 @@ public class UserBean {
 		return user;
 	}
 
-	public Product publishProduct(String code, String name, String description, double price, int availability,
-			Type type, Date limit_Date) {
-		Product product = null;
-		product = new Product(code, name, description, price, availability, type, limit_Date);
-		return product;
-	}
+//	public Product publishProduct(String code, String name, String description, double price, int availability,
+//			Type type, Date limit_Date) {
+//		Product product = null;
+//		product = new Product(code, name, description, price, availability, type, limit_Date);
+//		return product;
+//	}
 
 	public Product[] getListAllProducts() {
 		Product[] products;

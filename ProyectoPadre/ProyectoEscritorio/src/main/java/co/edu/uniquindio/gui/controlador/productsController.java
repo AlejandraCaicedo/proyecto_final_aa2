@@ -138,7 +138,7 @@ public class productsController {
 			textLimitDate.setText(dateFormat.format(product.getLimit_Date()));
 			textName.setText(product.getName());
 			textPrice.setText(product.getPrice() + "");
-			textType.setText(product.getType().name());
+			textType.setText(product.getType().getName());
 			textUserID.setText(product.getUserID());
 		} catch (NullPointerException e) {
 			manejadorEscenarios.showErrorMessage("To search you must enter the product code", "Empty fields");
