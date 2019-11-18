@@ -10,6 +10,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import org.primefaces.model.UploadedFile;
+
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.TypeProduct;
 import co.edu.uniquindio.uniMarket.entidades.User;
@@ -29,10 +31,13 @@ public class ProductBean {
 	private Date limit_date;
 	private TypeProduct type;
 	private List<TypeProduct> listTypes;
+	private List<Product> listProducts;
+	private UploadedFile image;
 
 	@PostConstruct
 	public void inicializar() {
 		this.listTypes = negocioEJB.listTypes();
+		this.listProducts = negocioEJB.toListProducts();
 	}
 
 	public String createProduct() {
@@ -40,8 +45,7 @@ public class ProductBean {
 		try {
 			User seller = negocioEJB.findUser("user1@user.com");
 
-			Product p = new Product(code, name, description, price, availability, type, limit_date);
-			p.setUser(seller);
+			Product p = new Product(code, name, description, price, availability, type, limit_date, seller);
 
 			negocioEJB.toCreateProduct(p);
 
@@ -56,6 +60,14 @@ public class ProductBean {
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
 		return null;
+	}
+
+	public UploadedFile getImage() {
+		return image;
+	}
+
+	public void setImage(UploadedFile image) {
+		this.image = image;
 	}
 
 	public String getCode() {
@@ -120,6 +132,14 @@ public class ProductBean {
 
 	public void setListTypes(List<TypeProduct> listTypes) {
 		this.listTypes = listTypes;
+	}
+
+	public List<Product> getListProducts() {
+		return listProducts;
+	}
+
+	public void setListProducts(List<Product> listProducts) {
+		this.listProducts = listProducts;
 	}
 
 }

@@ -156,7 +156,7 @@ public class Product implements Serializable {
 	 *                      publicado en la tienda
 	 */
 	public Product(String code, String name, String description, double price, int availability, TypeProduct type,
-			Date limit_Date) {
+			Date limit_Date, User user) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -165,6 +165,7 @@ public class Product implements Serializable {
 		this.availability = availability;
 		this.type = type;
 		this.limit_Date = limit_Date;
+		this.user = user;
 	}
 
 	/**

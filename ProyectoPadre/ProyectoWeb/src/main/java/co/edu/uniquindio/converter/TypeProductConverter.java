@@ -19,14 +19,22 @@ public class TypeProductConverter implements Converter<TypeProduct> {
 
 	@Override
 	public TypeProduct getAsObject(FacesContext context, UIComponent component, String value) {
+
 		if (value != null && !value.equals("")) {
-			TypeProduct tp = negocioEJB.findTypeProduct(value);
+			try {
+				int code = Integer.parseInt(value);
+				TypeProduct tp = negocioEJB.findTypeProduct(code);
+				return tp;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return null;
 	}
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, TypeProduct value) {
+
 		if (value != null) {
 			return value.getCode() + "";
 		}

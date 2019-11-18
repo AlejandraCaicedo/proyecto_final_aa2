@@ -46,8 +46,13 @@
 				<p:message for="limit_date" />
 
 				<p:outputLabel value="Type:" />
-				<p:selectOneMenu id="type" value="#{productBean.type}">
-					<f:selectItems value="#{productBean.listTypes}" />
+				<p:selectOneMenu id="type" value="#{productBean.type}"
+					styleClass="columna-form-p" required="true" autoWidth="false"
+					converter="#{typeProductConverter}">
+					<f:selectItem itemLabel="Choose the type" noSelectionOption="true"
+						itemValue="null" />
+					<f:selectItems value="#{productBean.listTypes}" var="type"
+						itemLabel="#{type.name}" itemValue="#{type}" />
 				</p:selectOneMenu>
 
 			</h:panelGrid>

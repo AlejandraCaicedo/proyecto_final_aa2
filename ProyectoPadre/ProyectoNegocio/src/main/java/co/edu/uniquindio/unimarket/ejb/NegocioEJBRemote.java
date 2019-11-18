@@ -58,7 +58,7 @@ public interface NegocioEJBRemote {
 
 	Admin getAdmin();
 
-	TypeProduct findTypeProduct(String value);
+	TypeProduct findTypeProduct(int code);
 
 	User findUser(String email);
 

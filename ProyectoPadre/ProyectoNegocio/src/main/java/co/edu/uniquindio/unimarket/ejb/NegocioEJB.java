@@ -234,9 +234,8 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return null;
 	}
 
-	public TypeProduct findTypeProduct(String value) {
+	public TypeProduct findTypeProduct(int code) {
 
-		int code = Integer.parseInt(value);
 		TypeProduct tp = entityManager.find(TypeProduct.class, code);
 
 		if (tp != null) {

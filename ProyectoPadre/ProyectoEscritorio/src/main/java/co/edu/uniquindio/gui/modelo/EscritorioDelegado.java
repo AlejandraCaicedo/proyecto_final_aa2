@@ -141,7 +141,7 @@ public class EscritorioDelegado implements NegocioEJBRemote {
 	}
 
 	@Override
-	public TypeProduct findTypeProduct(String value) {
-		return negocioEJB.findTypeProduct(value);
+	public TypeProduct findTypeProduct(int code) {
+		return negocioEJB.findTypeProduct(code);
 	}
 }
