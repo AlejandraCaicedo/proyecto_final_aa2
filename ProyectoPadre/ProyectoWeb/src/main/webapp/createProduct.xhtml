@@ -10,7 +10,26 @@
 </h:head>
 <body>
 	<h:form>
-		<p:panel header="CREATE NEW PRODUCT">
+		<p:growl id="messages" showDetail="true" />
+		<p:toolbar>
+			<f:facet name="left">
+				<p:commandButton id="new-product" type="button" value="New"
+					icon="pi pi-file" action="#{productBean.isEscogido}"
+					oncomplete="PF('createProduct').show()" update="@form" />
+
+				<p:commandButton id="edit-product" type="button" value="Edit"
+					icon="pi pi-pencil" />
+
+				<p:commandButton id="remove-product" type="button" value="Remove"
+					icon="pi pi-trash" />
+
+			</f:facet>
+		</p:toolbar>
+
+		<div class="ui-g-i"></div>
+
+		<p:panel widgetVar="createProduct" header="CREATE NEW PRODUCT"
+			rendered="#{productBean.escogido}">
 			<h:panelGrid columns="3" cellpadding="10">
 
 				<p:outputLabel value="Name:" for="name" />

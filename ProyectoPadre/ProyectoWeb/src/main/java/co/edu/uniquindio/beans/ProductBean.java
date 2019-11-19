@@ -27,8 +27,8 @@ public class ProductBean {
 	@EJB
 	private NegocioEJB negocioEJB;
 
-	@ManagedProperty(value = "#{securityBean.user}")
-	@Inject
+//	@ManagedProperty(value = "#{securityBean.user}")
+//	@Inject
 	private User seller;
 
 	private String code, name, description;
@@ -39,18 +39,20 @@ public class ProductBean {
 	private List<TypeProduct> listTypes;
 	private List<Product> listProducts;
 	private UploadedFile image;
+	private boolean escogido;
 
 	@PostConstruct
 	public void inicializar() {
 		this.listTypes = negocioEJB.listTypes();
 		this.listProducts = negocioEJB.toListProducts();
+		this.escogido = false;
 	}
 
 	public String createProduct() {
 
+		System.out.println(escogido);
 		try {
-
-//			User seller = negocioEJB.findUser("user1@user.com");
+			User seller = negocioEJB.findUser("user1@user.com");
 
 			Product p = new Product(code, name, description, price, availability, type, limit_date, seller);
 
@@ -147,6 +149,20 @@ public class ProductBean {
 
 	public void setListProducts(List<Product> listProducts) {
 		this.listProducts = listProducts;
+	}
+
+	public boolean getEscogido() {
+		System.out.println("Holi");
+		return escogido;
+	}
+
+	public void setEscogido(boolean newProduct) {
+		this.escogido = newProduct;
+	}
+
+	public void isEscogido() {
+		System.out.println("Holo");
+		this.escogido = true;
 	}
 
 }

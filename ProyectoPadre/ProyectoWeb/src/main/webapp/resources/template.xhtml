@@ -17,16 +17,12 @@
 	<p:panel>
 		<div id="header">
 			<ui:insert name="header">
-				<h:form>
-					<p:panel>
-						<p:commandButton id="create_product"
-							action="#{productBean.createProduct}" value="Create product"
-							update="@form" for="create_product" />
-						<p:message for="create_product" />
-
-					</p:panel>
-
-				</h:form>
+				<p:panelGrid columns="3" layout="grid"
+					styleClass="showcase-text-align-center">
+					<p:outputLabel>Titulo</p:outputLabel>
+					<p:inputText id="search" label="buscar" size="40" />
+					<p:commandButton type="button" value="New" icon="pi pi-file" />
+				</p:panelGrid>
 			</ui:insert>
 		</div>
 	</p:panel>
