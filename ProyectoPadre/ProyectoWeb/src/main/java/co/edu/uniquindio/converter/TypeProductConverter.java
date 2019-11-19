@@ -5,14 +5,14 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.inject.Named;
+import javax.faces.convert.FacesConverter;
 
 import co.edu.uniquindio.uniMarket.entidades.TypeProduct;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
 
-@Named("typeProductConverter")
+@FacesConverter("typeProductConverter")
 @ApplicationScoped
-public class TypeProductConverter implements Converter<TypeProduct> {
+public class TypeProductConverter implements Converter<Object> {
 
 	@EJB
 	private NegocioEJB negocioEJB;
@@ -33,12 +33,14 @@ public class TypeProductConverter implements Converter<TypeProduct> {
 	}
 
 	@Override
-	public String getAsString(FacesContext context, UIComponent component, TypeProduct value) {
+	public String getAsString(FacesContext context, UIComponent component, Object value) {
 
-		if (value != null) {
-			return value.getCode() + "";
+		if (value instanceof TypeProduct) {
+			return ((TypeProduct) value).getName();
+		} else {
+			return null;
 		}
-		return null;
+
 	}
 
 }

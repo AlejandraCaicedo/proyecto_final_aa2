@@ -48,7 +48,7 @@
 				<p:outputLabel value="Type:" />
 				<p:selectOneMenu id="type" value="#{productBean.type}"
 					styleClass="columna-form-p" required="true" autoWidth="false"
-					converter="#{typeProductConverter}">
+					converter="typeProductConverter">
 					<f:selectItem itemLabel="Choose the type" noSelectionOption="true"
 						itemValue="null" />
 					<f:selectItems value="#{productBean.listTypes}" var="type"

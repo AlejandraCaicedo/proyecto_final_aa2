@@ -6,8 +6,10 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.annotation.ManagedProperty;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.model.UploadedFile;
@@ -24,6 +26,10 @@ public class ProductBean {
 
 	@EJB
 	private NegocioEJB negocioEJB;
+
+	@ManagedProperty(value = "#{securityBean.user}")
+	@Inject
+	private User seller;
 
 	private String code, name, description;
 	private int availability;
@@ -43,7 +49,8 @@ public class ProductBean {
 	public String createProduct() {
 
 		try {
-			User seller = negocioEJB.findUser("user1@user.com");
+
+//			User seller = negocioEJB.findUser("user1@user.com");
 
 			Product p = new Product(code, name, description, price, availability, type, limit_date, seller);
 
