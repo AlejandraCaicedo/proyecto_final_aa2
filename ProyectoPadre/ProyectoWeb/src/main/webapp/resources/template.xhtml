@@ -7,42 +7,56 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title><ui:insert name="title">Default title</ui:insert></title>
+	<title><ui:insert name="title">Homepage Unimarket</ui:insert></title>
 </h:head>
 
 <body>
 	<ui:debug hotkey="x"
 		rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}" />
 
-	<p:panel>
-		<div id="header">
-			<ui:insert name="header">
-				<p:panelGrid columns="3" layout="grid"
-					styleClass="showcase-text-align-center">
-					<p:outputLabel>Titulo</p:outputLabel>
-					<p:inputText id="search" label="buscar" size="40" />
-					<p:commandButton type="button" value="New" icon="pi pi-file" />
-				</p:panelGrid>
-			</ui:insert>
-		</div>
-	</p:panel>
+	<div id="header">
+		<ui:insert name="header">
+			<h:form>
+				<p:growl id="messages" />
+				<p:menubar>
+
+					<p:submenu label="Actions" icon="pi pi-cog"
+						style="margin:10px 10px 10px 10px">
+						<p:submenu label="Ajax" icon="pi pi-refresh">
+							<p:menuitem value="Save" action="#{menuView.save}"
+								icon="pi pi-save" update="messages" />
+							<p:menuitem value="Update" action="#{menuView.update}"
+								icon="pi pi-refresh" update="messages" />
+						</p:submenu>
+						<p:submenu label="Non-Ajax" icon="pi pi-clone">
+							<p:menuitem value="Delete" action="#{menuView.delete}"
+								icon="pi pi-times" update="messages" ajax="false" />
+						</p:submenu>
+					</p:submenu>
+
+					<f:facet name="options">
+						<p:commandButton type="button" value="Homepage" icon="pi pi-home" />
+						<p:inputText style="margin:10px 10px 10px 10px;"
+							placeholder="Search" styleClass="customTxtWidth150px" />
+						<p:commandButton type="button" value="Sign in" icon="pi pi-user" />
+					</f:facet>
+
+				</p:menubar>
+			</h:form>
+
+		</ui:insert>
+	</div>
 
 
 	<div id="content">
 		<ui:insert name="content">
-    	Content area.  See comments below this line in the source.
-    	<!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
-			<!-- <div> -->
-			<!-- <ui:include src="content.xhtml"/> -->
-			<!-- </div> -->
+
 		</ui:insert>
 	</div>
 
 	<div id="footer">
 		<ui:insert name="footer">
-    	Footer area.  See comments below this line in the source.
-    	<!--  include your header file or uncomment the include below and create footer.xhtml in this directory -->
-			<!--<ui:include src="footer.xhtml"/>  -->
+
 		</ui:insert>
 	</div>
 

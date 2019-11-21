@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.annotation.FacesConfig;
+import javax.faces.annotation.FacesConfig.Version;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -13,6 +15,7 @@ import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
 
 @Named("securityBean")
+@FacesConfig(version = Version.JSF_2_3)
 @SessionScoped
 public class SecurityBean implements Serializable {
 

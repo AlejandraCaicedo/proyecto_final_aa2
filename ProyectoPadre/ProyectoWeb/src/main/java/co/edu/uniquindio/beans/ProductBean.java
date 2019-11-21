@@ -27,8 +27,8 @@ public class ProductBean {
 	@EJB
 	private NegocioEJB negocioEJB;
 
-//	@ManagedProperty(value = "#{securityBean.user}")
-//	@Inject
+	@ManagedProperty(value = "#{securityBean.user}")
+	@Inject
 	private User seller;
 
 	private String code, name, description;
@@ -40,6 +40,7 @@ public class ProductBean {
 	private List<Product> listProducts;
 	private UploadedFile image;
 	private boolean escogido;
+	private Product selectedProduct;
 
 	@PostConstruct
 	public void inicializar() {
@@ -52,7 +53,7 @@ public class ProductBean {
 
 		System.out.println(escogido);
 		try {
-			User seller = negocioEJB.findUser("user1@user.com");
+//			User seller = negocioEJB.findUser("user1@user.com");
 
 			Product p = new Product(code, name, description, price, availability, type, limit_date, seller);
 
@@ -163,6 +164,14 @@ public class ProductBean {
 	public void isEscogido() {
 		System.out.println("Holo");
 		this.escogido = true;
+	}
+
+	public Product getSelectedProduct() {
+		return selectedProduct;
+	}
+
+	public void setSelectedProduct(Product selectedProduct) {
+		this.selectedProduct = selectedProduct;
 	}
 
 }
