@@ -77,16 +77,32 @@ public class NegocioEJB implements NegocioEJBRemote {
 	 * Metodo que realiza la persistencia de los comentarios
 	 */
 	@Override
-	public void toCreateCommentary(Commentary c) {
-		entityManager.persist(c);
+	public void toCreateCommentary(Commentary comment) {
+		User user = comment.getUser();
+		Product product = comment.getProduct();
+
+		user.getComments().add(comment);
+		product.getListCommentaries().add(comment);
+		toEditUser(user, user.getID());
+		toEditProduct(product, product.getCode());
+
+		entityManager.persist(comment);
 	}
 
 	/**
 	 * Metodo que realiza la persistencia de la calificacion de un producto
 	 */
 	@Override
-	public void toCreateRate(Rate r) {
-		entityManager.persist(r);
+	public void toCreateRate(Rate rate) {
+		User user = rate.getUser();
+		Product product = rate.getProduct();
+
+		user.getRates().add(rate);
+		product.getRates().add(rate);
+		toEditUser(user, user.getID());
+		toEditProduct(product, product.getCode());
+
+		entityManager.persist(rate);
 	}
 
 	/**
@@ -139,6 +155,13 @@ public class NegocioEJB implements NegocioEJBRemote {
 	// M E T O D O S - A C T U A L I Z A R - E D I T A R
 	// --------------------------------------------------
 
+	/**
+	 * Método que edita los datos de un usuario
+	 * 
+	 * @param user Usuario con los datos modificados
+	 * @param ID   id del Usuario que se va a modificar
+	 * @return usuario Editado
+	 */
 	public User toEditUser(User user, String ID) {
 
 		User actual = entityManager.find(User.class, ID);
@@ -149,6 +172,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 		actual.setID(user.getID());
 		actual.setPassword(user.getPassword());
 		actual.setListFavorites(user.getListFavorites());
+		actual.setComments(user.getComments());
 
 		entityManager.merge(actual);
 
@@ -166,19 +190,21 @@ public class NegocioEJB implements NegocioEJBRemote {
 		entityManager.merge(actual);
 	}
 
-//	@Override
-//	public Product toEditProduct(Product p, String code) {
-//
-//		Product actual = entityManager.find(Product.class, code);
-//		actual.setAvailability(p.getAvailability());
-//		actual.setDescription(p.getDescription());
-//		actual.setLimit_Date(p.getLimit_Date());
-//		actual.setName(p.getName());
-//		actual.setPrice(p.getPrice());
-//
-//		entityManager.merge(actual);
-//		return p;
-//	}
+	public Product toEditProduct(Product p, String code) {
+
+		Product actual = entityManager.find(Product.class, code);
+		actual.setAvailability(p.getAvailability());
+		actual.setDescription(p.getDescription());
+		actual.setLimit_Date(p.getLimit_Date());
+		actual.setName(p.getName());
+		actual.setPrice(p.getPrice());
+		actual.setListCommentaries(p.getListCommentaries());
+		actual.setListPurchaseDetails(p.getListPurchaseDetails());
+		actual.setListRates(p.getRates());
+
+		entityManager.merge(actual);
+		return p;
+	}
 
 	// ----------------------------------------
 	// M E T O D O S - E L I M I N A R
@@ -296,9 +322,9 @@ public class NegocioEJB implements NegocioEJBRemote {
 		return p.getResultList();
 	}
 
-	public List<Product> toListProductsByType(Type type) {
+	public List<Product> toListProductsByType(String name) {
 		TypedQuery<Product> p = entityManager.createNamedQuery(Product.PRODUCTS_BY_GIVEN_TYPE, Product.class);
-		p.setParameter("type", type);
+		p.setParameter("name", name);
 		return p.getResultList();
 	}
 
@@ -357,7 +383,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 			} else if (type.equals("NOT EXPIRED")) {
 				return toListNotExpiredProducts();
 			} else {
-				return toListProductsByType(Type.valueOf(type));
+				return toListProductsByType(type);
 			}
 		} else {
 			throw new NotFoundTypeProduct("You must select some type of product");

@@ -90,45 +90,15 @@ public class UserBean {
 		}
 	}
 
-	public void addFavorite(User user, Product product) {
-		user.getListFavorites().add(product);
-		negocioEJB.toEditUser(user, user.getID());
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succesfull Action",
-				"This product has been added to your \"Favorites\" list");
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
-
-	public void removeFavorite(User user, Product product) {
-		user.getListFavorites().remove(product);
-		negocioEJB.toEditUser(user, user.getID());
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succesfull Action",
-				"This product has been removed from your \"Favorites\" list");
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
-
-	public void recoverPassword(User user) {
+	public void recoverPassword() {
 		try {
-			EmailClient.toRecoverPasswordUser(user.getEmail());
+			EmailClient.toRecoverPasswordUser(email);
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email Error",
 					"There was an error trying to send the recover email, verify if your email is correct");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
-	}
-
-	public Product[] getOwnProducts(User user) {
-		Product[] products;
-		List<Product> list = user.getListProducts();
-		products = negocioEJB.listToArrayProduct(list);
-		return products;
-	}
-
-	public Purchase[] getOwnPurchases(User user) {
-		Purchase[] purchases;
-		List<Purchase> list = user.getListPurchases();
-		purchases = negocioEJB.listToArrayPurchase(list);
-		return purchases;
 	}
 
 	public String getID() {

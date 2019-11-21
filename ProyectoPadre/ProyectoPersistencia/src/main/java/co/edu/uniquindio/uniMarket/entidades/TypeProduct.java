@@ -12,7 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = TypeProduct.LIST_TYPES, query = "select t from TypeProduct t"),
-		@NamedQuery(name = TypeProduct.FIND_TYPE, query = "select t from TypeProduct t where t.code=:code") })
+		@NamedQuery(name = TypeProduct.FIND_TYPE, query = "select t from TypeProduct t where t.name=:name") })
 public class TypeProduct implements Serializable {
 
 	@Id

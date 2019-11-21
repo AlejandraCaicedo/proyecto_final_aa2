@@ -1,6 +1,7 @@
 package co.edu.uniquindio.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -11,6 +12,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import co.edu.uniquindio.uniMarket.entidades.Product;
+import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
 
@@ -49,6 +52,20 @@ public class SecurityBean implements Serializable {
 		}
 		return null;
 
+	}
+
+	public Product[] getOwnProducts() {
+		Product[] products;
+		List<Product> list = user.getListProducts();
+		products = negocioEJB.listToArrayProduct(list);
+		return products;
+	}
+
+	public Purchase[] getOwnPurchases() {
+		Purchase[] purchases;
+		List<Purchase> list = user.getListPurchases();
+		purchases = negocioEJB.listToArrayPurchase(list);
+		return purchases;
 	}
 
 	public String getEmail() {
