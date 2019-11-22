@@ -74,6 +74,13 @@
 						itemLabel="#{type.name}" itemValue="#{type}" />
 				</p:selectOneMenu>
 
+				<p:fileUpload fileUploadListener="#{productBean.upLoadImages}"
+					mode="advanced" dragDropSupport="false" multiple="true"
+					update="messages" sizeLimit="100000" fileLimit="3"
+					allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+				<p:growl id="messages" showDetail="true" />
+
 			</h:panelGrid>
 
 			<p:commandButton id="create_product"

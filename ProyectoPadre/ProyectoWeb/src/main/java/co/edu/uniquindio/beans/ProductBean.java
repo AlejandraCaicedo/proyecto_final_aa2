@@ -1,18 +1,22 @@
 package co.edu.uniquindio.beans;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.ApplicationScoped;
 import javax.faces.annotation.ManagedProperty;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.model.UploadedFile;
+import org.primefaces.event.FileUploadEvent;
 
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.TypeProduct;
@@ -21,8 +25,10 @@ import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
 
 @Named("productBean")
-@ApplicationScoped
-public class ProductBean {
+@ViewScoped
+public class ProductBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@EJB
 	private NegocioEJB negocioEJB;
@@ -38,7 +44,8 @@ public class ProductBean {
 	private TypeProduct type;
 	private List<TypeProduct> listTypes;
 	private List<Product> listProducts;
-	private UploadedFile image;
+	private String firstImage;
+	private List<String> images;
 	private boolean escogido;
 	private Product selectedProduct;
 
@@ -50,12 +57,12 @@ public class ProductBean {
 	}
 
 	public String createProduct() {
-
-		System.out.println(escogido);
 		try {
 //			User seller = negocioEJB.findUser("user1@user.com");
 
-			Product p = new Product(code, name, description, price, availability, type, limit_date, seller);
+			this.firstImage = images.get(0);
+			Product p = new Product(code, name, description, price, availability, type, limit_date, firstImage, seller);
+			p.setImages(images);
 
 			negocioEJB.toCreateProduct(p);
 
@@ -72,12 +79,35 @@ public class ProductBean {
 		return null;
 	}
 
-	public UploadedFile getImage() {
-		return image;
+	public void upLoadImages(FileUploadEvent file) {
+
+		try {
+			InputStream f = file.getFile().getInputstream();
+			FileOutputStream fo = new FileOutputStream(new File(
+					"/home/aleja/glassfish5/glassfish/domains/domain1/docroot" + file.getFile().getFileName()));
+			String img = "http://localhost:8080/" + file.getFile().getFileName();
+			this.images.add(img);
+			byte[] buffer = new byte[1024];
+			int bytesRead = 0;
+			while ((bytesRead = f.read(buffer)) > 0) {
+				fo.write(buffer, 0, bytesRead);
+			}
+
+			fo.flush();
+			fo.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		FacesMessage msg = new FacesMessage("Successful", file.getFile().getFileName() + " is uploaded.");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-	public void setImage(UploadedFile image) {
-		this.image = image;
+	public String getFirstImage() {
+		return firstImage;
+	}
+
+	public void setFirstImage(String firstImage) {
+		this.firstImage = firstImage;
 	}
 
 	public String getCode() {
@@ -162,7 +192,6 @@ public class ProductBean {
 	}
 
 	public void isEscogido() {
-		System.out.println("Holo");
 		this.escogido = true;
 	}
 

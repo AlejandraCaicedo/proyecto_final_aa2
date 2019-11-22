@@ -30,25 +30,27 @@
 </style>
 
 		<h:form id="form">
-			<p:dataView var="product" value="#{productBean.listProducts}" rows="10"
-				paginator="true" rowsPerPageTemplate="4,8,12"
+			<p:dataView var="product" value="#{productBean.listProducts}"
+				rows="10" paginator="true" rowsPerPageTemplate="4,8,12"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				gridIcon="pi pi-th-large" listIcon="pi pi-bars">
 
 				<p:dataViewGridItem>
 					<p:panel header="#{product.code}" style="text-align:center">
 						<h:panelGrid columns="1" style="width:100%">
-							<p:graphicImage name="demo/images/car/#{car.brand}.gif" />
+							<p:graphicImage value="#{product.firstImage}" style="width:100%" />
 
-							<h:outputText value="#{car.brand}" />
+							<h:outputText value="#{product.name}" />
 
-							<p:commandLink update=":form:carDetail"
-								oncomplete="PF('carDialog').show()" title="View Detail">
+							<p:commandLink update=":form:productDetail"
+								oncomplete="PF('productDialog').show()" title="View Detail">
 								<h:outputText styleClass="ui-icon pi pi-search"
 									style="margin:0 auto;" />
-								<f:setPropertyActionListener value="#{car}"
-									target="#{dataGridView.selectedCar}" />
+								<f:setPropertyActionListener value="#{product}"
+									target="#{productBean.selectedProduct}" />
 							</p:commandLink>
+
+
 						</h:panelGrid>
 					</p:panel>
 				</p:dataViewGridItem>
@@ -56,55 +58,54 @@
 				<p:dataViewListItem>
 					<h:panelGrid columns="3" style="width:100%"
 						columnClasses="logo,detail">
-						<p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />
+						<p:graphicImage value="#{product.firstImage}" style="width:100%" />
 
 						<p:outputPanel>
 							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputText value="Id:" />
-								<h:outputText value="#{car.id}" style="font-weight: bold" />
+								<h:outputText value="Code:" />
+								<h:outputText value="#{product.code}" style="font-weight: bold" />
 
 								<h:outputText value="Year:" />
-								<h:outputText value="#{car.year}" style="font-weight: bold" />
+								<h:outputText value="#{product.description}"
+									style="font-weight: bold" />
 
 								<h:outputText value="Color:" />
-								<h:outputText value="#{car.color}" style="font-weight: bold" />
+								<h:outputText value="#{product.price}" style="font-weight: bold" />
 							</h:panelGrid>
 						</p:outputPanel>
 
-						<p:commandLink update=":form:carDetail"
-							oncomplete="PF('carDialog').show()" title="View Detail">
+						<p:commandLink update=":form:productDetail"
+							oncomplete="PF('productDialog').show()" title="View Detail">
 							<h:outputText styleClass="ui-icon pi pi-search"
 								style="margin:0 auto;" />
-							<f:setPropertyActionListener value="#{car}"
-								target="#{dataGridView.selectedCar}" />
+							<f:setPropertyActionListener value="#{product}"
+								target="#{productBean.selectedProduct}" />
 						</p:commandLink>
 					</h:panelGrid>
 				</p:dataViewListItem>
 			</p:dataView>
 
-			<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
-				showEffect="fade" hideEffect="fade" resizable="false">
-				<p:outputPanel id="carDetail" style="text-align:center;">
+			<p:dialog header="Product Info" widgetVar="productDialog"
+				modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="productDetail" style="text-align:center;">
 					<p:panelGrid columns="2"
-						rendered="#{not empty dataGridView.selectedCar}"
+						rendered="#{not empty productBean.selectedProduct}"
 						columnClasses="label,value">
 						<f:facet name="header">
-							<p:graphicImage
-								name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif" />
+							<p:graphicImage value="#{productBean.selectedProduct.firstImage}"
+								style="width:50%" />
 						</f:facet>
 
 						<h:outputText value="Id:" />
-						<h:outputText value="#{dataGridView.selectedCar.id}" />
+						<h:outputText value="#{productBean.selectedProduct.code}" />
 
 						<h:outputText value="Year" />
-						<h:outputText value="#{dataGridView.selectedCar.year}" />
-
-						<h:outputText value="Color:" />
-						<h:outputText value="#{dataGridView.selectedCar.color}"
-							style="color:#{dataGridView.selectedCar.color}" />
+						<h:outputText value="#{productBean.selectedProduct.name}" />
 
 						<h:outputText value="Price" />
-						<h:outputText value="$#{dataGridView.selectedCar.price}" />
+						<h:outputText value="$#{productBean.selectedProduct.price}" />
+
+
 					</p:panelGrid>
 				</p:outputPanel>
 			</p:dialog>

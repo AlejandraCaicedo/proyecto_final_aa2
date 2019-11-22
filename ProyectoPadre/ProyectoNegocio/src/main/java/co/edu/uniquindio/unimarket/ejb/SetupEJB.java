@@ -1,6 +1,8 @@
 package co.edu.uniquindio.unimarket.ejb;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
@@ -53,10 +55,20 @@ public class SetupEJB {
 			TypeProduct t2 = new TypeProduct("TECHNOLOGY");
 			entityManager.persist(t2);
 
-			Product p1 = new Product("P001", "Product 1", "new product", 6666, 10, t1, new Date(), u1);
+			List<String> images1 = new ArrayList<String>();
+			String img1 = "http://localhost:8080/books.jpg";
+			images1.add(img1);
+
+			List<String> images2 = new ArrayList<String>();
+			String img2 = "http://localhost:8080/cellphone.jpg";
+			images2.add(img2);
+
+			Product p1 = new Product("P001", "Product 1", "new product", 6666, 10, t1, new Date(), img1, u1);
+			p1.setImages(images1);
 			entityManager.persist(p1);
 
-			Product p2 = new Product("P002", "Product 2", "new product", 6766, 5, t2, new Date(), u1);
+			Product p2 = new Product("P002", "Product 2", "new product", 6766, 5, t2, new Date(), img2, u1);
+			p2.setImages(images2);
 			entityManager.persist(p2);
 		}
 	}

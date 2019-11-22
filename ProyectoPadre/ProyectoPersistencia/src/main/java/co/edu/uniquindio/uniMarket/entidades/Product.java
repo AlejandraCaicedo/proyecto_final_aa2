@@ -69,6 +69,8 @@ public class Product implements Serializable {
 	@ElementCollection
 	private List<String> images; // litsa de imagenes que puede existir sobre un producto
 
+	private String firstImage;
+
 	@OneToMany(mappedBy = "product")
 	private List<Rate> listRates; // Es la lista de calificaciones que le pueden dar ciertos usuarios a un
 									// producto
@@ -156,7 +158,7 @@ public class Product implements Serializable {
 	 *                      publicado en la tienda
 	 */
 	public Product(String code, String name, String description, double price, int availability, TypeProduct type,
-			Date limit_Date, User user) {
+			Date limit_Date, String firstImage, User user) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -165,7 +167,24 @@ public class Product implements Serializable {
 		this.availability = availability;
 		this.type = type;
 		this.limit_Date = limit_Date;
+		this.firstImage = firstImage;
 		this.user = user;
+	}
+
+	public String getFirstImage() {
+		return firstImage;
+	}
+
+	public void setFirstImage(String firstImage) {
+		this.firstImage = firstImage;
+	}
+
+	public List<Rate> getListRates() {
+		return listRates;
+	}
+
+	public User getUser() {
+		return user;
 	}
 
 	/**
