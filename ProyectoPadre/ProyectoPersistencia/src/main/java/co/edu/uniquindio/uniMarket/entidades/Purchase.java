@@ -186,15 +186,6 @@ public class Purchase implements Serializable {
 	}
 
 	/**
-	 * Metodo que permite asignar un listado de detalles de compra
-	 * 
-	 * @param listPurchaseDetails
-	 */
-	public void setListPurchaseDetails(ArrayList<PurchaseDetail> listPurchaseDetails) {
-		this.listPurchaseDetails = listPurchaseDetails;
-	}
-
-	/**
 	 * Metodo hashCode para una compra
 	 */
 	@Override

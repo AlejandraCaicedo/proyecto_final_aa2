@@ -49,18 +49,6 @@ public class UserBean {
 		return null;
 	}
 
-	public User iniciarSesion(String email, String password) {
-
-		User user = negocioEJB.autentifyUser(email, password);
-
-		if (user == null) {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Not found User",
-					"The user can't be find, the password or the email is incorrect");
-			FacesContext.getCurrentInstance().addMessage(null, message);
-		}
-		return user;
-	}
-
 //	public Product publishProduct(String code, String name, String description, double price, int availability,
 //			Type type, Date limit_Date) {
 //		Product product = null;

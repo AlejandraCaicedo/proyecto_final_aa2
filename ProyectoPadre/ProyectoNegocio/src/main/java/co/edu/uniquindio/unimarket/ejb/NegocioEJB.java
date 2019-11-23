@@ -15,7 +15,6 @@ import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
-import co.edu.uniquindio.uniMarket.entidades.Type;
 import co.edu.uniquindio.uniMarket.entidades.TypeProduct;
 import co.edu.uniquindio.uniMarket.entidades.User;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
@@ -110,6 +109,13 @@ public class NegocioEJB implements NegocioEJBRemote {
 	 */
 	@Override
 	public void toCreatePurchase(Purchase p) {
+		User user = p.getUser();
+		List<PurchaseDetail> purchaseDetails = p.getListPurchaseDetails();
+		user.getListPurchases().add(p);
+		for (int i = 0; i < purchaseDetails.size(); i++) {
+			toCreatePurchaseDetail(purchaseDetails.get(i));
+		}
+
 		entityManager.persist(p);
 	}
 
@@ -146,8 +152,11 @@ public class NegocioEJB implements NegocioEJBRemote {
 	/**
 	 * Metodo que realiza la persistencia de los detalles de cada compra
 	 */
-	public void persistenciaPurchaseDetail(Product product, Purchase purchase) {
-		PurchaseDetail purchaseDetail = new PurchaseDetail();
+	public void toCreatePurchaseDetail(PurchaseDetail purchaseDetail) {
+		Product product = purchaseDetail.getProduct();
+		product.getListPurchaseDetails().add(purchaseDetail);
+
+		toEditProduct(product, product.getCode());
 		entityManager.persist(purchaseDetail);
 	}
 
@@ -156,7 +165,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 	// --------------------------------------------------
 
 	/**
-	 * Método que edita los datos de un usuario
+	 * Mï¿½todo que edita los datos de un usuario
 	 * 
 	 * @param user Usuario con los datos modificados
 	 * @param ID   id del Usuario que se va a modificar
@@ -204,6 +213,16 @@ public class NegocioEJB implements NegocioEJBRemote {
 
 		entityManager.merge(actual);
 		return p;
+	}
+
+	public void toEditPurchase(Purchase purchase, String code) {
+		Purchase actual = entityManager.find(Purchase.class, code);
+		actual.setListPurchaseDetails(purchase.getListPurchaseDetails());
+		actual.setPaymentMethod(purchase.getPaymentMethod());
+		actual.setPurchaseDate(purchase.getPurchaseDate());
+		actual.setUser(purchase.getUser());
+
+		entityManager.merge(actual);
 	}
 
 	// ----------------------------------------
