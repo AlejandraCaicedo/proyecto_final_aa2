@@ -24,18 +24,18 @@ public class MetodosBean {
 	@EJB
 	private NegocioEJB negocioEJB;
 
-	@ManagedProperty("#{securityBean}")
+	@ManagedProperty("#{securityBean.user}")
 	@Inject
 	private User user;
-	private List<Product> listProducts;
+	private String productCode;
 	private String comment;
 	private double rate;
 
 	public void addFavorite() {
 
-		for (int i = 0; i < listProducts.size(); i++) {
-			user.getListFavorites().add(listProducts.get(i));
-		}
+		Product product = negocioEJB.findProduct(productCode);
+		user.getListFavorites().add(product);
+
 		negocioEJB.toEditUser(user, user.getID());
 
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succesfull Action",
@@ -45,9 +45,9 @@ public class MetodosBean {
 
 	public void removeFavorite() {
 
-		for (int i = 0; i < listProducts.size(); i++) {
-			user.getListFavorites().remove(listProducts.get(i));
-		}
+		Product product = negocioEJB.findProduct(productCode);
+		user.getListFavorites().remove(product);
+
 		negocioEJB.toEditUser(user, user.getID());
 
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succesfull Action",
@@ -56,7 +56,8 @@ public class MetodosBean {
 	}
 
 	public void makeComment() {
-		Commentary commentary = new Commentary("random", user, listProducts.get(0), comment);
+		Product product = negocioEJB.findProduct(productCode);
+		Commentary commentary = new Commentary("random", user, product, comment);
 		negocioEJB.toCreateCommentary(commentary);
 
 		FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "New Comment",
@@ -66,8 +67,9 @@ public class MetodosBean {
 	}
 
 	public void toRate() {
-		RatePK ratePK = new RatePK(listProducts.get(0).getCode(), user.getID());
-		Rate rate = new Rate(ratePK, listProducts.get(0), user, this.rate);
+		Product product = negocioEJB.findProduct(productCode);
+		RatePK ratePK = new RatePK(productCode, user.getID());
+		Rate rate = new Rate(ratePK, product, user, this.rate);
 		negocioEJB.toCreateRate(rate);
 
 		FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "New Rate",
@@ -91,12 +93,12 @@ public class MetodosBean {
 		this.user = user;
 	}
 
-	public List<Product> getListProducts() {
-		return listProducts;
+	public String getProductCode() {
+		return productCode;
 	}
 
-	public void setListProducts(List<Product> listProducts) {
-		this.listProducts = listProducts;
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
 	}
 
 	public String getComment() {
@@ -105,6 +107,14 @@ public class MetodosBean {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
 	}
 
 }

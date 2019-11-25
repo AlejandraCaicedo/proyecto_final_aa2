@@ -62,7 +62,7 @@ public class CarritoBean {
 	 * Crea el detail de un Purchase, se llama cada vez que se agrega un producto al
 	 * carrito
 	 */
-	private void addProduct() {
+	public void addProduct() {
 		PurchaseDetail purchaseDetail = new PurchaseDetail(ID, quantity, price);
 		product = negocioEJB.findProduct(productCode);
 		purchaseDetail.setProduct(product);
