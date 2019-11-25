@@ -12,8 +12,7 @@
 	<h:form>
 		<p:panel header="CREATE NEW PRODUCT">
 			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-
-			<h:panelGrid columns="3" cellpadding="10">
+			<h:panelGrid columns="3" cellpadding="10" cellspacing="10">
 
 				<p:outputLabel value="Name:" for="name" />
 				<p:inputText id="name" label="name product"
@@ -58,12 +57,12 @@
 				</p:selectOneMenu>
 				<p:message for="type" />
 
+				<p:outputLabel value="Images:" />
 				<p:fileUpload fileUploadListener="#{productBean.upLoadImages}"
 					mode="advanced" dragDropSupport="false" multiple="true"
-					update="messages" sizeLimit="100000" fileLimit="3"
+					update="message" sizeLimit="100000" fileLimit="3"
 					allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-
-				<p:growl id="messages" showDetail="true" />
+				<p:growl id="message" showDetail="true" />
 
 			</h:panelGrid>
 

@@ -9,10 +9,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.annotation.ManagedProperty;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -26,7 +26,7 @@ import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
 
 @Named("productBean")
-@ViewScoped
+@ApplicationScoped
 public class ProductBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -96,7 +96,6 @@ public class ProductBean implements Serializable {
 			fo.flush();
 			fo.close();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 		}
 		FacesMessage msg = new FacesMessage("Successful", file.getFile().getFileName() + " is uploaded.");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
