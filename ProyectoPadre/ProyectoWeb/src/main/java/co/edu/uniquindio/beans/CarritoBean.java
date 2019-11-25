@@ -52,7 +52,6 @@ public class CarritoBean {
 	 */
 	public void createPurchase() {
 
-		addProduct();
 		negocioEJB.toCreatePurchase(purchase);
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "New purchase",
 				"Your purchase was processed succesfully");
