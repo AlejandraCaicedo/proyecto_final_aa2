@@ -39,16 +39,17 @@ public class ProductBean implements Serializable {
 	private User seller;
 
 	private String code, name, description;
-	private int availability;
-	private double price;
 	private Date limit_date;
 	private TypeProduct type;
+	private String firstImage;
+	private Product selectedProduct;
+	private int availability;
+	private double price;
+	private boolean escogido;
+
 	private List<TypeProduct> listTypes;
 	private List<Product> listProducts;
-	private String firstImage;
 	private List<String> images;
-	private boolean escogido;
-	private Product selectedProduct;
 
 	@PostConstruct
 	public void inicializar() {
@@ -61,8 +62,7 @@ public class ProductBean implements Serializable {
 		try {
 //			User seller = negocioEJB.findUser("user1@user.com");
 
-			this.firstImage = images.get(0);
-			Product p = new Product(code, name, description, price, availability, type, limit_date, firstImage, seller);
+			Product p = new Product(code, name, description, price, availability, type, limit_date, seller);
 			p.setImages(images);
 			negocioEJB.toCreateProduct(p);
 

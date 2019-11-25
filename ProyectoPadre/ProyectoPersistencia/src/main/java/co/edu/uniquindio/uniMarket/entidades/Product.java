@@ -158,7 +158,7 @@ public class Product implements Serializable {
 	 *                      publicado en la tienda
 	 */
 	public Product(String code, String name, String description, double price, int availability, TypeProduct type,
-			Date limit_Date, String firstImage, User user) {
+			Date limit_Date, User user) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -167,7 +167,6 @@ public class Product implements Serializable {
 		this.availability = availability;
 		this.type = type;
 		this.limit_Date = limit_Date;
-		this.firstImage = firstImage;
 		this.user = user;
 	}
 
@@ -257,6 +256,7 @@ public class Product implements Serializable {
 	 * @param images, imagenes a ser publicada sobre un producto
 	 */
 	public void setImages(List<String> images) {
+		this.firstImage = images.get(0);
 		this.images = images;
 	}
 
