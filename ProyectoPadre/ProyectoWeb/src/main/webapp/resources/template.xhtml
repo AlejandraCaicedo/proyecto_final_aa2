@@ -17,34 +17,139 @@
 
 	<div id="header">
 		<ui:insert name="header">
-			<h:form>
+			<h:form rendered="#{!securityBean.autentify}">
 				<p:growl id="messages" />
+
 				<p:menubar>
 
-					<p:submenu label="Actions" icon="pi pi-cog"
-						style="margin:10px 10px 10px 10px">
-						<p:submenu label="Ajax" icon="pi pi-refresh">
-							<p:menuitem value="Save" action="#{menuView.save}"
-								icon="pi pi-save" update="messages" />
-							<p:menuitem value="Update" action="#{menuView.update}"
-								icon="pi pi-refresh" update="messages" />
-						</p:submenu>
-						<p:submenu label="Non-Ajax" icon="pi pi-clone">
-							<p:menuitem value="Delete" action="#{menuView.delete}"
-								icon="pi pi-times" update="messages" ajax="false" />
-						</p:submenu>
-					</p:submenu>
-
 					<f:facet name="options">
+
 						<p:commandButton type="button" value="Homepage" icon="pi pi-home" />
+
 						<p:inputText style="margin:10px 10px 10px 10px;"
 							placeholder="Search" styleClass="customTxtWidth150px" />
-						<p:commandButton type="button" value="Sign in" icon="pi pi-user" />
+
+						<p:commandButton type="button" value="Sign in" icon="pi pi-user"
+							onclick="PF('dlg').show();" />
+
+
+						<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+
+						<p:dialog header="Login" widgetVar="dlg" resizable="false">
+
+							<h:panelGrid columns="2" cellpadding="5">
+
+
+								<h:outputLabel for="email" value="Email:" />
+								<p:inputText id="email" value="#{securityBean.email}"
+									required="true" label="email" />
+
+
+								<h:outputLabel for="password" value="Password:" />
+								<p:password id="password" value="#{securityBean.password}"
+									required="true" label="password" />
+
+								<f:facet name="footer">
+
+									<h:panelGrid columns="2" cellpadding="5">
+										<p:commandButton value="Sign In" update="growl"
+											action="#{securityBean.signIn}" />
+										<p:linkButton outcome="registrarUsuario" value="Sign Up"
+											style="margin-right:20px;" />
+									</h:panelGrid>
+								</f:facet>
+
+							</h:panelGrid>
+
+						</p:dialog>
+
+
 					</f:facet>
 
 				</p:menubar>
 			</h:form>
 
+			<h:form rendered="#{securityBean.autentify}">
+				<h:form id="form">
+				</h:form>
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+				<p:megaMenu orientation="#{megaMenuView.orientation}"
+					style="margin-top:20px">
+					<p:submenu label="My Ṕroducts" icon="pi pi-check">
+						<p:column>
+							<p:submenu label="Manage">
+								<p:menuitem value="Publish Product"
+									action="#{securityBean.publishProduct}" />
+								<p:menuitem value="Edit Product" url="#" />
+								<p:menuitem value="" />
+							</p:submenu>
+							<p:submenu label="TV.2">
+								<p:menuitem value="TV.2.1" url="#" />
+								<p:menuitem value="TV.2.2" url="#" />
+								<p:menuitem value="TV.2.3" url="#" />
+							</p:submenu>
+						</p:column>
+
+						<p:column>
+							<p:submenu label="TV.4">
+								<p:menuitem value="TV.4.1" url="#" />
+								<p:menuitem value="TV.4.2" url="#" />
+							</p:submenu>
+							<p:submenu label="TV.5">
+								<p:menuitem value="TV.5.1" url="#" />
+								<p:menuitem value="TV.5.2" url="#" />
+								<p:menuitem value="TV.5.3" url="#" />
+							</p:submenu>
+						</p:column>
+
+						<p:column>
+							<strong>Image</strong>
+							<p:graphicImage name="/demo/images/nature/nature1.jpg"
+								width="200" />
+						</p:column>
+					</p:submenu>
+
+					<p:submenu label="Sports" icon="pi pi-file">
+
+						<p:column>
+							<p:submenu label="Sports.1">
+								<p:menuitem value="Sports.1.1" url="#" />
+								<p:menuitem value="Sports.1.2" url="#" />
+							</p:submenu>
+							<p:submenu label="Sports.2">
+								<p:menuitem value="Sports.2.1" url="#" />
+								<p:menuitem value="Sports.2.2" url="#" />
+								<p:menuitem value="Sports.2.3" url="#" />
+							</p:submenu>
+						</p:column>
+
+						<p:column>
+							<p:submenu label="Sports.4">
+								<p:menuitem value="Sports.4.1" url="#" />
+								<p:menuitem value="Sports.4.2" url="#" />
+							</p:submenu>
+							<p:submenu label="Sports.5">
+								<p:menuitem value="Sports.5.1" url="#" />
+								<p:menuitem value="Sports.5.2" url="#" />
+								<p:menuitem value="Sports.5.3" url="#" />
+							</p:submenu>
+						</p:column>
+						<p:column>
+							<p:submenu label="Sports.7">
+								<p:menuitem value="Sports.7.1" url="#" />
+								<p:menuitem value="Sports.7.2" url="#" />
+							</p:submenu>
+						</p:column>
+					</p:submenu>
+
+					<p:menuitem value="Sign Out" action="#{securityBean.signOut}"
+						icon="pi pi-times" update="growl">
+					</p:menuitem>
+				</p:megaMenu>
+			</h:form>
 		</ui:insert>
 	</div>
 

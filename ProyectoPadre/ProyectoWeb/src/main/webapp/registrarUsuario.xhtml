@@ -10,6 +10,7 @@
 <body>
 	<h:form>
 		<p:panel header="CREATE NEW USER">
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 			<h:panelGrid columns="3" cellpadding="10" cellspacing="10">
 
 				<p:outputLabel value="Full name:" for="fullname" />
@@ -46,9 +47,28 @@
 
 			</h:panelGrid>
 
-			<p:commandButton id="create_user" action="#{userBean.createUser}"
-				value="Create user" update="@form" for="create_user" />
+			<p:commandButton id="create_user" action="#{userBean.signUp}"
+				value="Create user" update="growl" for="create_user" />
 			<p:message for="create_user" />
+
+			<h:form>
+				<p:growl id="message" showDetail="true" />
+
+				<p:commandButton value="Cancel" action="#{userBean.cancelSignUp}"
+					update="message">
+					<p:confirm header="Confirmation" message="Are you sure?"
+						icon="pi pi-exclamation-triangle" />
+				</p:commandButton>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Yes" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					<p:commandButton value="No" type="button"
+						styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+
+				</p:confirmDialog>
+
+			</h:form>
 
 		</p:panel>
 

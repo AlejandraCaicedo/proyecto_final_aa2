@@ -63,14 +63,13 @@ public class ProductBean implements Serializable {
 			this.firstImage = images.get(0);
 			Product p = new Product(code, name, description, price, availability, type, limit_date, firstImage, seller);
 			p.setImages(images);
-
 			negocioEJB.toCreateProduct(p);
 
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "New product",
 					"Product created sucessfully");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 
-			return "CRUDProduct?faces-redirect=true";
+			return "CRUDProduct";
 		} catch (RepeatedProductException e) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Repeated Product Exception",
 					e.getMessage());

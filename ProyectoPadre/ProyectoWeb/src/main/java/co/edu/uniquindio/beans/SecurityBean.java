@@ -37,21 +37,37 @@ public class SecurityBean implements Serializable {
 		this.autentify = false;
 	}
 
-	public String iniciarSesion() {
-		User u = negocioEJB.autentifyUser(email, password);
+	public String signIn() throws InterruptedException {
 
+		FacesMessage message = null;
+
+		User u = negocioEJB.autentifyUser(email, password);
 		if (u != null) {
 			this.user = u;
 			this.autentify = true;
-
-			return "index?faces-redirect =true";
+			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", "Mister");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+//			PrimeFaces.current().ajax().addCallbackParam("autentify", autentify)
+			return "index?faces-redirect=true";
 		} else {
-
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Not found an user", "The email or password are incorrect"));
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "User not found",
+					"The email or password are incorrect");
 		}
+		FacesContext.getCurrentInstance().addMessage(null, message);
+//		PrimeFaces.current().ajax().addCallbackParam("autentify", autentify);
 		return null;
+	}
 
+	public String publishProduct() {
+		return "createProduct?faces-redirect=true";
+	}
+
+	public String signOut() {
+		this.autentify = false;
+		this.email = "";
+		this.password = "";
+		this.user = null;
+		return "index?faces-redirect=true";
 	}
 
 	public Product[] getOwnProducts() {

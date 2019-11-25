@@ -17,6 +17,7 @@ import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.TypeProduct;
 import co.edu.uniquindio.uniMarket.entidades.User;
+import co.edu.uniquindio.uniMarket.excepciones.BusinessException;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
@@ -134,9 +135,11 @@ public class NegocioEJB implements NegocioEJBRemote {
 	/**
 	 * Metodo que realiza la persistencia de los usuarios registrados en la base de
 	 * datos
+	 * 
+	 * @throws BusinessException
 	 */
 	@Override
-	public void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException {
+	public void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException, BusinessException {
 
 		if (entityManager.find(User.class, u.getID()) != null) {
 			throw new RepeatedIDException("The user is already registered");
@@ -146,7 +149,55 @@ public class NegocioEJB implements NegocioEJBRemote {
 			throw new RepeatedEmailException("Email is already in use");
 		}
 
+		if (!validarCedula(u.getID())) {
+			throw new BusinessException("La cedula ingresada no es válida\n solo debe contener números");
+		}
+
+		if (!validarNombre(u.getFullName())) {
+			throw new BusinessException("El nombre ingresado no es válido\n solo debe contener letras");
+		}
+
+		if (!validarCedula(u.getCellphoneNumber())) {
+			throw new BusinessException("El telefono celular ingresado no es válido\n solo debe contener números");
+		}
+
 		entityManager.persist(u);
+	}
+
+	/**
+	 * Método que valida si el nombre no contiene caracteres numéricos.
+	 * 
+	 * @param nombre
+	 * @return true || false
+	 */
+	private boolean validarNombre(String nombre) {
+		boolean salida = true;
+		char[] c = nombre.toCharArray();
+		for (int i = 0; i < c.length && salida == true; i++) {
+			char car = c[i];
+			if (Character.isDigit(car)) {
+				salida = false;
+			}
+		}
+		return salida;
+	}
+
+	/**
+	 * Método que valida si la cedula contiene solamente caracteres numéricos.
+	 * 
+	 * @param cc
+	 * @return true || false
+	 */
+	private boolean validarCedula(String cc) {
+		boolean salida = true;
+		char[] c = cc.toCharArray();
+		for (int i = 0; i < c.length && salida == true; i++) {
+			char car = c[i];
+			if (!Character.isDigit(car)) {
+				salida = false;
+			}
+		}
+		return salida;
 	}
 
 	/**

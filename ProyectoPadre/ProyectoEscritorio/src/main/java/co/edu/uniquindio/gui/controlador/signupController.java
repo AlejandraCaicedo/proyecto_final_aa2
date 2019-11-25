@@ -2,6 +2,7 @@ package co.edu.uniquindio.gui.controlador;
 
 import co.edu.uniquindio.gui.vista.ManejadorEscenarios;
 import co.edu.uniquindio.uniMarket.entidades.User;
+import co.edu.uniquindio.uniMarket.excepciones.BusinessException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
 import javafx.event.ActionEvent;
@@ -90,6 +91,9 @@ public class signupController {
 			} catch (RepeatedIDException e) {
 				manejadorEscenarios.showErrorMessage(e.getMessage(), "");
 			} catch (RepeatedEmailException e) {
+				manejadorEscenarios.showErrorMessage(e.getMessage(), "");
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
 				manejadorEscenarios.showErrorMessage(e.getMessage(), "");
 			}
 		}

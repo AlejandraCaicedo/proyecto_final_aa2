@@ -12,7 +12,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import co.edu.uniquindio.uniMarket.entidades.PaymentMethod;
-import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.PurchaseDetail;
 import co.edu.uniquindio.uniMarket.entidades.User;
@@ -23,7 +22,7 @@ import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
 public class PurchaseBean {
 
 	@EJB
-	NegocioEJB negocioEJB;
+	private NegocioEJB negocioEJB;
 
 	@ManagedProperty(value = "#{securityBean.user}")
 	@Inject
@@ -35,7 +34,7 @@ public class PurchaseBean {
 	private List<PurchaseDetail> purchaseDetail;
 
 	/**
-	 * Método que crea una nueva compra
+	 * Metodo que crea una nueva compra
 	 */
 	public void createPurchase() {
 
@@ -49,11 +48,10 @@ public class PurchaseBean {
 	}
 
 	/**
-	 * Método que edita la compra actual con los nuevos valores agregados (La lista
-	 * de detalles compra, pues lo demás seguirá siendo igual)
+	 * Metodo que edita la compra actual con los nuevos valores agregados (La lista
+	 * de detalles compra, pues lo demas seguira siendo igual)
 	 */
 	public void editPurchase() {
-
 		negocioEJB.toEditPurchase(new Purchase(purchaseCode, user, purchaseDate, paymentMethod), purchaseCode);
 	}
 

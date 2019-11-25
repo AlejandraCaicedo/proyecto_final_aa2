@@ -11,6 +11,7 @@ import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.TypeProduct;
 import co.edu.uniquindio.uniMarket.entidades.User;
+import co.edu.uniquindio.uniMarket.excepciones.BusinessException;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
@@ -28,7 +29,7 @@ public interface NegocioEJBRemote {
 
 	void toCreateProduct(Product p) throws RepeatedProductException;
 
-	void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException;
+	void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException, BusinessException;
 
 	void toCreateCommentary(Commentary c);
 

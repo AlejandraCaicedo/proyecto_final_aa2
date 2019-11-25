@@ -12,6 +12,7 @@ import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.Rate;
 import co.edu.uniquindio.uniMarket.entidades.TypeProduct;
 import co.edu.uniquindio.uniMarket.entidades.User;
+import co.edu.uniquindio.uniMarket.excepciones.BusinessException;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundAdminException;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
@@ -56,7 +57,7 @@ public class EscritorioDelegado implements NegocioEJBRemote {
 	}
 
 	@Override
-	public void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException {
+	public void toRegisterUser(User u) throws RepeatedIDException, RepeatedEmailException, BusinessException {
 		negocioEJB.toRegisterUser(u);
 	}
 

@@ -11,8 +11,8 @@ import javax.mail.MessagingException;
 
 import co.edu.uniquindio.uniMarket.Email.EmailClient;
 import co.edu.uniquindio.uniMarket.entidades.Product;
-import co.edu.uniquindio.uniMarket.entidades.Purchase;
 import co.edu.uniquindio.uniMarket.entidades.User;
+import co.edu.uniquindio.uniMarket.excepciones.BusinessException;
 import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedEmailException;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedIDException;
@@ -27,7 +27,7 @@ public class UserBean {
 
 	private String ID, fullName, email, adress, password, cellphoneNumber;
 
-	public String createUser() {
+	public String signUp() {
 		try {
 			User user = new User(ID, fullName, email, cellphoneNumber, adress, password);
 
@@ -36,7 +36,8 @@ public class UserBean {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sumary", "New user created");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 
-			return "";
+			return "index";
+
 		} catch (RepeatedIDException e) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Repeated Identifier Exception",
 					e.getMessage());
@@ -45,8 +46,16 @@ public class UserBean {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Repeated Email Exception",
 					e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, message);
+		} catch (BusinessException e) {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalidate Credentials",
+					e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
 		return null;
+	}
+
+	public String cancelSignUp() {
+		return "index";
 	}
 
 //	public Product publishProduct(String code, String name, String description, double price, int availability,
