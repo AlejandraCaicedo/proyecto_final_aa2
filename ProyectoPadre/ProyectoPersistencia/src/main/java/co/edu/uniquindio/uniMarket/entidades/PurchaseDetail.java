@@ -69,7 +69,7 @@ public class PurchaseDetail implements Serializable {
 	 * @param price,    precio por el que se adquiere los productos a la hora de
 	 *                  comprarlos
 	 */
-	public PurchaseDetail(int iD, int quantity, int price) {
+	public PurchaseDetail(int iD, int quantity, double price) {
 		super();
 		ID = iD;
 		this.quantity = quantity;

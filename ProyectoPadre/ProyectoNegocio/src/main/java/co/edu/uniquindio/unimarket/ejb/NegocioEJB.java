@@ -116,7 +116,8 @@ public class NegocioEJB implements NegocioEJBRemote {
 		for (int i = 0; i < purchaseDetails.size(); i++) {
 			toCreatePurchaseDetail(purchaseDetails.get(i));
 		}
-
+		user.getListPurchases().add(p);
+		toEditUser(user, user.getID());
 		entityManager.persist(p);
 	}
 
@@ -203,7 +204,7 @@ public class NegocioEJB implements NegocioEJBRemote {
 	/**
 	 * Metodo que realiza la persistencia de los detalles de cada compra
 	 */
-	public void toCreatePurchaseDetail(PurchaseDetail purchaseDetail) {
+	private void toCreatePurchaseDetail(PurchaseDetail purchaseDetail) {
 		Product product = purchaseDetail.getProduct();
 		product.getListPurchaseDetails().add(purchaseDetail);
 
@@ -338,6 +339,15 @@ public class NegocioEJB implements NegocioEJBRemote {
 			return tp;
 		}
 
+		return null;
+	}
+
+	public Product findProduct(String code) {
+		Product product = entityManager.find(Product.class, code);
+
+		if (product != null) {
+			return product;
+		}
 		return null;
 	}
 

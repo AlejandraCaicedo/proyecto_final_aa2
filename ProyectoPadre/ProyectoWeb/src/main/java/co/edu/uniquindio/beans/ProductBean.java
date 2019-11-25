@@ -21,6 +21,7 @@ import org.primefaces.event.FileUploadEvent;
 import co.edu.uniquindio.uniMarket.entidades.Product;
 import co.edu.uniquindio.uniMarket.entidades.TypeProduct;
 import co.edu.uniquindio.uniMarket.entidades.User;
+import co.edu.uniquindio.uniMarket.excepciones.NotFoundTypeProduct;
 import co.edu.uniquindio.uniMarket.excepciones.RepeatedProductException;
 import co.edu.uniquindio.unimarket.ejb.NegocioEJB;
 
@@ -99,6 +100,16 @@ public class ProductBean implements Serializable {
 		}
 		FacesMessage msg = new FacesMessage("Successful", file.getFile().getFileName() + " is uploaded.");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+
+	public List<Product> listByType(String type) {
+		try {
+			return negocioEJB.toListByType(type);
+		} catch (NotFoundTypeProduct e) {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Not Found Type", e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
+		return null;
 	}
 
 	public String getFirstImage() {
@@ -182,7 +193,6 @@ public class ProductBean implements Serializable {
 	}
 
 	public boolean getEscogido() {
-		System.out.println("Holi");
 		return escogido;
 	}
 
